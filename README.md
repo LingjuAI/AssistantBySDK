@@ -2,6 +2,11 @@
 * 灵聚APP是包括语义解析、语音交互、智能问答、音乐播放、提醒、记账等多个功能的智能工具类APP。APP集成的灵聚SDK是其核心依赖库。SDK快速的语义解析、覆盖了多个垂直领域的语义通用场景、百亿数量级大数据，并结合语音交互模块，让开发者能快速开发出一款智能语音交互APP。
 
 ## 配置环境及发布
+### 开发环境
+* 开发平台：Android Studio 2.x&nbsp;&nbsp;&nbsp;&nbsp;Gradle 2.10+
+* 运行平台：Android 4.0+
+* 开发语言：Java（JDK1.7+）
+
 * 由于APP中申请的第三方SDK的appkey与签名文件有关，而APP不提供签名文件，所以开发者需要自定义一份签名文件，并根据该文件重新申请第三方SDK的appkey，替换到项目中。具体操作过程如下：</div>
 
 ### 1. 创建签名文件
@@ -37,42 +42,40 @@ android {
 ### 3. 申请第三方SDK的appkey
 
 需要申请appkey的SDK如下：
-<div>
-    <table border="0">
-	  <tr>
-	    <th>第三方SDK</th>
-	    <th>appkey申请地址</th>
-	  </tr>
-	  <tr>
-	    <td>灵聚SDK</td>
-	    <td>http://dev.lingju.ai/</td>
-	  </tr>
-	    <tr>
-	    <td>讯飞语音</td>
-	    <td>http://www.xfyun.cn/index.php/mycloud/app/create</td>
-	  </tr>
-	    <tr>
-	    <td>百度LBS</td>
-	    <td>http://lbsyun.baidu.com/apiconsole/key/create</td>
-	  </tr>
-	    <tr>
-	    <td>新浪微博</td>
-	    <td>http://open.weibo.com/apps/new?sort=mobile</td>
-	  </tr>
-	    <tr>
-	    <td>腾讯QQ</td>
-	    <td>http://open.qq.com/</td>
-	  </tr>
-	    <tr>
-	    <td>微信</td>
-	    <td>https://open.weixin.qq.com/</td>
-	  </tr>
-	    <tr>
-	    <td>喜马拉雅（听书）</td>
-	    <td>http://open.ximalaya.com/</td>
-	  </tr>
-    </table>
-</div>
+<table border="0">
+  <tr>
+    <th>第三方SDK</th>
+    <th>appkey申请地址</th>
+  </tr>
+  <tr>
+    <td>灵聚SDK</td>
+    <td>http://dev.lingju.ai/</td>
+  </tr>
+    <tr>
+    <td>讯飞语音</td>
+    <td>http://www.xfyun.cn/index.php/mycloud/app/create</td>
+  </tr>
+  <tr>
+    <td>百度LBS</td>
+    <td>http://lbsyun.baidu.com/apiconsole/key/create</td>
+  </tr>
+    <tr>
+    <td>新浪微博</td>
+    <td>http://open.weibo.com/apps/new?sort=mobile</td>
+  </tr>
+    <tr>
+    <td>腾讯QQ</td>
+    <td>http://open.qq.com/</td>
+  </tr>
+    <tr>
+    <td>微信</td>
+    <td>https://open.weixin.qq.com/</td>
+  </tr>
+    <tr>
+    <td>喜马拉雅（听书）</td>
+    <td>http://open.ximalaya.com/</td>
+  </tr>
+</table>
 
 * 注意：在申请灵聚SDK的appkey时，创建应用后，在该应用右侧的“接入”选项可查看appkey。
 ![](images/appkey.png)
