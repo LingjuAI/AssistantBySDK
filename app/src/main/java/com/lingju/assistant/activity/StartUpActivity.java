@@ -21,9 +21,7 @@ import com.lingju.model.Item;
 import com.lingju.model.SubItem;
 import com.lingju.model.Zipcode;
 import com.lingju.model.dao.AccountItemDao;
-import com.lingju.model.dao.AssistDao;
 import com.lingju.model.dao.CallAndSmsDao;
-import com.lingju.model.dao.TapeEntityDao;
 import com.lingju.util.ScreenUtil;
 import com.tencent.stat.StatConfig;
 import com.tencent.stat.StatService;
@@ -37,7 +35,6 @@ import java.util.concurrent.TimeUnit;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
-import io.reactivex.Single;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
@@ -419,29 +416,11 @@ public class StartUpActivity extends Activity implements ActivityCompat.OnReques
 
         @Override
         protected void onPostExecute(Boolean result) {
-            clearRecyleData();
             startActivity(new Intent(StartUpActivity.this, MainActivity.class));
             finish();
             overridePendingTransition(R.anim.startup_act_in, R.anim.startup_act_out);
         }
 
-    }
-
-    /**
-     * 清空数据库中设置回收标记的记录
-     **/
-    private void clearRecyleData() {
-        Single.just(0)
-                .observeOn(Schedulers.io())
-                .doOnSuccess(new Consumer<Integer>() {
-                    @Override
-                    public void accept(Integer integer) throws Exception {
-                        AssistDao.getInstance().clearRecyleData();
-                        TapeEntityDao.getInstance().clearRecyleData();
-                        CallAndSmsDao.getInstance(StartUpActivity.this).clearRecyleData();
-                    }
-                })
-                .subscribe();
     }
 
 }

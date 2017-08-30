@@ -64,6 +64,9 @@ import com.lingju.model.Accounting;
 import com.lingju.model.AlarmClock;
 import com.lingju.model.Memo;
 import com.lingju.model.PlayMusic;
+import com.lingju.model.dao.AssistDao;
+import com.lingju.model.dao.CallAndSmsDao;
+import com.lingju.model.dao.TapeEntityDao;
 import com.lingju.model.temp.speech.SpeechMsg;
 import com.lingju.robot.AndroidChatRobotBuilder;
 import com.lingju.util.ScreenUtil;
@@ -80,6 +83,9 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import io.reactivex.Single;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by Administrator on 2016/11/4.
@@ -569,6 +575,7 @@ public class MainActivity extends BaseActivity implements IAdditionAssist.Assist
             return;
         } else {
             exit = 0;
+            clearRecyleData();
             //关闭唤醒
             if (VoiceMediator.get().isWakeUpMode())
                 VoiceMediator.get().setWakeUpMode(false);
@@ -580,6 +587,23 @@ public class MainActivity extends BaseActivity implements IAdditionAssist.Assist
             finish();
         }
         super.onBackPressed();
+    }
+
+    /**
+     * 清空数据库中设置回收标记的记录
+     **/
+    private void clearRecyleData() {
+        Single.just(0)
+                .observeOn(Schedulers.io())
+                .doOnSuccess(new Consumer<Integer>() {
+                    @Override
+                    public void accept(Integer integer) throws Exception {
+                        AssistDao.getInstance().clearRecyleData();
+                        TapeEntityDao.getInstance().clearRecyleData();
+                        CallAndSmsDao.getInstance(MainActivity.this).clearRecyleData();
+                    }
+                })
+                .subscribe();
     }
 
     private int exit;
