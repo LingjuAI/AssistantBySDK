@@ -49,7 +49,7 @@ android {
 
 
 * 注意：在申请灵聚SDK的appkey时，创建应用后，在该应用右侧的“接入”选项可查看appkey。
-![](images/screenshot_1499053815532.png)
+![](images/appkey.png)
 
 ### 4. 在项目中替换新申请到的appkey
 
