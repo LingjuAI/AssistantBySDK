@@ -1,12 +1,18 @@
 ## 灵聚智能助理APP
 * 灵聚APP是包括语义解析、语音交互、智能问答、音乐播放、提醒、记账等多个功能的智能工具类APP。APP集成的灵聚SDK是其核心依赖库。SDK快速的语义解析、覆盖了多个垂直领域的语义通用场景、百亿数量级大数据，并结合语音交互模块，让开发者能快速开发出一款智能语音交互APP。
 
+## 运行截图
+![](images/menu.png) &nbsp;&nbsp; ![](images/xianliao.png) &nbsp;&nbsp; ![](images/alarm.png)<br />
+
+![](images/music.png) &nbsp;&nbsp; ![](images/ting.png) &nbsp;&nbsp; ![](images/call.png)<br />
+
+![](images/address.png) &nbsp;&nbsp; ![](images/route.png) &nbsp;&nbsp; ![](images/navi.png)<br />
+
 ## 配置环境及发布
 ### 开发环境
 * 开发平台：Android Studio 2.x&nbsp;&nbsp;&nbsp;&nbsp;Gradle 2.10+
 * 运行平台：Android 4.0+
 * 开发语言：Java（JDK1.7+）
-
 <br/>
 
 * 由于APP中申请的第三方SDK的appkey与签名文件有关，而APP不提供签名文件，所以开发者需要自定义一份签名文件，并根据该文件重新申请第三方SDK的appkey，替换到项目中。具体操作过程如下：
