@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    >
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/abl_header"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:fitsSystemWindows="true">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/ctl_header_bar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:collapsedTitleTextAppearance="@style/collapsed_text_style"
+            app:contentScrim="@color/base_blue"
+            app:expandedTitleMarginBottom="@dimen/dialog_margin"
+            app:expandedTitleMarginEnd="@dimen/common_card_btn_height"
+            app:expandedTitleMarginStart="@dimen/normal_margin"
+            app:expandedTitleTextAppearance="@style/expanded_text_style"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:titleEnabled="false"
+            >
+
+            <ImageView
+                android:id="@+id/iv_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginRight="@dimen/mini_margin"
+                android:layout_marginTop="@dimen/mini_margin"
+                android:contentDescription="@null"
+                android:src="@drawable/pic_alarm_bar"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="0.7"/>
+
+
+            <FrameLayout
+                android:id="@+id/fl_msg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|bottom"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="16dp"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="0.7">
+                <!--提醒、闹钟页时间信息-->
+                <RelativeLayout
+                    android:id="@+id/rl_datetime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/tv_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="9:40"
+                        android:textColor="@color/new_main_bgcolor"
+                        android:textSize="@dimen/large"/>
+
+                    <TextView
+                        android:id="@+id/tv_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/tv_time"
+                        android:layout_marginBottom="@dimen/mini_margin"
+                        android:layout_marginLeft="16dp"
+                        android:layout_toRightOf="@id/tv_time"
+                        android:text="2017年03月04日     星期六"
+                        android:textColor="@color/new_main_bgcolor"
+                        android:textSize="@dimen/md_small"/>
+                </RelativeLayout>
+
+                <!--记账用户总金额信息-->
+                <LinearLayout
+                    android:id="@+id/ll_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="我的余额"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/md_small"/>
+
+                    <RelativeLayout
+                        android:id="@+id/fl_balance"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/selector_view_bg"
+                        android:clickable="true">
+
+                        <EditText
+                            style="@style/edit_text_style"
+                            android:id="@+id/et_balance"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:imeOptions="actionDone"
+                            android:inputType="numberDecimal"
+                            android:selectAllOnFocus="true"
+                            android:maxLength="8"
+                            android:maxLines="1"
+                            android:text="23434324"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/md_big"
+                            android:visibility="gone"/>
+
+                        <TextView
+                            android:id="@+id/tv_balance"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:background="@color/base_blue"
+                            android:maxLength="20"
+                            android:text="￥5,002.68"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/md_big"
+                            android:visibility="visible"
+                            />
+
+                    </RelativeLayout>
+                </LinearLayout>
+            </FrameLayout>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/tb_assist"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:titleMarginStart="@dimen/normal_margin"
+                app:elevation="4dp"
+                app:layout_collapseMode="pin"
+                app:title="记账"
+                app:titleTextAppearance="@style/collapsed_text_style"/>
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <!--配合以上组件提供滑动时相应的Behavior，实际上是FrameLayout，但可视为ScrollView-->
+    <!--<android.support.v4.widget.NestedScrollView
+        android:id="@+id/nsv_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        &lt;!&ndash;页面主要内容区域&ndash;&gt;
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/about_lingju"
+            android:textSize="14sp"/>
+    </android.support.v4.widget.NestedScrollView>-->
+    <!--<android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/layout_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    >-->
+    <!--内容列表-->
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/assist_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fadingEdgeLength="16dp"
+        android:scrollbars="none"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        />
+    <!--</android.support.v4.widget.SwipeRefreshLayout>-->
+
+    <!--悬浮动作按钮-->
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:src="@drawable/add_white"
+        app:backgroundTint="@color/second_base_color"
+        app:elevation="6dp"
+        app:layout_anchor="@id/assist_recyclerview"
+        app:layout_anchorGravity="top|end"
+        app:pressedTranslationZ="4dp"/>
+
+    <com.lsjwzh.widget.materialloadingprogressbar.CircleProgressBar
+        android:id="@+id/cpb_load"
+        android:layout_width="@dimen/setting_title_margin"
+        android:layout_height="@dimen/setting_title_margin"
+        android:layout_gravity="center"
+        android:visibility="visible"
+        app:mlpb_enable_circle_background="false"
+        app:mlpb_progress_color="@color/base_blue"
+        app:mlpb_progress_stoke_width="3dp"
+        app:mlpb_show_arrow="false">
+    </com.lsjwzh.widget.materialloadingprogressbar.CircleProgressBar>
+
+</android.support.design.widget.CoordinatorLayout>

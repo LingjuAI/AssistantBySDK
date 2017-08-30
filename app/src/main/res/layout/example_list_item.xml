@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@drawable/selector_view_bg"
+              android:orientation="vertical">
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:background="@color/new_line_black_border"
+        android:visibility="visible"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/large_margin"
+            android:layout_height="@dimen/large_margin"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:alpha="0.54"
+            android:scaleType="center"
+            android:src="@drawable/joke"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/biggest_margin"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left|center_vertical"
+                android:singleLine="true"
+                android:text="打电话打电话打电话打电话打电话打电话打电话打电话"
+                android:textColor="@color/new_text_color_first"
+                android:textSize="@dimen/regular"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left|center_vertical"
+                android:singleLine="true"
+                android:text="打电话给张三打电话给张三打电话给张三打电话给张三打电话给张三"
+                android:textColor="@color/new_text_color_second"
+                android:textSize="@dimen/md_small"/>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:alpha="0.54"
+            />
+    </RelativeLayout>
+
+</LinearLayout>

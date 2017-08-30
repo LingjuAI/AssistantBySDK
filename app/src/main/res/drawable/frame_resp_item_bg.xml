@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<level-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:maxLevel="0">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/mini_margin"/>
+            <solid android:color="@color/white"/>
+            <stroke
+                android:width="@dimen/resp_stroke_width"
+                android:color="@android:color/transparent"/>
+        </shape>
+    </item>
+    <item android:maxLevel="1">
+        <animation-list android:oneshot="false">
+            <item android:duration="100">
+                <shape android:shape="rectangle">
+                    <corners android:radius="@dimen/mini_margin"/>
+                    <solid android:color="@color/white"/>
+                    <stroke
+                        android:width="@dimen/resp_stroke_width"
+                        android:color="#4d28a956"/>
+                </shape>
+            </item>
+            <item android:duration="100">
+                <shape android:shape="rectangle">
+                    <solid android:color="@color/white"/>
+                    <corners android:radius="@dimen/mini_margin"/>
+                    <stroke
+                        android:width="@dimen/resp_stroke_width"
+                        android:color="#5e28a956"/>
+                </shape>
+            </item>
+            <item android:duration="100">
+                <shape android:shape="rectangle">
+                    <solid android:color="@color/white"/>
+                    <corners android:radius="@dimen/mini_margin"/>
+                    <stroke
+                        android:width="@dimen/resp_stroke_width"
+                        android:color="#7028a956"/>
+                </shape>
+            </item>
+            <item android:duration="100">
+                <shape android:shape="rectangle">
+                    <solid android:color="@color/white"/>
+                    <corners android:radius="@dimen/mini_margin"/>
+                    <stroke
+                        android:width="@dimen/resp_stroke_width"
+                        android:color="#8228a956"/>
+                </shape>
+            </item>
+            <item android:duration="100">
+                <shape android:shape="rectangle">
+                    <solid android:color="@color/white"/>
+                    <corners android:radius="@dimen/mini_margin"/>
+                    <stroke
+                        android:width="@dimen/resp_stroke_width"
+                        android:color="#9428a956"/>
+                </shape>
+            </item>
+            <item android:duration="100">
+                <shape android:shape="rectangle">
+                    <solid android:color="@color/white"/>
+                    <corners android:radius="@dimen/mini_margin"/>
+                    <stroke
+                        android:width="@dimen/resp_stroke_width"
+                        android:color="#a628a956"/>
+                </shape>
+            </item>
+            <item android:duration="100">
+                <shape android:shape="rectangle">
+                    <solid android:color="@color/white"/>
+                    <corners android:radius="@dimen/mini_margin"/>
+                    <stroke
+                        android:width="@dimen/resp_stroke_width"
+                        android:color="#b828a956"/>
+                </shape>
+            </item>
+            <item android:duration="100">
+                <shape android:shape="rectangle">
+                    <solid android:color="@color/white"/>
+                    <corners android:radius="@dimen/mini_margin"/>
+                    <stroke
+                        android:width="@dimen/resp_stroke_width"
+                        android:color="#c928a956"/>
+                </shape>
+            </item>
+            <item android:duration="100">
+                <shape android:shape="rectangle">
+                    <solid android:color="@color/white"/>
+                    <corners android:radius="@dimen/mini_margin"/>
+                    <stroke
+                        android:width="@dimen/resp_stroke_width"
+                        android:color="#db28a956"/>
+                </shape>
+            </item>
+            <item android:duration="100">
+                <shape android:shape="rectangle">
+                    <solid android:color="@color/white"/>
+                    <corners android:radius="@dimen/mini_margin"/>
+                    <stroke
+                        android:width="@dimen/resp_stroke_width"
+                        android:color="#28A956"/>
+                </shape>
+            </item>
+            <item android:duration="100">
+                <shape android:shape="rectangle">
+                    <solid android:color="@color/white"/>
+                    <corners android:radius="@dimen/mini_margin"/>
+                    <stroke
+                        android:width="@dimen/resp_stroke_width"
+                        android:color="#db28a956"/>
+                </shape>
+            </item>
+            <item android:duration="100">
+                <shape android:shape="rectangle">
+                    <solid android:color="@color/white"/>
+                    <corners android:radius="@dimen/mini_margin"/>
+                    <stroke
+                        android:width="@dimen/resp_stroke_width"
+                        android:color="#c928a956"/>
+                </shape>
+            </item>
+            <item android:duration="100">
+                <shape android:shape="rectangle">
+                    <solid android:color="@color/white"/>
+                    <corners android:radius="@dimen/mini_margin"/>
+                    <stroke
+                        android:width="@dimen/resp_stroke_width"
+                        android:color="#b828a956"/>
+                </shape>
+            </item>
+            <item android:duration="100">
+                <shape android:shape="rectangle">
+                    <solid android:color="@color/white"/>
+                    <corners android:radius="@dimen/mini_margin"/>
+                    <stroke
+                        android:width="@dimen/resp_stroke_width"
+                        android:color="#a628a956"/>
+                </shape>
+            </item>
+            <item android:duration="100">
+                <shape android:shape="rectangle">
+                    <solid android:color="@color/white"/>
+                    <corners android:radius="@dimen/mini_margin"/>
+                    <stroke
+                        android:width="@dimen/resp_stroke_width"
+                        android:color="#9428a956"/>
+                </shape>
+            </item>
+            <item android:duration="100">
+                <shape android:shape="rectangle">
+                    <solid android:color="@color/white"/>
+                    <corners android:radius="@dimen/mini_margin"/>
+                    <stroke
+                        android:width="@dimen/resp_stroke_width"
+                        android:color="#8228a956"/>
+                </shape>
+            </item>
+            <item android:duration="100">
+                <shape android:shape="rectangle">
+                    <solid android:color="@color/white"/>
+                    <corners android:radius="@dimen/mini_margin"/>
+                    <stroke
+                        android:width="@dimen/resp_stroke_width"
+                        android:color="#7028a956"/>
+                </shape>
+            </item>
+            <item android:duration="100">
+                <shape android:shape="rectangle">
+                    <solid android:color="@color/white"/>
+                    <corners android:radius="@dimen/mini_margin"/>
+                    <stroke
+                        android:width="@dimen/resp_stroke_width"
+                        android:color="#5e28a956"/>
+                </shape>
+            </item>
+            <item android:duration="100">
+                <shape android:shape="rectangle">
+                    <solid android:color="@color/white"/>
+                    <corners android:radius="@dimen/mini_margin"/>
+                    <stroke
+                        android:width="@dimen/resp_stroke_width"
+                        android:color="#4d28a956"/>
+                </shape>
+            </item>
+        </animation-list>
+    </item>
+</level-list>

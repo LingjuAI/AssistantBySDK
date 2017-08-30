@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="280dp"
+              android:layout_height="600dp"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_gravity="center"
+              android:background="#f9f9f9"
+              android:orientation="vertical">
+
+    <!--<RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#32c0c4">
+
+        <ImageButton
+            android:id="@+id/arl_back"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"
+            android:background="#00000000"
+            android:src="@drawable/c_back_down"/>-->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp"
+        android:paddingLeft="24dp"
+        android:paddingTop="24dp"
+        android:text="选择铃声"
+        android:textStyle="bold"
+        android:textColor="@color/new_text_color_first"
+        android:textSize="@dimen/md_big"/>
+    <!--</RelativeLayout>-->
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/arl_list"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:paddingRight="24dp"
+                android:paddingLeft="24dp"
+                android:layout_weight="1.0"
+                android:scrollbars="none"
+                >
+            </android.support.v7.widget.RecyclerView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/ring_cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/selector_view_bg"
+                    android:padding="16dp"
+                    android:text="取消"
+                    android:textColor="@color/base_blue"
+                    android:textSize="@dimen/regular"/>
+
+                <TextView
+                    android:id="@+id/ring_confirm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/selector_view_bg"
+                    android:padding="16dp"
+                    android:text="确定"
+                    android:textColor="@color/base_blue"
+                    android:textSize="@dimen/regular"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <com.lsjwzh.widget.materialloadingprogressbar.CircleProgressBar
+            android:id="@+id/ll_loading"
+            android:layout_width="@dimen/setting_title_margin"
+            android:layout_height="@dimen/setting_title_margin"
+            android:layout_gravity="center"
+            app:mlpb_show_arrow="true"
+            app:mlpb_enable_circle_background="false"
+            app:mlpb_progress_stoke_width="3dp"
+            android:visibility="visible">
+        </com.lsjwzh.widget.materialloadingprogressbar.CircleProgressBar>
+
+    </FrameLayout>
+</LinearLayout>

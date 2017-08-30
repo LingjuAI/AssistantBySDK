@@ -1,0 +1,87 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="activity_left_margin">8dp</dimen>
+
+    <dimen name="account_vertical_margin">8dp</dimen>
+
+
+    <!--
+         Per the design guidelines, navigation drawers should be between 240dp and 320dp:
+         https://developer.android.com/design/patterns/navigation-drawer.html
+    -->
+    <dimen name="navigation_drawer_width">240dp</dimen>
+    <dimen name="offset_width">80dp</dimen>
+
+    <!-- player_box padding -->
+    <dimen name="player_padding_horizontal">16dp</dimen>
+    <dimen name="player_padding_top">4dp</dimen>
+    <dimen name="player_padding_bottom">5dp</dimen>
+    <dimen name="player_bar_height">72dp</dimen>
+
+    <dimen name="dialog_padding_horizontal">10dp</dimen>
+    <dimen name="dialog_text_padding">5dp</dimen>
+    <dimen name="dialog_padding">15dp</dimen>
+
+    <!--new  standard-->
+    <dimen name="resp_stroke_width">2dp</dimen>
+    <dimen name="mini_margin">4dp</dimen>
+    <dimen name="smaller_margin">6dp</dimen>
+    <dimen name="base_margin_padding">8dp</dimen>
+    <dimen name="dialog_margin">10dp</dimen>
+    <dimen name="small_margin">12dp</dimen>
+    <dimen name="normal_margin">16dp</dimen>
+    <dimen name="large_margin">24dp</dimen>
+    <dimen name="bigger_margin">32dp</dimen>
+    <dimen name="dialog_left_right_margin">36dp</dimen>
+    <dimen name="call_item_height">40dp</dimen>
+    <dimen name="biggest_margin">48dp</dimen>
+    <dimen name="item_height">56dp</dimen>
+    <dimen name="item_chatlist_margin">80dp</dimen>
+    <dimen name="dialog_normal_width">280dp</dimen>
+    <!--侧边导航栏icon大小-->
+    <dimen name="design_navigation_icon_size">20dp</dimen>
+
+    <!-- 新修改 -->
+    <dimen name="mini">10sp</dimen>
+    <dimen name="smaller">12sp</dimen>
+    <dimen name="md_small">13sp</dimen>
+    <dimen name="small">14sp</dimen>
+    <dimen name="regular">15sp</dimen>
+    <dimen name="medium">16sp</dimen>
+    <dimen name="md_big">17sp</dimen>
+    <dimen name="big">18sp</dimen>
+    <dimen name="bigger">22sp</dimen>
+    <dimen name="large">24sp</dimen>
+    <dimen name="biggest">32sp</dimen>
+    <dimen name="small_title_size">21sp</dimen>
+
+    <!--setting-margin-->
+    <dimen name="setting_margin">26dp</dimen>
+    <dimen name="setting_title_margin">64dp</dimen>
+    <dimen name="title_margin">72dp</dimen>
+
+    <dimen name="common_btn_mar_top">20dp</dimen>
+    <dimen name="common_btn_height">36dp</dimen>
+
+    <dimen name="common_card_btn_height">64dp</dimen>
+    <dimen name="common_card_btn_margin_top">20dp</dimen>
+
+    <!--新增-->
+    <dimen name="mic_size">60dp</dimen>
+
+    <dimen name="ksw_md_thumb_ripple_size">42dp</dimen>
+    <dimen name="ksw_md_thumb_solid_inset">11dp</dimen>
+    <dimen name="ksw_md_thumb_shadow_inset">11dp</dimen>
+    <dimen name="ksw_md_thumb_shadow_inset_top">11dp</dimen>
+    <dimen name="ksw_md_thumb_shadow_inset_bottom">10dp</dimen>
+
+    <dimen name="ksw_md_thumb_solid_size">20dp</dimen>
+    <dimen name="ksw_md_thumb_shadow_size">21dp</dimen>
+    <dimen name="ksw_md_thumb_shadow_offset">2dp</dimen>
+
+    <!--修改-->
+    <dimen name="navigation_icon_size">48dp</dimen>
+</resources>

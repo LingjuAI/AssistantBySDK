@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/mini_margin"
+    android:layout_marginLeft="@dimen/normal_margin"
+    android:layout_marginRight="@dimen/normal_margin"
+    android:layout_marginTop="@dimen/base_margin_padding"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="2dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <!--专辑详情-->
+        <include layout="@layout/view_ting_album"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right">
+            <!--订阅按钮-->
+            <TextView
+                android:id="@+id/tv_subscribe"
+                android:layout_width="@dimen/item_chatlist_margin"
+                android:layout_height="@dimen/dialog_left_right_margin"
+                android:layout_marginRight="@dimen/normal_margin"
+                android:background="@drawable/ting_text_bg"
+                android:gravity="center"
+                android:text="订阅"
+                android:textColor="@color/new_text_color_first"
+                android:textSize="@dimen/regular"
+                />
+
+            <TextView
+                android:id="@+id/tv_choose_set"
+                android:layout_width="@dimen/item_chatlist_margin"
+                android:layout_height="@dimen/dialog_left_right_margin"
+                android:layout_marginRight="@dimen/normal_margin"
+                android:background="@drawable/ting_text_bg"
+                android:gravity="center"
+                android:text="选集"
+                android:textColor="@color/new_text_color_first"
+                android:textSize="@dimen/regular"
+                />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginTop="@dimen/normal_margin"
+            android:background="@color/new_line_black_border"/>
+
+        <include layout="@layout/item_ting_track"/>
+    </LinearLayout>
+</android.support.v7.widget.CardView>

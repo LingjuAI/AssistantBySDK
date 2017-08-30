@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:background="@color/new_main_bgcolor"
+              android:orientation="vertical">
+
+    <com.lingju.assistant.view.ActivityTitleBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/base_blue"
+        android:elevation="@dimen/mini_margin"
+        app:bar_title="@string/speak_voice">
+    </com.lingju.assistant.view.ActivityTitleBar>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/speaker_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none" >
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

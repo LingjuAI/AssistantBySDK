@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+    <TextView
+        android:id="@+id/tv_count_down"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:text="0"
+        android:layout_marginLeft="@dimen/normal_margin"
+        android:visibility="gone"
+        android:textColor="@color/second_base_color"
+        android:textSize="@dimen/md_small"/>
+
+    <TextView
+        android:id="@+id/tv_play_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:visibility="gone"
+        android:layout_toRightOf="@id/tv_count_down"
+        android:text="秒后自动播放第一个专辑"
+        android:textColor="@color/new_text_color_second"
+        android:textSize="@dimen/md_small"/>
+
+    <TextView
+        android:id="@+id/tv_show_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:alpha="0.54"
+        android:padding="@dimen/normal_margin"
+        android:background="@drawable/selector_view_bg"
+        android:drawableRight="@drawable/show_more"
+        android:gravity="center"
+        android:text="查看更多"
+        android:textColor="@color/new_text_color_first"
+        android:textSize="@dimen/md_small"/>
+</RelativeLayout>

@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/normal_margin"
+    android:layout_marginRight="@dimen/normal_margin"
+    android:layout_marginTop="@dimen/dialog_padding_horizontal"
+    android:layout_marginBottom="@dimen/mini_margin"
+    android:background="@color/white"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="2dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/card_edit_bg"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_title"
+                style="@style/card_title_style"
+                android:background="@null"
+                android:text="电话"/>
+
+            <View
+                android:id="@+id/dash_divider"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/resp_stroke_width"
+                android:background="@drawable/dash_line"
+                android:layerType="software"
+                />
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/fl_call_sms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/card_edit_bg"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp">
+
+            <!--号码/联系人选择列表-->
+            <RadioGroup
+                android:id="@+id/rg_selector"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/account_vertical_margin"
+                android:visibility="gone">
+
+                 <!--<android.support.v7.widget.AppCompatRadioButton
+                     android:layout_width="match_parent"
+                     android:layout_height="40dp"
+                     android:text="华杰"
+                     android:textColor="@color/new_text_color_first"
+                     android:textSize="@dimen/medium"/>
+
+                 <android.support.v7.widget.AppCompatRadioButton
+                     android:layout_width="match_parent"
+                     android:layout_height="40dp"
+                     android:text="华捷"
+                     android:textColor="@color/new_text_color_first"
+                     android:textSize="@dimen/medium"/>-->
+            </RadioGroup>
+
+            <!--任务卡内容-->
+            <LinearLayout
+                android:id="@+id/ll_call_sms_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/account_vertical_margin"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/call_item_height"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:id="@+id/iv_user"
+                        android:layout_width="@dimen/large_margin"
+                        android:layout_height="@dimen/large_margin"
+                        android:layout_marginRight="@dimen/normal_margin"
+                        android:src="@drawable/ic_user"/>
+
+                    <TextView
+                        android:id="@+id/tv_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="老王"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/regular"/>
+                </LinearLayout>
+                <!--拨号号码-->
+                <LinearLayout
+                    android:id="@+id/ll_call_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/call_item_height"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:id="@+id/iv_phone"
+                        android:layout_width="@dimen/large_margin"
+                        android:layout_height="@dimen/large_margin"
+                        android:layout_marginRight="@dimen/normal_margin"
+                        android:src="@drawable/ic_phone"/>
+
+                    <TextView
+                        android:id="@+id/tv_call_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="12345678"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/regular"/>
+                </LinearLayout>
+
+                <!--短信内容部分-->
+                <LinearLayout
+                    android:id="@+id/ll_sms_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:minHeight="@dimen/call_item_height">
+
+                    <ImageView
+                        android:id="@+id/iv_sms"
+                        android:layout_width="@dimen/large_margin"
+                        android:layout_height="@dimen/large_margin"
+                        android:layout_marginRight="@dimen/normal_margin"
+                        android:src="@drawable/ic_sms"/>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <RelativeLayout
+                            android:id="@+id/rl_sms_input"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:visibility="visible">
+
+                            <android.support.design.widget.TextInputLayout
+                                android:id="@+id/til_sms_content"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:hintEnabled="false"
+                                >
+
+                                <EditText
+                                    android:id="@+id/et_content"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="短信内容"
+                                    android:paddingRight="18dp"
+                                    style="@style/edit_text_style"
+                                    android:paddingBottom="@dimen/mini_margin"
+                                    android:background="@drawable/green_et_border"
+                                    android:textColor="@color/white"
+                                    android:textColorHint="@color/new_main_bgcolor"
+                                    android:textSize="@dimen/regular"/>
+                            </android.support.design.widget.TextInputLayout>
+
+                            <!--<ImageView
+                                android:id="@+id/iv_clear"
+                                android:layout_width="@dimen/large_margin"
+                                android:layout_height="@dimen/large_margin"
+                                android:layout_alignBottom="@id/til_sms_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginBottom="@dimen/mini_margin"
+                                android:scaleType="center"
+                                android:src="@drawable/search_clear_input2"/>-->
+                        </RelativeLayout>
+
+                        <TextView
+                            android:id="@+id/tv_content"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:ellipsize="end"
+                            android:gravity="center_vertical"
+                            android:lineSpacingExtra="8dp"
+                            android:maxLines="1"
+                            android:text="lj了解了科技上来的会计法律考试点击付款了时间sf水电费水电费水电费水电费是问题未投放的更多是法国"
+                            android:textColor="@color/new_text_color_first"
+                            android:textSize="@dimen/regular"
+                            android:textStyle="bold"
+                            android:visibility="gone"/>
+                    </FrameLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_tips_item"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/call_item_height"
+                    android:gravity="center_vertical"
+                    android:visibility="visible">
+
+                    <ImageView
+                        android:id="@+id/call_sms_state"
+                        android:layout_width="@dimen/large_margin"
+                        android:layout_height="@dimen/large_margin"
+                        android:layout_marginRight="@dimen/normal_margin"
+                        android:src="@drawable/call_sms_icon"/>
+
+                    <TextView
+                        android:id="@+id/tv_tips"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="通话已结束"
+                        android:textColor="@color/new_text_color_second"
+                        android:textSize="@dimen/regular"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/card_edit_bg"
+            android:gravity="right">
+
+            <TextView
+                android:id="@+id/tv_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/selector_view_bg_white"
+                android:padding="@dimen/normal_margin"
+                android:text="取消拨打"
+                android:textColor="@color/white"
+                android:textSize="@dimen/regular"
+                />
+
+            <TextView
+                android:id="@+id/tv_append"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/selector_view_bg_white"
+                android:padding="@dimen/normal_margin"
+                android:text="重新输入"
+                android:textColor="@color/white"
+                android:textSize="@dimen/regular"
+                />
+
+            <TextView
+                android:id="@+id/tv_confirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/selector_view_bg_white"
+                android:padding="@dimen/normal_margin"
+                android:text="确认拨打"
+                android:textColor="@color/white"
+                android:textSize="@dimen/regular"
+                />
+        </LinearLayout>
+
+        <SeekBar
+            android:id="@+id/sb_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_marginTop="0dp"
+            android:max="100"
+            android:paddingEnd="0dp"
+            android:paddingStart="0dp"
+            android:progress="0"
+            android:progressDrawable="@drawable/seekbar_style"
+            android:thumb="@null"
+            android:thumbOffset="0dp"/>
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

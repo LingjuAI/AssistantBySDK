@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <com.lingju.assistant.view.SlidingItem
+            android:id="@+id/account_item"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_height">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/account_month"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3月"
+                    android:textColor="@color/new_text_color_first"
+                    android:textSize="@dimen/md_big"
+                    android:textStyle="bold"/>
+
+                <LinearLayout
+                    android:id="@+id/ll_income"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="16dp"
+                    android:layout_toRightOf="@id/account_month">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="8dp"
+                        android:text="收入"
+                        android:textColor="@color/new_text_color_second"
+                        android:textSize="@dimen/md_small"/>
+
+                    <TextView
+                        android:id="@+id/tv_income"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="+1,024.24"
+                        android:maxLength="12"
+                        android:textColor="@color/red_style"
+                        android:textSize="@dimen/md_small"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_expense"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="16dp"
+                    android:layout_toRightOf="@id/ll_income">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="8dp"
+                        android:text="支出"
+                        android:textColor="@color/new_text_color_second"
+                        android:textSize="@dimen/md_small"/>
+
+                    <TextView
+                        android:id="@+id/tv_expense"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-1,024.24"
+                        android:maxLength="12"
+                        android:textColor="@color/green"
+                        android:textSize="@dimen/md_small"/>
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/iv_show_more"
+                    android:layout_width="52dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="-16dp"
+                    android:src="@drawable/ic_arrow"
+                    android:visibility="visible"/>
+            </RelativeLayout>
+
+            <TextView
+                style="@style/del_btn_style"/>
+        </com.lingju.assistant.view.SlidingItem>
+
+        <TextView
+            android:id="@+id/tv_state"
+            style="@style/card_state_style"
+            android:visibility="gone"/>
+    </FrameLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/new_line_black_border"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_month_detail"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.0"
+        android:visibility="visible"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/new_line_black_border"/>
+</LinearLayout>

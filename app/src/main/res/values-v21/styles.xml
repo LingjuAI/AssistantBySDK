@@ -1,0 +1,214 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+
+
+    -->
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textSize">14sp</item>
+        <item name="android:typeface">sans</item>
+        <item name="colorPrimary">@color/base_blue</item>
+        <!--手机顶部状态栏颜色，5.0以下不生效-->
+        <item name="colorPrimaryDark">@color/bar_color</item>
+        <item name="colorAccent">@color/base_blue</item>
+        <!--自定义触摸反馈颜色-->
+        <item name="android:colorControlHighlight">@color/white</item>
+        <!--將新加入的風格 AppTheme.MyDrawerStyle 設定給 drawerArrowStyle 這個屬性-->
+        <!--<item name="drawerArrowStyle">@style/AppTheme.MyDrawerArrowStyle</item>-->
+
+        <item name="android:windowSoftInputMode">adjustUnspecified</item>
+        <!--DrawerLayout拓展至status bar设置-->
+        <item name="android:windowTranslucentStatus">true</item>
+        <!--<item name="android:fitsSystemWindows">true</item>-->
+        <!--<item name="android:windowDrawsSystemBarBackgrounds">true</item>-->
+        <item name="android:statusBarColor">@color/status_bar_bg</item>
+        <!-- <item name="android:windowContentTransitions">true</item>
+         &lt;!&ndash; specify enter and exit transitions &ndash;&gt;
+         <item name="android:windowEnterTransition">@android:transition/slide_right</item>
+         <item name="android:windowExitTransition">@android:transition/slide_left</item>
+         &lt;!&ndash; specify shared element transitions &ndash;&gt;
+         <item name="android:windowSharedElementEnterTransition">@android:transition/slide_right</item>
+         <item name="android:windowSharedElementExitTransition">@android:transition/slide_left</item>-->
+    </style>
+
+    <!--加入一個新的 navigation drarwer 的風格-->
+    <style name="AppTheme.MyDrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <!--將 spinBars 屬性設定為 false-->
+        <item name="spinBars">true</item>
+        <!--設定 drawer arrow 的顏色-->
+        <item name="color">@color/white</item>
+        <item name="android:clickable">true</item>
+        <!--<item name="android:background">@drawable/selector_view_bg</item>-->
+    </style>
+
+    <!-- ToolBar菜单样式 -->
+    <style name="expanded_text_style">
+        <item name="android:textColor">@color/white</item> <!--  敲定颜色-->
+        <item name="android:textSize">20sp</item> <!--  搞掂字体大小-->
+        <!--<item name="android:textStyle">bold</item>-->
+        <!--<item name="android:shadowColor">#000000</item>
+        <item name="android:shadowDx">0.3</item>
+        <item name="android:shadowDy">0.3</item>
+        <item name="android:shadowRadius">0.3</item>-->
+    </style>
+
+    <style name="collapsed_text_style">
+        <item name="android:textColor">@color/white</item> <!--  敲定颜色-->
+        <item name="android:textSize">20sp</item> <!--  搞掂字体大小-->
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="common_padding_style">
+        <item name="android:paddingLeft">@dimen/activity_horizontal_margin</item>
+        <item name="android:paddingRight">@dimen/activity_horizontal_margin</item>
+        <item name="android:paddingTop">@dimen/activity_vertical_margin</item>
+        <item name="android:paddingBottom">@dimen/activity_vertical_margin</item>
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <item name="android:listDivider">@drawable/divider_bg</item>
+        <item name="base_color">@color/base_blue</item>
+        <!-- <item name="menu_background">@drawable/left_bg</item> -->
+        <!-- <item name="base_background">@drawable/base_background</item> -->
+        <item name="base_botton_bg">@drawable/green_botton_bg</item>
+        <!-- <item name="index_head_background">@drawable/index_header_bg</item> -->
+        <item name="base_color_bottom_line">@drawable/base_blue_bottom_line</item>
+        <!-- <item name="favorite_bt">@drawable/favorite_bt</item> -->
+        <!-- <item name="favorite_text_bt">@drawable/favorite_text_bt</item> -->
+        <item name="input_car_bt">@drawable/input_car_bt</item>
+        <!-- <item name="input_manual_bt">@drawable/input_manual_bt</item> -->
+        <item name="input_voice_bt">@drawable/input_voice_bt</item>
+        <item name="play_bt">@drawable/play_bt</item>
+        <!-- <item name="play_list_text_bt">@drawable/play_list_text_bt</item> -->
+        <!-- <item name="play_mode_bt">@drawable/play_mode_bt</item> -->
+        <item name="play_next_bt">@drawable/play_next_bt</item>
+        <!-- <item name="play_pre_bt">@drawable/play_pre_bt</item> -->
+        <item name="seekbar_style">@drawable/seekbar_style</item>
+        <item name="seekbar_thumb">@drawable/seekbar_thumb</item>
+        <item name="progress_buffering">@drawable/progress_buffering</item>
+        <!-- <item name="setting_button">@drawable/setting_bt</item> -->
+        <!-- <item name="help_button">@drawable/help_bt</item> -->
+        <!-- <item name="share_button">@drawable/share_bt</item> -->
+        <item name="mic_animation">@drawable/mic_animation</item>
+        <item name="song_color">@color/white</item>
+        <item name="toggle_bg">@drawable/toggle_button_bg</item>
+        <!-- <item name="text_input_mic_button_bg">@drawable/text_input_mic_button_bg</item> -->
+        <item name="send_bg">@drawable/white_border_line</item>
+        <item name="send_text_color">@color/white</item>
+        <!-- <item name="favorite_bt_bg">@drawable/favorite_bt</item> -->
+        <!-- <item name="his_list_text_bt">@drawable/his_list_text_bt</item> -->
+        <!-- <item name="favorite_title_bt">@drawable/favorite_title_bt</item> -->
+        <item name="list_bottom_border">@drawable/white_bottom_line</item>
+        <!-- <item name="lj_music_about">@drawable/lj_music_about_green</item> -->
+        <item name="side_text_color">@color/side_text_bg_green</item>
+        <item name="side_text_color_light">@color/side_text_bg_green_light</item>
+        <item name="light_color">@color/side_text_bg_green</item>
+        <!-- <item name="yric_text_color">@drawable/yric_text_bg</item> -->
+        <item name="green_goback_background">@drawable/account_back</item>
+        <item name="check_list_item">@drawable/ic_green_checkbox</item>
+        <item name="select_voice_arrow">@drawable/ic_right_white</item>
+        <item name="select_line_down">@drawable/set_line_select_down</item>
+        <item name="account_bg">@drawable/account_bg</item>
+        <item name="car_title_text_bg">@color/car_top_text</item>
+        <item name="android:editTextBackground">@drawable/default_et_border</item>
+        <!-- <item name="car_pic_change">@drawable/erji_show</item> -->
+    </style>
+
+    <style name="BlueTheme" parent="AppTheme">
+        <item name="play_next_bt">@drawable/play_next_bt</item>
+    </style>
+
+    <!--@android:style/Theme.Dialog-->
+    <style name="lingju_commond_dialog" parent="AppTheme">
+        <item name="android:windowFrame">@null</item><!-- 边框 -->
+        <item name="android:windowIsFloating">true</item><!-- 是否浮现在activity之上 -->
+        <item name="android:windowIsTranslucent">true</item><!-- 半透明 -->
+        <item name="android:windowNoTitle">true</item><!-- 无标题 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item><!-- 模糊 -->
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:statusBarColor">@color/bar_color</item>
+        <item name="android:windowSoftInputMode">adjustPan</item>
+    </style>
+
+    <style name="lingju_dialog1" parent="@style/lingju_commond_dialog">
+    </style>
+
+    <style name="lingju_dialog2" parent="@style/AppTheme">
+        <item name="android:windowFrame">@null</item><!-- 边框 -->
+        <item name="android:windowIsFloating">true</item><!-- 是否浮现在activity之上 -->
+        <item name="android:windowIsTranslucent">false</item><!-- 半透明 -->
+        <item name="android:windowNoTitle">true</item><!-- 无标题 -->
+        <item name="android:windowBackground">@null</item>
+        <item name="android:backgroundDimEnabled">false</item><!-- 模糊 -->
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:statusBarColor">@color/bar_color</item>
+        <item name="android:windowSoftInputMode">adjustPan</item>
+    </style>
+
+    <style name="lingju_remind_dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item><!-- 边框 -->
+        <item name="android:windowIsFloating">true</item><!-- 是否浮现在activity之上 -->
+        <item name="android:windowIsTranslucent">false</item><!-- 半透明 -->
+        <item name="android:windowNoTitle">true</item><!-- 无标题 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">false</item><!-- 模糊 -->
+    </style>
+
+    <style name="full_dialog" parent="@style/lingju_dialog2">
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowIsFloating">false</item>
+        <!--<item name="android:windowEnterAnimation">@anim/slide_right</item>
+        <item name="android:windowExitAnimation">@anim/slide_left</item>-->
+        <item name="android:windowAnimationStyle">@style/dialogWindowAnim</item>
+    </style>
+
+    <style name="MyCheckBox" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/checkbox_selector</item>
+        <item name="android:paddingLeft">30dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/new_text_color_first</item>
+        <!-- <item name="android:maxHeight">10dp</item> -->
+    </style>
+
+    <style name="dialogWindowAnim" mce_bogus="1" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/slide_left</item>
+        <item name="android:windowExitAnimation">@anim/slide_right</item>
+    </style>
+
+    <style name="Transparent">
+        <item name="android:windowBackground">@color/transparent_background</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item>
+    </style>
+
+    <style name="connect_title_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/big</item>
+        <item name="android:textColor">@color/account_text</item>
+        <!--<item name="android:background">@color/setting_gray</item>-->
+        <item name="android:paddingLeft">@dimen/dialog_padding_horizontal</item>
+        <item name="android:layout_marginTop">@dimen/setting_margin</item>
+    </style>
+
+    <style name="connect_text_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/medium</item>
+        <item name="android:padding">@dimen/dialog_padding_horizontal</item>
+        <item name="android:textColor">#0888c2</item>
+    </style>
+
+    <!--应用启动页透明主题-->
+    <style
+        name="LauncherStyle"
+        parent="android:style/Theme.NoTitleBar.Fullscreen">
+        <item name="android:windowBackground">@drawable/pic_loading</item>
+    </style>
+</resources>

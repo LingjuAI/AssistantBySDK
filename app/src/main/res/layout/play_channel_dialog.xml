@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:background="#f9f9f9"
+              android:layout_gravity="center"
+              android:gravity="center"
+              android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/large_margin"
+        android:paddingBottom="@dimen/base_margin_padding"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="音乐播放方式"
+            android:paddingLeft="24dp"
+            android:textColor="@color/new_text_color_first"
+            android:textStyle="bold"
+            android:textSize="@dimen/md_big"  />
+
+        <RadioGroup
+            android:id="@+id/apc_buttons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <android.support.v7.widget.AppCompatRadioButton
+                android:id="@+id/apc_button1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="24dp"
+                android:text="蓝牙耳机播放音乐"
+                android:paddingLeft="@dimen/bigger_margin"
+                android:textColor="@color/new_text_color_first"
+                android:textSize="@dimen/regular" />
+
+            <android.support.v7.widget.AppCompatRadioButton
+                android:id="@+id/apc_button2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="24dp"
+                android:text="手机扬声器播放音乐"
+                android:paddingLeft="@dimen/bigger_margin"
+                android:textColor="@color/new_text_color_first"
+                android:textSize="@dimen/regular"  />
+        </RadioGroup>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base_margin_padding"
+            android:layout_marginBottom="@dimen/base_margin_padding">
+
+            <!--<TextView-->
+            <!--android:id="@+id/tv_save"-->
+            <!--android:layout_width="64dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_marginRight="8dp"-->
+            <!--android:background="@drawable/selector_view_bg"-->
+            <!--android:clickable="true"-->
+            <!--android:gravity="center_horizontal"-->
+            <!--android:paddingBottom="8dp"-->
+            <!--android:paddingTop="8dp"-->
+            <!--android:text="保存"-->
+            <!--android:textColor="@color/base_blue"-->
+            <!--android:textSize="@dimen/regular"/>-->
+
+            <TextView
+                android:id="@+id/tv_cancel"
+                android:layout_width="64dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="24dp"
+                android:layout_alignParentRight="true"
+                android:clickable="true"
+                android:background="@drawable/selector_view_bg"
+                android:gravity="center_horizontal"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:text="取消"
+                android:textColor="@color/base_blue"
+                android:textSize="@dimen/regular"/>
+
+            <ImageView
+                android:id="@+id/iv_show_more"
+                android:layout_width="64dp"
+                android:layout_height="16dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_arrow_down"
+                android:visibility="gone"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

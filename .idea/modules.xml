@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/AssistantBySDK.iml" filepath="$PROJECT_DIR$/AssistantBySDK.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/datetimelib/datetimelib.iml" filepath="$PROJECT_DIR$/datetimelib/datetimelib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/voicemodule/voicemodule.iml" filepath="$PROJECT_DIR$/voicemodule/voicemodule.iml" />
+      <module fileurl="file://$PROJECT_DIR$/weiboSDK/weiboSDK.iml" filepath="$PROJECT_DIR$/weiboSDK/weiboSDK.iml" />
+    </modules>
+  </component>
+</project>

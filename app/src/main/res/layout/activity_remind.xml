@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#f9f9f9"
+              android:orientation="vertical">
+
+    <com.lingju.assistant.view.ActivityTitleBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:bar_title="我的提醒">
+
+    </com.lingju.assistant.view.ActivityTitleBar>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.0">
+
+        <LinearLayout
+            android:id="@+id/aremind_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center_horizontal"
+            android:background="#e6e6e6"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/new_line_black_border"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_gravity="center_horizontal"
+                android:background="#e6e6e6"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.0">
+
+                    <TextView
+                        android:id="@+id/aremind_hide"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/selector_view_bg"
+                        android:gravity="center"
+                        android:text="隐藏已完成的提醒"
+                        android:textColor="@color/new_text_color_first"
+                        android:textSize="@dimen/small"/>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="1px"
+                    android:layout_height="36dp"
+                    android:layout_gravity="center"
+                    android:background="@color/new_line_black_border"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.0">
+
+                    <TextView
+                        android:id="@+id/aremind_add"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/selector_view_bg"
+                        android:gravity="center"
+                        android:text="添加提醒"
+                        android:textColor="@color/new_text_color_first"
+                        android:textSize="@dimen/small"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/aremind_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/aremind_bottom"
+            android:background="@null"
+            android:cacheColorHint="@android:color/transparent"
+            android:scrollbarSize="2dp"
+            android:scrollbarThumbVertical="@drawable/scrollbarbar_bg"/>
+
+        <LinearLayout
+            android:id="@+id/aremind_search_box"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="#f9f9f9"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1.0"
+                android:background="@drawable/search_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="1dp"
+                    android:background="#f9f9f9"
+                    android:src="@drawable/search_mirror"/>
+
+                <EditText
+                    android:id="@+id/aremind_search"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    style="@style/edit_text_style"
+                    android:layout_weight="1.0"
+                    android:background="#00000000"
+                    android:textColor="@color/new_text_color_first"
+                    android:textSize="16sp"/>
+
+                <ImageButton
+                    android:id="@+id/aremind_search_del"
+                    android:layout_width="38dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:background="#00000000"
+                    android:src="@drawable/search_close_bg"
+                    android:visibility="invisible"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/aremind_cancel"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:gravity="center"
+                android:text="取消"
+                android:textColor="@drawable/account_btn_text_bg"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+        <View
+            android:id="@+id/aremind_bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@id/aremind_search_box"
+            android:background="@drawable/set_bg4"
+            android:clickable="true"
+            android:visibility="gone"/>
+    </RelativeLayout>
+
+</LinearLayout>

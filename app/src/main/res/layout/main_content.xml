@@ -1,0 +1,233 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:id="@+id/main_content_box"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:animateLayoutChanges="true"
+             android:background="@android:color/white"
+    >
+    <!-- android:background="@color/new_main_bgcolor" -->
+    <!--主界面-->
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <!--上部，底部以上-->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.0">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:animateLayoutChanges="true"
+                android:orientation="vertical">
+                <!--音乐播放栏
+                <FrameLayout
+                    android:id="@+id/fl_music_menu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/new_main_bgcolor"
+                    android:elevation="8dp"
+                    />-->
+                <!--中部聊天记录列表/音乐播放器列表-->
+                <FrameLayout
+                    android:id="@+id/index_body"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1.0">
+
+                    <FrameLayout
+                        android:id="@+id/index_chat_list_box"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <!--<com.lingju.assistant.LingjuScrollLayout
+                            android:id="@+id/chat_list"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="left|top"
+                            android:scrollbars="none" />-->
+                    </FrameLayout>
+
+                    <!--<ImageButton
+                        android:id="@+id/main_switch_head_bt"
+                        android:layout_width="64dp"
+                        android:layout_height="42dp"
+                        android:layout_marginLeft="50dp"
+                        android:background="@drawable/switch_playbar_bt_bg"
+                        android:visibility="visible"/>-->
+                </FrameLayout>
+            </LinearLayout>
+        </FrameLayout>
+
+        <!--底部-->
+        <FrameLayout
+            android:id="@+id/index_bottom_box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/mic_call_change_bg"
+            android:elevation="8dp">
+            <!-- 键盘输入块 -->
+            <LinearLayout
+                android:id="@+id/index_text_input_box"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/biggest_margin"
+                android:layout_gravity="bottom"
+                android:background="@drawable/edittext_bor"
+                android:orientation="horizontal"
+                android:padding="@dimen/dialog_text_padding"
+                android:visibility="visible"
+                >
+
+                <ImageButton
+                    android:id="@+id/index_switch_voice_bt"
+                    android:layout_width="42dp"
+                    android:layout_height="match_parent"
+                    android:alpha="0.54"
+                    android:background="@drawable/selector_circle_view_bg"
+                    android:src="@drawable/mic_back_btn"/>
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1.0"
+                    android:gravity="center_vertical">
+
+                    <EditText
+                        android:id="@+id/index_text_editext"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/dialog_text_padding"
+                        android:layout_marginRight="@dimen/dialog_text_padding"
+                        android:background="@null"
+                        style="@style/edit_text_style"
+                        android:ems="10"
+                        android:hint="有问题尽管问我"
+                        android:imeOptions="actionSend"
+                        android:inputType="text"
+                        android:maxLines="2"
+                        android:minHeight="40dp"
+                        android:padding="@dimen/dialog_margin"
+                        android:textColor="@color/new_text_color_first"
+                        android:textColorHint="@color/new_text_color_second"
+                        android:textSize="@dimen/regular"/>
+                </LinearLayout>
+
+                <ImageButton
+                    android:id="@+id/index_text_send_bt"
+                    android:layout_width="@dimen/biggest_margin"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/selector_circle_view_bg"
+                    android:gravity="center"
+                    android:src="@drawable/send_msg"
+                    android:textSize="@dimen/regular"/>
+
+            </LinearLayout>
+
+            <FrameLayout
+                android:id="@+id/index_voiceinput_box"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                >
+            </FrameLayout>
+        </FrameLayout>
+    </LinearLayout>
+
+    <!--该部分单独做成dialog，用于提示录音权限的对话框
+    <RelativeLayout
+          android:id="@+id/main_error_box"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_alignParentTop="true"
+          android:background="@drawable/set_bg4"
+          android:clickable="true"
+          android:orientation="horizontal"
+          android:visibility="gone">
+
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_centerInParent="true"
+              android:layout_marginLeft="30dp"
+              android:layout_marginRight="30dp"
+              android:background="@drawable/common_dialog_bg"
+              android:orientation="vertical">
+
+              <TextView
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_margin="@dimen/activity_horizontal_margin"
+                  android:gravity="center_vertical"
+                  android:text="录音失败，连续听不清的原因"
+                  android:textColor="#e38069"
+                  android:textSize="18sp" />
+
+              <View
+                  android:layout_width="fill_parent"
+                  android:layout_height="1dp"
+                  android:background="#e38069" />
+
+              <TextView
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_margin="@dimen/activity_horizontal_margin"
+                  android:gravity="center_vertical"
+                  android:text="原因一：麦克风被占用，请关闭占用麦克风的程序，试试清空后台程序"
+                  android:textColor="@color/new_text_color_first"
+                  android:textSize="14sp" />
+
+              <TextView
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginBottom="16dp"
+                  android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                  android:layout_marginRight="@dimen/activity_horizontal_margin"
+                  android:gravity="center_vertical"
+                  android:text="原因二：我使用麦克风的权限被禁止了，请设置"
+                  android:textColor="@color/new_text_color_first"
+                  android:textSize="14sp" />
+
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="horizontal"
+                  android:padding="16dp">
+
+                  <TextView
+                      android:id="@+id/main_error_dialog_gosetting"
+                      android:layout_width="0dp"
+                      android:layout_height="38dp"
+                      android:layout_marginRight="8dp"
+                      android:layout_weight="navi.0"
+                      android:background="@drawable/common_btn_bg"
+                      android:gravity="center"
+                      android:text="权限设置在哪里"
+                      android:textColor="@color/new_text_color_first"
+                      android:textSize="12sp" />
+
+                  <TextView
+                      android:id="@+id/main_error_dialog_close"
+                      android:layout_width="0dp"
+                      android:layout_height="38dp"
+                      android:layout_marginLeft="8dp"
+                      android:layout_weight="navi.0"
+                      android:background="@drawable/common_btn_bg"
+                      android:gravity="center"
+                      android:text="明白了"
+                      android:textColor="@color/new_text_color_first"
+                      android:textSize="12sp" />
+              </LinearLayout>
+          </LinearLayout>
+      </RelativeLayout>-->
+
+
+</FrameLayout>

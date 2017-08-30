@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:background="#f9f9f9"
+              android:orientation="vertical">
+
+    <com.lingju.assistant.view.ActivityTitleBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:bar_title="闹钟">
+
+    </com.lingju.assistant.view.ActivityTitleBar>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/alarm_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.0"
+        android:scrollbarSize="2dp"
+        android:scrollbarThumbVertical="@drawable/scrollbarbar_bg" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#b4b4b4" />
+
+        <TextView
+            android:id="@+id/alarm_add"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:background="@drawable/remind_home_btn"
+            android:gravity="center"
+            android:text="添加"
+            android:textColor="@color/new_text_color_first"
+            android:textSize="@dimen/small" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/common_bubble_left_box"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/mini_margin"
+    android:layout_marginLeft="@dimen/normal_margin"
+    android:layout_marginRight="@dimen/item_chatlist_margin"
+    android:layout_marginTop="@dimen/small_margin"
+    >
+    <TextView
+        android:id="@+id/common_bubble_left_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:lineSpacingExtra="@dimen/base_margin_padding"
+        android:paddingRight="@dimen/normal_margin"
+        android:paddingLeft="@dimen/normal_margin"
+        android:paddingBottom="@dimen/dialog_margin"
+        android:paddingTop="@dimen/dialog_margin"
+        android:text="历史"
+        android:background="@drawable/frame_resp_item_bg"
+        style="@style/edit_text_style"
+        android:textIsSelectable="true"
+        android:textColor="@color/new_text_color_first"
+        android:textSize="@dimen/regular"
+        />
+</LinearLayout>

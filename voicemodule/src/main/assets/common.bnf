@@ -1,0 +1,54 @@
+#BNF+IAT 1.0 UTF-8;
+!grammar common;
+!start <callstart>;
+!slot <date>;
+!slot <leveladj>;
+!slot <into>;
+!slot <play>;
+!slot <contact>;
+!slot <song>;
+!slot <artist>;
+!slot <sure>;
+!slot <take>;
+!slot <tone>;
+!slot <unit>;
+!slot <volume>;
+!slot <what>;
+!slot <who>;
+!slot <works>;
+!slot <num>;
+!slot <communicate>;
+<callstart>:<awaken>|<changeVol>|<commonResponse>|<askPlaying>|<addFavorite>|<asksong>|<playorder>|<operation>|<call>;
+
+
+//槽列表
+<tone>:吧|呗|啦|哇|呀|啊;
+<date>:现在|当前|目前|刚才|此刻;
+<what>:什么|啥|哪些|何;
+<who>:谁|什么人|何人|哪位;
+<contact>:联系人;
+<song>:unknown|传奇|忘情水;
+<artist>:手机|本地|收藏|手机里;
+<sure>:好|是|对|要|会|行|能|不错|喜欢|需要|正确|错误|是的|对的|要的|发送|取消|重新输入|添加|添加内容;
+<unit>:首|组|批|支|个|只|曲;
+<leveladj>:大|中|小|高|低;
+<take>:将|把|使;
+<into>:加入|放入|加进|放进|加到|放到|添加到;
+<works>:歌|歌曲|作品|音乐;
+<volume>:音量|声音;
+<play>:播|放|播放|来;
+<communicate>:打电话给|打给|拨给|呼叫|发短信给|发给|发信息给;
+//非槽词组规则列表
+<num>:零|一|二|三|四|五|六|七|八|九|十;
+<percent>:百分之<num>[<num>][<num>];
+//一级规则列表
+<operation>:[打开|进入|关闭|退出](车载|汽车)模式;
+//提问规则列表
+<asksong>:<play><unit><works>|<play><artist>的<song>|<play><song>|[<play>][上|下|前|后]一首[<works>]|[<play>]<artist>的<works>;
+<playorder>:暂停播放|停止播放|继续播放|随机播放|顺序[循环]播放|单曲[循环]播放|换[一]<unit><works>;
+<addFavorite>:收藏(<date>[<play>][的]<works>|这首<works>|[<artist>的]<song>)|<take>[<artist>的]<song><into>收藏列表;
+<askPlaying>:(<date><play>的|这)是(<what>|<who>的)<works>|这首<works>(叫<what>|是<who>[唱]的);
+<commonResponse>:[不]<sure>[收藏];
+<changeVol>:<take><volume>调[<leveladj>][点][(至|到)最<leveladj>]|调<leveladj><volume>|<leveladj>声点|静音|[调(到|至)]<percent>[的]音量;
+<call>:[<communicate>]<contact>|[接通|拨打|打]<contact>的电话|给<contact>[打电话|发短信|发信息]|第<num>个;
+<awaken>:(小|扫)(灵|宁|银|明)(你|您|侬|尼|厘)(好|奥|呼);

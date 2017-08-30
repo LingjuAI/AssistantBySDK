@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/base_margin_padding"
+                android:paddingLeft="@dimen/normal_margin"
+                android:paddingRight="@dimen/normal_margin"
+                android:paddingTop="@dimen/base_margin_padding">
+
+    <com.lingju.assistant.view.TingPlayerImageView
+        android:id="@+id/tiv_track"
+        android:layout_width="@dimen/biggest_margin"
+        android:layout_height="@dimen/biggest_margin"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_launcher"/>
+
+    <ImageView
+        android:id="@+id/iv_ting_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ting_play_bg"/>
+
+    <TextView
+        android:id="@+id/tv_track_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/normal_margin"
+        android:layout_marginRight="@dimen/normal_margin"
+        android:layout_toLeftOf="@id/iv_ting_switch"
+        android:layout_toRightOf="@id/tiv_track"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="暂无节目"
+        android:textColor="@color/new_text_color_first"
+        android:textSize="@dimen/regular"
+        />
+</RelativeLayout>

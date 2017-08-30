@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/memo_edit_bg_color"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.0"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/edit_memo_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="今天12:00"
+                android:textColor="@color/new_text_color_second"
+                android:textSize="@dimen/md_small"/>
+
+            <TextView
+                android:id="@+id/edit_memo_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/normal_margin"
+                android:layout_toRightOf="@id/edit_memo_time"
+                android:text="字数100"
+                android:textColor="@color/new_text_color_second"
+                android:textSize="@dimen/md_small"/>
+
+            <TextView
+                android:id="@+id/edit_memo_half_screen"
+                android:layout_width="@dimen/biggest_margin"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:paddingBottom="@dimen/base_margin_padding"
+                android:paddingTop="@dimen/base_margin_padding"
+                android:text="卡片"
+                android:clickable="true"
+                android:background="@drawable/selector_view_bg"
+                android:textColor="@color/base_blue"
+                android:textSize="@dimen/regular"/>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginBottom="@dimen/base_margin_padding"
+            android:layout_marginTop="@dimen/base_margin_padding"
+            android:background="@color/new_line_black_border"
+            />
+
+        <EditText
+            android:id="@+id/edit_memo_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.0"
+            style="@style/edit_text_style"
+            android:background="@null"
+            android:gravity="top"
+            android:hint="备忘内容"
+            android:lineSpacingExtra="8dp"
+            android:scrollbars="vertical"
+            android:paddingTop="@dimen/base_margin_padding"
+            android:textColor="@color/new_text_color_first"
+            android:textColorHint="@color/new_text_color_second"
+            android:textSize="@dimen/regular"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginTop="@dimen/base_margin_padding"
+            android:background="@color/new_line_black_border"
+            />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/base_margin_padding">
+
+        <TextView
+            android:id="@+id/tv_save"
+            android:layout_width="64dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/base_margin_padding"
+            android:background="@drawable/selector_view_bg"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="保存"
+            android:layout_centerVertical="true"
+            android:paddingBottom="@dimen/base_margin_padding"
+            android:paddingTop="@dimen/base_margin_padding"
+            android:textColor="@color/base_blue"
+            android:textSize="@dimen/regular"/>
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="64dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/base_margin_padding"
+            android:layout_toLeftOf="@id/tv_save"
+            android:background="@drawable/selector_view_bg"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:text="取消"
+            android:paddingBottom="@dimen/base_margin_padding"
+            android:paddingTop="@dimen/base_margin_padding"
+            android:textColor="@color/base_blue"
+            android:textSize="@dimen/regular"/>
+
+        <com.lingju.assistant.view.VoiceInputComponent
+            android:id="@+id/vic_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
+
+        </com.lingju.assistant.view.VoiceInputComponent>
+    </RelativeLayout>
+</LinearLayout>

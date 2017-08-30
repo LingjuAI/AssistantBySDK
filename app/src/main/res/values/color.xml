@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#ffffff</color>
+    <color name="common_background">#f9f9f9</color>
+    <color name="index_clock_text_color">#6e6e6e</color>
+
+    <!-- 整体风格 -->
+    <color name="common_title_black">#3c3c3c</color>
+    <color name="common_black">#666666</color>
+    <color name="common_disable_black">#FFD8D8D8</color>
+    <color name="common_text_black">#b4b4b4</color>
+    <!--原主色 #32c0c4-->
+    <color name="base_blue">#33A868</color>
+    <color name="bar_color">#FF128446</color>
+    <color name="base_blue_translucent">#a033A868</color>
+    <color name="base_blue_qtr_transparent">#4033A868</color>
+    <color name="second_base_color">#FFA300</color>
+    <color name="new_text_color_first">#DD000000</color>
+    <color name="new_text_color_second">#8A000000</color>
+    <color name="new_line_black_border">#1f000000</color>
+    <color name="new_line_white_border">#1fFFFFFF</color>
+    <color name="status_bar_bg">#33000000</color>
+    <color name="forbid_click_color">#61000000</color>
+    <color name="input_bg">#3AC077</color>
+    <color name="progressbar_bg">#E2F5EA</color>
+    <color name="progressbar_progress">#8ADBAE</color>
+    <color name="progressbar_thumb_first">@color/progressbar_progress</color>
+    <color name="progressbar_thumb_second">#808ADBAE</color>
+    <color name="sliding_menu_bg">#373E39</color>
+    <!-- 红色   -->
+    <color name="red_style">#E22929</color>
+    <color name="memo_edit_bg_color">#FFFAF0</color>
+    <color name="card_edit_bg">#cc33a868</color>
+
+
+    <color name="red">#e8755a</color>
+    <color name="green_list_setting_bg">#323232</color>
+    <color name="brown">@color/second_base_color</color>
+
+    <!-- 绿色    -->
+    <color name="green_style">@color/base_blue</color>
+    <color name="light_white">#535353</color>
+    <color name="side_text_bg_green">#dcdcdc</color>
+    <color name="side_text_bg_green_light">#828282</color>
+    <color name="car_top_text">#c8c8c8</color>
+
+    <!-- 淡绿色 -->
+    <color name="dialog_bg_light_green">#535353</color>
+    <color name="light_green">#8bb80e</color>
+    <color name="list_border_light_green">#969696</color>
+    <color name="side_bg_light_green">#666666</color>
+    <color name="side_text_bg">#fafafa</color>
+    <color name="side_text_bg_light_green_light">#c8c8c8</color>
+
+    <color name="car_top_text_lg">#e6e6e6</color>
+
+    <color name="green">@color/base_blue</color>
+    <color name="side_bg_red">#d2d2d2</color>
+    <color name="light_black">#535353</color>
+    <color name="side_text_bg_red">#535353</color>
+    <color name="side_text_bg_red_light">#6e6e6e</color>
+
+    <color name="list_border_red_style">#b4b4b4</color>
+
+    <color name="light_gray">#f0f0f0</color>
+    <color name="light_gray_deep">#b4b4b4</color>
+    <color name="hintTextColor">#c6c6c6</color>
+
+    <color name="action_botton_color">@color/base_blue</color>
+    <color name="action_botton_color_down">#189343</color>
+
+    <color name="account_input_text">#999999</color>
+    <color name="account_text">#4d4d4d</color>
+    <color name="account_pwd_down">#000000</color>
+    <color name="accout_title_color">#444444</color>
+
+    <!-- 新修改，纯色背景 -->
+    <color name="new_main_bgcolor">#f2f2f2</color>
+    <color name="new_line_color">#444444</color>
+    <color name="new_speaker_line_color">#dcdcdc</color>
+    <color name="new_music_bg_color">#ebebeb</color>
+
+    <color name="card_call_bg">#ebebeb</color>
+    <color name="card_second_color">#787878</color>
+    <color name="music_second_text_color">#919191</color>
+    <color name="music_first_text_color">#f9f9f9</color>
+    <color name="music_list_bg">#212121</color>
+
+    <color name="btn_red_bg">#e35c3d</color>
+    <color name="btn_yell_bg">#f09c42</color>
+
+    <color name="setting_gray">#c8c8c8</color>
+
+
+    <color name="colorPrimary">#00BCD4</color>
+    <color name="colorPrimaryDark">#217346</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="shader">#33000000</color>
+    <color name="task_list_header_bg">#CC000000</color>
+    <color name="transparent_background">#50f9f9f9</color>
+    <color name="half_transparent_gray">#7f000000</color>
+
+    <color name="ksw_md_ripple_normal">#1E000000</color>
+    <color name="ksw_md_ripple_checked">#1fffa300</color>
+    <color name="ksw_md_solid_shadow">#33000000</color>
+    <color name="ksw_md_solid_normal">#ECECEC</color>
+    <color name="ksw_md_solid_checked">@color/second_base_color</color>
+    <color name="ksw_md_solid_disable">#FFFFFF</color>
+    <color name="ksw_md_solid_checked_disable">#aaaaaa</color>
+    <color name="ksw_md_back_normal_color">#FFBFBDBD</color>
+    <color name="ksw_md_back_checked_color">#80ffa300</color>
+
+    <color name="navi_search_box_color">#b2FFFFFF</color>
+    <color name="rippelColor">#FFFFFF</color>
+
+    <!--record wave color-->
+    <color name="regionStartColor">#80fca36d</color>
+    <!--<color name="regionEndColor">#f00a2140</color>-->
+    <color name="regionEndColor">@color/second_base_color</color>
+    <color name="regionCenterColor">#14ffa300</color>
+    <color name="pointColor">#BF158072</color>
+</resources>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

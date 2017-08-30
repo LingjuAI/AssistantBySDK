@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+     android:id="@+id/dp_time_box"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_alignParentTop="true"
+     android:layout_centerHorizontal="true"
+     android:orientation="horizontal"
+     android:paddingBottom="16dp"
+     >
+	
+    <!--<View
+        android:layout_width="0dp"
+        android:layout_height="1px"
+        android:layout_weight="navi.0"
+        />-->
+    
+     <com.lingju.assistant.view.wheel.widget.WheelView
+         android:id="@+id/dp_year"
+         android:layout_width="80dp"
+         android:layout_height="wrap_content"
+         />
+
+     <com.lingju.assistant.view.wheel.widget.WheelView
+         android:id="@+id/dp_month"
+         android:layout_width="80dp"
+         android:layout_height="wrap_content"
+         android:layout_marginLeft="16dp"
+         android:layout_marginRight="16dp" />
+
+     <com.lingju.assistant.view.wheel.widget.WheelView
+         android:id="@+id/dp_day"
+         android:layout_width="80dp"
+         android:layout_height="wrap_content" />
+ <!-- <View
+    android:layout_width="0dp"
+    android:layout_height="1px"
+    android:layout_weight="navi.0"
+    />-->
+ </LinearLayout>

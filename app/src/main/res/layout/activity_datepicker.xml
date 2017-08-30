@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f9f9f9"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#32c0c4" >
+
+        <ImageButton
+            android:id="@+id/adp_back"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/selector_white_circle_view_bg"
+            android:src="@drawable/c_back_down" />
+
+        <TextView
+            android:id="@+id/adp_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/setting_title_margin"
+            android:text="随口记账"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:gravity="center_vertical"
+            android:text="日期设置"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:textColor="@color/new_text_color_second"
+            android:textSize="12sp"/>
+	
+    <com.lingju.assistant.view.DatePicker
+        android:id="@+id/adp_datepicker"
+        android:paddingTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+</LinearLayout>

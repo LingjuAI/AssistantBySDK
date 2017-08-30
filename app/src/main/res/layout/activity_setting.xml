@@ -1,0 +1,935 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+    >
+
+    <com.lingju.assistant.view.ActivityTitleBar
+        android:id="@+id/set_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/base_blue"
+        android:elevation="@dimen/mini_margin"
+        app:bar_title="设置"/>
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/set_title"
+        android:scrollbarSize="3dp"
+        android:background="@color/white"
+        android:scrollbarThumbVertical="@drawable/scrollbarbar_bg">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/biggest_margin"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/normal_margin"
+                android:paddingRight="@dimen/normal_margin"
+                android:layout_marginTop="@dimen/base_margin_padding"
+                android:text="通用"
+                android:textColor="@color/base_blue"
+                android:textSize="@dimen/regular"/>
+
+            <RelativeLayout
+                android:id="@+id/li_title0"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:clickable="true"
+                android:background="@drawable/selector_view_bg"
+                >
+                <RelativeLayout
+                    android:id="@+id/li_title_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/wakeup_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/normal_margin"
+                        android:text="唤醒功能"
+                        android:alpha="0.87"
+                        android:textColor="@color/account_pwd_down"
+                        android:textSize="@dimen/regular"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="4dp"
+                        android:layout_below="@+id/wakeup_text"
+                        >
+
+                        <TextView
+                            android:layout_width="210dp"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="@dimen/normal_margin"
+                            android:text="喊“小灵你好”即可开启对话"
+                            android:textColor="@color/account_pwd_down"
+                            android:alpha="0.54"
+                            android:textSize="@dimen/md_small"/>
+                    </LinearLayout>
+                </RelativeLayout>
+                <com.lingju.assistant.view.SwitchButton
+                    android:id="@+id/setting_wakeup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="2dp"
+                    style="@style/SwitchButtonStyleMD"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/setting_margin"
+                    android:focusable="false"
+                    android:padding="0dp"
+                    android:textOff=""
+                    android:textOn=""/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/title_wifi"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/biggest_margin"
+                android:clickable="true"
+                android:background="@drawable/selector_view_bg"
+                >
+
+                <com.lingju.assistant.view.SwitchButton
+                    android:id="@+id/setting_wifi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="2dp"
+                    style="@style/SwitchButtonStyleMD"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/setting_margin"
+                    android:focusable="false"
+                    android:padding="0dp"
+                    android:textOff=""
+                    android:textOn=""/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/normal_margin"
+                    android:layout_centerVertical="true"
+                    android:text="3G/4G下播放在线音乐"
+                    android:alpha="0.87"
+                    android:textColor="@color/account_pwd_down"
+                    android:textSize="@dimen/regular"/>
+            </RelativeLayout>
+
+            <!-- 2 -->
+
+            <RelativeLayout
+                android:id="@+id/li_title"
+                android:layout_width="match_parent"
+                android:layout_height="108dp"
+                android:clickable="true"
+                android:background="@drawable/selector_view_bg">
+                <RelativeLayout
+                    android:id="@+id/li_title1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_centerVertical="true">
+
+                    <TextView
+                        android:id="@+id/li_title1_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/normal_margin"
+                        android:text="允许线控耳机操控"
+                        android:alpha="0.87"
+                        android:textColor="@color/account_pwd_down"
+                        android:textSize="@dimen/regular"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/li_title1_text"
+                        android:orientation="vertical"
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="@dimen/normal_margin"
+                            android:layout_marginTop="4dp"
+                            android:text="按1次，开启对话"
+                            android:textColor="@color/account_pwd_down"
+                            android:alpha="0.54"
+                            android:textSize="@dimen/md_small"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="@dimen/normal_margin"
+                            android:layout_marginTop="4dp"
+                            android:text="按2次，暂停/继续播放音乐"
+                            android:textColor="@color/account_pwd_down"
+                            android:alpha="0.54"
+                            android:textSize="@dimen/md_small"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="@dimen/normal_margin"
+                            android:layout_marginTop="4dp"
+                            android:text="按3次，播放下一首"
+                            android:textColor="@color/account_pwd_down"
+                            android:alpha="0.54"
+                            android:textSize="@dimen/md_small"/>
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+
+                <com.lingju.assistant.view.SwitchButton
+                    android:id="@+id/allow_wire_bt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="2dp"
+                    style="@style/SwitchButtonStyleMD"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/setting_margin"
+                    android:focusable="false"
+                    android:padding="0dp"
+                    android:textOff=""
+                    android:textOn=""/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/li_title7"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:clickable="true"
+                android:background="@drawable/selector_view_bg"
+                >
+                <RelativeLayout
+                    android:id="@+id/li_title_shake71"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:id="@+id/li_title_shake71_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/normal_margin"
+                        android:text="摇晃手机终止声音"
+                        android:alpha="0.87"
+                        android:textColor="@color/account_pwd_down"
+                        android:textSize="@dimen/regular"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/li_title_shake71_text"
+                        android:orientation="vertical"
+                        >
+
+                        <TextView
+                            android:layout_width="210dp"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="@dimen/normal_margin"
+                            android:layout_marginTop="4dp"
+                            android:text="可中止音乐播放、声音朗读"
+                            android:textColor="@color/account_pwd_down"
+                            android:alpha="0.54"
+                            android:textSize="@dimen/md_small"/>
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+
+                <com.lingju.assistant.view.SwitchButton
+                    android:id="@+id/setting_shake_for_wake"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="2dp"
+                    style="@style/SwitchButtonStyleMD"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/setting_margin"
+                    android:focusable="false"
+                    android:padding="0dp"
+                    android:textOff=""
+                    android:textOn=""/>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/new_line_black_border"
+                android:layout_marginTop="@dimen/base_margin_padding"
+                android:layout_marginBottom="@dimen/base_margin_padding"/>
+
+
+            <TextView
+                android:id="@+id/tv_sms_call"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:paddingLeft="@dimen/normal_margin"
+                android:paddingRight="@dimen/normal_margin"
+                android:gravity="center_vertical"
+                android:text="来电来信播报"
+                android:textColor="@color/base_blue"
+                android:textSize="@dimen/regular"/>
+            <RelativeLayout
+                android:id="@+id/incoming_call"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:clickable="true"
+                android:background="@drawable/selector_view_bg"
+                >
+                <RelativeLayout
+                    android:id="@+id/incoming_call1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/incoming_call1_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/normal_margin"
+                        android:text="来电播报提示"
+                        android:alpha="0.87"
+                        android:textColor="@color/account_pwd_down"
+                        android:textSize="@dimen/regular"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/incoming_call1_text"
+                        android:orientation="vertical"
+                        >
+
+                        <TextView
+                            android:layout_width="280dp"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="@dimen/normal_margin"
+                            android:layout_marginTop="4dp"
+                            android:text="来电时播报“有来自张三的电话”，需打开APP"
+                            android:textColor="@color/account_pwd_down"
+                            android:alpha="0.54"
+                            android:textSize="@dimen/md_small"/>
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+
+                <com.lingju.assistant.view.SwitchButton
+                    android:id="@+id/setting_incoming_call_tips_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="2dp"
+                    style="@style/SwitchButtonStyleMD"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/setting_margin"
+                    android:focusable="false"
+                    android:padding="0dp"
+                    android:textOff=""
+                    android:textOn=""/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/setting_dnd_item"
+                android:layout_width="match_parent"
+                android:paddingLeft="@dimen/normal_margin"
+                android:paddingRight="@dimen/normal_margin"
+                android:layout_height="@dimen/biggest_margin"
+                android:clickable="true"
+                android:background="@drawable/selector_view_bg"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="勿扰模式"
+                    android:alpha="0.87"
+                    android:textColor="@color/account_pwd_down"
+                    android:textSize="@dimen/regular" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/r" />
+
+                <TextView
+                    android:id="@+id/setting_dnd_tips"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical|right"
+                    android:paddingRight="10dp"
+                    android:text="开[23：00-7：00]"
+                    android:textColor="@color/account_pwd_down"
+                    android:alpha="0.54"
+                    android:textSize="@dimen/md_small"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/loudspeaker_open"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:clickable="true"
+                android:background="@drawable/selector_view_bg"
+                >
+                <RelativeLayout
+                    android:id="@+id/incoming_sms_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/incoming_sms_layout_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/normal_margin"
+                        android:text="来短信播报提示"
+                        android:alpha="0.87"
+                        android:textColor="@color/account_pwd_down"
+                        android:textSize="@dimen/regular"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/incoming_sms_layout_text"
+                        android:orientation="vertical"
+                        >
+
+                        <TextView
+                            android:layout_width="280dp"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="@dimen/normal_margin"
+                            android:layout_marginTop="4dp"
+                            android:text="APP打开状态，来短信时会提示“有来自张"
+                            android:textColor="@color/account_pwd_down"
+                            android:alpha="0.54"
+                            android:textSize="@dimen/md_small"/>
+                        <TextView
+                            android:layout_width="240dp"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="@dimen/normal_margin"
+                            android:layout_marginTop="4dp"
+                            android:text="三的短信，是否需要读短信内容"
+                            android:textColor="@color/account_pwd_down"
+                            android:alpha="0.54"
+                            android:textSize="@dimen/md_small"/>
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+
+                <com.lingju.assistant.view.SwitchButton
+                    android:id="@+id/setting_receiver_msg_tips_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="2dp"
+                    style="@style/SwitchButtonStyleMD"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/setting_margin"
+                    android:focusable="false"
+                    android:padding="0dp"
+                    android:textOff=""
+                    android:textOn=""/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/setting_incoming_tips_times"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:paddingLeft="@dimen/normal_margin"
+                android:paddingRight="@dimen/normal_margin"
+                android:clickable="true"
+                android:background="@drawable/selector_view_bg"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="来电提示次数"
+                    android:alpha="0.87"
+                    android:textColor="@color/account_pwd_down"
+                    android:textSize="@dimen/regular" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/r" />
+
+                <TextView
+                    android:id="@+id/setting_incoming_tips_times_result"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:paddingRight="10dp"
+                    android:text="2次"
+                    android:textColor="@color/account_pwd_down"
+                    android:alpha="0.54"
+                    android:textSize="@dimen/md_small"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/incoming_sms"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:clickable="true"
+                android:background="@drawable/selector_view_bg"
+                >
+                <RelativeLayout
+                    android:id="@+id/incoming_sms1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/incoming_sms1_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/normal_margin"
+                        android:text="自动免提"
+                        android:alpha="0.87"
+                        android:textColor="@color/account_pwd_down"
+                        android:textSize="@dimen/regular"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:layout_below="@id/incoming_sms1_text"
+                        android:orientation="vertical"
+                        >
+
+                        <TextView
+                            android:layout_width="210dp"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="@dimen/normal_margin"
+                            android:text="接打电话时自动打开免提"
+                            android:textColor="@color/account_pwd_down"
+                            android:alpha="0.54"
+                            android:textSize="@dimen/md_small"/>
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+
+                <com.lingju.assistant.view.SwitchButton
+                    android:id="@+id/setting_incoming_speakeron_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="2dp"
+                    style="@style/SwitchButtonStyleMD"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/setting_margin"
+                    android:focusable="false"
+                    android:padding="0dp"
+                    android:textOff=""
+                    android:textOn=""/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/setting_contacts_remark"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:paddingLeft="@dimen/normal_margin"
+                android:paddingRight="@dimen/normal_margin"
+                android:clickable="true"
+                android:background="@drawable/selector_view_bg"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="联系人备注"
+                    android:alpha="0.87"
+                    android:textColor="@color/account_pwd_down"
+                    android:textSize="@dimen/regular"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/r" />
+
+                <TextView
+                    android:id="@+id/setting_contacts_remark_result"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:paddingRight="10dp"
+                    android:text="2次"
+                    android:textColor="@color/account_pwd_down"
+                    android:alpha="0.54"
+                    android:textSize="@dimen/md_small"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/new_line_black_border"
+                android:layout_marginTop="@dimen/base_margin_padding"
+                android:layout_marginBottom="@dimen/base_margin_padding"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:paddingLeft="@dimen/normal_margin"
+                android:paddingRight="@dimen/normal_margin"
+                android:gravity="center_vertical"
+                android:text="声音"
+                android:textColor="@color/base_blue"
+                android:textSize="@dimen/regular"/>
+
+            <RelativeLayout
+                android:id="@+id/setting_play_channel"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:paddingLeft="@dimen/normal_margin"
+                android:paddingRight="@dimen/normal_margin"
+                android:clickable="true"
+                android:background="@drawable/selector_view_bg"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="播放音乐方式"
+                    android:alpha="0.87"
+                    android:textColor="@color/account_pwd_down"
+                    android:textSize="@dimen/regular"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/r"/>
+
+                <TextView
+                    android:id="@+id/setting_play_channel_result"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:paddingRight="10dp"
+                    android:text="蓝牙播放"
+                    android:textColor="@color/account_pwd_down"
+                    android:alpha="0.54"
+                    android:textSize="@dimen/md_small"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/setting_speaker"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:paddingLeft="@dimen/normal_margin"
+                android:paddingRight="@dimen/normal_margin"
+                android:clickable="true"
+                android:background="@drawable/selector_view_bg"
+                >
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="朗读声音"
+                    android:alpha="0.87"
+                    android:textColor="@color/account_pwd_down"
+                    android:textSize="@dimen/regular"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/r"/>
+
+                <TextView
+                    android:id="@+id/setting_speaker_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:paddingRight="10dp"
+                    android:text="小琪"
+                    android:textColor="@color/new_text_color_second"
+                    android:textSize="@dimen/md_small"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/setting_download_baidu_voice"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:paddingLeft="@dimen/normal_margin"
+                android:paddingRight="@dimen/normal_margin"
+                android:background="@drawable/selector_view_bg"
+                android:clickable="true"
+                android:visibility="gone"
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/set_liset_10"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="@dimen/setting_margin"
+                    android:text="下载百度离线识别资源包-45.10MB"
+                    android:textColor="#4d4d4d"
+                    android:textSize="@dimen/small"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/r"/>
+
+                <TextView
+                    android:id="@+id/setting_speaker_result"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:paddingRight="10dp"
+                    android:text="未下载"
+                    android:textColor="#999999"
+                    android:textSize="12sp"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/setting_refuse_answer"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:paddingLeft="@dimen/normal_margin"
+                android:paddingRight="@dimen/normal_margin"
+                android:background="@drawable/selector_view_bg"
+                android:clickable="true"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/set_liset_8"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="@dimen/setting_margin"
+                    android:text="礼貌拒听"
+                    android:textColor="#4d4d4d"
+                    android:textSize="@dimen/small"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/r"/>
+
+                <TextView
+                    android:id="@+id/setting_refuse_answer_result"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:paddingRight="10dp"
+                    android:text="已打开"
+                    android:textColor="#999999"
+                    android:textSize="12sp"/>
+            </RelativeLayout>
+
+            <!--<TextView
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/set_border_bg"
+                android:gravity="center_vertical"
+                android:text="导航"
+                android:textColor="@color/new_text_color_second"
+                android:textSize="12sp" />
+
+            <RelativeLayout
+                android:id="@+id/setting_navi_offlinedata"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/press"
+                android:visibility="gone"
+                android:clickable="true" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/set_liset_10" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="@dimen/setting_margin"
+                    android:text="离线导航资源"
+                    android:textColor="#4d4d4d"
+                    android:textSize="@dimen/small" />
+            </RelativeLayout>-->
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/new_line_black_border"
+                android:layout_marginTop="@dimen/base_margin_padding"
+                android:layout_marginBottom="@dimen/base_margin_padding"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:text="更多"
+                android:paddingLeft="@dimen/normal_margin"
+                android:paddingRight="@dimen/normal_margin"
+                android:textColor="@color/base_blue"
+                android:textSize="@dimen/regular"/>
+
+            <RelativeLayout
+                android:id="@+id/setting_share"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:paddingLeft="@dimen/normal_margin"
+                android:paddingRight="@dimen/normal_margin"
+                android:clickable="true"
+                android:background="@drawable/selector_view_bg"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="分享给朋友"
+                    android:alpha="0.87"
+                    android:textColor="@color/account_pwd_down"
+                    android:textSize="@dimen/regular"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/r"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/setting_update_version"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:paddingLeft="@dimen/normal_margin"
+                android:paddingRight="@dimen/normal_margin"
+                android:clickable="true"
+                android:background="@drawable/selector_view_bg"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="版本更新"
+                    android:textColor="@color/new_text_color_first"
+                    android:textSize="@dimen/regular"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/r"/>
+                <TextView
+                    android:id="@+id/setting_update_version_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:paddingRight="10dp"
+                    android:text="当前版本：v1.0"
+                    android:textColor="@color/new_text_color_second"
+                    android:textSize="@dimen/md_small"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/setting_about_us"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:paddingLeft="@dimen/normal_margin"
+                android:paddingRight="@dimen/normal_margin"
+                android:layout_marginBottom="@dimen/base_margin_padding"
+                android:clickable="true"
+                android:background="@drawable/selector_view_bg"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="关于我们"
+                    android:alpha="0.87"
+                    android:textColor="@color/account_pwd_down"
+                    android:textSize="@dimen/regular"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/r"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

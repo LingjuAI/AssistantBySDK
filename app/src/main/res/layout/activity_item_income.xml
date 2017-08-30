@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f9f9f9"
+    android:orientation="vertical" 
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+		android:elevation="@dimen/mini_margin"
+        android:background="@color/base_blue" >
+
+        <ImageButton
+            android:id="@+id/aii_back"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/selector_white_circle_view_bg"
+            android:src="@drawable/c_back_down" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/title_margin"
+            android:text="收入项目类别"
+			android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+        
+        <ImageButton
+            android:id="@+id/aii_edit"
+            android:layout_width="56dp"
+            android:layout_height="match_parent"
+            android:textColor="@color/white"
+            android:layout_centerVertical="true"
+			android:background="@drawable/selector_white_circle_view_bg"
+            android:src="@drawable/edit_white"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical"
+            />
+    </RelativeLayout>
+      <ListView 
+	      android:id="@+id/aii_item_list"
+	      android:layout_width="match_parent"
+	      android:layout_height="0dp"
+	      android:layout_weight="1.0"
+	      android:divider="@color/new_line_black_border"
+	      android:dividerHeight="1px"
+	      android:cacheColorHint="@android:color/transparent"
+	      android:scrollbars="none"
+	      android:background="@null"
+	      />
+</LinearLayout>
+    

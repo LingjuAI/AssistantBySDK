@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="@dimen/offset_width"
+              android:layout_marginBottom="@dimen/base_margin_padding"
+              android:layout_height="28dp">
+    <TextView
+        android:id="@+id/tv_set_count"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="1~20"
+        android:gravity="center"
+        android:textSize="@dimen/md_small"
+        android:textColor="@color/new_text_color_first"
+        android:background="@drawable/ting_text_bg"/>
+
+</LinearLayout>

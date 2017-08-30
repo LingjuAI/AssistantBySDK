@@ -1,0 +1,52 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffffff"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/navi_record_list_box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:animateLayoutChanges="true"
+            >
+            <!--<RelativeLayout-->
+                <!--android:id="@+id/navi_record_list_load_more_box"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content">-->
+            <!--<TextView-->
+                <!--android:id="@+id/navi_record_list_load_more_bt"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="48dp"-->
+                <!--android:textSize="15sp"-->
+                <!--android:text="加载更多..."-->
+                <!--android:gravity="center"-->
+                <!--android:paddingLeft="10dp"-->
+                <!--/>-->
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1sp"-->
+                <!--android:background="@color/new_line_border"-->
+                <!--android:layout_below="@+id/navi_record_list_load_more_bt"-->
+                <!--android:layout_marginLeft="@dimen/activity_left_margin"-->
+                <!--android:layout_marginRight="@dimen/activity_left_margin"-->
+                <!--/>-->
+            <!--</RelativeLayout>-->
+            <TextView
+                android:id="@+id/navi_clear_record_list_bt"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:textSize="15sp"
+                android:text="清空历史记录"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:clickable="true"
+                />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

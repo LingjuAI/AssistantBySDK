@@ -1,0 +1,135 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/base_blue"
+        android:elevation="4dp"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/status_bar"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:background="@color/bar_color"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/navi_back_bt"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="@drawable/selector_white_circle_view_bg"
+                android:src="@drawable/back_arrow"/>
+
+            <TextView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginLeft="@dimen/normal_margin"
+                android:layout_toRightOf="@+id/navi_back_bt"
+                android:gravity="center"
+                android:text="导航"
+                android:textColor="@color/white"
+                android:textSize="@dimen/small_title_size"
+                android:textStyle="bold"
+                />
+
+            <ImageButton
+                android:id="@+id/navi_manager_favorite_bt"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/selector_white_circle_view_bg"
+                android:src="@drawable/navi_star"
+                />
+
+            <ImageButton
+                android:id="@+id/navi_map_traffic_bt"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_marginRight="8dp"
+                android:layout_toLeftOf="@+id/navi_manager_favorite_bt"
+                android:background="@drawable/selector_white_circle_view_bg"
+                android:src="@drawable/navi_road"
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/navi_search_box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/base_blue">
+
+            <ImageButton
+                android:id="@+id/navi_exchange_bt"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_centerVertical="true"
+                android:background="@drawable/selector_white_circle_view_bg"
+                android:src="@drawable/navi_exchange"
+                />
+
+            <TextView
+                android:id="@+id/navi_start_addr"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_toRightOf="@+id/navi_exchange_bt"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:lines="1"
+                android:text="我的位置"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                />
+
+            <View
+                android:id="@+id/navi_start_end_line"
+                android:layout_width="match_parent"
+                android:layout_height="1sp"
+                android:layout_below="@+id/navi_start_addr"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_toRightOf="@+id/navi_exchange_bt"
+                android:alpha="0.12"
+                android:background="#FFFFFF"
+                />
+
+            <TextView
+                android:id="@+id/navi_end_addr"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_below="@+id/navi_start_addr"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_toRightOf="@+id/navi_exchange_bt"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:lines="1"
+                android:text="选择目的地"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <android.support.v4.widget.LingjuSwipeUpLoadRefreshLayout
+        android:id="@+id/navi_record_history_list_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/navi_record_history_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/light_gray"
+            />
+    </android.support.v4.widget.LingjuSwipeUpLoadRefreshLayout>
+
+</LinearLayout>

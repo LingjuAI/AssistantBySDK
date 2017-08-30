@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#33A868"
+    >
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/guide_base"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_guide"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <LinearLayout
+        android:id="@+id/ll_dot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="@dimen/normal_margin">
+
+        <View
+            android:layout_width="@dimen/base_margin_padding"
+            android:layout_height="@dimen/base_margin_padding"
+            android:layout_marginRight="@dimen/normal_margin"
+            android:background="@drawable/guide_dot_bg"/>
+
+        <View
+            android:layout_width="@dimen/base_margin_padding"
+            android:layout_height="@dimen/base_margin_padding"
+            android:layout_marginRight="@dimen/normal_margin"
+            android:background="@drawable/guide_dot_bg"/>
+
+        <View
+            android:layout_width="@dimen/base_margin_padding"
+            android:layout_height="@dimen/base_margin_padding"
+            android:layout_marginRight="@dimen/normal_margin"
+            android:background="@drawable/guide_dot_bg"/>
+
+        <View
+            android:layout_width="@dimen/base_margin_padding"
+            android:layout_height="@dimen/base_margin_padding"
+            android:background="@drawable/guide_dot_bg"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/guide_begin_bt"
+        android:layout_width="200dp"
+        android:layout_height="42dp"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="@dimen/common_card_btn_height"
+        android:background="@drawable/guide_btn_bg"
+        android:text="开始体验"
+        android:textColor="@drawable/guide_btn_text_color"
+        android:textSize="@dimen/regular"/>
+</FrameLayout>

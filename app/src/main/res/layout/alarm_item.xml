@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" 
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:orientation="horizontal"
+        android:clickable="true"
+        android:longClickable="true"
+        android:background="@drawable/selector_view_bg"
+        android:paddingBottom="4dp"
+        android:paddingTop="4dp" >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/ai_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="17:00"
+                android:typeface="sans"
+                android:textColor="@color/new_text_color_first"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/ai_fr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="4dp"
+                android:text="仅一次"
+                android:textColor="@color/new_text_color_second"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <ToggleButton
+            android:id="@+id/ai_switch"
+            android:layout_width="54dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/toggle_button_bg"
+            android:checked="true"
+            android:clickable="true"
+            android:textOff=""
+            android:textOn="" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:background="@color/new_line_black_border" />
+
+</LinearLayout>

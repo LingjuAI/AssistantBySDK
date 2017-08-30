@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+          android:id="@+id/tv_search_tag"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="@dimen/base_margin_padding"
+          android:layout_marginRight="@dimen/base_margin_padding"
+          android:background="@drawable/selector_search_tag"
+          android:paddingBottom="@dimen/mini_margin"
+          android:paddingLeft="@dimen/dialog_margin"
+          android:paddingRight="@dimen/dialog_margin"
+          android:paddingTop="@dimen/mini_margin"
+          android:text="遮天"
+          android:textColor="@color/new_text_color_first"
+          android:textSize="@dimen/md_small"/>

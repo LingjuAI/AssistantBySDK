@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#f9f9f9"
+    android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/aib_sub_box1"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/remind_dialog_white_bg"
+            android:visibility="visible"
+            android:gravity="center_vertical" >
+
+            <LinearLayout
+                android:layout_width="48dp"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="vertical" >
+
+                <ImageButton
+                    android:id="@+id/aib_type1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/account_incoming_pay_bg"
+                    android:gravity="center"
+                    android:scaleType="centerInside" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="4dp"
+                    android:text="切换收支"
+                    android:textColor="@color/new_text_color_second"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:layout_marginRight="1dp"
+                android:layout_weight="1.0"
+                android:background="#fff"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:id="@+id/aib_amount_box1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1.0"
+                    android:gravity="center_vertical" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="8dp"
+                        android:text="金额:"
+                        android:textColor="@color/new_text_color_first"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/aib_amount1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0元"
+                        android:textColor="@color/new_text_color_first"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout 
+                    android:id="@+id/aib_project_box1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/account_dialog_line"
+                    android:gravity="center_vertical" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="8dp"
+                        android:text="项目:"
+                        android:textColor="@color/new_text_color_first"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                         android:id="@+id/aib_project1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="点击选择"
+                        android:textColor="@color/new_text_color_first"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <ImageButton
+                 android:id="@+id/aib_delete1"
+                android:layout_width="36dp"
+                android:layout_height="match_parent"
+                android:layout_margin="4dp"
+                android:background="@drawable/account_prolist_del_bg"
+                android:clickable="true"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        
+        <LinearLayout
+            android:id="@+id/aib_sub_box2"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/remind_dialog_white_bg"
+            android:gravity="center_vertical"
+            android:visibility="gone"
+             >
+
+            <LinearLayout
+                android:layout_width="48dp"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="vertical" >
+
+                <ImageButton
+                    android:id="@+id/aib_type2"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/account_incoming_pay_bg"
+                    android:gravity="center"
+                    android:scaleType="centerInside" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="4dp"
+                    android:text="切换收支"
+                    android:textColor="@color/new_text_color_second"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_marginRight="1dp"
+                android:layout_weight="1.0"
+                android:background="#fff"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:id="@+id/aib_amount_box2"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1.0"
+                    android:gravity="center_vertical" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="8dp"
+                        android:text="金额:"
+                        android:textColor="@color/new_text_color_first"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/aib_amount2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="20元"
+                        android:textColor="@color/new_text_color_first"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/new_line_black_border" />
+
+                <LinearLayout 
+                    android:id="@+id/aib_project_box2"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1.0"
+                    android:gravity="center_vertical" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="8dp"
+                        android:text="项目:"
+                        android:textColor="@color/new_text_color_first"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                         android:id="@+id/aib_project2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="交通，加油"
+                        android:textColor="@color/new_text_color_first"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <ImageButton
+                 android:id="@+id/aib_delete2"
+                android:layout_width="36dp"
+                android:layout_height="match_parent"
+                android:layout_margin="4dp"
+                android:background="@drawable/account_prolist_del_bg"
+                android:clickable="true"
+                android:visibility="visible" />
+        </LinearLayout>
+        
+        
+        
+        <LinearLayout
+            android:id="@+id/aib_sub_box3"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/remind_dialog_white_bg"
+            android:gravity="center_vertical" 
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="48dp"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="vertical" >
+
+                <ImageButton
+                    android:id="@+id/aib_type3"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/account_incoming_pay_bg"
+                    android:gravity="center"
+                    android:scaleType="centerInside" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="4dp"
+                    android:text="切换收支"
+                    android:textColor="@color/new_text_color_second"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_marginRight="1dp"
+                android:layout_weight="1.0"
+                android:background="#fff"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:id="@+id/aib_amount_box3"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1.0"
+                    android:gravity="center_vertical" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="8dp"
+                        android:text="金额:"
+                        android:textColor="@color/new_text_color_first"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/aib_amount3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="20元"
+                        android:textColor="@color/new_text_color_first"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/new_line_black_border" />
+
+                <LinearLayout 
+                    android:id="@+id/aib_project_box3"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1.0"
+                    android:gravity="center_vertical" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="8dp"
+                        android:text="项目:"
+                        android:textColor="@color/new_text_color_first"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                         android:id="@+id/aib_project3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="交通，加油"
+                        android:textColor="@color/new_text_color_first"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <ImageButton
+                 android:id="@+id/aib_delete3"
+                android:layout_width="36dp"
+                android:layout_height="match_parent"
+                android:layout_margin="4dp"
+                android:background="@drawable/account_prolist_del_bg"
+                android:clickable="true"
+                android:visibility="visible" />
+        </LinearLayout>
+        
+        
+        
+        
+        
+        <LinearLayout
+            android:id="@+id/aib_count_box"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            android:visibility="gone" >
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:gravity="center_vertical"
+                android:visibility="visible" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="8dp"
+                    android:text="收入总计:"
+                    android:textColor="@color/new_text_color_first"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/aib_income"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#f09c42" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="元"
+                    android:textColor="@color/new_text_color_first" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:gravity="center_vertical"
+                android:visibility="visible" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="8dp"
+                    android:text="支出总计:"
+                    android:textColor="@color/new_text_color_first"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/aib_expense"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#32c0c4" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="元"
+                    android:textColor="@color/new_text_color_first" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|left"
+                android:paddingRight="8dp"
+                android:text="日期:"
+                android:textColor="@color/account_text"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/aib_time"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:background="@drawable/press"
+                android:clickable="true"
+                android:gravity="center_vertical|left"
+                android:text="请选择记账时间"
+                android:textColor="@color/account_text"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/new_line_black_border" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|left"
+                android:paddingRight="8dp"
+                android:text="备注:"
+                android:textColor="@color/account_text"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <EditText 
+                android:id="@+id/aib_memo"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:background="@drawable/press"
+                android:clickable="true"
+                style="@style/edit_text_style"
+                android:gravity="center_vertical|left"
+                android:hint="请输入备注内容"
+                android:singleLine="true"
+                android:textColor="@color/account_text"
+                android:textSize="14sp" >
+            </EditText>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/new_line_black_border" />
+
+</LinearLayout>

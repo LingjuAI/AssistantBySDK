@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="280dp"
+              android:layout_height="wrap_content"
+              android:background="@color/white"
+              android:orientation="vertical"
+              android:paddingLeft="@dimen/large_margin"
+              android:paddingRight="@dimen/large_margin"
+              android:paddingTop="@dimen/large_margin">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginBottom="@dimen/base_margin_padding"
+        android:text="设置备注"
+        android:textColor="@color/new_text_color_first"
+        android:textSize="@dimen/md_big"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:background="@drawable/selector_view_bg_white"
+        >
+        <ImageView
+            style="@style/card_icon_style"
+            android:src="@drawable/user"
+            android:alpha="0.54"
+            android:layout_gravity="center_vertical"/>
+
+        <TextView
+            android:id="@+id/ned_name"
+            android:textColor="@color/new_text_color_first"
+            style="@style/edit_card_field_style"
+            android:layout_width="wrap_content"
+            android:paddingRight="@dimen/normal_margin"
+            android:layout_weight="0"
+            android:text="包包"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/biggest_margin"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingRight="@dimen/normal_margin">
+
+        <ImageView
+            style="@style/card_icon_style"
+            android:alpha="0.54"
+            android:src="@drawable/remark_b"/>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/til_nick"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:hintEnabled="false"
+            android:layout_weight="1.0"
+            >
+
+            <EditText
+                android:id="@+id/et_nick"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                style="@style/edit_text_style"
+                android:background="@drawable/default_et_border"
+                android:hint="最多输入10个字"
+                android:maxLength="10"
+                android:paddingBottom="@dimen/mini_margin"
+                android:textColor="@color/new_text_color_first"
+                android:textColorHint="@color/new_text_color_second"
+                android:textSize="@dimen/regular"/>
+        </android.support.design.widget.TextInputLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/base_margin_padding"
+        android:layout_marginBottom="@dimen/base_margin_padding"
+        android:gravity="end">
+
+        <TextView
+            android:id="@+id/ned_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/base_margin_padding"
+            android:background="@drawable/selector_view_bg"
+            android:padding="@dimen/base_margin_padding"
+            android:text="取消"
+            android:textColor="@color/base_blue"
+            android:textSize="@dimen/regular"/>
+
+        <TextView
+            android:id="@+id/ned_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_view_bg"
+            android:padding="@dimen/base_margin_padding"
+            android:text="确定"
+            android:textColor="@color/base_blue"
+            android:textSize="@dimen/regular"/>
+    </LinearLayout>
+</LinearLayout>

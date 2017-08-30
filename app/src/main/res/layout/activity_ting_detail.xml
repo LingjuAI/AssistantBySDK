@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:orientation="vertical">
+
+    <View
+        android:id="@+id/status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:background="@color/bar_color"/>
+
+    <ImageButton
+        android:id="@+id/tv_back"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:alpha="0.54"
+        android:background="@drawable/selector_circle_view_bg"
+        android:src="@drawable/back_arrow_black"
+        />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.0">
+        <!-- 声音列表 -->
+        <android.support.v4.widget.LingjuSwipeUpLoadRefreshLayout
+            android:id="@+id/upload_more"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_track"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </android.support.v4.widget.LingjuSwipeUpLoadRefreshLayout>
+
+        <com.lsjwzh.widget.materialloadingprogressbar.CircleProgressBar
+            android:id="@+id/cpb_loading"
+            android:layout_width="@dimen/setting_title_margin"
+            android:layout_height="@dimen/setting_title_margin"
+            android:layout_gravity="center"
+            app:mlpb_enable_circle_background="false"
+            app:mlpb_progress_color="@color/base_blue"
+            app:mlpb_progress_stoke_width="3dp"
+            app:mlpb_show_arrow="true"/>
+    </FrameLayout>
+    <!--底部播放栏-->
+    <com.lingju.assistant.view.TingPlayerComponent
+        android:id="@+id/ting_player_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:elevation="@dimen/mini_margin"/>
+
+</LinearLayout>

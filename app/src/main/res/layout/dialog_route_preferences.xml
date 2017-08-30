@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#f9f9f9"
+              android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:elevation="@dimen/mini_margin"
+        android:background="@color/base_blue"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/ansl_setting_back_bt"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/selector_white_circle_view_bg"
+            android:src="@drawable/c_back_down"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="48dp"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="算路偏好"
+            android:textColor="@color/white"
+            android:textSize="@dimen/big"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.0"
+        android:orientation="vertical"
+        >
+
+        <CheckBox
+            android:id="@+id/ansl_preference_avoid_traffic"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginLeft="@dimen/normal_margin"
+            android:paddingLeft="72dp"
+            android:background="@drawable/selector_view_bg"
+            android:checked="false"
+            android:text="躲避拥堵"/>
+
+        <CheckBox
+            android:id="@+id/ansl_preference_min_distance"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginLeft="@dimen/normal_margin"
+            android:paddingLeft="72dp"
+            android:background="@drawable/selector_view_bg"
+            android:checked="false"
+            android:text="路程最短"/>
+
+        <CheckBox
+            android:id="@+id/ansl_preference_min_time"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginLeft="@dimen/normal_margin"
+            android:paddingLeft="72dp"
+            android:background="@drawable/selector_view_bg"
+            android:checked="false"
+            android:text="时间最短"/>
+
+        <CheckBox
+            android:id="@+id/ansl_preference_min_toll"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginLeft="@dimen/normal_margin"
+            android:paddingLeft="72dp"
+            android:background="@drawable/selector_view_bg"
+            android:checked="false"
+            android:text="收费最少"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/base_blue">
+    <TextView
+        android:id="@+id/ansl_setting_save_bt"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/selector_view_bg_white"
+        android:clickable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center"
+        android:text="完成"
+        android:textColor="@color/white"
+        android:textSize="@dimen/big"
+        />
+    </LinearLayout>
+</LinearLayout>

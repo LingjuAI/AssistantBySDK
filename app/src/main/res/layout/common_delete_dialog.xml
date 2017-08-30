@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="280dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:background="@drawable/common_dialog_bg"
+    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+    android:layout_marginRight="@dimen/activity_horizontal_margin"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical" >
+
+        <TextView
+            android:id="@+id/ced_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:layout_weight="1.0"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:paddingLeft="@dimen/large_margin"
+            android:text="支出"
+            android:textStyle="bold"
+            android:textColor="@color/new_text_color_first"
+            android:textSize="@dimen/big" />
+
+        <!--<ImageButton-->
+            <!--android:id="@+id/ced_close"-->
+            <!--android:src="@drawable/card_close_btn"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="#00000000"-->
+             <!--/>-->
+
+    </LinearLayout>
+
+    <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1dp"-->
+        <!--android:background="@color/green_style" />-->
+    <!--<android.support.design.widget.TextInputLayout-->
+        <!--android:id="@+id/edit_content"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
+        <!--<EditText-->
+            <!--android:id="@+id/ced_content"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:singleLine="true"-->
+            <!--android:textColor="@color/new_text_color_first"-->
+            <!--android:textSize="@dimen/medium"-->
+            <!--android:padding="@dimen/activity_horizontal_margin"-->
+            <!--/>-->
+    <!--</android.support.design.widget.TextInputLayout>-->
+    <TextView
+        android:id="@+id/edit_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/new_text_color_second"
+        android:text="确认清除搜索记录吗？"
+        android:layout_marginLeft="@dimen/large_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/ced_cancel"
+            android:layout_width="@dimen/common_card_btn_height"
+            android:layout_height="@dimen/common_btn_height"
+            android:layout_marginTop="20dp"
+            android:text="取消"
+            android:background="@drawable/selector_view_bg"
+            android:gravity="center"
+            android:textColor="@color/green_style"
+            android:textSize="@dimen/regular" />
+		<View 
+		    android:id="@+id/ced_empty"
+		    android:layout_width="16dp"
+		    android:layout_height="1px"
+		    />
+        <TextView
+            android:id="@+id/ced_confirm"
+            android:layout_width="@dimen/common_card_btn_height"
+            android:layout_height="@dimen/common_btn_height"
+            android:layout_marginTop="20dp"
+            android:text="删除"
+            android:background="@drawable/selector_view_bg"
+            android:gravity="center"
+            android:textColor="@color/green_style"
+            android:textSize="@dimen/regular" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/new_main_bgcolor"
+    android:orientation="vertical">
+
+    <com.lingju.assistant.view.ActivityTitleBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/base_blue"
+        android:elevation="4dp"
+        app:bar_title="联系我们"/>
+
+    <TextView
+        style="@style/connect_title_style"
+        android:layout_marginTop="@dimen/dialog_left_right_margin"
+        android:text="官网"
+        android:textSize="@dimen/medium"
+        android:textColor="@color/new_text_color_first"/>
+
+    <TextView
+        android:id="@+id/tv_website"
+        style="@style/connect_text_style"
+        android:text="@string/website"
+        android:textColor="@color/base_blue"/>
+
+    <TextView
+        style="@style/connect_title_style"
+        android:text="客服邮箱"
+        android:textSize="@dimen/medium"
+        android:textColor="@color/new_text_color_first"/>
+
+    <TextView
+        android:id="@+id/tv_email"
+        style="@style/connect_text_style"
+        android:text="@string/email"
+        android:textColor="@color/base_blue"
+        android:textSize="@dimen/medium"/>
+
+    <TextView
+        style="@style/connect_title_style"
+        android:text="产品QQ群"
+        android:textSize="@dimen/medium"
+        android:textColor="@color/new_text_color_first"/>
+
+    <TextView
+        android:id="@+id/tv_qq"
+        style="@style/connect_text_style"
+        android:text="@string/tencent"
+        android:textColor="@color/base_blue"
+        android:textSize="@dimen/medium"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/dialog_padding_horizontal"
+        android:text="产品的进步源于每位用户的建议，欢迎加群"
+        android:textSize="@dimen/medium"
+        android:textColor="@color/new_text_color_first"
+        />
+
+</LinearLayout>

@@ -1,0 +1,25 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/new_main_bgcolor"
+    android:elevation="2dp"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/navi_record_list_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:background="@drawable/selector_view_bg">
+            <TextView
+                android:id="@+id/navi_clear_record_list_bt"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:textSize="15sp"
+                android:text="清空历史记录"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                />
+    </RelativeLayout>
+
+</LinearLayout>

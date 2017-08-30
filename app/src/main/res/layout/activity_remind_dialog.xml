@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="280dp"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center"
+              android:background="@drawable/remind_dialog_white_bg"
+              android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/base_blue"
+            android:paddingLeft="@dimen/normal_margin"
+            android:paddingTop="@dimen/large_margin">
+
+            <TextView
+                android:id="@+id/remind_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="17:30"
+                android:textColor="@color/white"
+                android:textSize="@dimen/md_big"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/ard_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/remind_time"
+                android:layout_below="@id/remind_time"
+                android:layout_marginBottom="@dimen/large_margin"
+                android:layout_marginTop="@dimen/normal_margin"
+                android:text="提醒提醒提醒"
+                android:textColor="@color/white"
+                android:textSize="@dimen/regular"/>
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|end"
+            android:src="@drawable/pic_remind_bar"/>
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/base_margin_padding"
+        android:layout_marginTop="@dimen/base_margin_padding"
+        android:gravity="end">
+
+        <TextView
+            android:id="@+id/ard_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/base_margin_padding"
+            android:background="@drawable/selector_view_bg"
+            android:padding="@dimen/normal_margin"
+            android:text="查看"
+            android:textColor="@color/base_blue"
+            android:textSize="@dimen/regular"/>
+
+        <TextView
+            android:id="@+id/ard_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_view_bg"
+            android:padding="@dimen/normal_margin"
+            android:text="知道了"
+            android:textColor="@color/base_blue"
+            android:textSize="@dimen/regular"/>
+    </LinearLayout>
+
+</LinearLayout>

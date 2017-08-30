@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.lingju.assistant.view.SlidingItem
+        android:id="@+id/sd_slidingItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/biggest_margin"
+            android:background="@drawable/selector_view_bg"
+            android:paddingLeft="@dimen/normal_margin"
+            android:paddingRight="@dimen/normal_margin">
+
+            <ImageView
+                android:id="@+id/user_icon"
+                style="@style/card_icon_style"
+                android:layout_centerVertical="true"
+                android:alpha="0.54"
+                android:src="@drawable/user"/>
+
+            <TextView
+                android:id="@+id/nickName_contact_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/user_icon"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxWidth="@dimen/offset_width"
+                android:singleLine="true"
+                android:text="小三小三小三小三水电费是否是水电费水电费是是的发送到 水电费"
+                android:textColor="@color/new_text_color_first"
+                android:textSize="@dimen/regular"/>
+
+            <TextView
+                android:id="@+id/nickName_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/bigger_margin"
+                android:layout_toRightOf="@id/nickName_contact_text"
+                android:ellipsize="end"
+                android:gravity="end"
+                android:singleLine="true"
+                android:text="情人情"
+                android:textColor="@color/new_text_color_second"
+                android:textSize="@dimen/regular"/>
+
+
+        </RelativeLayout>
+
+        <TextView style="@style/del_btn_style"/>
+    </com.lingju.assistant.view.SlidingItem>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/new_line_black_border"/>
+</LinearLayout>

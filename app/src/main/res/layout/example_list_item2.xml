@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/child_text"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:paddingLeft="@dimen/common_card_btn_height"
+        android:gravity="left|center_vertical"
+        android:text="打电话"
+        android:background="@drawable/selector_view_bg"
+        android:textColor="#4d4d4d"
+        android:textSize="@dimen/md_small" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:background="#b4b4b4"
+        android:visibility="gone" />
+
+</LinearLayout>

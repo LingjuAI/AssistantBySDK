@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/base_blue"
+              android:orientation="vertical">
+
+    <View
+        android:id="@+id/status_bar"
+        android:layout_width="match_parent"
+        android:background="@color/bar_color"
+        android:layout_height="1dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       >
+
+        <ImageButton
+            android:id="@+id/tv_back"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@drawable/selector_white_circle_view_bg"
+            android:src="@drawable/c_back_down"
+            />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/normal_margin"
+            android:textStyle="bold"
+            android:text="关于我们"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/small_title_size"
+            />
+    </LinearLayout>
+</LinearLayout>

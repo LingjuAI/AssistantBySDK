@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#f9f9f9"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/ddp_close"
+            android:layout_width="54dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:scaleType="centerInside"
+            android:background="@drawable/calculate_num_press"
+            android:layout_margin="2dp"
+            android:src="@drawable/c_down" />
+    </LinearLayout>
+
+    <com.lingju.assistant.view.DatePicker
+        android:id="@+id/ddp_datepicker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

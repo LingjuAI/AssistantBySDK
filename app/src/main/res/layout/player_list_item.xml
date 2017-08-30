@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="56dp"
+              android:background="@drawable/set_line_select_down"
+              android:orientation="horizontal"
+              android:paddingLeft="16dp"
+    >
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1.0"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="8dp"
+            >
+
+            <TableLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:shrinkColumns="0">
+
+                <TableRow
+                    android:id="@+id/tableRow1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <TextView
+                        android:id="@+id/player_list_item_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:ellipsize="end"
+                        android:singleLine="true"
+                        android:text="忘情水"
+                        android:textColor="@color/music_first_text_color"
+                        android:textSize="@dimen/regular"
+                        />
+
+                    <TextView
+                        android:id="@+id/player_list_item_state"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_marginLeft="5dp"
+                        android:singleLine="true"
+                        android:text="在线"
+                        android:textColor="@color/side_text_bg_green_light"
+                        android:textSize="@dimen/mini"
+                        />
+
+                </TableRow>
+            </TableLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/player_list_item_singer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="刘德华"
+            android:textColor="@color/music_second_text_color"
+            android:textSize="@dimen/mini"
+            />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="56dp"
+        android:layout_height="match_parent"
+        >
+
+        <TextView
+            android:id="@+id/player_list_item_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:paddingBottom="18dp"
+            android:text="5:00"
+            android:textColor="@color/music_first_text_color"
+            android:textSize="@dimen/mini"
+            />
+        <!-- android:background="?attr/favorite_bt_bg" -->
+        <ImageButton
+            android:id="@+id/player_list_item_favorite_bt"
+            android:layout_width="48dp"
+            android:layout_height="42dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="14dp"
+            android:src="@drawable/favorite_bt"
+            android:background="@drawable/selector_white_circle_view_bg"
+            />
+    </RelativeLayout>
+
+</LinearLayout>

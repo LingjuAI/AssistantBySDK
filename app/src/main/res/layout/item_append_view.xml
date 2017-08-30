@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="@dimen/base_margin_padding"
+              android:orientation="vertical"
+              android:paddingLeft="@dimen/normal_margin"
+              android:paddingRight="@dimen/normal_margin">
+
+    <EditText
+        android:id="@+id/et_append"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        style="@style/edit_text_style"
+        android:gravity="top"
+        android:lines="8"
+        android:maxLines="8"
+        android:scrollbars="vertical"
+        android:textColor="@color/new_text_color_first"
+        android:textSize="@dimen/regular"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginTop="@dimen/dialog_margin"
+        android:background="@color/new_line_black_border"/>
+
+    <Button
+        android:id="@+id/btn_quit"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/account_btn"
+        android:text="退出"
+        android:textColor="@color/white"
+        android:textSize="@dimen/regular"/>
+
+</LinearLayout>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent">
+
+    <TextView
+        android:id="@+id/task_dialog_text"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@null"
+        android:maxLines="2"
+        android:gravity="center_vertical|right"
+        android:paddingRight="@dimen/dialog_text_padding"
+        android:text="帮我记录。"
+        android:textColor="@color/green_style"
+        android:textSize="@dimen/medium" />
+
+    <LinearLayout
+        android:id="@+id/ll_task_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/task_dialog_text"
+        android:background="@drawable/common_dialog_bg"
+        android:orientation="vertical">
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/index_voiceinput_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:paddingTop="8dp"
+        android:visibility="visible">
+
+        <com.lingju.assistant.view.VoiceComponent
+            android:id="@+id/input_voice_bt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="9dp"/>
+
+        <TextView
+            android:id="@+id/main_input_tips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/input_voice_bt"
+            android:layout_centerHorizontal="true"
+            android:paddingBottom="2dp"
+            android:text="@string/click_mic_tips"
+            android:textColor="@color/new_text_color_second"
+            android:textSize="12sp"/>
+    </RelativeLayout>
+
+</RelativeLayout>

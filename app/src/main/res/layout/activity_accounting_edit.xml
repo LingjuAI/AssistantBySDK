@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f9f9f9"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#32c0c4" >
+
+        <ImageButton
+            android:id="@+id/aae_back"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"
+            android:background="#00000000"
+            android:src="@drawable/c_back_down" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/setting_title_margin"
+            android:text="随口记账"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
+
+        <ImageButton
+            android:id="@+id/aae_del"
+            android:layout_width="48dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/common_title_del_bg"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/account_vertical_margin" >
+
+        <include layout="@layout/accounting_input_box" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_btn_mar_top"
+        android:gravity="right"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/aae_cancel"
+            android:layout_width="102dp"
+            android:layout_height="42dp"
+            android:layout_weight="1.0"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/common_red_btn"
+            android:gravity="center"
+            android:text="取消"
+            android:textColor="@drawable/text_color_red_to_white"
+            android:textSize="@dimen/small" />
+
+        <TextView
+            android:id="@+id/aae_confirm"
+            android:layout_width="102dp"
+            android:layout_height="42dp"
+            android:layout_weight="1.0"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/common_green_btn"
+            android:gravity="center"
+            android:text="保存"
+            android:textColor="@drawable/text_color_green_to_white"
+            android:textSize="@dimen/small" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.lingju.assistant.view.SlidingItem
+            android:id="@+id/del_item"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_height"
+            android:background="@color/white"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/memo_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:padding="16dp"
+                android:textStyle="bold"
+                android:text="备忘内容被我家人数量的分解落实到解放了上来的福建省"
+                android:textColor="@color/new_text_color_first"
+                android:textSize="@dimen/regular"/>
+
+            <TextView
+                style="@style/del_btn_style"/>
+        </com.lingju.assistant.view.SlidingItem>
+
+        <!--编辑区域-->
+        <LinearLayout
+            android:id="@+id/edit_memo_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/memo_edit_bg_color"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/edit_memo_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="今天12:00"
+                        android:textColor="@color/new_text_color_second"
+                        android:textSize="@dimen/md_small"/>
+
+                    <TextView
+                        android:id="@+id/edit_memo_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="16dp"
+                        android:layout_toRightOf="@id/edit_memo_time"
+                        android:text="字数100"
+                        android:textColor="@color/new_text_color_second"
+                        android:textSize="@dimen/md_small"/>
+
+                    <TextView
+                        android:id="@+id/edit_memo_full_screen"
+                        android:layout_width="@dimen/biggest_margin"
+                        android:gravity="center"
+                        android:paddingTop="@dimen/base_margin_padding"
+                        android:paddingBottom="@dimen/base_margin_padding"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/selector_view_bg"
+                        android:text="全屏"
+                        android:textColor="@color/base_blue"
+                        android:textSize="@dimen/regular"/>
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_marginBottom="@dimen/base_margin_padding"
+                    android:layout_marginTop="@dimen/base_margin_padding"
+                    android:background="@color/new_line_black_border"
+                    />
+
+                <EditText
+                    android:id="@+id/edit_memo_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:gravity="top"
+                    android:hint="备忘内容"
+                    style="@style/edit_text_style"
+                    android:lineSpacingExtra="8dp"
+                    android:lines="8"
+                    android:maxLines="8"
+                    android:paddingTop="@dimen/base_margin_padding"
+                    android:scrollbars="vertical"
+                    android:textColor="@color/new_text_color_first"
+                    android:textColorHint="@color/new_text_color_second"
+                    android:textSize="@dimen/regular"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_marginTop="@dimen/base_margin_padding"
+                    android:background="@color/new_line_black_border"
+                    />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/base_margin_padding">
+
+                <TextView
+                    android:id="@+id/tv_save"
+                    android:layout_width="64dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/selector_view_bg"
+                    android:clickable="true"
+                    android:gravity="center_horizontal"
+                    android:paddingBottom="8dp"
+                    android:paddingTop="8dp"
+                    android:text="保存"
+                    android:textColor="@color/base_blue"
+                    android:textSize="@dimen/regular"/>
+
+                <TextView
+                    android:id="@+id/tv_cancel"
+                    android:layout_width="64dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:layout_toLeftOf="@id/tv_save"
+                    android:background="@drawable/selector_view_bg"
+                    android:gravity="center_horizontal"
+                    android:paddingBottom="8dp"
+                    android:paddingTop="8dp"
+                    android:text="取消"
+                    android:textColor="@color/base_blue"
+                    android:textSize="@dimen/regular"/>
+
+                <ImageView
+                    android:id="@+id/iv_show_more"
+                    android:layout_width="52dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_arrow"
+                    android:visibility="gone"/>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_state"
+            style="@style/card_state_style"
+            android:visibility="gone"/>
+    </FrameLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/new_line_black_border"/>
+</LinearLayout>

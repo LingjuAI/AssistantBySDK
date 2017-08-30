@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:lingju="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:orientation="vertical">
+
+    <View
+        android:id="@+id/status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:background="@color/bar_color"/>
+
+    <!-- 头部搜索栏部分 -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        >
+
+        <ImageButton
+            android:id="@+id/search_back_bt"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_centerVertical="true"
+            android:alpha="0.54"
+            android:background="@drawable/selector_circle_view_bg"
+            android:src="@drawable/back_arrow_black"/>
+
+        <TextView
+            android:id="@+id/tv_ting_search"
+            android:layout_width="@dimen/item_height"
+            android:layout_height="@dimen/item_height"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="@dimen/mini_margin"
+            android:background="@drawable/selector_circle_view_bg"
+            android:gravity="center"
+            android:text="搜索"
+            android:textColor="@color/new_text_color_first"
+            android:textSize="@dimen/regular"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/tv_ting_search"
+            android:layout_toRightOf="@id/search_back_bt"
+            android:background="@drawable/ting_search_bg"
+            android:padding="2px"
+            >
+
+            <com.lingju.assistant.view.RealTimeUpdateSearchBox
+                android:id="@+id/ting_search_box"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                lingju:hint="“大家都在搜”的第一个"
+                lingju:hintColor="@color/new_text_color_second"
+                lingju:search_background="#e4e4e4"
+                lingju:textColor="@color/new_text_color_first"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.0">
+
+        <!--搜索标签-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!--搜索历史-->
+            <RelativeLayout
+                android:id="@+id/rl_history_box"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_clear_history"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/normal_margin"
+                    android:layout_marginTop="@dimen/normal_margin"
+                    android:text="清空"
+                    android:textColor="@color/second_base_color"
+                    android:textSize="@dimen/md_small"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/tv_clear_history"
+                    android:layout_marginLeft="@dimen/normal_margin"
+                    android:text="搜索历史"
+                    android:textColor="@color/new_text_color_second"
+                    android:textSize="@dimen/md_small"/>
+
+                <com.zhy.view.flowlayout.TagFlowLayout
+                    android:id="@+id/fl_history"
+                    lingju:max_select="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_clear_history"
+                    android:background="@color/white"
+                    android:paddingLeft="@dimen/normal_margin"
+                    android:paddingRight="@dimen/base_margin_padding"
+                    android:paddingTop="@dimen/normal_margin"/>
+
+                <View
+                    android:id="@+id/search_divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_marginTop="@dimen/base_margin_padding"
+                    android:layout_below="@id/fl_history"
+                    android:background="@color/new_line_black_border"/>
+            </RelativeLayout>
+            <!--热词-->
+            <RelativeLayout
+                android:id="@+id/rl_hot_tag_box"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_change"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/normal_margin"
+                    android:layout_marginTop="@dimen/normal_margin"
+                    android:text="换一批"
+                    android:textColor="@color/second_base_color"
+                    android:textSize="@dimen/md_small"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/tv_change"
+                    android:layout_marginLeft="@dimen/normal_margin"
+                    android:text="大家都在搜的"
+                    android:textColor="@color/new_text_color_second"
+                    android:textSize="@dimen/md_small"/>
+
+                <com.zhy.view.flowlayout.TagFlowLayout
+                    android:id="@+id/fl_hot_tag"
+                    lingju:max_select="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_change"
+                    android:paddingLeft="@dimen/normal_margin"
+                    android:paddingRight="@dimen/base_margin_padding"
+                    android:paddingTop="@dimen/normal_margin"/>
+
+            </RelativeLayout>
+        </LinearLayout>
+        <!-- 声音列表 -->
+        <android.support.v4.widget.LingjuSwipeUpLoadRefreshLayout
+            android:id="@+id/upload_more"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            >
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_search_album"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"/>
+        </android.support.v4.widget.LingjuSwipeUpLoadRefreshLayout>
+
+        <com.lsjwzh.widget.materialloadingprogressbar.CircleProgressBar
+            android:id="@+id/cpb_loading"
+            android:layout_width="@dimen/setting_title_margin"
+            android:layout_height="@dimen/setting_title_margin"
+            android:layout_gravity="center"
+            android:visibility="visible"
+            lingju:mlpb_enable_circle_background="false"
+            lingju:mlpb_progress_color="@color/base_blue"
+            lingju:mlpb_progress_stoke_width="3dp"
+            lingju:mlpb_show_arrow="true"/>
+
+    </FrameLayout>
+
+    <!--底部播放栏-->
+    <com.lingju.assistant.view.TingPlayerComponent
+        android:id="@+id/ting_player_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:elevation="@dimen/mini_margin"/>
+</LinearLayout>

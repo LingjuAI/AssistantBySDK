@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/voice_bt"
+    android:layout_width="@dimen/item_height"
+    android:layout_height="@dimen/item_height"
+    android:background="@drawable/white_oval_bg"
+    >
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/iv_mic_default"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/input_normal_mic"
+        android:visibility="gone"/>
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/iv_circle_record"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        android:src="@drawable/record"/>
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/iv_circle_wait"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        android:src="@drawable/wait"/>
+</RelativeLayout>

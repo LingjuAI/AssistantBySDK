@@ -1,0 +1,27 @@
+<selector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+    
+    <item android:state_pressed="true">
+        <shape 
+		    android:shape="rectangle">
+		    <solid android:color="@color/base_blue_qtr_transparent"/>
+		    <stroke 
+		        android:width="1px"
+		        android:color="@color/new_line_black_border"
+		        />
+		</shape>
+    </item>
+    
+    <item>
+        <shape 
+		    android:shape="rectangle">
+		    <solid android:color="@color/new_main_bgcolor"/>
+		    <stroke 
+		        android:width="1px"
+		        android:color="@color/new_line_black_border"
+		        />
+		</shape>
+    </item>
+    
+</selector>

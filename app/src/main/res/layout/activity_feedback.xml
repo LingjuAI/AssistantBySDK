@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#f9f9f9"
+              android:orientation="vertical">
+
+    <com.lingju.assistant.view.ActivityTitleBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/base_blue"
+        android:elevation="4dp"
+        app:bar_title="意见反馈"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/afb_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:gravity="top"
+            style="@style/edit_text_style"
+            android:hint="请写下您的宝贵意见，我们会努力改进..."
+            android:lines="10"
+            android:maxLength="200"
+            android:padding="@dimen/dialog_text_padding"
+            android:textColor="@color/new_text_color_first"
+            android:textSize="@dimen/medium"
+            >
+
+            <requestFocus/>
+        </EditText>
+
+        <TextView
+            android:id="@+id/tv_limit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dialog_text_padding"
+            android:text="0/200"
+            android:gravity="end"
+            android:background="@android:color/white"
+            android:textColor="@color/new_text_color_second"
+            android:textSize="@dimen/smaller"/>
+
+        <EditText
+            android:id="@+id/et_contact_way"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="@dimen/common_btn_mar_top"
+            android:background="#ffffff"
+            style="@style/edit_text_style"
+            android:hint="选填，QQ/邮箱/手机号"
+            android:inputType="textEmailAddress"
+            android:padding="@dimen/dialog_text_padding"
+            android:singleLine="true"
+            android:textColor="@color/new_text_color_first"
+            android:textSize="@dimen/medium"/>
+
+        <!-- <View
+             android:layout_width="match_parent"
+             android:layout_height="1px"
+             android:background="@color/green_style"/>-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/base_blue"
+            android:layout_marginTop="16dp">
+        <TextView
+            android:id="@+id/afb_submit"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:background="@drawable/selector_view_bg_white"
+            android:text="提交反馈"
+            android:textColor="@color/white"
+            android:textSize="@dimen/medium"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

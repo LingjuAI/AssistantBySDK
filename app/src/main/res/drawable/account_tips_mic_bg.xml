@@ -1,0 +1,27 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">  
+    
+    <item android:state_pressed="true">
+        <layer-list>
+            <item>
+                <shape android:shape="rectangle">
+           			 <solid android:color="#e6e6e6"/>
+       			 </shape>
+            </item>
+            
+            <item>
+                <bitmap 
+            android:src="@drawable/account_mic_add_press"
+   			android:gravity="right"
+            />
+            </item>
+        </layer-list>
+    </item>
+    
+    <item>
+        <bitmap 
+            android:src="@drawable/account_mic_add"
+   			android:gravity="right"
+            />
+    </item>
+     
+</selector> 

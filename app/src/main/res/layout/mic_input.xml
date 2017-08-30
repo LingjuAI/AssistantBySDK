@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/biggest_margin"
+    android:layout_height="@dimen/biggest_margin"
+    >
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/iv_mic_default"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/mic_color"
+        android:scaleType="center"
+        android:visibility="visible"/>
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/iv_circle_record"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        android:scaleType="center"
+        android:src="@drawable/record_small"/>
+</RelativeLayout>

@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/calculator_border1"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/cd_close"
+            android:layout_width="48dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:scaleType="centerInside"
+            android:background="@drawable/calculate_num_press"
+            android:src="@drawable/c_down" />
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="#b5b5b5" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="¥"
+            android:textColor="@color/new_text_color_first"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/cd_result"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:background="@null"
+            style="@style/edit_text_style"
+            android:gravity="right|center_vertical"
+            android:hint="0.00"
+            android:paddingRight="10dp"
+            android:textColor="@color/new_text_color_first"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#c9c9c9"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/cd7"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:background="@drawable/calculate_num_press"
+            android:gravity="center"
+            android:text="7"
+            android:textColor="@color/new_text_color_first"
+            android:textSize="24sp" />
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="@color/new_main_bgcolor" />
+
+        <TextView
+            android:id="@+id/cd8"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:background="@drawable/calculate_num_press"
+            android:gravity="center"
+            android:text="8"
+            android:textColor="@color/new_text_color_first"
+            android:textSize="24sp" />
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="@color/new_main_bgcolor" />
+
+        <TextView
+            android:id="@+id/cd9"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:background="@drawable/calculate_num_press"
+            android:gravity="center"
+            android:text="9"
+            android:textColor="@color/new_text_color_first"
+            android:textSize="24sp" />
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="@color/new_main_bgcolor" />
+
+
+            <TextView
+                android:id="@+id/cd_delete"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:background="@drawable/calculate_del_bg" />
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/new_main_bgcolor" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#c9c9c9"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/cd4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:background="@drawable/calculate_num_press"
+            android:gravity="center"
+            android:text="4"
+            android:textColor="@color/new_text_color_first"
+            android:textSize="24sp" />
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="@color/new_main_bgcolor" />
+
+        <TextView
+            android:id="@+id/cd5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:background="@drawable/calculate_num_press"
+            android:gravity="center"
+            android:text="5"
+            android:textColor="@color/new_text_color_first"
+            android:textSize="24sp" />
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="@color/new_main_bgcolor" />
+
+        <TextView
+            android:id="@+id/cd6"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:background="@drawable/calculate_num_press"
+            android:gravity="center"
+            android:text="6"
+            android:textColor="@color/new_text_color_first"
+            android:textSize="24sp" />
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="@color/new_main_bgcolor" />
+
+        <TextView
+            android:id="@+id/cd_add"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:background="@drawable/calculate_add_bg"
+            android:gravity="center"
+            android:textColor="@color/new_text_color_first"
+            android:textSize="28sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/new_main_bgcolor" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal" 
+        android:background="#c9c9c9">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3.0"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.0"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/cd1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/calculate_num_press"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textColor="@color/new_text_color_first"
+                    android:textSize="24sp" />
+
+                <View
+                    android:layout_width="1px"
+                    android:layout_height="match_parent"
+                    android:background="@color/new_main_bgcolor" />
+
+                <TextView
+                    android:id="@+id/cd2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/calculate_num_press"
+                    android:gravity="center"
+                    android:text="2"
+                    android:textColor="@color/new_text_color_first"
+                    android:textSize="24sp" />
+
+                <View
+                    android:layout_width="1px"
+                    android:layout_height="match_parent"
+                    android:background="@color/new_main_bgcolor" />
+
+                <TextView
+                    android:id="@+id/cd3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/calculate_num_press"
+                    android:gravity="center"
+                    android:text="3"
+                    android:textColor="@color/new_text_color_first"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/new_main_bgcolor" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.0"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/cd0"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_span="2"
+                    android:layout_weight="2.0"
+                    android:background="@drawable/calculate_num_press"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textColor="@color/new_text_color_first"
+                    android:textSize="24sp" />
+
+                <View
+                    android:layout_width="1px"
+                    android:layout_height="match_parent"
+                    android:background="@color/new_main_bgcolor" />
+
+                <TextView
+                    android:id="@+id/cd_dot"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/calculate_num_press"
+                    android:gravity="center"
+                    android:text="."
+                    android:textColor="@color/new_text_color_first"
+                    android:textSize="24sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="@color/new_main_bgcolor" />
+
+        <TextView
+            android:id="@+id/cd_confirm"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:background="@drawable/calculate_num_press"
+            android:gravity="center"
+            android:text="确定"
+            android:textColor="@color/new_text_color_first"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+</LinearLayout>

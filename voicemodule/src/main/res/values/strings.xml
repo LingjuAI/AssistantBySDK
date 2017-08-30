@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">LingjuSpeechService</string>
+    <string name="app_id">你的讯飞app_id</string>
+    <!-- 提示音文件 -->
+    <string name="audio_start">audio/tone_start_ogg.jet</string>
+    <string name="audio_wait">audio/tone_wait_ogg.jet</string>
+    <string name="audio_wait_response">audio/wait_response.mp3</string>
+    <string name="audio_error">audio/tone_error_ogg.jet</string>
+    <string name="audio_result">audio/tone_result_ogg.jet</string>
+    <string name="audio_shaking">audio/shakeing.mp3</string>
+</resources>

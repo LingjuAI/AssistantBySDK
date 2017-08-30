@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/list_item"
+              android:layout_width="match_parent"
+              android:layout_height="@dimen/biggest_margin"
+              android:background="@drawable/selector_view_bg"
+              android:clickable="true"
+              android:gravity="center_vertical"
+              android:orientation="horizontal"
+    >
+
+    <android.support.v7.widget.AppCompatRadioButton
+        android:id="@+id/list_favorite_bt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:clickable="false"
+        android:focusable="false"/>
+
+    <TextView
+        android:id="@+id/list_speaker_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.0"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="不是罪哭吧不是罪哭吧不是罪哭吧不是罪哭吧不是罪"
+        android:textColor="@color/new_text_color_first"
+        android:textSize="@dimen/regular"
+        />
+
+    <!--<Button
+        android:id="@+id/list_favorite_bt"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_gravity="center_vertical"
+        android:background="?attr/check_list_item"
+        android:visibility="gone"
+        />-->
+</LinearLayout>

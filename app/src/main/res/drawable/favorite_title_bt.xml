@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<level-list xmlns:android="http://schemas.android.com/apk/res/android" >
+      <item android:maxLevel="0">
+        <bitmap android:src="@drawable/white_title_love" android:gravity="left|center_vertical"/>
+    </item>
+    <item android:maxLevel="1">
+        <bitmap android:src="@drawable/green_title_love" android:gravity="left|center_vertical"/>
+    </item>
+</level-list>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<level-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:maxLevel="0">
+        <selector>
+            <item android:state_pressed="true">
+                <layer-list>
+                    <item>
+                        <shape android:shape="rectangle">
+                            <solid android:color="@color/base_blue_qtr_transparent"></solid>
+                        </shape>
+                    </item>
+                    <item >
+                        <bitmap android:src="@drawable/bnav_poi_detail_ic_not_faverities" android:gravity="center_horizontal|top"/>
+                    </item>
+                </layer-list>
+            </item>
+            <item>
+                <layer-list>
+                    <item>
+                        <shape android:shape="rectangle">
+                            <solid android:color="#00000000"></solid>
+                        </shape>
+                    </item>
+                    <item >
+                        <bitmap android:src="@drawable/bnav_poi_detail_ic_not_faverities" android:gravity="center_horizontal|top"/>
+                    </item>
+                </layer-list>
+            </item>
+        </selector>
+    </item>
+    <item android:maxLevel="1">
+        <selector>
+            <item android:state_pressed="true">
+                <layer-list>
+                    <item>
+                        <shape android:shape="rectangle">
+                            <solid android:color="@color/base_blue_qtr_transparent"></solid>
+                        </shape>
+                    </item>
+                    <item >
+                        <bitmap android:src="@drawable/bnav_poi_detail_ic_faverities" android:gravity="center_horizontal|top"/>
+                    </item>
+                </layer-list>
+            </item>
+            <item>
+                <layer-list>
+                    <item>
+                        <shape android:shape="rectangle">
+                            <solid android:color="#00000000"></solid>
+                        </shape>
+                    </item>
+                    <item >
+                        <bitmap android:src="@drawable/bnav_poi_detail_ic_faverities" android:gravity="center_horizontal|top"/>
+                    </item>
+                </layer-list>
+            </item>
+        </selector>
+    </item>
+
+</level-list>

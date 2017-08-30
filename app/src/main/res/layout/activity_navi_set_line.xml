@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <View
+        android:id="@+id/status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:background="@color/bar_color"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:id="@+id/ansl_map_box"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <LinearLayout
+                android:id="@+id/ansl_top_bar_box"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:elevation="@dimen/mini_margin"
+                android:background="@color/base_blue"
+                android:orientation="horizontal"
+                >
+
+                <ImageButton
+                    android:id="@+id/ansl_back_bt"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/selector_white_circle_view_bg"
+                    android:src="@drawable/c_back_down"/>
+
+                <TextView
+                    android:id="@+id/ansl_count_down_text2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.0"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="10秒后开始导航"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/big"
+                    />
+
+                <TextView
+                    android:id="@+id/ansl_setting_bt"
+                    android:layout_width="56dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/selector_white_circle_view_bg"
+                    android:gravity="center"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="偏好"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/medium"
+                    />
+            </LinearLayout>
+
+            <!-- 左边图标部分 -->
+            <RelativeLayout
+                android:id="@+id/ansl_left_tool_box"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|bottom"
+                android:layout_marginBottom="250dp"
+                android:layout_marginLeft="20dp">
+
+                <ImageButton
+                    android:id="@+id/ansl_map_park_bt"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="#f9f9f9"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/route_detail_park"
+                    />
+
+                <ImageButton
+                    android:id="@+id/ansl_map_locate_bt"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_below="@id/ansl_map_park_bt"
+                    android:layout_marginTop="10dp"
+                    android:background="#f9f9f9"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/bnav_common_ic_locate_car_point"
+                    />
+
+                <TextView
+                    android:id="@+id/ansl_map_scale_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/ansl_map_locate_bt"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_toRightOf="@id/ansl_map_locate_bt"
+                    android:text="100米"
+                    android:textColor="@color/common_title_black"
+                    android:textSize="@dimen/small"
+                    />
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="3px"
+                    android:layout_alignBottom="@id/ansl_map_locate_bt"
+                    android:layout_alignLeft="@id/ansl_map_scale_text"
+                    android:layout_alignRight="@id/ansl_map_scale_text"
+                    android:background="@color/common_title_black"
+                    />
+            </RelativeLayout>
+            <!-- 右边图标部分 -->
+            <RelativeLayout
+                android:id="@+id/ansl_right_tool_box"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|bottom"
+                android:layout_marginBottom="250dp"
+                android:layout_marginRight="20dp"
+                >
+
+                <ImageButton
+                    android:id="@+id/ansl_map_its_bt"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentTop="true"
+                    android:background="#f9f9f9"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/bnav_common_ic_map_its_off"
+                    />
+
+                <ImageButton
+                    android:id="@+id/ansl_zoom_in_bt"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/ansl_map_its_bt"
+                    android:layout_marginTop="10dp"
+                    android:background="#f9f9f9"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/bnav_common_ic_zoom_in_normal"
+                    />
+
+                <ImageButton
+                    android:id="@+id/ansl_zoom_out_bt"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/ansl_zoom_in_bt"
+                    android:background="#f9f9f9"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/bnav_common_ic_zoom_out_normal"
+                    />
+            </RelativeLayout>
+        </FrameLayout>
+
+        <!-- 导航路线选择、控制部分 -->
+        <RelativeLayout
+            android:id="@+id/ansl_route_line_box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@drawable/bnav_locker_pull_up"
+            android:orientation="vertical"
+            android:visibility="gone"
+            >
+
+            <Button
+                android:id="@+id/ansl_lock_bt"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:background="#00000000"
+                />
+            <!-- 路线详情部分 -->
+            <LinearLayout
+                android:id="@+id/ansl_route_detail_box"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ansl_lock_bt"
+                android:layout_marginBottom="32dp"
+                android:layout_marginLeft="@dimen/normal_margin"
+                android:layout_marginRight="@dimen/normal_margin"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/ansl_route_mode1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:clickable="true"
+                    android:orientation="vertical"
+                    >
+
+                    <LinearLayout
+                        android:id="@+id/route_mode1"
+                        android:layout_width="96dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/ansl_route_mode1_distance"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:layout_marginTop="8dp"
+                            android:gravity="center"
+                            android:singleLine="true"
+                            android:text="15公里"
+                            android:textColor="@color/new_text_color_first"
+                            android:textSize="@dimen/regular"
+                            android:textStyle="bold"
+                            />
+
+                        <TextView
+                            android:id="@+id/ansl_route_mode1_time"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:singleLine="true"
+                            android:text="21分钟"
+                            android:textColor="@color/new_text_color_second"
+                            android:textSize="@dimen/md_small"
+                            />
+
+                        <TextView
+                            android:id="@+id/ansl_route_mode1_toll"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:layout_marginTop="8dp"
+                            android:gravity="center"
+                            android:singleLine="true"
+                            android:text="收费0元"
+                            android:textColor="@color/new_text_color_second"
+                            android:textSize="@dimen/md_small"
+                            />
+                    </LinearLayout>
+                </LinearLayout>
+                <!--<View-->
+                <!--android:layout_width="1px"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:background="@color/new_line_border"/>-->
+                <LinearLayout
+                    android:id="@+id/ansl_route_mode2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:clickable="true"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/route_mode2"
+                        android:layout_width="96dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/ansl_route_mode2_distance"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:layout_marginTop="8dp"
+                            android:gravity="center"
+                            android:singleLine="true"
+                            android:text="15公里"
+                            android:textColor="@color/new_text_color_first"
+                            android:textSize="@dimen/regular"
+                            android:textStyle="bold"
+                            />
+
+                        <TextView
+                            android:id="@+id/ansl_route_mode2_time"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:singleLine="true"
+                            android:text="21分钟"
+                            android:textColor="@color/new_text_color_second"
+                            android:textSize="@dimen/md_small"
+                            />
+
+                        <TextView
+                            android:id="@+id/ansl_route_mode2_toll"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:layout_marginTop="8dp"
+                            android:gravity="center"
+                            android:singleLine="true"
+                            android:text="收费0元"
+                            android:textColor="@color/new_text_color_second"
+                            android:textSize="@dimen/md_small"
+                            />
+                    </LinearLayout>
+                </LinearLayout>
+                <!--<View-->
+                <!--android:layout_width="1px"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:background="@color/new_line_border"/>-->
+                <LinearLayout
+                    android:id="@+id/ansl_route_mode3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:clickable="true"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/route_mode3"
+                        android:layout_width="96dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/ansl_route_mode3_distance"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:layout_marginTop="8dp"
+                            android:gravity="center"
+                            android:singleLine="true"
+                            android:text="15公里"
+                            android:textColor="@color/new_text_color_first"
+                            android:textSize="@dimen/regular"
+                            android:textStyle="bold"
+                            />
+
+                        <TextView
+                            android:id="@+id/ansl_route_mode3_time"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:singleLine="true"
+                            android:text="21分钟"
+                            android:textColor="@color/new_text_color_second"
+                            android:textSize="@dimen/md_small"
+                            />
+
+                        <TextView
+                            android:id="@+id/ansl_route_mode3_toll"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:layout_marginTop="8dp"
+                            android:gravity="center"
+                            android:singleLine="true"
+                            android:text="收费0元"
+                            android:textColor="@color/new_text_color_second"
+                            android:textSize="@dimen/md_small"
+                            />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:id="@+id/ansl_route_detail_bottom_line"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_below="@id/ansl_route_detail_box"
+                android:background="@color/new_line_black_border"
+                />
+
+            <LinearLayout
+                android:id="@+id/ansl_route_detail_bottom_box"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ansl_route_detail_bottom_line"
+                android:orientation="vertical"
+                >
+                <!-- 导航路线指示规划部分 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1.0"
+                    android:orientation="vertical"
+                    >
+
+                    <LinearLayout
+                        android:id="@+id/ansl_route_detail_list_box"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        >
+
+                        <TextView
+                            android:id="@+id/ansl_route_detail_light_toll_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="10dp"
+                            android:paddingTop="10dp"
+                            android:text="红绿灯10个，油费10元"
+                            android:textColor="@color/new_text_color_second"
+                            android:textSize="@dimen/big"
+                            />
+
+                        <TextView
+                            android:id="@+id/ansl_route_detail_way_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="10dp"
+                            android:paddingLeft="10dp"
+                            android:paddingTop="10dp"
+                            android:text="途径：科韵路，大学城内环西路"
+                            android:textColor="@color/new_text_color_second"
+                            android:textSize="@dimen/big"
+                            />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1px"
+                            android:background="@color/new_line_black_border"/>
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/ansl_route_detail_list"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1.0"
+                            />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="8dp"
+                            >
+
+                            <TextView
+                                android:id="@+id/ansl_route_start_in_virtaul_bt"
+                                android:layout_width="0dp"
+                                android:layout_height="48dp"
+                                android:layout_marginRight="8dp"
+                                android:layout_weight="1.0"
+                                android:background="@drawable/refuse_edittext_bor"
+                                android:gravity="center"
+                                android:text="模拟导航"
+                                android:textColor="@color/new_text_color_first"
+                                android:textSize="@dimen/big"
+                                />
+
+                            <TextView
+                                android:id="@+id/ansl_route_start_in_bt"
+                                android:layout_width="0dp"
+                                android:layout_height="48dp"
+                                android:layout_marginLeft="8dp"
+                                android:layout_weight="1.0"
+                                android:background="@drawable/account_btn"
+                                android:gravity="center"
+                                android:text="开始导航"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/big"
+                                />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ansl_out_bottom_box"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:orientation="horizontal"
+                    >
+
+                    <TextView
+                        android:id="@+id/ansl_count_down_text"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/text_btn_white_to_green"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:text="模拟导航"
+                        android:textColor="@drawable/text_color_green_to_white"
+                        android:textSize="@dimen/regular"
+                        android:textStyle="bold"
+                        />
+
+                    <TextView
+                        android:id="@+id/ansl_start_out_bt"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/text_btn_white_to_green"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:text="开始导航"
+                        android:textColor="@drawable/text_color_green_to_white"
+                        android:textSize="@dimen/regular"
+                        android:textStyle="bold"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <com.lingju.assistant.view.VoiceComponent
+            android:id="@+id/ansl_voice_bt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:clickable="true"
+            android:paddingBottom="@dimen/base_margin_padding"
+            android:visibility="gone"
+            />
+    </FrameLayout>
+</LinearLayout>

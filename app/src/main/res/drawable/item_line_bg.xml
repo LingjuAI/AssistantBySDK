@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<level-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:maxLevel="0">
+        <selector>
+            <item android:state_pressed="true">
+                <layer-list>
+                    <item android:left="-2px" android:top="-2px" android:right="-2px" android:bottom="1px">
+                        <shape android:shape="rectangle">
+                            <solid android:color="@color/new_main_bgcolor"/>
+                            <stroke android:color="@color/new_line_black_border" android:width="1px"/>
+                        </shape>
+                    </item>
+                    <item android:right="10dp">
+                        <bitmap
+                            android:src="@drawable/ic_arrow_up"
+                            android:gravity="right|center"
+                            />
+                    </item>
+                </layer-list>
+            </item>
+            <item>
+                <layer-list>
+                    <item android:left="-2px" android:top="-2px" android:right="-2px" android:bottom="1px">
+                        <shape android:shape="rectangle">
+                            <solid android:color="@android:color/transparent"/>
+                            <stroke android:color="@color/new_line_black_border" android:width="1px"/>
+                        </shape>
+                    </item>
+                    <item android:right="10dp">
+                        <bitmap
+                            android:src="@drawable/ic_arrow_up"
+                            android:gravity="right|center"
+                            />
+                    </item>
+                </layer-list>
+            </item>
+        </selector>
+    </item>
+    <item android:maxLevel="1">
+        <selector>
+            <item android:state_pressed="true">
+                <layer-list>
+                    <item>
+                        <shape android:shape="rectangle">
+                            <solid android:color="@color/new_main_bgcolor"/>
+                        </shape>
+                    </item>
+                    <item  android:right="10dp">
+                        <bitmap
+                            android:src="@drawable/ic_arrow_down"
+                            android:gravity="right|center"
+                            />
+                    </item>
+                </layer-list>
+            </item>
+            <item>
+                <layer-list>
+                    <item>
+                        <shape android:shape="rectangle">
+                            <solid android:color="@android:color/transparent"/>
+                        </shape>
+                    </item>
+                    <item  android:right="10dp">
+                        <bitmap
+                            android:src="@drawable/ic_arrow_down"
+                            android:gravity="right|center"
+                            />
+                    </item>
+                </layer-list>
+            </item>
+        </selector>
+    </item>
+</level-list>

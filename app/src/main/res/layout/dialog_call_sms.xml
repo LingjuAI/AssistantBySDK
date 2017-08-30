@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:lingju="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <!-- 有多个选择，确定联系人部分 -->
+    <com.lingju.assistant.view.LingjuCheckListBox
+        android:id="@+id/main_task_selector"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        lingju:item_title="选择联系人"/>
+
+    <!-- 电话拨号部分 -->
+    <LinearLayout
+        android:id="@+id/main_confirm_call_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/common_dialog_bg"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/main_confirm_call_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1.0"
+                android:gravity="center_vertical|left"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="打电话"
+                android:textColor="@color/green_style"
+                android:textSize="@dimen/bigger"/>
+
+            <ImageView
+                android:id="@+id/main_confirm_call_close"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/card_close_btn"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/green_style"/>
+
+        <TextView
+            android:id="@+id/main_confirm_call_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="6dp"
+            android:text="张伟"
+            android:textColor="@color/new_text_color_first"
+            android:textSize="60sp"/>
+
+        <TextView
+            android:id="@+id/main_confirm_call_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:paddingBottom="8dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:singleLine="true"
+            android:text="13800138000"
+            android:textColor="@color/new_text_color_first"
+            android:textSize="30sp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:background="#b4b4b4"/>
+
+        <TextView
+            android:id="@+id/main_confirm_call_job"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="0dp"
+            android:paddingLeft="16dp"
+            android:paddingTop="8dp"
+            android:text="职位：总经理"
+            android:textColor="@color/card_second_color"
+            android:textSize="24sp"/>
+
+        <TextView
+            android:id="@+id/main_confirm_call_company"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="0dp"
+            android:paddingLeft="16dp"
+            android:text="公司：中国移动公司"
+            android:textColor="@color/card_second_color"
+            android:textSize="24sp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="40dp"/>
+
+        <SeekBar
+            android:id="@+id/main_confirm_call_seekbar"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/loading_normal"
+            android:max="100"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:progress="0"
+            android:progressDrawable="@drawable/seekbar_style"
+            android:thumb="@null"
+            android:thumbOffset="0dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/common_dialog_bottom_bg"
+            android:orientation="horizontal"
+            android:padding="2dp">
+
+            <TextView
+                android:id="@+id/main_confirm_call_true"
+                android:layout_width="0dp"
+                android:layout_height="64dp"
+                android:layout_margin="2dp"
+                android:layout_weight="1.0"
+                android:background="@drawable/new_common_correct_bg"
+                android:gravity="center"
+                android:text="确认呼叫"
+                android:textColor="@color/white"
+                android:textSize="@dimen/medium"/>
+
+            <TextView
+                android:id="@+id/main_confirm_call_false"
+                android:layout_width="0dp"
+                android:layout_height="64dp"
+                android:layout_margin="2dp"
+                android:layout_weight="1.0"
+                android:background="@drawable/new_common_cancel_bg"
+                android:gravity="center"
+                android:text="取消呼叫"
+                android:textColor="@color/white"
+                android:textSize="@dimen/medium"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!--短信发送部分-->
+    <LinearLayout
+        android:id="@+id/main_confirm_sms_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/common_dialog_bg"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/main_confirm_sms_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1.0"
+                android:gravity="center_vertical|left"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="发短信"
+                android:textColor="@color/green_style"
+                android:textSize="@dimen/bigger"/>
+
+            <ImageView
+                android:id="@+id/main_confirm_sms_close"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/card_close_btn"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/green_style"/>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:shrinkColumns="1">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|left"
+                    android:paddingBottom="@dimen/activity_horizontal_margin"
+                    android:paddingLeft="@dimen/activity_horizontal_margin"
+                    android:text="发送至:"
+                    android:textColor="@color/card_second_color"
+                    android:textSize="@dimen/medium"/>
+
+                <TextView
+                    android:id="@+id/main_confirm_sms_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical|left"
+                    android:paddingBottom="@dimen/activity_horizontal_margin"
+                    android:paddingLeft="@dimen/activity_horizontal_margin"
+                    android:paddingRight="@dimen/activity_horizontal_margin"
+                    android:paddingTop="18dp"
+                    android:singleLine="true"
+                    android:text="张伟"
+                    android:textColor="@color/new_text_color_first"
+                    android:textSize="@dimen/bigger"/>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:gravity="center_vertical|right"
+                    android:paddingBottom="@dimen/activity_horizontal_margin"
+                    android:paddingTop="6dp"
+                    android:text="内容:"
+                    android:textColor="@color/card_second_color"
+                    android:textSize="@dimen/medium"/>
+
+                <TextView
+                    android:id="@+id/main_confirm_sms_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:ellipsize="end"
+                    android:gravity="top|left"
+                    android:lines="4"
+                    android:paddingBottom="@dimen/activity_horizontal_margin"
+                    android:paddingLeft="@dimen/activity_horizontal_margin"
+                    android:paddingRight="@dimen/activity_horizontal_margin"
+                    android:text="开头信息信息信息开头信息信息信息开头信息信息信息开头信息信息信息"
+                    android:textColor="@color/new_text_color_first"
+                    android:textSize="@dimen/bigger"/>
+            </TableRow>
+        </TableLayout>
+
+        <SeekBar
+            android:id="@+id/main_confirm_sms_seekbar"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/loading_normal"
+            android:max="100"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:progress="0"
+            android:progressDrawable="@drawable/seekbar_style"
+            android:thumb="@null"
+            android:thumbOffset="0dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/common_dialog_bottom_bg"
+            android:orientation="horizontal"
+            android:padding="2dp"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/main_confirm_sms_1"
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:layout_margin="2dp"
+                android:layout_weight="1.0"
+                android:background="@drawable/new_common_cancel_bg"
+                android:focusable="true"
+                android:gravity="center"
+                android:text="取消"
+                android:textColor="@color/white"
+                android:textSize="@dimen/medium"/>
+
+            <TextView
+                android:id="@+id/main_confirm_sms_2"
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:layout_margin="2dp"
+                android:layout_weight="1.0"
+                android:background="@drawable/card_resume_bg"
+                android:focusable="true"
+                android:gravity="center"
+                android:text="重新输入"
+                android:textColor="@color/white"
+                android:textSize="@dimen/medium"/>
+
+            <TextView
+                android:id="@+id/main_confirm_sms_3"
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:layout_margin="2dp"
+                android:layout_weight="1.0"
+                android:background="@drawable/new_common_correct_bg"
+                android:focusable="true"
+                android:gravity="center"
+                android:text="发送"
+                android:textColor="@color/white"
+                android:textSize="@dimen/medium"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

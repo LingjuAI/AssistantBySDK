@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical"
+    android:background="#b233a868"
+    android:orientation="horizontal"
+    android:gravity="center_vertical" >
+
+    <RelativeLayout
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        >
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:background="@drawable/ic_launcher" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.0"
+        android:orientation="vertical"
+        android:layout_gravity="center_vertical"
+         >
+		<TextView 
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:text="@string/app_name"
+		    android:textColor="@color/white"
+		    android:textSize="@dimen/md_big"
+		    />
+		<TextView 
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:text="唤醒功能会增加耗电"
+		    android:textColor="@color/white"
+		    android:textSize="@dimen/md_small"
+		    />
+    </LinearLayout>
+	<!--<ImageView
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:background="@drawable/noti_wakeup_on"
+	    android:layout_gravity="center_vertical"
+	    android:layout_marginRight="16dp"
+	    />-->
+</LinearLayout>

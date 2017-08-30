@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#f9f9f9"
+    android:orientation="vertical" >
+
+    <View
+        android:layout_width="1px"
+        android:layout_height="8dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/new_line_black_border" />
+
+    <TextView
+        android:id="@+id/atimeline_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="2dp"
+        android:text="02.27"
+        android:textColor="@color/new_text_color_second"
+        android:textSize="12sp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/account_time_circle" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin" >
+
+        <LinearLayout
+            android:id="@+id/atimeline_left_box"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="right"
+            android:orientation="vertical"
+            android:paddingBottom="8dp"
+            android:paddingRight="20dp" >
+
+            <!--
+           <com.lingju.assistant.AccountingTextView 
+	           android:layout_width="match_parent"
+	           android:layout_height="wrap_content"
+	           lingju:project="下餐馆"
+	           lingju:amount="300"
+	           lingju:alignLeft="true"
+	           />
+	       <com.lingju.assistant.AccountingTextView 
+	           android:layout_width="match_parent"
+	           android:layout_height="wrap_content"
+	           lingju:project="服饰"
+	           lingju:amount="300"
+	           lingju:alignLeft="true"
+	           />
+	        <com.lingju.assistant.AccountingTextView 
+	           android:layout_width="match_parent"
+	           android:layout_height="wrap_content"
+	           lingju:project="房租"
+	           lingju:amount="1000"
+	           lingju:alignLeft="true"
+	           />
+            -->
+        </LinearLayout>
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="@color/new_line_black_border" />
+
+        <LinearLayout
+            android:id="@+id/atimeline_right_box"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="left"
+            android:orientation="vertical"
+            android:paddingBottom="8dp"
+            android:paddingLeft="20dp" >
+
+            <!--
+                     <com.lingju.assistant.AccountingTextView 
+		           android:layout_width="match_parent"
+		           android:layout_height="wrap_content"
+		           lingju:project="劳务费"
+		           lingju:amount="10000"
+		           lingju:alignLeft="false"
+		           />
+            -->
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="@dimen/dialog_normal_width"
+              android:layout_height="wrap_content"
+              android:background="@color/white"
+              android:orientation="vertical"
+              android:paddingLeft="@dimen/large_margin"
+              android:paddingRight="@dimen/normal_margin"
+              android:paddingTop="@dimen/large_margin">
+
+    <TextView
+        android:id="@+id/cd_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/common_btn_mar_top"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="支出"
+        android:textColor="@color/new_text_color_first"
+        android:textSize="@dimen/md_big"
+        android:textStyle="bold"/>
+
+    <RadioGroup
+        android:id="@+id/rg_choice"
+        android:layout_width="match_parent"
+        android:visibility="visible"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:id="@+id/choice_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:orientation="vertical"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/base_margin_padding"
+        android:gravity="end">
+
+        <TextView
+            android:id="@+id/cd_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_marginRight="@dimen/normal_margin"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/selector_view_bg"
+            android:gravity="center"
+            android:minWidth="@dimen/setting_title_margin"
+            android:text="取消"
+            android:textColor="@color/base_blue"
+            android:textSize="@dimen/regular"/>
+
+        <TextView
+            android:id="@+id/cd_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/selector_view_bg"
+            android:gravity="center"
+            android:minWidth="@dimen/setting_title_margin"
+            android:text="确定"
+            android:textColor="@color/base_blue"
+            android:textSize="@dimen/regular"/>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <View
+        android:id="@+id/status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:elevation="@dimen/mini_margin"
+        android:background="@color/bar_color"/>
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tb_ting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/base_blue"
+        android:elevation="@dimen/mini_margin"
+        android:minHeight="?attr/actionBarSize"
+        app:title="有声内容"
+        app:titleMarginStart="@dimen/normal_margin"
+        app:titleTextAppearance="@style/expanded_text_style"
+        />
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tab_ting_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/base_blue"
+        android:elevation="@dimen/mini_margin"
+        app:tabIndicatorColor="@color/second_base_color"
+        app:tabIndicatorHeight="3dp"
+        app:tabPaddingBottom="@dimen/mini_margin"
+        app:tabSelectedTextColor="@color/white"
+        app:tabTextColor="#8AFFFFFF"
+        />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager_ting_audio"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.0"
+        />
+    <com.lingju.assistant.view.TingPlayerComponent
+        android:id="@+id/ting_player_box"
+        android:layout_width="wrap_content"
+        android:elevation="@dimen/mini_margin"
+        android:background="@color/white"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

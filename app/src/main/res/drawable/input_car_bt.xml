@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<level-list  xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item  android:maxLevel="0">
+        <bitmap android:src="@drawable/setting_press" android:gravity="center"/>
+    </item>
+    <item android:maxLevel="1">
+        <bitmap android:src="@drawable/nav_red_btn" android:gravity="center"/>
+    </item>
+</level-list>
+

@@ -1,0 +1,17 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">  
+    
+    <item android:state_pressed="true">
+        <bitmap 
+            android:src="@drawable/edit"
+   			android:gravity="center_vertical"
+            />
+    </item>
+    
+    <item>
+        <bitmap 
+            android:src="@drawable/edit"
+   			android:gravity="center_vertical"
+            />
+    </item>
+     
+</selector> 

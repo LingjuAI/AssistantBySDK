@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<level-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:maxLevel="0">
+        <bitmap
+            android:gravity="center"
+            android:src="@drawable/done"/>
+    </item>
+    <item android:maxLevel="1">
+        <bitmap
+            android:gravity="center"
+            android:src="@drawable/fail"/>
+    </item>
+</level-list>

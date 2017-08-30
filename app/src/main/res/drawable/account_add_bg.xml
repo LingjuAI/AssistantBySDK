@@ -1,0 +1,17 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">  
+    
+    <item android:state_pressed="true">
+        <bitmap 
+            android:src="@drawable/account_add_press"
+   			android:gravity="center_vertical"
+            />
+    </item>
+    
+    <item>
+        <bitmap 
+            android:src="@drawable/account_add"
+   			android:gravity="center_vertical"
+            />
+    </item>
+     
+</selector> 

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#f9f9f9"
+              android:orientation="vertical"
+    >
+
+    <View
+        android:id="@+id/status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:background="@color/bar_color"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/base_blue" >
+
+        <ImageButton
+            android:id="@+id/aiee_back"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/selector_white_circle_view_bg"
+            android:src="@drawable/c_back_down" />
+
+        <TextView
+            android:id="@+id/aiee_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/title_margin"
+            android:textStyle="bold"
+            android:text="支出项目类别"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
+    </RelativeLayout>
+    
+      <ListView 
+	      android:id="@+id/aiee_list"
+	      android:layout_width="match_parent"
+          android:layout_height="0dp"
+          android:layout_weight="1.0"
+	      android:cacheColorHint="@android:color/transparent"
+	      android:scrollbars="none"
+	      android:background="@null"
+	      />
+      
+      <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/new_line_black_border" />
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_gravity="center_horizontal"
+        android:background="#e6e6e6"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/aiee_finish"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_weight="1.0"
+            android:background="@drawable/selector_view_bg"
+            android:gravity="center"
+            android:text="完成"
+            android:textColor="@color/new_text_color_first"
+            android:textSize="@dimen/small" />
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="36dp"
+            android:layout_gravity="center"
+            android:background="@color/new_line_black_border" />
+
+        <TextView
+            android:id="@+id/aiee_add"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_weight="1.0"
+            android:background="@drawable/selector_view_bg"
+            android:gravity="center"
+            android:text="添加"
+            android:textColor="@color/new_text_color_first"
+            android:textSize="@dimen/small" />
+    </LinearLayout>
+</LinearLayout>

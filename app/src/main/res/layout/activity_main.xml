@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/dl_slidingmenu"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+
+    >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:elevation="@dimen/base_margin_padding">
+
+                <ImageButton
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:background="@drawable/selector_white_circle_view_bg"
+                    android:src="@drawable/menu"/>
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/tb_lingju"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/base_blue"
+                    android:fitsSystemWindows="true"
+                    android:minHeight="?attr/actionBarSize"
+                    app:title="@string/startup_app_name"
+                    app:titleMarginStart="@dimen/normal_margin"
+                    app:titleTextAppearance="@style/collapsed_text_style"
+                    />
+
+                <com.lingju.assistant.view.TingPlayerImageView
+                    android:id="@+id/tiv_track"
+                    android:layout_width="@dimen/biggest_margin"
+                    android:layout_height="@dimen/biggest_margin"
+                    android:layout_centerVertical="true"
+                    android:visibility="gone"
+                    android:layout_gravity="center_vertical|right"
+                    android:layout_marginRight="@dimen/normal_margin"
+                    android:src="@drawable/ic_launcher"/>
+                <!--音乐播放栏-->
+                <FrameLayout
+                    android:id="@+id/fl_music_menu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/new_main_bgcolor"
+                    />
+            </FrameLayout>
+            <!--内容主视图-->
+            <include layout="@layout/main_content"/>
+        </LinearLayout>
+
+        <!--新手引导页-->
+        <FrameLayout
+            android:id="@+id/fl_guide"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"/>
+    </FrameLayout>
+    <!--侧滑栏视图-->
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nv_left_menu"
+        android:layout_width="304dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@color/sliding_menu_bg"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/header_user"
+        app:itemTextAppearance="@style/navigation_text_style"
+        app:menu="@menu/sliding_menu"
+        />
+
+</android.support.v4.widget.DrawerLayout>

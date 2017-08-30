@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:titlebar="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#0d33a868"
+              android:gravity="center_horizontal"
+              android:orientation="vertical"
+              android:weightSum="10">
+
+    <com.lingju.assistant.view.ActivityTitleBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/base_blue"
+        android:elevation="4dp"
+        titlebar:bar_title="关于我们"/>
+
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="@dimen/dialog_margin"
+        android:layout_marginLeft="@dimen/dialog_margin"
+        android:layout_marginRight="@dimen/dialog_margin"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/company_logo"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="灵 聚 科 技"
+        android:textColor="@color/account_text"
+        android:textSize="@dimen/large"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="L i n g j u A I . c o m"
+        android:textColor="@color/account_text"
+        android:textSize="@dimen/medium"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dialog_padding"
+        android:text="@string/intro_text"
+        android:textColor="@color/card_second_color"
+        android:textSize="@dimen/smaller"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:elevation="2dp"
+        android:layout_marginTop="@dimen/normal_margin"
+        android:background="@color/white">
+    <RelativeLayout
+        android:id="@+id/rl_grade"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/selector_view_bg"
+        android:clickable="true"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dialog_padding"
+            android:text="去评分"
+            android:textColor="@color/account_text"
+            android:textSize="@dimen/small"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:paddingRight="@dimen/dialog_padding"
+            android:src="@drawable/r"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/new_line_black_border"/>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rl_feedback"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:elevation="2dp"
+        android:background="@drawable/selector_view_bg"
+        android:clickable="true"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dialog_padding"
+            android:text="意见反馈"
+            android:textColor="@color/account_text"
+            android:textSize="@dimen/small"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:paddingRight="@dimen/dialog_padding"
+            android:src="@drawable/r"/>
+
+        <!--<View-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="1px"-->
+            <!--android:layout_alignParentBottom="true"-->
+            <!--android:background="@color/new_line_black_border"/>-->
+    </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
+        android:layout_marginTop="@dimen/common_btn_mar_top"
+        android:background="@color/white"
+        android:orientation="vertical">
+    <RelativeLayout
+        android:id="@+id/rl_about"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/selector_view_bg"
+        android:clickable="true">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dialog_padding"
+            android:text="关于灵聚"
+            android:textColor="@color/account_text"
+            android:textSize="@dimen/small"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:paddingRight="@dimen/dialog_padding"
+            android:src="@drawable/r"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/new_line_black_border"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_connect"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:elevation="2dp"
+        android:background="@drawable/selector_view_bg"
+        android:clickable="true"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dialog_padding"
+            android:text="联系我们"
+            android:textColor="@color/account_text"
+            android:textSize="@dimen/small"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:paddingRight="@dimen/dialog_padding"
+            android:src="@drawable/r"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/new_line_black_border"/>
+    </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

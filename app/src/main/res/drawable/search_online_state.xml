@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<level-list  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:maxLevel="0">
+        <bitmap android:src="@drawable/wallet_base_refresh_loading_small_img" android:gravity="center"/>
+    </item>
+    <item android:maxLevel="1">
+        <selector>
+            <item android:state_pressed="true">
+                <bitmap android:src="@drawable/cancel_search_black"/>
+            </item>
+            <item>
+                <bitmap android:src="@drawable/cancel_search_black"  android:alpha="0.54"/>
+            </item>
+        </selector>
+    </item>
+</level-list>

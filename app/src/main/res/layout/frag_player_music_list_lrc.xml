@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <TextView 
+        android:id="@+id/player_list_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="播放列表"
+        android:textSize="@dimen/small"
+        android:textColor="@color/base_blue"
+        android:gravity="center_horizontal"
+        />
+	<FrameLayout 
+        android:layout_width="match_parent"
+	    android:layout_height="0dp"
+	    android:layout_weight="1.0"
+        >
+		<TextView
+			android:id="@+id/player_list_tips"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
+			android:padding="@dimen/activity_horizontal_margin"
+			android:paddingRight="@dimen/activity_horizontal_margin"
+			android:text="暂无列表"
+			android:textSize="16sp"
+			android:textColor="@color/side_text_bg_green_light"
+			android:gravity="center_horizontal"
+			/>
+        <LinearLayout 
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+		    <RelativeLayout
+		        android:layout_width="match_parent"
+		        android:layout_height="48dp"
+		        android:layout_marginTop="16dp"
+		        android:background="@drawable/main_music_list_bor"
+		         >
+		
+		        <ImageButton
+		            android:id="@+id/player_list_lrc_play_mode"
+		            android:layout_width="48dp"
+		            android:layout_height="match_parent"
+		            android:layout_alignParentLeft="true"
+		            android:layout_centerVertical="true"
+					android:background="@drawable/selector_white_circle_view_bg"
+					android:layout_marginLeft="5dp"
+		            android:src="@drawable/play_mode_bt" />
+		
+		        <TextView
+		            android:id="@+id/player_list_lrc_duration"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_centerInParent="true"
+		            android:text="3:38"
+		            android:textColor="@color/new_main_bgcolor"
+		            android:textSize="12sp" />
+		
+		        <ImageButton
+		            android:id="@+id/player_list_lrc_favorite_bt"
+		            android:layout_width="48dp"
+		            android:layout_height="match_parent"
+					android:background="@drawable/selector_white_circle_view_bg"
+		            android:layout_alignParentRight="true"
+		            android:layout_centerVertical="true"
+		            android:src="@drawable/favorite_bt" />
+		    </RelativeLayout>
+		
+		    <LinearLayout 
+		        android:id="@+id/player_list_lrc_listbox"
+			    android:layout_width="match_parent"
+		        android:layout_height="0dp"
+		        android:layout_weight="1.0"
+			    android:background="#00000000"
+			    android:orientation="vertical"
+			    android:animateLayoutChanges="true"
+		         >
+				 <android.support.v7.widget.RecyclerView
+				    android:id="@+id/player_lyric_listView"
+				    android:layout_width="match_parent"
+				    android:layout_height="72dp"
+		            android:scrollbarThumbVertical="@drawable/scrollbarbar_bg"
+		      		android:scrollbarSize="2dp"
+		            android:scrollbars="none"
+					android:clickable="true"
+					 />
+		        <android.support.v7.widget.RecyclerView
+				    android:id="@+id/player_listView"
+				    android:layout_width="match_parent"
+				    android:layout_height="0dp"
+				    android:layout_weight="1.0"
+				    android:scrollbarThumbVertical="@drawable/scrollbarbar_bg"
+		      		android:scrollbarSize="2dp"
+				    android:background="@drawable/main_music_list_bor"
+				    />
+			</LinearLayout>
+    	</LinearLayout>
+	</FrameLayout>
+</LinearLayout>

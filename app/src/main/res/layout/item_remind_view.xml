@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_height">
+
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/cb_del"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/normal_margin"
+                android:layout_marginRight="-8dp"
+                android:visibility="gone"/>
+            <!-- 完成状态视图区域 -->
+            <com.lingju.assistant.view.SlidingItem
+                android:id="@+id/del_item"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:layout_toRightOf="@id/cb_del">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/normal_margin">
+
+                    <TextView
+                        android:id="@+id/remind_datetime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="2017年1月21日 11:40"
+                        android:textColor="@color/new_text_color_second"
+                        android:textSize="@dimen/md_small"/>
+
+                    <TextView
+                        android:id="@+id/remind_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="8dp"
+                        android:layout_toLeftOf="@id/remind_datetime"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="开始"
+                        android:textStyle="bold"
+                        android:textColor="@color/new_text_color_first"
+                        android:textSize="@dimen/regular"
+                        />
+                </RelativeLayout>
+
+                <TextView
+                    style="@style/del_btn_style"/>
+            </com.lingju.assistant.view.SlidingItem>
+        </RelativeLayout>
+
+        <!-- 正在编辑，展开编辑区域 -->
+        <LinearLayout
+            android:id="@+id/edit_remind_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/card_edit_bg"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/normal_margin"
+                android:paddingBottom="@dimen/normal_margin">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="@dimen/biggest_margin"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/normal_margin"
+                    android:paddingRight="@dimen/normal_margin">
+
+                    <ImageView
+                        style="@style/card_icon_style"
+                        android:src="@drawable/text"/>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/til_remind"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:hintEnabled="false"
+                        android:layout_weight="1.0"
+                        >
+
+                        <EditText
+                            android:id="@+id/edit_remind_content"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            style="@style/edit_text_style"
+                            android:background="@drawable/green_et_border"
+                            android:hint="提醒内容"
+                            android:paddingBottom="@dimen/mini_margin"
+                            android:textColor="@color/white"
+                            android:textColorHint="@color/new_main_bgcolor"
+                            android:textSize="@dimen/regular"/>
+                    </android.support.design.widget.TextInputLayout>
+
+                    <com.lingju.assistant.view.VoiceInputComponent
+                        android:id="@+id/vic_input"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom">
+
+                    </com.lingju.assistant.view.VoiceInputComponent>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/biggest_margin"
+                    android:gravity="center_vertical"
+
+                  >
+
+                    <LinearLayout
+                        android:id="@+id/edit_remind_date_box"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/selector_view_bg_white"
+                        android:paddingLeft="@dimen/normal_margin">
+                    <ImageView
+                        style="@style/card_icon_style"
+                        android:src="@drawable/clock"
+                        android:layout_gravity="center_vertical"/>
+
+                    <TextView
+                        android:id="@+id/edit_remind_date"
+                        style="@style/edit_card_field_style"
+                        android:layout_width="wrap_content"
+                        android:paddingRight="@dimen/normal_margin"
+                        android:layout_weight="0"
+                        android:text="2017年1月21日"/>
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/edit_remind_time"
+                        style="@style/edit_card_field_style"
+                        android:background="@drawable/selector_view_bg_white"
+                        android:paddingLeft="@dimen/normal_margin"
+                        android:text="11:52"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_remind_fr"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/biggest_margin"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/selector_view_bg_white"
+                    android:visibility="visible"
+                    android:paddingLeft="@dimen/normal_margin"
+                    android:paddingRight="@dimen/normal_margin">
+
+                    <ImageView
+                        style="@style/card_icon_style"
+                        android:src="@drawable/repeat"/>
+
+                    <TextView
+                        android:id="@+id/edit_remind_fr"
+                        style="@style/edit_card_field_style"
+                        android:text="仅一次"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/base_margin_padding">
+
+                <TextView
+                    android:id="@+id/tv_save"
+                    android:layout_width="64dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/selector_view_bg_white"
+                    android:clickable="true"
+                    android:gravity="center_horizontal"
+                    android:paddingBottom="8dp"
+                    android:paddingTop="8dp"
+                    android:text="保存"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/regular"/>
+
+                <TextView
+                    android:id="@+id/tv_cancel"
+                    android:layout_width="64dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:layout_toLeftOf="@id/tv_save"
+                    android:background="@drawable/selector_view_bg_white"
+                    android:gravity="center_horizontal"
+                    android:paddingBottom="8dp"
+                    android:paddingTop="8dp"
+                    android:text="取消"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/regular"/>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_state"
+            style="@style/card_state_style"
+            android:visibility="gone"/>
+    </FrameLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/new_line_black_border"
+        />
+</LinearLayout>

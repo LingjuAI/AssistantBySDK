@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+    <!--每次只能有一个item被选中-->
+    <group
+        android:id="@+id/function"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/drawer_navi"
+            android:icon="@drawable/navigation_full"
+            android:title="导航"/>
+        <item
+            android:id="@+id/drawer_alarm"
+            android:icon="@drawable/alarm_full"
+            android:title="闹钟"/>
+        <item
+            android:id="@+id/drawer_remind"
+            android:icon="@drawable/remind_full"
+            android:title="提醒"/>
+        <item
+            android:id="@+id/drawer_memo"
+            android:icon="@drawable/note_full"
+            android:title="备忘"/>
+        <item
+            android:id="@+id/drawer_account"
+            android:icon="@drawable/account_full"
+            android:title="记账"/>
+        <item
+            android:id="@+id/drawer_music"
+            android:icon="@drawable/music_full"
+            android:title="音乐"/>
+
+        <item
+            android:id="@+id/drawer_ting"
+            android:icon="@drawable/music_full"
+            android:title="听书"/>
+    </group>
+
+    <group
+        android:id="@+id/setting"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/drawer_setting"
+            android:icon="@drawable/setting"
+            android:title="设置"/>
+    </group>
+</menu>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/dialog_normal_width"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:id="@+id/dsc_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/large_margin"
+        android:layout_marginLeft="@dimen/large_margin"
+        android:layout_marginBottom="@dimen/normal_margin"
+        android:text="请选择目标所在的城市"
+        android:textColor="@color/new_text_color_first"
+        android:textSize="@dimen/md_big"
+        android:textStyle="bold"
+        />
+
+    <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1px"-->
+        <!--android:background="@color/new_line_border"-->
+        <!--/>-->
+
+    <LinearLayout
+        android:id="@+id/dsc_list_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/base_margin_padding">
+
+        <!--<TextView-->
+        <!--android:id="@+id/tv_save"-->
+        <!--android:layout_width="64dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_marginRight="8dp"-->
+        <!--android:background="@drawable/selector_view_bg"-->
+        <!--android:clickable="true"-->
+        <!--android:gravity="center_horizontal"-->
+        <!--android:paddingBottom="8dp"-->
+        <!--android:paddingTop="8dp"-->
+        <!--android:text="保存"-->
+        <!--android:textColor="@color/base_blue"-->
+        <!--android:textSize="@dimen/regular"/>-->
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="64dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="24dp"
+            android:layout_marginBottom="@dimen/normal_margin"
+            android:layout_alignParentRight="true"
+            android:clickable="true"
+            android:background="@drawable/selector_view_bg"
+            android:gravity="center_horizontal"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:text="取消"
+            android:textColor="@color/base_blue"
+            android:textSize="@dimen/regular"/>
+
+
+    </RelativeLayout>
+
+</LinearLayout>

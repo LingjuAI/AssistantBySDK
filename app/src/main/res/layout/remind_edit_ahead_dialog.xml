@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="280dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/large_margin"
+    android:paddingRight="@dimen/large_margin"
+    android:paddingTop="@dimen/large_margin">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/common_btn_mar_top"
+        android:text="提前多少天提醒你"
+        android:textColor="@color/new_text_color_first"
+        android:textSize="@dimen/md_big"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/read_fr7"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:paddingLeft="@dimen/normal_margin"
+            android:background="@drawable/selector_view_bg"
+            android:text="7天"/>
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/read_fr5"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:paddingLeft="@dimen/normal_margin"
+            android:background="@drawable/selector_view_bg"
+            android:clickable="true"
+            android:text="5天"/>
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/read_fr3"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:paddingLeft="@dimen/normal_margin"
+            android:background="@drawable/selector_view_bg"
+            android:clickable="true"
+            android:text="3天"/>
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/read_fr1"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:paddingLeft="@dimen/normal_margin"
+            android:background="@drawable/selector_view_bg"
+            android:checked="true"
+            android:clickable="true"
+            android:text="1天"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="16dp"
+        android:text="这里可以多选"
+        android:textColor="@color/new_text_color_first"
+        android:textSize="14sp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="(提前天数也可以用语音告诉我)"
+        android:textColor="@color/new_text_color_second"
+        android:textSize="14sp"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/base_margin_padding"
+        android:layout_marginTop="@dimen/mini_margin"
+        android:gravity="end">
+
+        <TextView
+            android:id="@+id/read_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/base_margin_padding"
+            android:background="@drawable/selector_view_bg"
+            android:padding="@dimen/normal_margin"
+            android:text="不提前"
+            android:textColor="@color/base_blue"
+            android:textSize="@dimen/regular"/>
+
+        <TextView
+            android:id="@+id/read_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_view_bg"
+            android:padding="@dimen/normal_margin"
+            android:text="确定"
+            android:textColor="@color/base_blue"
+            android:textSize="@dimen/regular"/>
+    </LinearLayout>
+
+</LinearLayout>

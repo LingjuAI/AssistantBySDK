@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:background="@drawable/pic_header"
+                android:orientation="vertical">
+
+    <!--<ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitStart"
+        android:src="@drawable/pic_header"/>-->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="24dp"
+        android:layout_marginLeft="16dp"
+        android:text="灵聚智能助理"
+        android:textColor="@color/white"
+        android:textSize="@dimen/bigger"
+        android:textStyle="bold"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/new_line_white_border"
+        />
+</RelativeLayout>

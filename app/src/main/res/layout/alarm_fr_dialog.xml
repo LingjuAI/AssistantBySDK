@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="280dp"
+              android:layout_height="wrap_content"
+              android:background="#f9f9f9"
+              android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp"
+        android:paddingLeft="24dp"
+        android:paddingTop="24dp"
+        android:text="闹钟周期"
+        android:textColor="@color/new_text_color_first"
+        android:textStyle="bold"
+        android:textSize="@dimen/md_big"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include layout="@layout/alarm_fr"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/afd_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/selector_view_bg"
+            android:padding="16dp"
+            android:text="取消"
+            android:textColor="@color/base_blue"
+            android:textSize="@dimen/medium"/>
+
+        <TextView
+            android:id="@+id/afd_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/selector_view_bg"
+            android:padding="16dp"
+            android:text="确定"
+            android:textColor="@color/base_blue"
+            android:textSize="@dimen/medium"/>
+    </LinearLayout>
+
+</LinearLayout>

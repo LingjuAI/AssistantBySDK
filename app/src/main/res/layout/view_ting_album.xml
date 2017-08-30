@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="96dp"
+    android:padding="@dimen/normal_margin">
+
+    <ImageView
+        android:id="@+id/iv_album"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/green_mic_erji"/>
+
+    <TextView
+        android:id="@+id/tv_album_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="@dimen/normal_margin"
+        android:layout_toRightOf="@id/iv_album"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="段子来了"
+        android:textColor="@color/new_text_color_first"
+        android:textSize="@dimen/regular"/>
+
+    <TextView
+        android:id="@+id/tv_last_track"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/tv_album_title"
+        android:layout_marginTop="25dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="更新至6月7号  段子来了羞羞版 | 云盘车来车往，你我真情共享 70607（采采）"
+        android:textColor="@color/new_text_color_second"
+        android:textSize="@dimen/md_small"/>
+
+    <TextView
+        android:id="@+id/tv_play_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/tv_album_title"
+        android:layout_alignParentBottom="true"
+        android:text="21.1万次播放"
+        android:textColor="@color/new_text_color_second"
+        android:textSize="@dimen/md_small"/>
+
+    <TextView
+        android:id="@+id/tv_track_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/normal_margin"
+        android:layout_toRightOf="@id/tv_play_count"
+        android:text="共575集"
+        android:textColor="@color/new_text_color_second"
+        android:textSize="@dimen/md_small"/>
+</RelativeLayout>

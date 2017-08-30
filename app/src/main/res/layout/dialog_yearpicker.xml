@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="280dp"
+              android:layout_height="wrap_content"
+              android:background="@color/white"
+              android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="24dp"
+        android:text="选择账单年份"
+        android:textStyle="bold"
+        android:textColor="@color/new_text_color_first"
+        android:textSize="@dimen/md_big"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        >
+
+        <com.lingju.assistant.view.DatePicker
+            android:id="@+id/year_picker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:isShowDay="false"
+            app:isShowMonth="false">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="年"
+                android:layout_gravity="center_vertical"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp"
+                android:textColor="@color/new_text_color_first"
+                android:textSize="@dimen/regular"/>
+
+        </com.lingju.assistant.view.DatePicker>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/ayp_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/selector_view_bg"
+            android:padding="16dp"
+            android:text="取消"
+            android:textColor="@color/base_blue"
+            android:textSize="@dimen/medium"/>
+
+        <TextView
+            android:id="@+id/ayp_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/selector_view_bg"
+            android:padding="16dp"
+            android:text="确定"
+            android:textColor="@color/base_blue"
+            android:textSize="@dimen/medium"/>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:lingju="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <View
+        android:id="@+id/status_bar"
+        android:layout_width="match_parent"
+        android:elevation="@dimen/mini_margin"
+        android:layout_height="25dp"
+        android:background="@color/bar_color"/>
+
+    <!-- 头部搜索栏部分 -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:elevation="@dimen/mini_margin"
+        android:background="@color/green_style">
+
+        <ImageButton
+            android:id="@+id/amosf_back_bt"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/normal_margin"
+            android:background="@drawable/selector_white_circle_view_bg"
+            android:src="@drawable/back_arrow"/>
+
+        <FrameLayout
+            android:id="@+id/amosf_search_box"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginLeft="@dimen/normal_margin"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true">
+
+            <TextView
+                android:id="@+id/amosf_search_bt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/selector_white_circle_view_bg"
+                android:gravity="center"
+                android:text="搜索"
+                android:textColor="@color/white"
+                android:textSize="@dimen/regular"
+                android:textStyle="bold"/>
+
+            <!--<ImageButton-->
+            <!--android:id="@+id/amosf_search_voice_bt"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="48dp"-->
+            <!--android:background="#00000000"-->
+            <!--android:src="@drawable/ic_mic_white"-->
+            <!--/>-->
+        </FrameLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/amosf_search_box"
+            android:layout_toRightOf="@+id/amosf_back_bt">
+
+            <com.lingju.assistant.view.RealTimeUpdateSearchBox
+                android:id="@+id/amosf_search_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingTop="@dimen/base_margin_padding"
+                lingju:hint="输入目标地点"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/amosf_search_edit"
+                android:alpha="0.32"
+                android:background="#ffffff"/>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.0"
+        >
+        <!--收藏地址和历史记录显示部分 -->
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/navi_favorite_and_history"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            android:scrollbars="none"
+        </android.support.v7.widget.RecyclerView>
+        <!--<ScrollView-->
+        <!--android:id="@+id/navi_favorite_history"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:visibility="gone"-->
+        <!--android:scrollbars="none"-->
+        <!--&gt;-->
+        <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="vertical">-->
+
+        <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@color/new_main_bgcolor">-->
+        <!--<ImageButton-->
+        <!--android:id="@+id/navi_favorite_star"-->
+        <!--android:layout_width="72dp"-->
+        <!--android:layout_height="48dp"-->
+        <!--android:background="#00000000"-->
+        <!--android:src="@drawable/star_black"-->
+        <!--android:layout_alignParentLeft="true"/>-->
+        <!--<TextView-->
+        <!--android:id="@+id/navi_favorite_title"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:text="我的收藏"-->
+        <!--android:textColor="@color/new_text_color_first"-->
+        <!--android:textSize="@dimen/regular"-->
+        <!--android:gravity="center_vertical"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_toRightOf="@+id/navi_favorite_star"-->
+        <!--android:layout_alignBottom="@+id/navi_favorite_star"-->
+        <!--android:background="@drawable/item_line_bg"-->
+        <!--/>-->
+        <!--<TextView-->
+        <!--android:id="@+id/navi_favorite_list_tips"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="48dp"-->
+        <!--android:layout_alignLeft="@id/navi_favorite_title"-->
+        <!--android:layout_below="@id/navi_favorite_title"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:text="您暂未添加任何收藏地点"-->
+        <!--android:gravity="center|left"-->
+        <!--android:textColor="@color/new_text_color_second"-->
+        <!--android:textSize="@dimen/md_small"-->
+        <!--android:clickable="false"-->
+        <!--android:visibility="gone"-->
+        <!--/>-->
+        <!--&lt;!&ndash; 收藏地址列表 &ndash;&gt;-->
+        <!--<com.lingju.assistant.view.LocationFavoriteLimitedListView-->
+        <!--android:id="@+id/navi_favorite_list"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@id/navi_favorite_star"-->
+        <!--android:visibility="gone"-->
+        <!--android:orientation="vertical"/>-->
+        <!--</RelativeLayout>-->
+        <!--&lt;!&ndash;<LinearLayout&ndash;&gt;-->
+        <!--&lt;!&ndash;android:id="@+id/navi_manager_favorite_bt"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_height="48dp"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:orientation="horizontal"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:background="@drawable/gray_border_button"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:visibility="gone"&ndash;&gt;-->
+        <!--&lt;!&ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_width="0dp"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_weight="1.0"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:textSize="@dimen/big"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:textColor="@color/new_text_color_first"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:text="管理我的收藏"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:gravity="center"&ndash;&gt;-->
+        <!--&lt;!&ndash;/>&ndash;&gt;-->
+        <!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
+
+        <!--&lt;!&ndash; 历史记录列表 &ndash;&gt;-->
+        <!--<LinearLayout-->
+        <!--android:id="@+id/navi_search_history_list_box"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@color/new_main_bgcolor"-->
+        <!--android:orientation="vertical"-->
+        <!--android:animateLayoutChanges="true"-->
+        <!--android:layout_marginBottom="72dp">-->
+        <!--<com.lingju.assistant.view.LocationSuggestListView-->
+        <!--android:id="@+id/navi_search_history_list"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"/>-->
+        <!--<TextView-->
+        <!--android:id="@+id/navi_search_history_load_more_bt"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="48dp"-->
+        <!--android:textSize="@dimen/regular"-->
+        <!--android:textColor="@color/new_text_color_first"-->
+        <!--android:text="加载更多..."-->
+        <!--android:gravity="center"-->
+        <!--android:paddingLeft="10dp"-->
+        <!--android:background="@drawable/selector_view_bg"-->
+        <!--/>-->
+        <!--<TextView-->
+        <!--android:id="@+id/navi_clear_search_history_bt"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="48dp"-->
+        <!--android:textSize="@dimen/regular"-->
+        <!--android:textColor="@color/new_text_color_first"-->
+        <!--android:text="清空记录"-->
+        <!--android:gravity="center"-->
+        <!--android:paddingLeft="10dp"-->
+        <!--android:clickable="true"-->
+        <!--android:background="@drawable/selector_view_bg"-->
+        <!--/>-->
+        <!--</LinearLayout>-->
+        <!--</LinearLayout>-->
+        <!--</ScrollView>-->
+        <!-- 地图和相关图标部分 -->
+        <FrameLayout
+            android:id="@+id/amosf_map_box"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <com.baidu.mapapi.map.MapView
+                android:id="@+id/amosf_map"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                />
+
+            <ImageButton
+                android:id="@+id/amosf_map_locate_bt"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="left|bottom"
+                android:layout_marginBottom="200dp"
+                android:layout_marginLeft="20dp"
+                android:background="#f9f9f9"
+                android:scaleType="centerInside"
+                android:src="@drawable/bnav_common_ic_locate_car_point"
+                />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|bottom"
+                android:layout_marginBottom="200dp"
+                android:layout_marginRight="20dp"
+                >
+
+                <ImageButton
+                    android:id="@+id/amosf_map_its_bt"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentTop="true"
+                    android:background="#f9f9f9"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/bnav_common_ic_map_its_off"
+                    />
+
+                <ImageButton
+                    android:id="@+id/amosf_zoom_in_bt"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/amosf_map_its_bt"
+                    android:layout_marginTop="10dp"
+                    android:background="#f9f9f9"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/bnav_common_ic_zoom_in_normal"
+                    />
+
+                <ImageButton
+                    android:id="@+id/amosf_zoom_out_bt"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/amosf_zoom_in_bt"
+                    android:background="#f9f9f9"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/bnav_common_ic_zoom_out_normal"
+                    />
+            </RelativeLayout>
+        </FrameLayout>
+
+        <!-- 地址列表部分 -->
+        <com.lingju.assistant.view.DrawForExpandLayout
+            android:id="@+id/amosf_poi_box"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_gravity="bottom"
+            android:background="#f9f9f9"
+            android:orientation="vertical"
+            android:visibility="gone"
+            >
+
+            <android.support.v4.widget.LingjuSwipeRefreshLayout
+                android:id="@+id/amosf_poi_list_box"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.0"
+                >
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/amosf_poi_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:cacheColorHint="#00000000"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:scrollbars="none"
+                    >
+                </android.support.v7.widget.RecyclerView>
+            </android.support.v4.widget.LingjuSwipeRefreshLayout>
+        </com.lingju.assistant.view.DrawForExpandLayout>
+
+        <!-- 地址详情ViewPager部分 -->
+        <LinearLayout
+            android:id="@+id/amosf_poi_detail_box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="#f9f9f9"
+            android:orientation="vertical"
+            android:visibility="gone"
+            >
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/amosf_poi_detail_pager"
+                android:layout_width="match_parent"
+                android:layout_height="160dp">
+            </android.support.v4.view.ViewPager>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="5dp"
+                >
+
+                <Button
+                    android:id="@+id/amosf_poi_detial_pre_bt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/poi_detial_pre_bt"
+                    />
+
+                <LinearLayout
+                    android:id="@+id/amosf_poi_detial_dot_list"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    >
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="5dp"
+                        android:background="#00000000"
+                        android:src="@drawable/bnav_poi_detail_ic_tag_normal"
+                        />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:background="#00000000"
+                        android:src="@drawable/bnav_poi_detail_ic_tag_normal"
+                        />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:background="#00000000"
+                        android:src="@drawable/bnav_poi_detail_ic_tag_normal"
+                        />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:background="#00000000"
+                        android:src="@drawable/bnav_poi_detail_ic_tag_normal"
+                        />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:background="#00000000"
+                        android:src="@drawable/bnav_poi_detail_ic_tag_normal"
+                        />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:background="#00000000"
+                        android:src="@drawable/bnav_poi_detail_ic_tag_normal"
+                        />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:background="#00000000"
+                        android:src="@drawable/bnav_poi_detail_ic_tag_normal"
+                        />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:background="#00000000"
+                        android:src="@drawable/bnav_poi_detail_ic_tag_normal"
+                        />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:background="#00000000"
+                        android:src="@drawable/bnav_poi_detail_ic_tag_normal"
+                        />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:background="#00000000"
+                        android:src="@drawable/bnav_poi_detail_ic_tag_normal"
+                        />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/amosf_poi_detial_next_bt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/poi_detial_next_bt"
+                    />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <!--单个地址显示部分-->
+        <LinearLayout
+            android:id="@+id/amosf_single_poi_detail_box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="#f9f9f9"
+            android:visibility="gone"
+            >
+
+            <include layout="@layout/target_poi_item_single_detail"/>
+        </LinearLayout>
+
+        <!-- 搜索列表部分 -->
+        <ScrollView
+            android:id="@+id/amosf_suggest_list_box"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#f9f9f9"
+            android:scrollbars="none"
+            android:visibility="gone"
+            >
+
+            <com.lingju.assistant.view.LocationSearchSuggestListView
+                android:id="@+id/amosf_suggest_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+        </ScrollView>
+    </FrameLayout>
+</LinearLayout>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:id="@+id/ll_play_track_box"
+              android:background="@drawable/selector_view_bg"
+              android:clickable="true"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/normal_margin">
+
+        <ImageView
+            android:id="@+id/iv_ting_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ting_play_bg"/>
+
+        <TextView
+            android:id="@+id/tv_track_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/normal_margin"
+            android:layout_toRightOf="@id/iv_ting_switch"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="段子来了|你曾说海枯石烂，却不等我割完小麦70611（采采）"
+            android:textColor="@color/new_text_color_first"
+            android:textSize="@dimen/regular"
+            />
+
+        <ImageView
+            android:id="@+id/iv_clock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/iv_ting_switch"
+            android:layout_alignLeft="@id/tv_track_title"
+            android:alpha="0.54"
+            android:src="@drawable/clock_black"/>
+
+        <TextView
+            android:id="@+id/tv_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/iv_clock"
+            android:layout_marginLeft="@dimen/base_margin_padding"
+            android:layout_marginTop="@dimen/mini_margin"
+            android:layout_toRightOf="@id/iv_clock"
+            android:text="43:45"
+            android:textColor="@color/new_text_color_second"
+            android:textSize="@dimen/md_small"/>
+
+        <TextView
+            android:id="@+id/tv_created"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/tv_duration"
+            android:layout_alignParentRight="true"
+            android:text="2017-06-11"
+            android:textColor="@color/new_text_color_second"
+            android:textSize="@dimen/md_small"/>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="280dp"
+        android:layout_height="1px"
+        android:layout_gravity="right"
+        android:background="@color/new_line_black_border"
+        />
+</LinearLayout>

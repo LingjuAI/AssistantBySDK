@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1.0"
+            android:gravity="center_vertical|left"
+            android:padding="@dimen/activity_horizontal_margin"
+            android:text="记账"
+            android:textColor="@color/green_style"
+            android:textSize="@dimen/bigger"/>
+
+        <ImageView
+            android:id="@+id/aed_close"
+            android:layout_width="58dp"
+            android:layout_height="58dp"
+            android:layout_gravity="center_vertical"
+            android:paddingRight="4dp"
+            android:src="@drawable/card_close_btn"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/green_style"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin">
+
+        <include layout="@layout/accounting_input_box"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_card_btn_margin_top"
+        android:background="@drawable/common_dialog_bottom_bg"
+        android:orientation="horizontal"
+        android:padding="2dp">
+
+        <TextView
+            android:id="@+id/aed_cancel"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/common_card_btn_height"
+            android:layout_margin="2dp"
+            android:layout_weight="1.0"
+            android:background="@drawable/new_common_cancel_bg"
+            android:gravity="center"
+            android:text="取消"
+            android:textColor="@color/white"
+            android:textSize="@dimen/medium"/>
+
+        <TextView
+            android:id="@+id/aed_confirm"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/common_card_btn_height"
+            android:layout_margin="2dp"
+            android:layout_weight="1.0"
+            android:background="@drawable/new_common_correct_bg"
+            android:gravity="center"
+            android:text="保存"
+            android:textColor="@color/white"
+            android:textSize="@dimen/medium"/>
+    </LinearLayout>
+
+</LinearLayout>

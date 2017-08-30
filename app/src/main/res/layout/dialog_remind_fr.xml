@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="280dp"
+    android:layout_height="wrap_content"
+    android:background="#f9f9f9"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="24dp"
+        android:paddingTop="24dp"
+        android:paddingBottom="20dp"
+        android:text="提醒周期"
+        android:textStyle="bold"
+        android:textColor="@color/new_text_color_first"
+        android:textSize="@dimen/md_big" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:scrollbars="none"
+        android:layout_height="300dp" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <include layout="@layout/remind_fr" />
+        </LinearLayout>
+    </ScrollView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/base_margin_padding"
+        android:layout_marginBottom="@dimen/base_margin_padding">
+
+        <!--<TextView-->
+        <!--android:id="@+id/tv_save"-->
+        <!--android:layout_width="64dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_marginRight="8dp"-->
+        <!--android:background="@drawable/selector_view_bg"-->
+        <!--android:clickable="true"-->
+        <!--android:gravity="center_horizontal"-->
+        <!--android:paddingBottom="8dp"-->
+        <!--android:paddingTop="8dp"-->
+        <!--android:text="保存"-->
+        <!--android:textColor="@color/base_blue"-->
+        <!--android:textSize="@dimen/regular"/>-->
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="64dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="24dp"
+            android:layout_alignParentRight="true"
+            android:clickable="true"
+            android:background="@drawable/selector_view_bg"
+            android:gravity="center_horizontal"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:text="取消"
+            android:textColor="@color/base_blue"
+            android:textSize="@dimen/regular"/>
+
+        <ImageView
+            android:id="@+id/iv_show_more"
+            android:layout_width="64dp"
+            android:layout_height="16dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_arrow_down"
+            android:visibility="gone"/>
+    </RelativeLayout>
+
+</LinearLayout>

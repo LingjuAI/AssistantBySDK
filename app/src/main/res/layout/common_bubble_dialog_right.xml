@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/common_bubble_right_text"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/input_text_bg"
+    android:lineSpacingExtra="@dimen/base_margin_padding"
+    android:paddingRight="@dimen/normal_margin"
+    android:paddingLeft="@dimen/normal_margin"
+    android:paddingBottom="@dimen/dialog_margin"
+    android:paddingTop="@dimen/dialog_margin"
+    android:text="这是理解"
+    style="@style/edit_text_style"
+    android:textColor="@color/white"
+    android:textIsSelectable="true"
+    android:textSize="@dimen/regular"
+    />

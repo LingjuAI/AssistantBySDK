@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="input_examples">
+        <item>放首歌</item>
+        <item>放首王菲的天空</item>
+
+        <item>播放钢琴曲</item>
+        <item>播放周杰伦的歌</item>
+        <item>播放我很忙专辑的歌</item>
+        <item>播放收藏的歌</item>
+        <item>播放手机上的歌</item>
+
+        <item>现在放的是什么歌</item>
+        <item>我该如何存在是哪首歌</item>
+        <item>张学友唱过什么歌</item>
+        <item>收藏刘德华的忘情水</item>
+
+        <item>换一首</item>
+        <item>上一首</item>
+        <item>下一首</item>
+        <item>换一组</item>
+
+
+    </string-array>
+
+    <string-array name="start_up_tips">
+        <item>建议使用WiFi网络听歌，因为播放的歌曲大多是在线的。</item>
+        <item>建议在WiFi网络或者3G网络下用语音控制，网络不给力会让反馈变慢。</item>
+        <item>想听英文歌，对我说：我要听英文歌。</item>
+        <item>语音控制播歌可以对手机讲：播放日语歌、播放钢琴曲、播放王菲的歌等多种中文语言。</item>
+        <item>可能暂时没有你想听的最新歌曲，我们会及时更新。</item>
+        <item>音乐播放时，屏幕右上角按钮是音乐列表按钮点击试试吧</item>
+        <item>如果你用起来有什么不爽，欢迎给我们提意见，关于我们有联系方式。</item>
+        <item>你可以这样对我讲：放首歌、换一首</item>
+        <item>你可以这样对我讲：播放王菲的天空</item>
+        <item>你可以这样对我讲：播放钢琴曲</item>
+        <item>你可以这样对我讲：播放收藏的歌</item>
+        <item>你可以这样对我讲：播放手机上的歌</item>
+        <item>播放音乐的时候，你可以说：现在放的是什么歌</item>
+        <item>你可以这样对我讲：收藏刘德华的歌 / 收藏这首歌</item>
+        <item>想听新闻，对我说"最新新闻"、“最新娱乐新闻”或“最新北京新闻”，然后再选择第几条。</item>
+        <item>想听新闻摘要，你直接说第几条即可。如果想听全文，可在听完摘要后对我说“朗读全文”。</item>
+        <item>想听新闻全文，可以直接对我说“朗读第几条的全文”</item>
+        <item>目前无法下载歌曲，可播放通过其他方式下载到手机里的歌，对我说：播放+歌曲文件名即可。</item>
+        <item>你可以说：打电话给张三</item>
+        <item>你可以说：发短信给张三告诉他我一会就到。</item>
+        <item>打开唤醒，每次说话前对我说“小灵你好”，就不用再用手点击话筒按钮了。</item>
+        <item>用免提打电话给张三。</item>
+        <item>你可以说：记账，今天吃饭花了50元</item>
+        <item>你可以说：提醒我明天10点开会</item>
+    </string-array>
+
+    <string-array name="welcome">
+        <item>主人好</item>
+        <item>主人,我回来啦</item>
+        <item>主人,有什么可以帮到您</item>
+    </string-array>
+
+    <string-array name="speakers">
+        <item>小琪|青年女声|中英文（普通话)-默认|vixq</item>
+        <item>小燕|青女声|中英文|xiaoyan</item>
+        <item>小宇|青年男声|中英文（普通话）|xiaoyu</item>
+        <item>小研|青年女声|中英文（普通话）|vixy</item>
+        <item>小峰|青年男声|中英文（普通话）|vixf</item>
+        <item>小梅|青年女声|中英文（粤语）|vixm</item>
+        <item>小齐|青年女声|普通话|xiaoqi</item>
+        <item>燕平|青年女声|汉语|aisxyan</item>
+        <item>宇峰|青年男声|汉语|aisxiaoyu</item>
+        <item>晓婧|青年女声|汉语|aisjinger</item>
+        <item>唐老鸭|卡通|汉语|aisDuck</item>
+        <item>许小宝|少男童声|汉语|aisBABYXu</item>
+        <item>楠楠|少女童声|汉语|aisnn</item>
+        <item>晓梦|青年女声|汉语|aisxmeng</item>
+        <item>许多|青年男声|汉语|aisduoxu</item>
+        <item>许久|青年男声|汉语|aisjiuxu</item>
+        <item>小萍|青年女声|汉语|aisxping</item>
+        <item>子棋|青年女声|汉语|ziqi</item>
+        <item>小芳|青年女声|汉语|yefang</item>
+        <item>小洋|青年男声|汉语|niyang</item>
+        <item>小春|青年女声|汉语|aismengchun</item>
+        <item>蜡笔小新|卡通|汉语|aisxxin</item>
+        <item>晓美|青年女声|粤语|aisxmei</item>
+        <item>大龙|青年男声|粤语|aisdalong</item>
+        <item>小莉|青年女声|中英文（台普）|vixl</item>
+        <item>小芸|青年女声|汉语（东北话）|vixyun</item>
+        <item>小莹|青年女声|汉语（陕西话）|vixying</item>
+        <item>晓琳|青年女声|台湾汉语|aisxlin</item>
+        <item>晓倩|青年女声|东北话|aisxqian</item>
+        <item>晓蓉|青年女声|四川话|aisxrong</item>
+        <item>小坤|青年男声|河南话|aisxkun</item>
+        <item>小强|青年男声|湖南话|aisxqiang</item>
+        <item>老孙|老年男声|汉语（普通话）|vils</item>
+        <item>嘉嘉|青年女声|汉语（普通话）|jiajia</item>
+    </string-array>
+
+    <string-array name="navi_start_tips">
+        <item>开始导航，导航中你可以唤醒我后对我说取消导航，来停止导航</item>
+        <item>开始导航，导航中你可以唤醒我后询问，前面堵车吗</item>
+        <item>开始导航，导航中你可以唤醒我后询问，某某路堵车吗</item>
+        <item>开始导航，导航中你可以唤醒我后询问，前面怎么走</item>
+        <item>开始导航，导航中你可以唤醒我后询问，目的地是哪里</item>
+        <item>开始导航，导航中你可以唤醒我后询问，限速是多少</item>
+        <item>开始导航，导航中你可以唤醒我后询问，现在是什么路</item>
+        <item>开始导航，导航中你可以唤醒我后询问，还有多久到</item>
+    </string-array>
+
+    <string-array name="navi_pre_start_tips">
+        <item>选择其他路径你可以对我说：高速优先或者选择最快的</item>
+        <item>选择其他路径你可以对我说：选择收费最少路线或者躲避拥堵</item>
+        <item>增加途经点你可以对我说，途经中山公园或者途经北京西路</item>
+    </string-array>
+
+    <string-array name="recommand_tips">
+        <item>主人好，小灵帮你准备了一些歌曲，要不要听一下？</item>
+        <item>主人好，小灵为你准备了一些歌曲，要听一下吗？</item>
+        <item>主人好，今天小灵帮你准备了几首歌，要一起听听吗？</item>
+    </string-array>
+
+    <string-array name="income_items">
+        <item>工作工资</item>
+        <item>投资</item>
+        <item>生活费</item>
+        <item>收礼红包</item>
+        <item>利息分红</item>
+        <item>租金</item>
+        <item>其他收入</item>
+    </string-array>
+
+    <string-array name="expense_items">
+        <item>餐饮</item>
+        <item>交通</item>
+        <item>购物</item>
+        <item>娱乐</item>
+        <item>医教</item>
+        <item>居家</item>
+        <item>投资</item>
+        <item>人情</item>
+        <item>生意</item>
+    </string-array>
+
+    <string-array name="sub_items">
+        <item>1|早餐</item>
+        <item>1|午餐</item>
+        <item>1|晚餐</item>
+        <item>1|饮料水果</item>
+        <item>1|零食</item>
+        <item>1|买菜原料</item>
+        <item>1|夜宵</item>
+        <item>1|油盐酱醋</item>
+        <item>1|餐饮其他</item>
+        <item>2|打车</item>
+        <item>2|公交</item>
+        <item>2|加油</item>
+        <item>2|停车费</item>
+        <item>2|地铁</item>
+        <item>2|火车</item>
+        <item>2|长途汽车</item>
+        <item>2|过路过桥</item>
+        <item>2|保养维修</item>
+        <item>2|飞机</item>
+        <item>2|车款车贷</item>
+        <item>2|罚款赔偿</item>
+        <item>2|车险</item>
+        <item>2|自行车</item>
+        <item>2|船舶</item>
+        <item>2|驾照费用</item>
+        <item>2|交通其它</item>
+        <item>3|书</item>
+        <item>3|服饰鞋包</item>
+        <item>3|家居百货</item>
+        <item>3|烟酒</item>
+        <item>3|化妆护肤</item>
+        <item>3|电子数码</item>
+        <item>3|宝宝用品</item>
+        <item>3|家具家纺</item>
+        <item>3|报刊书籍</item>
+        <item>3|电器</item>
+        <item>3|珠宝首饰</item>
+        <item>3|文具玩具</item>
+        <item>3|保健用品</item>
+        <item>3|摄影文印</item>
+        <item>3|购物其他</item>
+        <item>4|旅游度假</item>
+        <item>4|网游电玩</item>
+        <item>4|电影</item>
+        <item>4|洗浴足浴</item>
+        <item>4|运动健身</item>
+        <item>4|卡拉OK</item>
+        <item>4|茶酒咖啡</item>
+        <item>4|歌舞演出</item>
+        <item>4|电视</item>
+        <item>4|娱乐其他</item>
+        <item>4|花鸟宠物</item>
+        <item>4|麻将棋牌</item>
+        <item>4|聚会玩乐</item>
+        <item>5|医疗用品</item>
+        <item>5|挂号门诊</item>
+        <item>5|养生保健</item>
+        <item>5|住院费</item>
+        <item>5|养老院</item>
+        <item>5|学杂教材</item>
+        <item>5|培训考试</item>
+        <item>5|家教补习</item>
+        <item>5|学费</item>
+        <item>5|幼儿教育</item>
+        <item>5|出国留学</item>
+        <item>5|助学贷款</item>
+        <item>5|医教其他</item>
+        <item>6|宠物</item>
+        <item>6|取暖费</item>
+        <item>6|手机电话</item>
+        <item>6|房款房贷</item>
+        <item>6|水电燃气</item>
+        <item>6|美发美容</item>
+        <item>6|住宿房租</item>
+        <item>6|材料建材</item>
+        <item>6|电脑宽带</item>
+        <item>6|快递邮政</item>
+        <item>6|物业</item>
+        <item>6|家政服务</item>
+        <item>6|生活费</item>
+        <item>6|婚庆摄影</item>
+        <item>6|漏记款</item>
+        <item>6|保险费</item>
+        <item>6|消费贷款</item>
+        <item>6|税费手续费</item>
+        <item>6|生活其他</item>
+        <item>7|股票</item>
+        <item>7|基金</item>
+        <item>7|理财产品</item>
+        <item>7|余额宝</item>
+        <item>7|银行存款</item>
+        <item>7|保险</item>
+        <item>7|P2P</item>
+        <item>7|证券期货</item>
+        <item>7|出资</item>
+        <item>7|贵金属</item>
+        <item>7|投资贷款</item>
+        <item>7|外汇</item>
+        <item>7|收藏品</item>
+        <item>7|利息支出</item>
+        <item>7|投资其他</item>
+        <item>8|礼金红包</item>
+        <item>8|物品</item>
+        <item>8|请客</item>
+        <item>8|代付款</item>
+        <item>8|孝敬</item>
+        <item>8|给予</item>
+        <item>8|慈善捐款</item>
+        <item>8|人情其他</item>
+        <item>9|进货采购</item>
+        <item>9|人工支出</item>
+        <item>9|材料辅料</item>
+        <item>9|工程付款</item>
+        <item>9|交通运输</item>
+        <item>9|运营费</item>
+        <item>9|会务费</item>
+        <item>9|办公费用</item>
+        <item>9|营销广告</item>
+        <item>9|店面租金</item>
+        <item>9|注册登记</item>
+        <item>9|生意其他</item>
+    </string-array>
+
+    <string-array name="ting_category">
+        <item>3-有声书</item>
+        <item>2-音乐</item>
+        <item>4-娱乐</item>
+        <item>12-相声评书</item>
+        <item>6-儿童</item>
+        <item>29-3D体验馆</item>
+        <item>1-头条</item>
+        <item>28-脱口秀</item>
+        <item>10-情感生活</item>
+        <item>9-历史</item>
+        <item>39-人文</item>
+        <item>38-英语</item>
+        <item>32-小语种</item>
+        <item>13-教育培训</item>
+        <item>15-广播剧</item>
+        <item>16-戏曲</item>
+        <item>40-国学书院</item>
+        <item>17-电台</item>
+        <item>8-商业财经</item>
+        <item>18-IT科技</item>
+        <item>7-健康养生</item>
+        <item>22-旅游</item>
+        <item>21-汽车</item>
+        <item>24-动漫游戏</item>
+        <item>23-电影</item>
+        <item>41-党课随身听</item>
+        <item>30-名校公开课</item>
+        <item>31-时尚生活</item>
+        <item>34-诗歌</item>
+        <item>11-其他</item>
+    </string-array>
+</resources>

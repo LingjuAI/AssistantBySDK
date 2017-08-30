@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/ll_root"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@drawable/search_bg"
+              android:gravity="center_vertical"
+              android:orientation="horizontal">
+
+    <!--<ImageButton-->
+    <!--android:layout_width="38dp"-->
+    <!--android:layout_height="38dp"-->
+    <!--android:layout_gravity="center"-->
+    <!--android:layout_marginLeft="1dp"-->
+    <!--android:background="@color/green_style"-->
+    <!--android:src="@drawable/search_mirror" />-->
+
+    <EditText
+        android:id="@+id/sob_search_edit"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1.0"
+        android:background="@null"
+        style="@style/edit_text_style"
+        android:imeOptions="actionSearch"
+        android:singleLine="true"
+        android:paddingLeft="@dimen/base_margin_padding"
+        android:textColorHint="@color/navi_search_box_color"
+        android:textColor="@color/ksw_md_solid_disable"
+        android:textSize="@dimen/regular"/>
+
+    <ImageButton
+        android:id="@+id/sob_state_bt"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_gravity="center"
+        android:background="@null"
+        android:src="@drawable/search_online_state"
+        android:visibility="invisible"/>
+</LinearLayout>

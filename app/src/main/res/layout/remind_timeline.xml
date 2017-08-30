@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#f9f9f9"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="4dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/rtimeline_time"
+            android:layout_width="48dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingBottom="4dp"
+            android:paddingTop="4dp"
+            android:text="未来的"
+            android:textColor="@color/new_text_color_first"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/account_time_circle" />
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="0dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1.0"
+            android:background="@color/new_line_black_border" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/rtimeline_main_box"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:layout_weight="1.0"
+        android:orientation="vertical"
+        android:paddingBottom="16dp"
+        android:paddingRight="@dimen/activity_horizontal_margin" >
+
+        <!--
+                 <com.lingju.assistant.MemoItem 
+		        android:layout_height="match_parent"
+		        android:layout_width="wrap_content"
+		        android:orientation="vertical"
+		        lingju:title="今天吃饭花了100块"
+		        />
+        -->
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#f9f9f9"
+              android:orientation="vertical">
+
+    <View
+        android:id="@+id/status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:background="@color/bar_color"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:elevation="@dimen/mini_margin"
+        android:background="@color/green_style">
+
+        <ImageButton
+            android:id="@+id/tv_back"
+            android:layout_width="56dp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:background="@drawable/selector_white_circle_view_bg"
+            android:src="@drawable/c_back_down"
+            />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="72dp"
+            android:textStyle="bold"
+            android:text="联系人备注"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/small_title_size"
+            />
+
+        <ImageButton
+            android:id="@+id/tv_add"
+            android:layout_width="56dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/selector_white_circle_view_bg"
+            android:src="@drawable/add_white"
+            />
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/ans_listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbarThumbVertical="@drawable/scrollbar_none_bg"/>
+
+</LinearLayout>

@@ -1,0 +1,105 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
+apply plugin: 'android-apt'
+
+android {
+    signingConfigs {
+        default_config {
+            keyAlias '你的keyAlias'
+            keyPassword '你的keyPassword'
+            storeFile file('你的keystore文件路径')
+            storePassword '你的storePassword'
+            /*keyAlias 'androiddebugkey'
+            keyPassword 'android'
+            storeFile file('debug.keystore')
+            storePassword 'android'*/
+        }
+    }
+    packagingOptions {
+        exclude '.readme'
+        exclude 'LICENSE.txt'
+        exclude 'README.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/MANIFEST.MF'
+    }
+
+    //useLibrary 'org.apache.http.legacy'
+    compileSdkVersion 23
+    buildToolsVersion '22.0.1'
+    defaultConfig {
+        applicationId "com.lingju.assistant"
+        minSdkVersion 15
+        targetSdkVersion 22
+        versionCode 8
+        versionName "4.1"
+        signingConfig signingConfigs.default_config
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            //useProguard true
+            zipAlignEnabled true
+            proguardFiles 'default.pro'
+            ndk {
+                abiFilters "armeabi"
+            }
+            signingConfig signingConfigs.default_config
+            debuggable true
+        }
+        debug {
+            minifyEnabled false
+            //useProguard true
+            proguardFiles 'default.pro'/*getDefaultProguardFile('proguard-android.txt'),*/
+            ndk {
+                abiFilters "armeabi"
+            }
+            signingConfig signingConfigs.default_config
+            debuggable true
+        }
+    }
+}
+
+
+repositories {
+    flatDir {
+        dirs 'libs','../voicemodule/libs'
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    /* compile 'io.reactivex.rxjava2:rxandroid:2.0.0'
+               compile 'io.reactivex.rxjava2:rxjava:2.0.0'*/
+    compile project(':voicemodule')
+//     compile project(':lbsmodule')
+    compile(name: 'lbsmodule-release', ext: 'aar')
+    // compile 'com.google.code.gson:gson:2.8.0'
+    testCompile 'io.reactivex.rxjava2:rxandroid:2.0.0'
+    testCompile 'io.reactivex.rxjava2:rxjava:2.0.0'
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.mockito:mockito-core:2.1.0'
+    compile 'org.greenrobot:eventbus:3.0.0'
+    compile 'org.greenrobot:greendao:3.2.0'
+    //compile 'com.tbruyelle.rxpermissions2:rxpermissions:0.8.1@aar'
+    compile 'com.jakewharton:butterknife:8.4.0'
+    apt 'com.jakewharton:butterknife-compiler:8.4.0'
+    compile 'com.android.support:appcompat-v7:23.2.1'
+    // compile 'com.android.support:support-v4:23.2.1'
+    compile 'com.android.support:recyclerview-v7:23.2.1'
+    compile 'com.android.support:cardview-v7:23.2.1'
+    compile 'com.android.support:design:23.2.1'
+    compile project(':weiboSDK')
+    compile project(':datetimelib')
+    compile 'com.android.support:multidex:1.0.0'
+    compile 'com.lsjwzh:materialloadingprogressbar:0.5.8-RELEASE'
+    compile 'com.github.hotchemi:permissionsdispatcher:2.3.1'
+    apt 'com.github.hotchemi:permissionsdispatcher-processor:2.3.1'
+    compile 'com.ToxicBakery.viewpager.transforms:view-pager-transforms:1.2.32@aar'
+    compile 'com.zhy:flowlayout-lib:1.0.3'
+//    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.3'
+}

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="wrap_content"
+             android:layout_height="@dimen/item_height"
+    >
+
+    <RelativeLayout
+        android:id="@+id/rl_mic"
+        android:layout_width="@dimen/item_height"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:visibility="visible">
+
+        <!--<ImageView
+            android:id="@+id/iv_mic_default"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/input_voice_bt"/>-->
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/iv_mic_default"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/input_normal_mic"
+            android:visibility="gone"/>
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/iv_circle_wait"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/wait"/>
+    </RelativeLayout>
+
+    <com.lingju.assistant.view.wave.WaveView
+        android:id="@+id/wv_record"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+</FrameLayout>

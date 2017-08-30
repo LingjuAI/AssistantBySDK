@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <TextView 
+        android:id="@+id/player_list_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="播放列表"
+        android:textSize="@dimen/small"
+        android:textColor="@color/base_blue"
+        android:gravity="center_horizontal"
+        />
+    <FrameLayout 
+        android:layout_width="match_parent"
+	    android:layout_height="0dp"
+	    android:layout_weight="1.0"
+        >
+		<TextView
+			android:id="@+id/player_list_tips"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
+			android:padding="@dimen/activity_horizontal_margin"
+			android:paddingRight="@dimen/activity_horizontal_margin"
+			android:text="暂无列表"
+			android:textSize="16sp"
+			android:textColor="@color/side_text_bg_green_light"
+			android:gravity="center_horizontal"
+			/>
+		<android.support.v7.widget.RecyclerView
+		    android:id="@+id/player_listView"
+		    android:layout_width="match_parent"
+		    android:layout_height="match_parent"
+		    android:layout_marginTop="16dp"
+		    android:background="@drawable/main_music_list_bor"
+		    android:scrollbarThumbVertical="@drawable/scrollbarbar_bg"
+	      	android:scrollbarSize="2dp"
+		    />
+	</FrameLayout>
+</LinearLayout>

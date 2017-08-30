@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@drawable/selector_view_bg"
+              android:clickable="true"
+              android:orientation="vertical">
+
+    <include layout="@layout/view_ting_album"/>
+
+    <View
+        android:id="@+id/album_border"
+        android:layout_width="264dp"
+        android:layout_height="1px"
+        android:layout_gravity="right"
+        android:background="@color/new_line_black_border"
+        />
+</LinearLayout>

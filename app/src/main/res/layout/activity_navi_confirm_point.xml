@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <View
+        android:id="@+id/status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:background="@color/bar_color"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <!-- 地图部分 -->
+        <FrameLayout
+            android:id="@+id/ancp_map_box"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <com.baidu.mapapi.map.MapView
+                android:id="@+id/ancp_map"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                />
+
+            <ImageButton
+                android:id="@+id/ancp_back_bt"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_centerVertical="true"
+                android:layout_margin="12dp"
+                android:background="@drawable/circle_translucent_bg"
+                android:src="@drawable/c_back_down"
+                />
+
+            <ImageButton
+                android:id="@+id/ancp_map_locate_bt"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="left|bottom"
+                android:layout_marginBottom="200dp"
+                android:layout_marginLeft="20dp"
+                android:background="#f9f9f9"
+                android:scaleType="centerInside"
+                android:src="@drawable/bnav_common_ic_locate_car_point"
+                />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|bottom"
+                android:layout_marginBottom="200dp"
+                android:layout_marginRight="20dp"
+                >
+
+                <ImageButton
+                    android:id="@+id/ancp_map_its_bt"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentTop="true"
+                    android:background="#f9f9f9"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/bnav_common_ic_map_its_off"
+                    />
+
+                <ImageButton
+                    android:id="@+id/ancp_zoom_in_bt"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/ancp_map_its_bt"
+                    android:layout_marginTop="10dp"
+                    android:background="#f9f9f9"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/bnav_common_ic_zoom_in_normal"
+                    />
+
+                <ImageButton
+                    android:id="@+id/ancp_zoom_out_bt"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/ancp_zoom_in_bt"
+                    android:background="#f9f9f9"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/bnav_common_ic_zoom_out_normal"
+                    />
+            </RelativeLayout>
+        </FrameLayout>
+
+        <!-- 检索结果列表部分 -->
+        <com.lingju.assistant.view.DrawForExpandLayout
+            android:id="@+id/ancp_poi_box"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_gravity="bottom"
+            android:background="#f9f9f9"
+            android:orientation="vertical"
+            android:visibility="gone"
+            >
+
+            <android.support.v4.widget.LingjuSwipeRefreshLayout
+                android:id="@+id/ancp_poi_list_box"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.0"
+                >
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/ancp_poi_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:cacheColorHint="#00000000"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:listSelector="@drawable/gray_no_underline_bg"
+                    android:scrollbars="none"
+                    >
+                </android.support.v7.widget.RecyclerView>
+            </android.support.v4.widget.LingjuSwipeRefreshLayout>
+        </com.lingju.assistant.view.DrawForExpandLayout>
+
+        <!-- 检索详情ViewPager部分 -->
+        <LinearLayout
+            android:id="@+id/ancp_poi_detail_box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="#f9f9f9"
+            android:orientation="vertical"
+            android:visibility="gone"
+            >
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/ancp_poi_detail_pager"
+                android:layout_width="match_parent"
+                android:layout_height="160dp">
+            </android.support.v4.view.ViewPager>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="5dp"
+                >
+
+                <Button
+                    android:id="@+id/ancp_poi_detial_pre_bt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/poi_detial_pre_bt"
+                    />
+
+                <LinearLayout
+                    android:id="@+id/ancp_poi_detial_dot_list"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    >
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="5dp"
+                        android:background="#00000000"
+                        android:src="@drawable/bnav_poi_detail_ic_tag_normal"
+                        />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:background="#00000000"
+                        android:src="@drawable/bnav_poi_detail_ic_tag_normal"
+                        />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:background="#00000000"
+                        android:src="@drawable/bnav_poi_detail_ic_tag_normal"
+                        />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:background="#00000000"
+                        android:src="@drawable/bnav_poi_detail_ic_tag_normal"
+                        />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:background="#00000000"
+                        android:src="@drawable/bnav_poi_detail_ic_tag_normal"
+                        />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:background="#00000000"
+                        android:src="@drawable/bnav_poi_detail_ic_tag_normal"
+                        />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:background="#00000000"
+                        android:src="@drawable/bnav_poi_detail_ic_tag_normal"
+                        />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:background="#00000000"
+                        android:src="@drawable/bnav_poi_detail_ic_tag_normal"
+                        />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:background="#00000000"
+                        android:src="@drawable/bnav_poi_detail_ic_tag_normal"
+                        />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:background="#00000000"
+                        android:src="@drawable/bnav_poi_detail_ic_tag_normal"
+                        />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/ancp_poi_detial_next_bt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/poi_detial_next_bt"
+                    />
+            </RelativeLayout>
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

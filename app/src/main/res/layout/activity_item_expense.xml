@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:orientation="vertical"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:elevation="@dimen/mini_margin"
+        android:background="@color/base_blue" >
+
+        <ImageButton
+            android:id="@+id/aie_back"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/selector_white_circle_view_bg"
+            android:src="@drawable/c_back_down" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/title_margin"
+            android:text="支出项目类别"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
+        
+        <ImageButton
+            android:id="@+id/aie_edit"
+            android:layout_width="56dp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:background="@drawable/selector_white_circle_view_bg"
+            android:src="@drawable/edit_white"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical"
+            />
+    </RelativeLayout>
+    
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.0"
+        android:orientation="horizontal"
+        >
+        <ListView 
+            android:id="@+id/aie_item_list"
+            android:layout_width="130dp"
+            android:layout_height="match_parent"
+            android:divider="@null"
+            android:cacheColorHint="@android:color/transparent"
+            android:scrollbars="none"
+            android:background="#dcdcdc"
+            android:listSelector="@drawable/selector_view_bg"
+            />
+
+        <ListView
+            android:id="@+id/aie_subitem_list"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:background="@color/white"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="@color/new_line_black_border"
+            android:dividerHeight="1px"
+            android:listSelector="@drawable/selector_view_bg"
+            android:scrollbars="none" >
+        </ListView>
+
+    </LinearLayout>
+    
+</LinearLayout>

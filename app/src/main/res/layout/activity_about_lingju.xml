@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:titlebar="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/new_main_bgcolor"
+              android:orientation="vertical">
+
+    <com.lingju.assistant.view.ActivityTitleBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/base_blue"
+        android:elevation="4dp"
+        titlebar:bar_title="关于灵聚"/>
+
+    <!-- <WebView
+         android:id="@+id/wv_about_lingju"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:scrollbarSize="3dp"
+         android:scrollbarThumbVertical="@drawable/scrollbarbar_bg"
+         />-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_introduce"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/player_padding_horizontal"
+            android:text="@string/about_lingju"
+            android:textColor="@color/account_text"
+            android:lineSpacingMultiplier="1.25"
+            android:textSize="@dimen/medium"/>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/dialog_normal_width"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center_horizontal"
+    android:background="@drawable/common_dialog_bg"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/large"
+    android:paddingLeft="@dimen/large"
+    >
+
+    <TextView
+        android:id="@+id/cad_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/common_btn_mar_top"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="支出"
+        android:textColor="@color/new_text_color_first"
+        android:textSize="@dimen/md_big"
+        android:textStyle="bold"/>
+
+    <RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="64dp">
+    <TextView
+        android:id="@+id/cad_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="加油，200元"
+        android:lineSpacingExtra="8dp"
+        android:textColor="@color/new_text_color_second"
+        android:paddingBottom="@dimen/base_margin_padding"
+        android:textSize="@dimen/regular"
+        />
+
+    <com.lsjwzh.widget.materialloadingprogressbar.CircleProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="@dimen/setting_title_margin"
+        android:layout_height="@dimen/setting_title_margin"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="@dimen/dialog_margin"
+        android:paddingRight="@dimen/base_margin_padding"
+        android:paddingBottom="@dimen/small_margin"
+        android:layout_gravity="center"
+        app:mlpb_progress_color="@color/base_blue"
+        app:mlpb_show_arrow="true"
+        app:mlpb_enable_circle_background="false"
+        app:mlpb_progress_stoke_width="3dp"
+        android:visibility="visible">
+    </com.lsjwzh.widget.materialloadingprogressbar.CircleProgressBar>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/base_margin_padding"
+        android:gravity="end">
+
+        <!--<TextView-->
+            <!--android:id="@+id/cd_cancel"-->
+            <!--android:layout_width="64dp"-->
+            <!--android:layout_height="36dp"-->
+            <!--android:background="@drawable/selector_view_bg"-->
+            <!--android:layout_marginRight="@dimen/normal_margin"-->
+            <!--android:text="取消"-->
+            <!--android:gravity="center"-->
+            <!--android:textColor="@color/base_blue"-->
+            <!--android:textSize="@dimen/regular"/>-->
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="64dp"
+            android:layout_height="36dp"
+            android:background="@drawable/selector_view_bg"
+            android:layout_marginRight="@dimen/normal_margin"
+            android:text="取消"
+            android:gravity="center"
+            android:textColor="@color/base_blue"
+            android:textSize="@dimen/regular"/>
+    </LinearLayout>
+</LinearLayout>

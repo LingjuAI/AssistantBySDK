@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/common_background"
+              android:orientation="vertical">
+
+    <com.lingju.assistant.view.ActivityTitleBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/base_blue"
+        android:elevation="@dimen/mini_margin"
+        app:bar_title="勿扰模式"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:id="@+id/dnd_switch_box"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:background="@drawable/selector_view_bg"
+            android:clickable="true"
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/normal_margin">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="勿扰模式"
+                    android:textColor="@color/new_text_color_first"
+                    android:textSize="@dimen/small"
+                    />
+
+                <TextView
+                    android:id="@+id/dnd_closed_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="4dp"
+                    android:text="已打开，以下时间段如有来电或来信将不提醒"
+                    android:textColor="@color/new_text_color_second"
+                    android:textSize="@dimen/smaller"/>
+
+            </LinearLayout>
+
+            <com.lingju.assistant.view.SwitchButton
+                android:id="@+id/dnd_switch"
+                style="@style/SwitchButtonStyleMD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:focusable="false"
+                android:padding="0dp"
+                android:textOff=""
+                android:textOn=""/>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#b4b4b4"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <RelativeLayout
+                android:id="@+id/dnd_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp">
+
+                <TextView
+                    android:id="@+id/title_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="勿扰时间段"
+                    android:textColor="#333333"
+                    android:textSize="@dimen/regular"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/time_box"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dnd_text"
+                android:layout_marginTop="20dp">
+
+                <RelativeLayout
+                    android:id="@+id/dnd_start_box"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/dnd_start_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:gravity="right|center_vertical"
+                        android:text="23:00"
+                        android:textColor="@color/new_text_color_first"
+                        android:textSize="24sp"
+                        android:textStyle="bold"/>
+
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/image_r"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/dnd_start_box"
+                    android:paddingLeft="24dp"
+                    android:paddingRight="24dp"
+                    android:src="@drawable/r"/>
+
+                <RelativeLayout
+                    android:id="@+id/dnd_end_box"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/image_r"
+                    android:gravity="right|center_vertical">
+
+                    <TextView
+                        android:id="@+id/dnd_end_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:gravity="center_vertical"
+                        android:text="23:00"
+                        android:textColor="@color/new_text_color_first"
+                        android:textSize="24sp"
+                        android:textStyle="bold"/>
+
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/dnd_day_box"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/time_box"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/normal_margin"
+                android:layout_marginTop="@dimen/base_margin_padding">
+
+                <TextView
+                    android:id="@+id/dnd_start_day"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="64dp"
+                    android:text="今天"
+                    android:textColor="@color/new_text_color_second"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/dnd_end_day"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/dnd_start_day"
+                    android:paddingLeft="48dp"
+                    android:text="今天"
+                    android:textColor="@color/new_text_color_second"
+                    android:textSize="16sp"/>
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content" >-->
+
+        <!--<LinearLayout-->
+        <!--android:id="@+id/dnd_select_time_box"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_centerInParent="true"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:paddingTop="16dp" >-->
+
+        <!--<com.lingju.assistant.view.wheel.widget.WheelView-->
+        <!--android:id="@+id/dnd_hour"-->
+        <!--android:layout_width="70dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="8dp"-->
+        <!--android:layout_marginRight="8dp" />-->
+
+        <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center_vertical"-->
+        <!--android:text=":"-->
+        <!--android:textColor="#444444"-->
+        <!--android:textSize="24sp" />-->
+
+        <!--<com.lingju.assistant.view.wheel.widget.WheelView-->
+        <!--android:id="@+id/dnd_mimute"-->
+        <!--android:layout_width="70dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="8dp"-->
+        <!--android:layout_marginRight="8dp" />-->
+
+        <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center_vertical"-->
+        <!--android:text=":"-->
+        <!--android:textColor="#f9f9f9"-->
+        <!--android:textSize="24sp" />-->
+
+        <!--<com.lingju.assistant.view.wheel.widget.WheelView-->
+        <!--android:id="@+id/dnd_am_pm"-->
+        <!--android:layout_width="70dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="8dp"-->
+        <!--android:layout_marginRight="8dp" />-->
+        <!--</LinearLayout>-->
+        <!--</RelativeLayout>-->
+
+        <!--<RelativeLayout-->
+        <!--android:id="@+id/dnd_start_box"-->
+        <!--android:layout_width="254dp"-->
+        <!--android:layout_height="48dp"-->
+        <!--android:background="@drawable/press"-->
+        <!--android:clickable="true"-->
+        <!--android:gravity="center_horizontal"-->
+        <!--&gt;-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/dnd_start_text"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:text="开启时间"-->
+        <!--android:textColor="#4d4d4d"-->
+        <!--android:textSize="@dimen/small" />-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/dnd_start_time"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:gravity="right|center_vertical"-->
+        <!--android:text="23:00"-->
+        <!--android:textColor="@color/new_text_color_first"-->
+        <!--android:textSize="@dimen/big" />-->
+        <!--</RelativeLayout>-->
+
+        <!--<View-->
+        <!--android:layout_width="254dp"-->
+        <!--android:layout_height="1px"-->
+        <!--android:background="#b4b4b4" />-->
+
+        <!--<RelativeLayout-->
+        <!--android:id="@+id/dnd_end_box"-->
+        <!--android:layout_width="254dp"-->
+        <!--android:layout_height="48dp"-->
+        <!--android:background="@drawable/press"-->
+        <!--android:clickable="true" >-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/dnd_end_text"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:text="关闭时间"-->
+        <!--android:textColor="#4d4d4d"-->
+        <!--android:textSize="@dimen/small" />-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/dnd_end_time"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:gravity="right|center_vertical"-->
+        <!--android:text="23:00"-->
+        <!--android:textColor="@color/new_text_color_first"-->
+        <!--android:textSize="@dimen/big" />-->
+        <!--</RelativeLayout>-->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#999999"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <!--<RelativeLayout-->
+            <!--android:id="@+id/dnd_ex_switch_box"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="48dp"-->
+            <!--android:layout_alignParentLeft="true"-->
+            <!--android:layout_centerVertical="true"-->
+            <RelativeLayout
+                android:id="@+id/dnd_ex_switch_box"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:background="@drawable/selector_view_bg"
+                android:clickable="true"
+                >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/normal_margin">
+
+                    <TextView
+                        android:id="@+id/dnd_ex_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="紧急来电不受限制"
+                        android:textColor="@color/new_text_color_first"
+                        android:textSize="@dimen/small"/>
+
+                    <TextView
+                        android:id="@+id/dnd_ex_text_describe"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="4dp"
+                        android:text="同一号码三分钟内重复来电不受限制"
+                        android:textColor="@color/common_text_black"
+                        android:textSize="@dimen/smaller"/>
+                </LinearLayout>
+
+                <com.lingju.assistant.view.SwitchButton
+                    android:id="@+id/dnd_ex_switch"
+                    style="@style/SwitchButtonStyleMD"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:focusable="false"
+                    android:padding="0dp"
+                    android:textOff=""
+                    android:textOn=""/>
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#999999"/>
+    </LinearLayout>
+
+</LinearLayout>

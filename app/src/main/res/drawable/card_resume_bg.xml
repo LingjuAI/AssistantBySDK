@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<level-list xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item  android:maxLevel="0">
+        <shape android:shape="rectangle" >
+            <solid android:color="#ef9e42"/>
+            <corners
+	               android:radius="2dp" 
+	               />
+        </shape>
+    </item>
+    <item android:maxLevel="1">
+        <shape android:shape="rectangle" >
+            <solid android:color="#8c8c8c"/>
+        </shape>
+    </item>
+</level-list>
+
+
+    <!-- <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <solid android:color="#cd883a" />
+        </shape>
+    </item>
+    
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#ef9e42" />
+        </shape>
+     </item> -->
+

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<level-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:maxLevel="0">
+        <bitmap
+            android:gravity="center"
+            android:src="@drawable/phone_w"/>
+    </item>
+    <item android:maxLevel="1">
+        <bitmap
+            android:gravity="center"
+            android:alpha="0.54"
+            android:src="@drawable/phone"/>
+    </item>
+</level-list>

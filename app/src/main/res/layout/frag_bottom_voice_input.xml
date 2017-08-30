@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/index_voiceinput_box"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:animateLayoutChanges="true"
+                android:visibility="visible">
+
+    <TextView
+        android:id="@+id/tv_voice_tips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/base_margin_padding"
+        android:gravity="center_horizontal"
+        android:lineSpacingExtra="@dimen/base_margin_padding"
+        android:maxLines="4"
+        android:text="提醒我23号回家\n提醒我23号下午回家\n提醒我23号回家\n提醒我23号下午回家\n了解了解而垃圾"
+        android:textColor="@color/new_text_color_second"
+        android:textSize="@dimen/md_small"
+        android:visibility="gone"/>
+
+    <ImageButton
+        android:id="@+id/tips_cancel"
+        android:layout_width="@dimen/biggest_margin"
+        android:layout_height="@dimen/biggest_margin"
+        android:layout_marginRight="@dimen/base_margin_padding"
+        android:alpha="0.54"
+        android:src="@drawable/cancel_black"
+        android:layout_alignParentRight="true"
+        android:visibility="gone"
+        android:background="@drawable/selector_circle_view_bg"/>
+    <!--<com.lingju.assistant.view.VoiceComponent
+        android:id="@+id/fbvi_voice_bt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_voice_tips"
+        android:layout_centerInParent="true"
+        />-->
+
+    <!--<TextView
+        android:id="@+id/fbvi_tips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fbvi_voice_bt"
+        android:layout_centerHorizontal="true"
+        android:paddingBottom="2dp"
+        android:text="@string/click_mic_tips"
+        android:textColor="@color/new_text_color_second"
+        android:textSize="12sp"/>-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/player_bar_height"
+        android:layout_below="@id/tv_voice_tips"
+        android:gravity="center_vertical">
+
+        <ImageButton
+            android:id="@+id/fbvi_text_input_bt"
+            android:layout_width="@dimen/biggest_margin"
+            android:layout_height="@dimen/biggest_margin"
+            android:layout_marginLeft="@dimen/base_margin_padding"
+            android:alpha="0.54"
+            android:background="@drawable/selector_circle_view_bg"
+            android:src="@drawable/input"/>
+
+        <com.lingju.assistant.view.VoiceWaveComponent
+            android:id="@+id/fbvi_voice_bt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center"/>
+
+        <ImageButton
+            android:id="@+id/fvbi_manual_bt"
+            android:layout_width="@dimen/biggest_margin"
+            android:layout_height="@dimen/biggest_margin"
+            android:layout_marginRight="@dimen/base_margin_padding"
+            android:alpha="0.54"
+            android:background="@drawable/selector_circle_view_bg"
+            android:src="@drawable/question"
+            />
+    </LinearLayout>
+</RelativeLayout>

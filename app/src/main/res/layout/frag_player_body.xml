@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_viewPager_box"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/player_list_viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/music_list_bg"/>
+
+    <ImageView
+        android:id="@+id/player_list_dots"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/slide_bg2"/>
+
+    <ImageButton
+        android:id="@+id/player_list_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/player_padding_horizontal"
+        android:layout_marginTop="10dp"
+        android:background="@null"
+        android:src="@drawable/back_arrow"
+        android:clickable="true"/>
+
+
+</FrameLayout>

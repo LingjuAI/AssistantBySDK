@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tp_time_box"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:layout_centerHorizontal="true"
+    android:orientation="horizontal"
+    android:paddingBottom="16dp" >
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1px"
+        android:layout_weight="1.0" />
+
+    <com.lingju.assistant.view.wheel.widget.WheelView
+        android:id="@+id/tp_hour"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/new_main_bgcolor" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:text=":"
+        android:textColor="#444444"
+        android:textSize="24sp" />
+
+    <com.lingju.assistant.view.wheel.widget.WheelView
+        android:id="@+id/tp_mimute"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/new_main_bgcolor" />
+
+    <com.lingju.assistant.view.wheel.widget.WheelView
+        android:id="@+id/tp_am_pm"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/new_main_bgcolor" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1px"
+        android:layout_weight="1.0" />
+
+</LinearLayout>

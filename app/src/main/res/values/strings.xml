@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">灵聚智能助理</string>
+    <string name="startup_app_name">灵聚智能助理</string>
+    <string name="send">发送</string>
+
+    <string name="my_favorites">收藏</string>
+    <string name="play_list">播放列表</string>
+    <string name="history_list">历史</string>
+    <string name="help">快速入门</string>
+    <string name="setting">设置</string>
+    <string name="setting_wifi">3G/4G状态下听歌</string>
+    <string name="allow_wire">允许线控操作</string>
+    <string name="wire_tips">按1次：触发语音输入\n按2次：暂停/播放音乐，停止机器人朗读\n按3次 ：下一首 </string>
+    <string name="my_theme">主题风格</string>
+    <string name="last_version">已是最新版本</string>
+    <string name="check_update">检查更新</string>
+    <string name="contact_us">联系我们</string>
+    <string name="contact_email">：ling@lingjutech.com</string>
+    <string name="contact_way">由灵聚智能引擎提供智能技术支持</string>
+    <string name="updateing">新版本更新中</string>
+    <string name="have_new_version">有新版本</string>
+
+    <string name="copyright">版权所有 智乐工作室</string>
+
+    <string name="lj_about1_title">智乐</string>
+    <string name="lj_about1_text1">是基于灵聚智能引擎并针对音</string>
+    <string name="lj_about1_text2">乐播放及听新闻优化的演示APP</string>
+
+    <string name="lj_about2_title">灵聚智能云</string>
+    <string name="lj_about2_text1">可为所有的软件及智能硬件</string>
+    <string name="lj_about2_text2">开发者提供智能引擎服务</string>
+
+    <string name="lj_about3_title">灵聚智能</string>
+    <string name="lj_about3_text1">让AI成为新UI的人工大脑</string>
+
+    <string name="car_start_tips1">激活请先说：小灵你好</string>
+    <string name="car_start_tips2">不会用？可以问：怎么使用</string>
+    <string name="car_erji_tip">主人好，在佩戴有线耳机的情况下，您可以用耳麦上的按键随时唤醒我或打断我说话。</string>
+    <string name="coming">在</string>
+    <string name="robot_name">小灵你好</string>
+    <string name="play_song">来首歌</string>
+    <string name="car_mode">车载模式</string>
+    <string name="car_use_about">本模式配合线控耳机，可全程语音控制播放音乐</string>
+    <string name="car_tips1">点击屏幕会终止朗读和音乐</string>
+    <string name="car_tips3">点击屏幕会终止朗读和音乐</string>
+    <string name="exit_car_mode">退出车载模式</string>
+    <string name="no_play_network_2g">当前离线状态，只能使用简单命令播放本地音乐，拨打电话，请说：打电话给张三</string>
+    <string name="force_play_local_music_network_3g">明白，目前是3G4G网络，播放在线歌曲需要消耗流量，我先为你播放手机上的歌，如果需要播放在线歌曲，可以让我播放在线歌曲，点击屏幕上话筒按钮可以和我对话</string>
+    <string name="no_play_network_none">当前离线状态，只能使用简单命令播放本地音乐，想要使用更多功能请连接互联网</string>
+    <string name="first_welcome">主人好，欢迎您使用灵聚智能助理。点一下屏幕下方的话筒，然后对我说话，就能使用我了。或者在唤醒功能打开后，对我说话前请叫我：小灵你好，来唤醒我。建议您在驾车时，打开唤醒功能，更方便的打电话发短信。想了解怎么使用，请对我说：如何拨打电话，如何发短信。</string>
+    <string name="welcome">主人好，有事请喊我：小灵你好，或点击屏幕下方话筒对我讲话。</string>
+    <string name="days_welcome">点击屏幕下方话筒对我讲话，或者打开唤醒后喊我：小灵你好。</string>
+    <string name="carmode_welcome">主人好，在车载模式下，您叫我小灵你好就可以激活我，对我说休息吧，我就会安静的等你再次激活。点击屏幕任何一个位置就可以中断正在播放的声音，试试吧。</string>
+    <string name="carmode_headset_intro">主人好，在佩戴有线耳麦的情况下，您可以用耳麦上的按键随时唤醒我或打断我说话，在车载模式下更好用，试试吧！</string>
+    <string name="no_push_musics">小灵还没总结出您的喜好，您再多用小灵点播一段时间音乐，小灵就可以根据主人的喜好为您做节目啦！</string>
+    <string name="confirm_play_push_musics">今天的节目小灵给您准备好了，现在要听听吗</string>
+    <string name="headset_mode_tips">您已进入耳机模式，可以通过耳麦上的按钮中止音乐播放或者打断小灵说话</string>
+    <string name="press_to_exit">再按一次退出</string>
+    <string name="press_to_exit2">再按一次退出,唤醒功能被关闭</string>
+    <string name="start_up_show_tips">智能随行 生活随心</string>
+    <string name="click_mic_tips">点一下话筒，咕咚一声后说话</string>
+    <string name="accounting_tips">对我说：帮我记账，今天买手机花了三千元</string>
+    <string name="quit_append_mode">退出添加模式</string>
+    <string name="manual_operation_tips">由于选择了触摸编辑，请您手动保存卡片吧</string>
+    <string name="manual_sms_edit_tips">由于选择了触摸编辑，请您手动编辑短信并发送吧</string>
+
+    <string name="my_account">我的帐户</string>
+    <string name="register">注册</string>
+    <string name="login">登录</string>
+    <string name="unlogin">未登录</string>
+    <string name="share">分享</string>
+    <string name="submit">提交</string>
+    <string name="loginSynFavorites">登录后可同步收藏</string>
+    <string name="username">邮箱账号</string>
+    <string name="password">密码</string>
+    <string name="lookforpsw">找回密码</string>
+    <string name="forgetPsw">忘记密码</string>
+    <string name="updatePsw">修改密码</string>
+    <string name="logout">退出登录</string>
+    <string name="newPsw">新密码</string>
+    <string name="setNewPsw">设置新密码</string>
+    <string name="useThirdAccountLogin">使用第三方帐号登录，无需注册</string>
+    <string name="loginBySinaweibo">新浪微博登录</string>
+    <string name="speak_voice">朗读声音</string>
+    <string name="share_to">分享到</string>
+    <string name="confirm">确定</string>
+    <string name="letter_number_underline">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_</string>
+    <string name="number">0123456789</string>
+    <string name="letter">abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+    <string name="letter_number">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+    <string name="shareText">推荐你使用 灵聚智能助理，它能够充当你的智能秘书。</string>
+    <string name="shareDescription">灵聚智能助理可以让你一句话记账、添加备忘、提醒；可以不动手就可以语音拨打电话、发送短信，开车时尤为实用；另外它的聪明还会带给你更多惊喜，试试吧！</string>
+    <string name="introduce">我现在可以：为您播放歌曲、朗读新闻，也可以帮你拨打电话、发送短信，记账和备忘，还有一些不断增加的综合能力，有待您发掘。想具体了解怎么让我为您服务，可以对我说：怎么点播歌曲、怎么使用唤醒功能，怎么打电话，等等，试试吧。</string>
+    <string name="touchForSet">点击设置</string>
+    <string name="tooLongForCalculate">超出路况预测范围</string>
+    <string name="home">家</string>
+    <string name="company">单位</string>
+    <string name="start">出发地</string>
+    <string name="end">目的地</string>
+    <string name="inHome">已在家附近</string>
+    <string name="inCompany">已在单位附近</string>
+    <string name="tooShortForCalculate">出发地与目的地相同，请重新设置</string>
+    <string name="goHomeTimeFormat">回家需要</string>
+    <string name="goCompanyTimeFormat">去单位需要</string>
+    <string name="minute">分钟</string>
+
+    <string name="inputStart">输入出发地</string>
+    <string name="inputEnd">输入目的地</string>
+    <string name="inputGoHome">输入家地址</string>
+    <string name="inputGoCompany">输入公司地址</string>
+    <string name="inputFavorite">输入收藏地址</string>
+
+    <string name="speaker_text">我是%1$s，欢迎使用灵聚智能助理</string>
+    <string name="no_network">网络不佳，请检查网络设置</string>
+    <string name="navi_tips">查询长途路线需要耗费大\n量脑细胞，请耐心等待哦！</string>
+    <string name="navi_no_result">未找到结果</string>
+
+    <string name="intro_text">\u3000\u3000灵聚智能助理是灵聚科技开发的人工智能技术展示版APP，通过APP，您可以一句话记账、添加备忘提醒。仅用对话就可以流畅完成打电话、发短信、导航等任务。\n\n\u3000\u3000您还可以体验到不断提升的各种功能，以及越来越聪明的对话。
+        \n\n\u3000\u3000感谢您的关注与体验，也欢迎您为我们提出意见和建议。</string>
+    <string name="about_lingju">\u3000\u3000灵聚科技专注于人工智能领域的研究和创新，拥有灵聚智能引擎（人工大脑），能够为智能软硬件提供技术服务。公司致力于成为一家基于互联网的智能软硬件技术服务提供商。
+        \n\n\u3000\u3000灵聚智能引擎（人工大脑）既不是语音技术，也不是语义技术，它是一个在国内外几十种技术和学术思想基础上由灵聚科技自主研发的、具有全部知识产权的智能交互技术。
+    \n\n\u3000\u3000灵聚智能引擎可以成为各种具有CPU和操作系统的智能硬件的大脑（详见《灵聚智能引擎智能硬件开发说明》），也可以成为让各种移动应用或平台应用变得更聪明的智慧核心。
+    \n\n\u3000\u3000灵聚人工大脑主要具备高级语义分析、逻辑思维、推理、分析、判断、事件处理、复杂任务流处理、主动服务、自动动态造句、复杂上下文理解、DeepQA、基于大数据的精准自学习、大数据精准化处理等能力，并且以服务结果为导向，向用户提供信息服务的结果而不是原始信息，因而可以做到不依赖屏幕的智能交互。
+    \n\n\u3000\u3000灵聚智能交互技术包括：语音智能交互、文字智能交互、图像智能交互、感知智能交互（通过各类传感器/控制器），其中智能交互的核心是灵聚人工大脑，语音、文字、图像、传感器/控制器只是人工大脑的I/O（输入输出）方式。
+    \n\n\n灵聚智能引擎主要解决了以下问题：
+   \n1) 无屏化交互，即交互过程不依赖屏幕，因此智能硬件也可以不再依赖手机；
+    \n\n2) 具有拟人的逻辑、分析、比较等能力，能让智能硬件具备真正的智能；
+    \n\n3)具备复杂的上下文和任务流机制，能完成各种复杂的命令设计，例如我们解决了在中文语境下点播英文歌曲的行业难题；也解决了不看屏幕顺利拨打电话和发短信的问题，这个问题目前包括siri、Cortana、讯飞灵犀在内无一解决。
+    \n\n4)
+        以服务为导向，为用户提供人工大脑处理后的结果，而不是提供搜索到的原始信息。例如：询问潘长江和郭敬明谁高，给出的答案是潘长江更高，而不是两个人的简介或身高数据；询问：最近天气如何，给出的答案是小灵通过对近三天天气预报分析后的结果。
+    \n\n5)
+        可在不接触开发者私有数据库内容的情况下实现高智能的交互，可对数据进行模糊、精准和复杂逻辑、分析等多重处理，并且实施过程灵活高效，其效果和效率远非正则表达式能比。
+    </string>
+
+    <string name="website"><u>www.lingjuAi.com</u></string>
+    <string name="email"><u>Ling@lingjutech.com</u></string>
+    <string name="tencent"><u>335698184</u></string>
+    <string name="menu_open">打开</string>
+    <string name="menu_close">关闭</string>
+
+    <item name="tag1" type="id"></item>
+    <item name="tag2" type="id"></item>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

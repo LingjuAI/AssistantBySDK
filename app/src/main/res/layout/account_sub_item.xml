@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/account_sub_item"
+    android:paddingLeft="@dimen/normal_margin"
+    android:paddingRight="@dimen/base_margin_padding"
+    android:background="@drawable/selector_view_bg"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+       >
+    <android.support.v7.widget.AppCompatRadioButton
+        android:id="@+id/aitt_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/selector_circle_view_bg"
+        android:checked="true"
+        android:textColor="@color/new_text_color_first"
+        android:textSize="@dimen/regular" />
+    <TextView
+        android:id="@+id/account_sub_item_text"
+        android:layout_width="72dp"
+        android:layout_height="48dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:gravity="center_vertical"
+        android:textSize="@dimen/regular"
+        android:text="打车"/>
+    <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1px"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_marginLeft="@dimen/normal_margin"-->
+        <!--android:layout_marginRight="@dimen/normal_margin"-->
+        <!--android:background="@color/new_line_border"-->
+        <!--/>-->
+    </RelativeLayout>
+</LinearLayout>
