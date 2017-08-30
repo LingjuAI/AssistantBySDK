@@ -1,5 +1,97 @@
 # 灵聚智能助理APP
-灵聚APP是包括语义解析、语音交互、智能问答、音乐播放、提醒、记账等多个功能的智能工具类APP。APP集成的灵聚SDK是其核心依赖库。SDK快速的语义解析、覆盖了多个垂直领域的语义通用场景、百亿数量级大数据，并结合语音交互模块，让开发者能快速开发出一款智能语音交互APP。
+* 灵聚APP是包括语义解析、语音交互、智能问答、音乐播放、提醒、记账等多个功能的智能工具类APP。APP集成的灵聚SDK是其核心依赖库。SDK快速的语义解析、覆盖了多个垂直领域的语义通用场景、百亿数量级大数据，并结合语音交互模块，让开发者能快速开发出一款智能语音交互APP。
+
+## 配置环境及发布
+* 由于APP中申请的第三方SDK的appkey与签名文件有关，而APP不提供签名文件，所以用户需要自定义一份签名文件，并根据该文件重新申请第三方SDK的appkey，替换到项目中。具体操作过程如下：</div>
+
+### 1. 创建签名文件
+
+打开cmd，输入以下指令：
+
+~~~
+keytool -genkey -v -keystore {FILENAME.keystore} -alias {ALIAS} -keyalg RSA -validity {DURATION} 
+
+* {FILENAME.keystore} 为生成的KeyStore的文件名
+* {ALIAS} 为生成的KeyStore文件的别名
+* {DURATION} 为该KeyStore文件的过期时间
+~~~
+
+
+
+### 2. 修改app/build.gradle里android.signingConfigs.default_config
+
+~~~
+android {
+    signingConfigs {
+        default_config {
+            keyAlias '你的keyAlias'
+            keyPassword '你的keyPassword'
+            storeFile file('你的keystore文件路径')
+            storePassword '你的storePassword'
+        }
+    }
+    ...
+}
+~~~
+
+### 3. 申请第三方SDK的appkey
+
+需要申请appkey的SDK如下：
+| 第三方SDK        | appkey申请地址                                                                                       |
+|------------------|------------------------------------------------------------------------------------------------------|
+| 灵聚SDK          | http://dev.lingju.ai/                                                                                |
+| 讯飞语音         | [http://www.xfyun.cn/index.php/mycloud/app/create](http://www.xfyun.cn/index.php/mycloud/app/create) |
+| 百度LBS          | http://lbsyun.baidu.com/apiconsole/key/create                                                        |
+| 新浪微博         | http://open.weibo.com/apps/new?sort=mobile                                                           |
+| 腾讯QQ           | http://open.qq.com/                                                                                  |
+| 微信             | https://open.weixin.qq.com/                                                                          |
+| 喜马拉雅（听书） | http://open.ximalaya.com/                                                                            |
+
+
+* 注意：在申请灵聚SDK的appkey时，创建应用后，在该应用右侧的“接入”选项可查看appkey。
+![](images/screenshot_1499053815532.png)
+
+### 4. 在项目中替换新申请到的appkey
+
+在app下的com.lingju.assistant.social.weibo.Constants类中修改对应常量参数的值。
+
+~~~
+    /** 微博appkey */
+    String WEIBO_APPKEY = "你的appkey";
+
+    /** 微信 */
+    String WECHAT_APPID = "你的appid";
+    String WECHAT_AppSecret = "你的appSecret";
+
+    /** 腾讯qq*/
+    String TENCENT_APPID = "你的appid";
+    String TENCENT_AppSecret = "你的appSecret";
+
+    /**讯飞语音*/
+    String XUNFEI_APPID = "你的appid";
+
+    /**喜马拉雅*/
+    String XIMALAYA_APPKEY = "你的appkey";
+    String XIMALAYA_APPSECRET = "你的appSecret";
+    // 授权回调页，默认使用该URL（在开发平台创建应用时也要填入该URL）
+    String XIMALAYA_REDIRECT_URL = "https://api.ximalaya.com/openapi-collector-app/get_access_token";
+    
+    /** 灵聚SDK*/
+    String LINGJU_APPKEY = "你的appkey";
+~~~
+
+* 特别的，百度LBS和喜马拉雅的appkey需要在AndroidManifest.xml的application标签下声明：
+
+~~~
+<!-- 百度LBS -->
+<meta-data
+	android:name="com.baidu.lbsapi.API_KEY"
+	android:value="你的appkey"/>
+<!--喜马拉雅SDK-->
+<meta-data
+	android:name="app_key"
+	android:value="你的appkey"/>
+~~~
 
 
 ## License [![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](https://www.apache.org/licenses/LICENSE-2.0)
