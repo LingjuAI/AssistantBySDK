@@ -1,8 +1,5 @@
 # 灵聚智能助理APP
-
-## 开源说明
-1. 项目源代码遵循Apache License 2.0 开源协议；
-2. APP中的导航、唤醒功能模块是灵聚SDK提供的附加服务，并不属于开源代码部分；
+灵聚APP是包括语义解析、语音交互、智能问答、音乐播放、提醒、记账等多个功能的智能工具类APP。APP集成的灵聚SDK是其核心依赖库。SDK快速的语义解析、覆盖了多个垂直领域的语义通用场景、百亿数量级大数据，并结合语音交互模块，让开发者能快速开发出一款智能语音交互APP。
 
 
 ## License [![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](https://www.apache.org/licenses/LICENSE-2.0)
