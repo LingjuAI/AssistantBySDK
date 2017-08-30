@@ -1,4 +1,4 @@
-# 灵聚智能助理APP
+## 灵聚智能助理APP
 * 灵聚APP是包括语义解析、语音交互、智能问答、音乐播放、提醒、记账等多个功能的智能工具类APP。APP集成的灵聚SDK是其核心依赖库。SDK快速的语义解析、覆盖了多个垂直领域的语义通用场景、百亿数量级大数据，并结合语音交互模块，让开发者能快速开发出一款智能语音交互APP。
 
 ## 配置环境及发布
@@ -37,16 +37,42 @@ android {
 ### 3. 申请第三方SDK的appkey
 
 需要申请appkey的SDK如下：
-| 第三方SDK        | appkey申请地址                                                                                       |
-|------------------|------------------------------------------------------------------------------------------------------|
-| 灵聚SDK          | http://dev.lingju.ai/                                                                                |
-| 讯飞语音         | [http://www.xfyun.cn/index.php/mycloud/app/create](http://www.xfyun.cn/index.php/mycloud/app/create) |
-| 百度LBS          | http://lbsyun.baidu.com/apiconsole/key/create                                                        |
-| 新浪微博         | http://open.weibo.com/apps/new?sort=mobile                                                           |
-| 腾讯QQ           | http://open.qq.com/                                                                                  |
-| 微信             | https://open.weixin.qq.com/                                                                          |
-| 喜马拉雅（听书） | http://open.ximalaya.com/                                                                            |
-
+<div>
+    <table border="0">
+	  <tr>
+	    <th>第三方SDK</th>
+	    <th>appkey申请地址</th>
+	  </tr>
+	  <tr>
+	    <td>灵聚SDK</td>
+	    <td>http://dev.lingju.ai/</td>
+	  </tr>
+	    <tr>
+	    <td>讯飞语音</td>
+	    <td>http://www.xfyun.cn/index.php/mycloud/app/create</td>
+	  </tr>
+	    <tr>
+	    <td>百度LBS</td>
+	    <td>http://lbsyun.baidu.com/apiconsole/key/create</td>
+	  </tr>
+	    <tr>
+	    <td>新浪微博</td>
+	    <td>http://open.weibo.com/apps/new?sort=mobile</td>
+	  </tr>
+	    <tr>
+	    <td>腾讯QQ</td>
+	    <td>http://open.qq.com/</td>
+	  </tr>
+	    <tr>
+	    <td>微信</td>
+	    <td>https://open.weixin.qq.com/</td>
+	  </tr>
+	    <tr>
+	    <td>喜马拉雅（听书）</td>
+	    <td>http://open.ximalaya.com/</td>
+	  </tr>
+    </table>
+</div>
 
 * 注意：在申请灵聚SDK的appkey时，创建应用后，在该应用右侧的“接入”选项可查看appkey。
 ![](images/appkey.png)
@@ -93,6 +119,9 @@ android {
 	android:value="你的appkey"/>
 ~~~
 
+## 相关文档链接
+1. [APP开源说明文档](https://www.kancloud.cn/ljsdk/lingju_app/351356)
+2. [灵聚SDK指令文档](http://doc.lingju.ai/order)
 
 ## License [![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 ~~~
