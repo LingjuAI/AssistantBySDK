@@ -81,7 +81,12 @@ public class XmlyManager {
         mPlayerManager = XmPlayerManager.getInstance(mContext);
         mPlayerManager.init();
         mPlayerManager.addPlayerStatusListener(mPlayerStatusListener);
-        XmPlayerConfig.getInstance(mContext).setSDKHandleAudioFocus(false);
+        /*mPlayerManager.setOnConnectedListerner(new XmPlayerManager.IConnectListener() {
+            @Override
+            public void onConnected() {
+                Log.i("LingJu", "XmlyManager onConnected()!!!!");
+            }
+        });*/
         if (TingAlbumDao.getInstance().unSaveMeta()) {
             final String[] cates = mContext.getResources().getStringArray(R.array.ting_category);
             fillMetaData(cates);
