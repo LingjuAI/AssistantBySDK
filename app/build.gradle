@@ -62,6 +62,10 @@ android {
             debuggable true
         }
     }
+
+    greendao{
+        schemaVersion 1
+    }
 }
 
 

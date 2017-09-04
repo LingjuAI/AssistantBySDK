@@ -19,7 +19,7 @@ public class DaoManager {
     private Database mDb;
 
     private DaoManager(Context application) {
-        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(application, ENCRYPTED ? "notes-db-encrypted" : "notes-db");
+        DaoMaster.OpenHelper helper = new SQLiteOpenHelper(application, ENCRYPTED ? "notes-db-encrypted" : "notes-db");
         mDb = ENCRYPTED ? helper.getEncryptedWritableDb("super-secret") : helper.getWritableDb();
         daoSession = new DaoMaster(mDb).newSession();
     }
