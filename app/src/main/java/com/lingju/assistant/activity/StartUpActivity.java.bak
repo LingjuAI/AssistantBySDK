@@ -408,8 +408,8 @@ public class StartUpActivity extends Activity implements ActivityCompat.OnReques
             try {
                 Thread.sleep(3000);
             } catch (InterruptedException e) {
-                //打断睡眠中的线程
-                Thread.currentThread().interrupt();
+                // TODO Auto-generated catch block
+                e.printStackTrace();
             }
             return null;
         }
