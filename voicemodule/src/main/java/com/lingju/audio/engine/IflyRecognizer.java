@@ -382,7 +382,7 @@ public class IflyRecognizer extends RecognizerBase {
         if (mode && long_record_mode < DEFAULT_TAPE) {
             //点亮屏幕
             wl.acquire();
-        } else {
+        } else if (!mode) {
             //释放
             if (wl.isHeld())
                 wl.release();
@@ -647,7 +647,7 @@ public class IflyRecognizer extends RecognizerBase {
             }
             if (isLast) {
                 if (temp.length() <= 0) {
-                    if (mRecorder.isRecord() && long_time_record)
+                    if (mRecorder.isRecord() && long_time_record && long_record_mode != DEFAULT_TAPE)
                         recognizer.startListening(RecognizerListener);
                     else {
                         Log.i("LingJu", "MyRecognizerListener onResult()>>>> error");
