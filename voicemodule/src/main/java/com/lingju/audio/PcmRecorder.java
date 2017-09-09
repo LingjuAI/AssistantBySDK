@@ -28,6 +28,7 @@ public class PcmRecorder implements Runnable {
     private LingjuRecorder mRecorder;
     private int bufferLength = 320;
     private AudioVadContext vadContext;
+    private long startRecordTime;
 
     public PcmRecorder(Context context) {
         mRecorder = LingjuRecorder.create(context);
@@ -68,9 +69,11 @@ public class PcmRecorder implements Runnable {
                     tapeDir.mkdirs();
                 bos = new BufferedOutputStream(new FileOutputStream(TEMP_FILE));
             }
+            startRecordTime = System.currentTimeMillis();
             while (running.get() && (l = mRecorder.read(buffer, 0, bufferLength)) != -1) {
                 switch (status) {
                     case Idle://当前没有启动语音识别引擎
+                        long recordTime = System.currentTimeMillis() - startRecordTime;
                         if (vadContext.vadFrontActivate(500)) {//检测发现最近500ms是有效音频
                             if (mRecordListener != null)
                                 mRecordListener.onStart();
@@ -82,8 +85,10 @@ public class PcmRecorder implements Runnable {
                             if (mRecordListener != null)
                                 mRecordListener.onRecord(buf, rl);//保存本地录音
                             saveTape(buf, rl, bos);
-                        }else {
-                            checkVad(2000);
+                        }else if (recordTime >= 4000) {
+                            startRecordTime = System.currentTimeMillis();
+                            if (mRecordListener != null)
+                                mRecordListener.onVadEnd();
                         }
                         break;
                     case Recording://当前语音识别引擎正在录音/写入音频数据
@@ -113,6 +118,7 @@ public class PcmRecorder implements Runnable {
     private void checkVad(int timeout) {
         if (vadContext.vadRearTimeout(timeout)) {   //检测发现最近timeout ms是无效音频，停止识别
             status = IRecognizer.RecognizeStatus.Idle;
+            startRecordTime = System.currentTimeMillis();
             if (mRecordListener != null)
                 mRecordListener.onVadEnd();
         }

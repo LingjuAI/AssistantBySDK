@@ -345,9 +345,7 @@ public class MainActivity extends BaseActivity implements IAdditionAssist.Assist
         Log.i(TAG, "onResume");
         super.onResume();
         isVisiable = true;
-        if (voiceWaveable()) {
-            VoiceMediator.create(this).setRemindDialogFlag(0);
-        }
+        VoiceMediator.create(this).setRemindDialogFlag(0);
         if (VoiceMediator.create(this).isWalkNavi()) {
             VoiceMediator.get().resumeMediaVolume();
         }
