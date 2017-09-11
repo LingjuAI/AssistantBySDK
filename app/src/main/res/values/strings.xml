@@ -114,7 +114,7 @@
 
     <string name="speaker_text">我是%1$s，欢迎使用灵聚智能助理</string>
     <string name="no_network">网络不佳，请检查网络设置</string>
-    <string name="navi_tips">查询长途路线需要耗费大\n量脑细胞，请耐心等待哦！</string>
+    <string name="navi_tips">正在规划路线，请耐心等待哦！</string>
     <string name="navi_no_result">未找到结果</string>
 
     <string name="intro_text">\u3000\u3000灵聚智能助理是灵聚科技开发的人工智能技术展示版APP，通过APP，您可以一句话记账、添加备忘提醒。仅用对话就可以流畅完成打电话、发短信、导航等任务。\n\n\u3000\u3000您还可以体验到不断提升的各种功能，以及越来越聪明的对话。

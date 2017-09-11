@@ -28,11 +28,11 @@
                 android:src="@drawable/back_arrow"/>
 
             <TextView
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/normal_margin"
                 android:layout_toRightOf="@+id/navi_back_bt"
-                android:gravity="center"
+                android:layout_centerVertical="true"
                 android:text="导航"
                 android:textColor="@color/white"
                 android:textSize="@dimen/small_title_size"

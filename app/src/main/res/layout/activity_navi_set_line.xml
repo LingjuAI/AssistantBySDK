@@ -51,12 +51,12 @@
 
                 <TextView
                     android:id="@+id/ansl_setting_bt"
-                    android:layout_width="56dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:background="@drawable/selector_white_circle_view_bg"
                     android:gravity="center"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
                     android:text="偏好"
                     android:textColor="#ffffff"
                     android:textSize="@dimen/medium"

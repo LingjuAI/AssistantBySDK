@@ -24,35 +24,38 @@
         android:textStyle="bold"/>
 
     <RelativeLayout
-    android:layout_width="wrap_content"
-    android:layout_height="64dp">
-    <TextView
-        android:id="@+id/cad_content"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="加油，200元"
-        android:lineSpacingExtra="8dp"
-        android:textColor="@color/new_text_color_second"
-        android:paddingBottom="@dimen/base_margin_padding"
-        android:textSize="@dimen/regular"
-        />
+        android:layout_height="64dp">
 
-    <com.lsjwzh.widget.materialloadingprogressbar.CircleProgressBar
-        android:id="@+id/progress_bar"
-        android:layout_width="@dimen/setting_title_margin"
-        android:layout_height="@dimen/setting_title_margin"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginRight="@dimen/dialog_margin"
-        android:paddingRight="@dimen/base_margin_padding"
-        android:paddingBottom="@dimen/small_margin"
-        android:layout_gravity="center"
-        app:mlpb_progress_color="@color/base_blue"
-        app:mlpb_show_arrow="true"
-        app:mlpb_enable_circle_background="false"
-        app:mlpb_progress_stoke_width="3dp"
-        android:visibility="visible">
-    </com.lsjwzh.widget.materialloadingprogressbar.CircleProgressBar>
+
+        <com.lsjwzh.widget.materialloadingprogressbar.CircleProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="@dimen/setting_title_margin"
+            android:layout_height="@dimen/setting_title_margin"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="@dimen/dialog_margin"
+            android:paddingRight="@dimen/base_margin_padding"
+            android:paddingBottom="@dimen/small_margin"
+            android:layout_gravity="center"
+            app:mlpb_progress_color="@color/base_blue"
+            app:mlpb_show_arrow="true"
+            app:mlpb_enable_circle_background="false"
+            app:mlpb_progress_stoke_width="3dp"
+            android:visibility="visible">
+        </com.lsjwzh.widget.materialloadingprogressbar.CircleProgressBar>
+        <TextView
+            android:id="@+id/cad_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/progress_bar"
+            android:layout_alignParentLeft="true"
+            android:text="查询长途路线需要耗费大\n量脑细胞，请耐心等待哦！"
+            android:lineSpacingExtra="8dp"
+            android:textColor="@color/new_text_color_second"
+            android:paddingBottom="@dimen/base_margin_padding"
+            android:textSize="@dimen/regular"
+            />
     </RelativeLayout>
 
     <LinearLayout
@@ -62,15 +65,15 @@
         android:gravity="end">
 
         <!--<TextView-->
-            <!--android:id="@+id/cd_cancel"-->
-            <!--android:layout_width="64dp"-->
-            <!--android:layout_height="36dp"-->
-            <!--android:background="@drawable/selector_view_bg"-->
-            <!--android:layout_marginRight="@dimen/normal_margin"-->
-            <!--android:text="取消"-->
-            <!--android:gravity="center"-->
-            <!--android:textColor="@color/base_blue"-->
-            <!--android:textSize="@dimen/regular"/>-->
+        <!--android:id="@+id/cd_cancel"-->
+        <!--android:layout_width="64dp"-->
+        <!--android:layout_height="36dp"-->
+        <!--android:background="@drawable/selector_view_bg"-->
+        <!--android:layout_marginRight="@dimen/normal_margin"-->
+        <!--android:text="取消"-->
+        <!--android:gravity="center"-->
+        <!--android:textColor="@color/base_blue"-->
+        <!--android:textSize="@dimen/regular"/>-->
 
         <TextView
             android:id="@+id/tv_cancel"
