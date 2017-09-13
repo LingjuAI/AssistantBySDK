@@ -254,6 +254,8 @@ public class CallAndSmsDao {
             ContentResolver resolver = mContext.getContentResolver();
             Uri uri = ContactsContract.Data.CONTENT_URI;
             for (ContactsProxy proxy : contactList) {
+                if (syncList.size() == 500)
+                    break;
                 Contacts contact = new Contacts();
                 contact.setLid(Integer.valueOf(proxy.getRawContactId()));
                 contact.setCid(Integer.valueOf(proxy.getRawContactId()));
@@ -418,6 +420,8 @@ public class CallAndSmsDao {
             ContentResolver resolver = mContext.getContentResolver();
             Uri uri = android.provider.CallLog.Calls.CONTENT_URI;
             for (CallLogProxy proxy : proxies) {
+                if (syncList.size() == 500)
+                    break;
                 CallLog callLog = new CallLog();
                 callLog.setCid((int) proxy.getId());
                 callLog.setLid((int) proxy.getId());
@@ -538,6 +542,8 @@ public class CallAndSmsDao {
             ContentResolver resolver = mContext.getContentResolver();
             Uri uri = Uri.parse("content://sms");
             for (SmsProxy sms : smsList) {
+                if (syncList.size() == 500)
+                    break;
                 Message message = new Message();
                 message.setCid((int) sms.getId());
                 message.setLid((int) sms.getId());
