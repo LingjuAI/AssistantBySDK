@@ -875,6 +875,10 @@ public class AssistantService extends Service implements SystemVoiceMediator.Cha
                 if (last != AppConfig.Network || AppConfig.Network.isMobileNetwork() && BaiduLocateManager.get() != null) {
                     BaiduLocateManager.get().start();
                 }
+                //保证网络变化时，robot的初始化正常
+                if (!AndroidChatRobotBuilder.get().isRobotCreated()) {
+                    chatRobotInited();
+                }
                 //TODO 设置AI引擎离线工作
                 /*if (robotBuilder != null)
                     robotBuilder.updateNetWork(RobotApplication.online);*/
