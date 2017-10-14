@@ -8,6 +8,7 @@ import com.lingju.model.PlayMusic;
 import com.lingju.model.User;
 import com.lingju.model.Version;
 import com.lingju.robot.AndroidChatRobotBuilder;
+import com.ximalaya.ting.android.player.MD5;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -89,7 +90,7 @@ public class MusicUtils {
             if (QClient.getInstance().isSessionInvalid() && sendLoginLog() != 0) {
                 return null;
             }
-            String temp = QClient.getInstance().sendMessage(message.toString());
+            String temp = QClient.getInstance().sendMessage(message);
             Log.i("checkUpdateVersion", "result:" + temp);
             //QClient.STATUS.remove();
             //{"last_version":"v0.9.12","update_app":"http://www.360008.com/software/app_music/v0.9.12/,LingjuMusicv0.9.12.apk"}
@@ -149,14 +150,17 @@ public class MusicUtils {
         message.put("command", "UserLoginNone");
         message.put("lingjuappkey", "LINGJU_ASS");
         message.put("lingjumodel", "mobile"); //业务类型，目前为:BBJIA或MUSIC
-        /*DeviceMsg dm = AndroidChatRobotBuilder.get().getDeviceMsg();
-        message.put("userid", dm.userid); //用户账户=MD5(imei+mac+serial) 16位,后台将于下面三个数
-        message.put("imei", dm.imei); //终端机器码
-        message.put("mac", dm.mac); //终端网卡地址
-        message.put("serial", dm.serial); //终端序列号*/
+        String imei = AndroidChatRobotBuilder.get().getImei();
+        String mac = DeviceUtils.openWifiAndGetMacAddress();
+        String series = AndroidChatRobotBuilder.get().getSeries();
+        String userId = MD5.md5("LINGJU_ASS" + imei + mac + series);
+        message.put("userid", userId); //用户账户=MD5(lingjuappkey+imei+mac+serial) 32位
+        message.put("imei", imei); //终端机器码
+        message.put("mac", mac); //终端网卡地址
+        message.put("serial", series); //终端序列号
 
         Log.d(TAG, "sendLoginLog>>>>" + message.toString());
-        String temp = client.sendMessage(message.toString());
+        String temp = client.sendMessage(message);
         try {
             if (!TextUtils.isEmpty(temp.trim()) && !"{}".equals(temp)) {
                 JSONObject json = new JSONObject(temp);
@@ -247,7 +251,7 @@ public class MusicUtils {
                     if (QClient.getInstance().isSessionInvalid() && sendLoginLog() != 0) {
                         return null;
                     }
-                    result = QClient.getInstance().sendMessage(message.toString());
+                    result = QClient.getInstance().sendMessage(message);
                     if (result != null && result.contains("|")) {
                         return result.split("\\|", 2);
                     }
@@ -285,7 +289,7 @@ public class MusicUtils {
         message.put("city", user.getCity());
 
         Log.i(TAG, "register:email:" + user.getEmail() + ",psw:" + user.getPassword() + ",sex:" + user.getSex() + ",province:" + user.getProvinces() + ",city:" + user.getCity());
-        String temp = client.sendMessage(message.toString());
+        String temp = client.sendMessage(message);
         Log.i(TAG, "register:result:" + temp);
         if (temp == null) {
             return 4;
@@ -320,7 +324,7 @@ public class MusicUtils {
         if (QClient.getInstance().isSessionInvalid() && sendLoginLog() != 0) {
             return false;
         }
-        String temp = QClient.getInstance().sendMessage(message.toString());
+        String temp = QClient.getInstance().sendMessage(message);
         Log.i("submitFeedback", "result:" + temp);
         if (!TextUtils.isEmpty(temp.trim()) && !"{}".equals(temp)) {
             try {
@@ -343,7 +347,7 @@ public class MusicUtils {
         message.put("uid", user.getEmail());
         message.put("password", user.getPassword());
         Log.i(TAG, "login:uid:" + user.getEmail());
-        String temp = client.sendMessage(message.toString());
+        String temp = client.sendMessage(message);
         Log.i(TAG, "login:result:" + temp);
         if (temp == null || temp.length() == 0 || temp.trim().equals("0")) {
             return false;
@@ -460,7 +464,7 @@ public class MusicUtils {
             message.put("provice", jo.getString("province")); //省/自治区   --可以为空
             message.put("city", jo.getString("city")); //地市     --可以为空
 
-            String temp = client.sendMessage(message.toString());
+            String temp = client.sendMessage(message);
             Log.i(TAG, "loginByWeChat:result:" + temp);
             if (temp == null || temp.trim().equals("")) {
                 return false;
@@ -509,7 +513,7 @@ public class MusicUtils {
             message.put("provice", jo.getString("province")); //省/自治区   --可以为空
             message.put("city", jo.getString("city")); //地市     --可以为空
 
-            String temp = client.sendMessage(message.toString());
+            String temp = client.sendMessage(message);
             Log.i(TAG, "loginByQQ:result:" + temp);
             if (temp == null || temp.trim().equals("")) {
                 return false;
@@ -548,7 +552,7 @@ public class MusicUtils {
         message.put("command", "ForgetPassword");
         message.put("email", email);
 
-        String temp = client.sendMessage(message.toString());
+        String temp = client.sendMessage(message);
         Log.i(TAG, "lookForPsw:result=" + temp);
         if (TextUtils.isEmpty(temp))
             return false;
@@ -573,7 +577,7 @@ public class MusicUtils {
         message.put("oldpassword", oldPassword);
 
         Log.i(TAG, "updatePsw:email=" + user.getEmail() + ",psw=" + user.getPassword() + ",opsw=" + oldPassword);
-        String temp = client.sendMessage(message.toString());
+        String temp = client.sendMessage(message);
         Log.i(TAG, "updatePsw:result=" + temp);
         if (TextUtils.isEmpty(temp))
             return false;
@@ -603,7 +607,7 @@ public class MusicUtils {
         message.put("islocal", m.getCloud() ? "1" : "0"); //是否本地，0：本地，1：网络
 
         Log.i(TAG, "favoriteMusic:musicid=" + m.getMusicid());
-        String temp = client.sendMessage(message.toString());
+        String temp = client.sendMessage(message);
         Log.i(TAG, "favoriteMusic:result=" + temp);
         if (TextUtils.isEmpty(temp))
             return false;
@@ -627,7 +631,7 @@ public class MusicUtils {
         message.put("musicname", m.getTitle());
 
         Log.i(TAG, "unFavoriteMusic:musicid=" + m.getMusicid() + ",title=" + m.getTitle() + ",userid=" + u.getUserid());
-        String temp = client.sendMessage(message.toString());
+        String temp = client.sendMessage(message);
         Log.i(TAG, "unFavoriteMusic:result=" + temp);
         if (TextUtils.isEmpty(temp))
             return false;
@@ -653,7 +657,7 @@ public class MusicUtils {
         Map<String, String> message = new SocketMap<String, String>();
         message.put("command", "GetMusicCollection");
         message.put("userid", user.getUserid());
-        String temp = client.sendMessage(message.toString());
+        String temp = client.sendMessage(message);
         Log.i(TAG, "getFavoriteMusicFromCloud:" + temp);
         if (temp == null || temp.trim().length() == 0)
             return null;
@@ -676,7 +680,7 @@ public class MusicUtils {
         message.put("name", m.getTitle()); //歌曲名称
 
         Log.i(TAG, "sendPlayLog >>>>" + message.toString());
-        String temp = client.sendMessage(message.toString());
+        String temp = client.sendMessage(message);
         Log.i(TAG, "sendPlayLog result>>>>" + temp);
         if (TextUtils.isEmpty(temp))
             return false;
@@ -702,7 +706,7 @@ public class MusicUtils {
             return null;
         }
         Log.i(TAG, "getPushMusics >>>>" + message.toString());
-        String temp = client.sendMessage(message.toString());
+        String temp = client.sendMessage(message);
         //Log.i(TAG, "getPushMusics result>>>>"+temp);
         return temp;
     }

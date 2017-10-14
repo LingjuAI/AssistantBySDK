@@ -21,6 +21,7 @@ import com.lingju.model.Version;
 import com.lingju.model.dao.DaoManager;
 import com.lingju.model.dao.UserManagerDao;
 import com.lingju.util.CrashHandler;
+import com.lingju.util.DeviceUtils;
 import com.lingju.util.NetUtil;
 import com.lingju.util.PhoneContactUtils;
 
@@ -189,6 +190,7 @@ public class AppConfig extends MultiDexApplication {
      * 初始化额外参数
      **/
     private void initExtra() {
+        DeviceUtils.init(this);
         mContactUtils = PhoneContactUtils.getInstance(this);
         inmsg_tips = dPreferences.getBoolean(IN_MSG_TIPS, false);
         incoming_tips = dPreferences.getBoolean(INCOMING_TIPS, false);

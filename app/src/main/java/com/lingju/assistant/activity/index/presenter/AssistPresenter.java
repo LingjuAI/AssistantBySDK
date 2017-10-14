@@ -1,6 +1,7 @@
 package com.lingju.assistant.activity.index.presenter;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.text.TextUtils;
 
 import com.lingju.assistant.AppConfig;
@@ -12,12 +13,14 @@ import com.lingju.assistant.activity.event.RobotTipsEvent;
 import com.lingju.assistant.activity.event.SynthesizeEvent;
 import com.lingju.assistant.activity.event.UpdateTaskCardEvent;
 import com.lingju.assistant.activity.index.IAdditionAssist;
+import com.lingju.assistant.download.impl.DownloadFileService;
 import com.lingju.assistant.entity.RobotConstant;
 import com.lingju.assistant.entity.TaskCard;
 import com.lingju.assistant.entity.action.DialogEntity;
 import com.lingju.assistant.service.AssistantService;
 import com.lingju.assistant.service.RemindService;
 import com.lingju.assistant.service.process.DefaultProcessor;
+import com.lingju.assistant.view.CommonDialog;
 import com.lingju.assistant.view.MultiChoiceDialog;
 import com.lingju.assistant.view.SingleChooseDialog;
 import com.lingju.audio.engine.IflyRecognizer;
@@ -36,6 +39,7 @@ import com.lingju.model.AlarmClock;
 import com.lingju.model.Memo;
 import com.lingju.model.Remind;
 import com.lingju.model.Tape;
+import com.lingju.model.Version;
 import com.lingju.model.dao.AssistDao;
 import com.lingju.model.dao.AssistEntityDao;
 import com.lingju.model.dao.DaoManager;
@@ -43,6 +47,8 @@ import com.lingju.model.dao.TapeEntityDao;
 import com.lingju.model.temp.speech.ResponseMsg;
 import com.lingju.util.AssistUtils;
 import com.lingju.util.JsonUtils;
+import com.lingju.util.MusicUtils;
+import com.lingju.util.NetUtil;
 import com.lingju.util.TimeUtils;
 
 import org.greenrobot.eventbus.EventBus;
@@ -71,12 +77,17 @@ public class AssistPresenter implements IAdditionAssist.Presenter {
     private boolean is_alarm_edit;     //新建闹钟是否展开编辑中标记
     private boolean is_remind_edit;    //新建提醒是否展开编辑中标记
     private boolean is_account_edit;   //新建记账是否展开编辑中标记
+    private AsyncTask mCheckVersionTask;
 
     public AssistPresenter(IAdditionAssist.AssistView assistView) {
         this.assistView = (MainActivity) assistView;
         /* 在主页面再次初始化 */
         DaoManager.create(this.assistView);
         mAssistDao = AssistDao.getInstance();
+        //网络正常时，检测版本更新
+        if (NetUtil.getInstance(this.assistView.getApplicationContext()).getCurrentNetType().isOnline()) {
+            mCheckVersionTask = new CheckVersionTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+        }
     }
 
     @Override
@@ -776,5 +787,79 @@ public class AssistPresenter implements IAdditionAssist.Presenter {
         intent.putExtra(AssistantService.CMD, AssistantService.ServiceCmd.STOP_VOICE_MODE);
         assistView.startService(intent);
         EventBus.getDefault().unregister(assistView);
+        if (mCheckVersionTask != null && mCheckVersionTask.getStatus() == AsyncTask.Status.RUNNING) {
+            mCheckVersionTask.cancel(true);
+            mCheckVersionTask = null;
+        }
+    }
+
+    /**
+     * 应用版本检测任务
+     **/
+    private class CheckVersionTask extends AsyncTask<Void, Void, Version> {
+
+        @Override
+        protected void onPreExecute() {
+        }
+
+        @Override
+        protected Version doInBackground(Void... params) {
+            return checkUpdateVersion();
+        }
+
+        @Override
+        protected void onPostExecute(final Version result) {
+            if (result != null) {
+                //newVersionUrl="http://192.168.1.200/hospital.apk";
+                new CommonDialog(assistView, "版本检查", "有新版本v" + result.getNew_version() + "，您是否需要马上更新？", "取消", "确定")
+                        .setOnConfirmListener(new CommonDialog.OnConfirmListener() {
+
+                            @Override
+                            public void onConfirm() {
+                                installNewVersion(result);
+                            }
+                        }).show();
+            }
+        }
+
+    }
+
+    /**
+     * 安装新版本
+     **/
+    private void installNewVersion(final Version version) {
+        NetUtil.NetType type = AppConfig.Network;
+        ((AppConfig) assistView.getApplication()).newVersion = version;
+        if (type == NetUtil.NetType.NETWORK_TYPE_WIFI) {
+            Intent it = new Intent(assistView, DownloadFileService.class);
+            assistView.startService(it);
+        } else if (type == NetUtil.NetType.NETWORK_TYPE_2G || type == NetUtil.NetType.NETWORK_TYPE_3G) {
+            new CommonDialog(assistView, "温馨提示", "您当前处于" + type.toString() + "网络中，继续此次版本更新将消耗您较多的移动流量，建议您切换到wifi网络中下载安装，您是否确定要继续？", "否", "是")
+                    .setOnConfirmListener(new CommonDialog.OnConfirmListener() {
+
+                        @Override
+                        public void onConfirm() {
+                            Intent it = new Intent(assistView, DownloadFileService.class);
+                            assistView.startService(it);
+                        }
+                    }).show();
+        } else {
+            new CommonDialog(assistView, "温馨提示", "您当前的网络异常，请确保手机能正常上网！", "确定").show();
+        }
+    }
+
+    /**
+     * 检测应用版本是否有更新
+     **/
+    private Version checkUpdateVersion() {
+        try {
+            Version vs = MusicUtils.checkUpdateVersion(AppConfig.versionName); //提交最新版本号，例如:v1.0.0
+            if (vs.isUpdate()) {
+                return vs;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

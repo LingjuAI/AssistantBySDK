@@ -318,7 +318,7 @@ public class TimeUtils {
      * @param str
      * @return
      */
-    public Date getDate(String str) {
+    public static Date getDate(String str) {
         try {
             return sdf.parse(str);
         } catch (ParseException e) {
@@ -328,7 +328,7 @@ public class TimeUtils {
     }
 
     //把日期转换成常用字符串格式
-    public String getDateString(Date date) {
+    public static String getDateString(Date date) {
         return sdf.format(date);
     }
 
