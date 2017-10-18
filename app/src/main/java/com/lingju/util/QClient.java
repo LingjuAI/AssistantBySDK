@@ -9,10 +9,7 @@ import java.nio.channels.ClosedSelectorException;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.SocketChannel;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.ExecutionException;
@@ -341,13 +338,8 @@ public class QClient {
 		}
 	}
 
-	public String sendMessage(Map<String, String> message) {
-		Set<Map.Entry<String, String>> entries = message.entrySet();
-		Map<String, String> params = new HashMap<>();
-		for (Map.Entry<String, String> entry : entries) {
-			params.put("\"" + entry.getKey() + "\"", "\"" + entry.getValue() + "\"");
-		}
-		return sendMessage(params.toString(), read_timeout);
+	public String sendMessage(String message) {
+		return sendMessage(message, read_timeout);
 	}
 
 	public String sendMessage(final String text,final int timeout){
