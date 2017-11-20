@@ -131,6 +131,25 @@ android {
 	android:value="你的appkey"/>
 ~~~
 
+### 5. 在项目中替换对应的SDK
+
+* 由于讯飞语音应用申请的Appid和对应下载的SDK（包括jar和本地库）具有一致性，SDK不通用。开发者还需要在voicemodule/libs和voicemodule/src/main/jniLibs中替换自己的讯飞SDK。如下图所示：
+
+   ![](images/screenshot_1511167197548.png)
+
+
+* 另外，项目是使用了灵聚安卓版软件版（不允许在非手机环境下运行）SDK。如果开发者需要开发硬件产品，需要在灵聚开发者平台创建硬件类型应用，并下载硬件版SDK在voicemodule/libs中替换。如下图所示：
+
+   ![](images/screenshot_1511167304733.png)
+
+   然后在AssistantService类的chatRobotInited( )方法的AndroidChatRobotBuilder初始化中加入“授权码”这一参数。
+   
+   ![](images/screenshot_1511167530922.png)
+   
+* 在灵聚开发者平台您创建的应用右侧的“接入”选项可查看授权码。
+  
+   ![](images/screenshot_1511167850528.png)
+
 ## 相关文档链接
 1. [APP开源说明文档](https://www.kancloud.cn/ljsdk/lingju_app/351356)（必读）
 2. [灵聚SDK指令文档](http://doc.lingju.ai/order)
