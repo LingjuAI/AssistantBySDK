@@ -106,7 +106,7 @@ public class MusicPlayProcessor extends BaseProcessor {
                                     long dayTime = AppConfig.dPreferences.getLong(AppConfig.PLAY_NO_WIFI, 0);
                                     long todayTime = TimeUtils.getTodayDate().getTime();
                                     if (todayTime != dayTime) {
-                                        text += "。当前正在使用3g/4g网络播放歌曲，请注意流量哦！";
+                                        text += "。当前正在使用3G/4G网络播放歌曲，请注意流量哦！";
                                         AppConfig.dPreferences.edit().putLong(AppConfig.PLAY_NO_WIFI, todayTime).commit();
                                     }
                                 }
