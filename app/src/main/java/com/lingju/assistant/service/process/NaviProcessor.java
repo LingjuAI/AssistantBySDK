@@ -11,13 +11,10 @@ import com.baidu.mapapi.navi.BaiduMapNavigation;
 import com.baidu.mapapi.navi.NaviParaOption;
 import com.baidu.navisdk.adapter.BNRoutePlanNode;
 import com.baidu.navisdk.adapter.BaiduNaviManager;
-import com.google.gson.Gson;
 import com.lingju.assistant.AppConfig;
 import com.lingju.assistant.R;
 import com.lingju.assistant.activity.NaviConfirmPointActivity;
 import com.lingju.assistant.activity.NaviSetLineActivity;
-import com.lingju.assistant.activity.SelectCityActivity;
-import com.lingju.assistant.activity.SetFavoriteMapActivity;
 import com.lingju.assistant.activity.TrafficShowActivity;
 import com.lingju.assistant.activity.event.ChatMsgEvent;
 import com.lingju.assistant.activity.event.DialogEvent;
@@ -26,7 +23,6 @@ import com.lingju.assistant.activity.event.NaviRouteCalculateEvent;
 import com.lingju.assistant.activity.event.NaviShowPointsEvent;
 import com.lingju.assistant.activity.event.NaviSwitchRouteLineEvent;
 import com.lingju.assistant.activity.event.NavigateEvent;
-import com.lingju.assistant.activity.event.RecordUpdateEvent;
 import com.lingju.assistant.activity.event.RobotTipsEvent;
 import com.lingju.assistant.activity.event.SelectCityEvent;
 import com.lingju.assistant.baidunavi.adapter.BaiduNaviSuperManager;
@@ -47,7 +43,6 @@ import com.lingju.context.entity.Navigation;
 import com.lingju.context.entity.Plat;
 import com.lingju.context.entity.Route;
 import com.lingju.context.entity.Routenode;
-import com.lingju.context.entity.Sort;
 import com.lingju.context.entity.SyncSegment;
 import com.lingju.lbsmodule.constant.RouteGuideParams;
 import com.lingju.lbsmodule.entity.RouteModel;
@@ -69,10 +64,8 @@ import com.lingju.util.StringUtils;
 
 import org.greenrobot.eventbus.EventBus;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -178,6 +171,8 @@ public class NaviProcessor extends BaseProcessor {
                                         } else {
                                             text = "很抱歉，您已离开导航页面。";
                                         }
+                                    }else {
+                                        text = "在规划的路线中已为您躲避拥堵，继续为您导航";
                                     }
                                 } else {
                                     if (BNRoutePlanerProxy.getInstance().getCalcPreference() != BaiduNaviManager.RoutePlanPreference.ROUTE_PLAN_MOD_RECOMMEND &&
@@ -266,7 +261,7 @@ public class NaviProcessor extends BaseProcessor {
                                 if (BaiduNaviSuperManager.isNaviInited() && BNavigatorProxy.getInstance().isNaviBegin()) {
                                     text = "大概" + RGSimpleGuideModelProxy.getInstance().getTotalRemainDistString() + RGSimpleGuideModelProxy.getInstance().getArriveTimeString();
                                 } else {
-                                    text = "你当前不在导航中,请先让我位你导航吧";
+                                    text = "你当前不在导航中,请先让我为你导航吧";
                                 }
                             }
                             break;
@@ -429,63 +424,73 @@ public class NaviProcessor extends BaseProcessor {
                             }
                             break;
                         case RobotConstant.SELECT:      //切换导航路线
-                            String sort = lastAction.optJSONObject("sort").getString("orderby");
-                            if ("routetime".equals(sort)) {      //高速优先，时间最短
-                                if ((BNRoutePlanerProxy.getInstance().getCalcPreference() & BaiduNaviManager.RoutePlanPreference.ROUTE_PLAN_MOD_MIN_TIME) == BaiduNaviManager.RoutePlanPreference.ROUTE_PLAN_MOD_MIN_TIME) {
-                                    text = "当前已经使用了时间最短路线";
-                                    speakAndAheadReturn(text, msgBuilder);
-                                    return;
+                            if (lastAction.isNull("sort")) {
+                                Route newRoute = SyncSegment.fromJson(lastTarget.toString(), Route.class);
+                                if (EventBus.getDefault().hasSubscriberForEvent(NaviSwitchRouteLineEvent.class)) {
+                                    RouteModel.setCalculateScheme(newRoute.getRouteid());
+                                    EventBus.getDefault().post(new NaviSwitchRouteLineEvent((BNRoutePlanerProxy.getInstance().getCalcPreference() << 3) | RouteModel.getCalculateScheme(), true));
                                 } else {
-                                    if (EventBus.getDefault().hasSubscriberForEvent(NaviSwitchRouteLineEvent.class)) {
-                                        EventBus.getDefault().post(new NaviSwitchRouteLineEvent(
-                                                (BaiduNaviManager.RoutePlanPreference.ROUTE_PLAN_MOD_MIN_TIME |
-                                                        BaiduNaviManager.RoutePlanPreference.ROUTE_PLAN_MOD_AVOID_TAFFICJAM) << 3));
-                                        return;
-                                        //RoutePlanModelProxy minTimeModel = BNRoutePlanerProxy.getInstance().routePlans.get(
-                                        //        BaiduNaviManager.RoutePlanPreference.ROUTE_PLAN_MOD_MIN_TIME |
-                                        //                BaiduNaviManager.RoutePlanPreference.ROUTE_PLAN_MOD_AVOID_TAFFICJAM).get(0);
-                                        //text = "已为您切换到时间最短路线，全程" + minTimeModel.getDistance() + "，预计" + minTimeModel.getTotalTime();
-                                    } else {
-                                        text = "你已离开导航页面，无法完成你的要求。";
-                                    }
+                                    text = "很抱歉，您还未规划好路线！";
                                 }
-                            } else if ("routeroll".equals(sort)) {        //不走高速，费用最少
-                                if ((RouteModel.getCurrent() != null && RouteModel.getCurrent().getToll() == 0) ||
-                                        (BNRoutePlanerProxy.getInstance().getCalcPreference() & BaiduNaviManager.RoutePlanPreference.ROUTE_PLAN_MOD_MIN_TOLL) == BaiduNaviManager.RoutePlanPreference.ROUTE_PLAN_MOD_MIN_TOLL) {
-                                    text = "当前已经使用了收费最少路线";
-                                    // sendNoNeedBackground();
-                                    speakAndAheadReturn(text, msgBuilder);
-                                    return;
-                                } else {
-                                    if (EventBus.getDefault().hasSubscriberForEvent(NaviSwitchRouteLineEvent.class)) {
-                                        EventBus.getDefault().post(new NaviSwitchRouteLineEvent(
-                                                BaiduNaviManager.RoutePlanPreference.ROUTE_PLAN_MOD_MIN_TOLL << 3));
+                            } else {
+                                String sort = lastAction.optJSONObject("sort").getString("orderby");
+                                if ("routetime".equals(sort)) {      //高速优先，时间最短
+                                    if ((BNRoutePlanerProxy.getInstance().getCalcPreference() & BaiduNaviManager.RoutePlanPreference.ROUTE_PLAN_MOD_MIN_TIME) == BaiduNaviManager.RoutePlanPreference.ROUTE_PLAN_MOD_MIN_TIME) {
+                                        text = "当前已经使用了时间最短路线";
+                                        speakAndAheadReturn(text, msgBuilder);
                                         return;
-                                        //RoutePlanModelProxy routePlanModelProxy = BNRoutePlanerProxy.getInstance().routePlans.get(BaiduNaviManager.RoutePlanPreference.ROUTE_PLAN_MOD_MIN_TOLL).get(0);
-                                        //text = "已为您切换到收费最少路线，" + (routePlanModelProxy.getTollFees() == 0 ? "预计无收费" : "最少收费预计"
-                                        //        + routePlanModelProxy.getTollFees() + "元") + "，全程" + routePlanModelProxy.getDistance() + "，预计" + routePlanModelProxy.getTotalTime();
                                     } else {
-                                        text = "你已离开导航页面，无法完成你的要求。";
+                                        if (EventBus.getDefault().hasSubscriberForEvent(NaviSwitchRouteLineEvent.class)) {
+                                            EventBus.getDefault().post(new NaviSwitchRouteLineEvent(
+                                                    (BaiduNaviManager.RoutePlanPreference.ROUTE_PLAN_MOD_MIN_TIME |
+                                                            BaiduNaviManager.RoutePlanPreference.ROUTE_PLAN_MOD_AVOID_TAFFICJAM) << 3));
+                                            return;
+                                            //RoutePlanModelProxy minTimeModel = BNRoutePlanerProxy.getInstance().routePlans.get(
+                                            //        BaiduNaviManager.RoutePlanPreference.ROUTE_PLAN_MOD_MIN_TIME |
+                                            //                BaiduNaviManager.RoutePlanPreference.ROUTE_PLAN_MOD_AVOID_TAFFICJAM).get(0);
+                                            //text = "已为您切换到时间最短路线，全程" + minTimeModel.getDistance() + "，预计" + minTimeModel.getTotalTime();
+                                        } else {
+                                            text = "你已离开导航页面，无法完成你的要求。";
+                                        }
                                     }
-                                }
-                            } else if ("routedistance".equals(sort)) {        //路程最短
-                                if ((BNRoutePlanerProxy.getInstance().getCalcPreference() & BaiduNaviManager.RoutePlanPreference.ROUTE_PLAN_MOD_MIN_DIST) == BaiduNaviManager.RoutePlanPreference.ROUTE_PLAN_MOD_MIN_DIST) {
-                                    text = "当前已经使用了路程最短路线";
-                                    // sendNoNeedBackground();
-                                    speakAndAheadReturn(text, msgBuilder);
-                                    return;
-                                } else {
-                                    if (EventBus.getDefault().hasSubscriberForEvent(NaviSwitchRouteLineEvent.class)) {
-                                        EventBus.getDefault().post(new NaviSwitchRouteLineEvent(
-                                                (BaiduNaviManager.RoutePlanPreference.ROUTE_PLAN_MOD_MIN_DIST |
-                                                        BaiduNaviManager.RoutePlanPreference.ROUTE_PLAN_MOD_AVOID_TAFFICJAM) << 3));
+                                } else if ("routeroll".equals(sort)) {        //不走高速，费用最少
+                                    if ((RouteModel.getCurrent() != null && RouteModel.getCurrent().getToll() == 0) ||
+                                            (BNRoutePlanerProxy.getInstance().getCalcPreference() & BaiduNaviManager.RoutePlanPreference.ROUTE_PLAN_MOD_MIN_TOLL) == BaiduNaviManager.RoutePlanPreference.ROUTE_PLAN_MOD_MIN_TOLL) {
+                                        text = "当前已经使用了收费最少路线";
+                                        // sendNoNeedBackground();
+                                        speakAndAheadReturn(text, msgBuilder);
                                         return;
-                                        // RoutePlanModelProxy minDistanceModel = BNRoutePlanerProxy.getInstance().routePlans.get(
-                                        //         BaiduNaviManager.RoutePlanPreference.ROUTE_PLAN_MOD_MIN_DIST |
-                                        //                 BaiduNaviManager.RoutePlanPreference.ROUTE_PLAN_MOD_AVOID_TAFFICJAM).get(0);
-                                        // text = "已为您切换到路程最短路线，全程" + minDistanceModel.getDistance() + "，预计" + minDistanceModel.getTotalTime();
                                     } else {
-                                        text = "你已离开导航页面，无法完成你的要求。";
+                                        if (EventBus.getDefault().hasSubscriberForEvent(NaviSwitchRouteLineEvent.class)) {
+                                            EventBus.getDefault().post(new NaviSwitchRouteLineEvent(
+                                                    BaiduNaviManager.RoutePlanPreference.ROUTE_PLAN_MOD_MIN_TOLL << 3));
+                                            return;
+                                            //RoutePlanModelProxy routePlanModelProxy = BNRoutePlanerProxy.getInstance().routePlans.get(BaiduNaviManager.RoutePlanPreference.ROUTE_PLAN_MOD_MIN_TOLL).get(0);
+                                            //text = "已为您切换到收费最少路线，" + (routePlanModelProxy.getTollFees() == 0 ? "预计无收费" : "最少收费预计"
+                                            //        + routePlanModelProxy.getTollFees() + "元") + "，全程" + routePlanModelProxy.getDistance() + "，预计" + routePlanModelProxy.getTotalTime();
+                                        } else {
+                                            text = "你已离开导航页面，无法完成你的要求。";
+                                        }
+                                    }
+                                } else if ("routedistance".equals(sort)) {        //路程最短
+                                    if ((BNRoutePlanerProxy.getInstance().getCalcPreference() & BaiduNaviManager.RoutePlanPreference.ROUTE_PLAN_MOD_MIN_DIST) == BaiduNaviManager.RoutePlanPreference.ROUTE_PLAN_MOD_MIN_DIST) {
+                                        text = "当前已经使用了路程最短路线";
+                                        // sendNoNeedBackground();
+                                        speakAndAheadReturn(text, msgBuilder);
+                                        return;
+                                    } else {
+                                        if (EventBus.getDefault().hasSubscriberForEvent(NaviSwitchRouteLineEvent.class)) {
+                                            EventBus.getDefault().post(new NaviSwitchRouteLineEvent(
+                                                    (BaiduNaviManager.RoutePlanPreference.ROUTE_PLAN_MOD_MIN_DIST |
+                                                            BaiduNaviManager.RoutePlanPreference.ROUTE_PLAN_MOD_AVOID_TAFFICJAM) << 3));
+                                            return;
+                                            // RoutePlanModelProxy minDistanceModel = BNRoutePlanerProxy.getInstance().routePlans.get(
+                                            //         BaiduNaviManager.RoutePlanPreference.ROUTE_PLAN_MOD_MIN_DIST |
+                                            //                 BaiduNaviManager.RoutePlanPreference.ROUTE_PLAN_MOD_AVOID_TAFFICJAM).get(0);
+                                            // text = "已为您切换到路程最短路线，全程" + minDistanceModel.getDistance() + "，预计" + minDistanceModel.getTotalTime();
+                                        } else {
+                                            text = "你已离开导航页面，无法完成你的要求。";
+                                        }
                                     }
                                 }
                             }
@@ -496,6 +501,7 @@ public class NaviProcessor extends BaseProcessor {
                     switch (action) {
                         case RobotConstant.SELECT:      //选择地址（目的地、途经点、家和单位）
                         case RobotConstant.APPEND:
+                            EventBus.getDefault().post(new DialogEvent(DialogEvent.CANCEL_TOGGLE_TYPE));
                             if (EventBus.getDefault().hasSubscriberForEvent(SelectCityEvent.class))
                                 EventBus.getDefault().post(new SelectCityEvent(lastTarget.getString("city")));
                             if (BNavigatorProxy.getInstance().isNaviBegin())

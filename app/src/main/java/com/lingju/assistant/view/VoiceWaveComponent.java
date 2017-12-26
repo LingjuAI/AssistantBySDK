@@ -22,6 +22,9 @@ import com.lingju.common.log.Log;
 
 import org.greenrobot.eventbus.EventBus;
 
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -45,6 +48,7 @@ public class VoiceWaveComponent extends RelativeLayout {
     private int current_state = -1;
     private int baseAmplitude;
     private Animation mWaitAnim;
+    protected Lock rLock = new ReentrantLock();
 
     public VoiceWaveComponent(Context context) {
         this(context, null);
@@ -106,12 +110,18 @@ public class VoiceWaveComponent extends RelativeLayout {
     }
 
     public void onRecord() {
-        EventBus.getDefault().post(new IntroduceShowEvent(false));
-        if (recording) {
-            stopRecord();
-        } else {
-            stopWakeup();
-            prepareToRecord();
+        if (rLock.tryLock()) {
+            try {
+                EventBus.getDefault().post(new IntroduceShowEvent(false));
+                if (recording) {
+                    stopRecord();
+                } else {
+                    stopWakeup();
+                    prepareToRecord();
+                }
+            } finally {
+                rLock.unlock();
+            }
         }
     }
 
@@ -127,7 +137,6 @@ public class VoiceWaveComponent extends RelativeLayout {
      * 录音开始状态
      */
     public void setRecordStartState() {
-        recording = true;
         setVoiceButton(1);
     }
 
@@ -135,7 +144,6 @@ public class VoiceWaveComponent extends RelativeLayout {
      * 录音进入闲置状态
      */
     public void setRecordIdleState() {
-        recording = false;
         /*if (mWvRecord.getVisibility() == VISIBLE) {
             recordEndAnim();
         }*/
@@ -174,7 +182,7 @@ public class VoiceWaveComponent extends RelativeLayout {
     private void prepareToRecord() {
         if (SynthesizerBase.isInited()) {
             //按下话筒开启录音动画标记，保证录音波纹正常显示
-             AppConfig.dPreferences.edit().putBoolean("wave_show", true).commit();
+            AppConfig.dPreferences.edit().putBoolean("wave_show", true).commit();
             startRecognize();
             EventBus.getDefault().post(new RecordUpdateEvent(RecordUpdateEvent.RECORDING));
         }
@@ -188,6 +196,7 @@ public class VoiceWaveComponent extends RelativeLayout {
         switch (status) {
             case 0:
                 //隐藏波纹，显示话筒
+                recording = false;
                 mRlMic.setVisibility(VISIBLE);
                 mIvMicDefalut.setVisibility(VISIBLE);
                 mIvCirCleWait.setVisibility(GONE);
@@ -197,7 +206,7 @@ public class VoiceWaveComponent extends RelativeLayout {
                 mWvRecord.surfaceDestroyed(mWvRecord.getHolder());
                 break;
             case 1:
-                // recordStartAnim();
+                recording = true;
                 mWvRecord.setVisibility(VISIBLE);
                 mRlMic.setVisibility(GONE);
                 mIvCirCleWait.setVisibility(GONE);

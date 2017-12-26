@@ -13,19 +13,18 @@ import com.baidu.mapapi.utils.DistanceUtil;
 import com.baidu.navisdk.adapter.BNOuterTTSPlayerCallback;
 import com.baidu.navisdk.adapter.BNRoutePlanNode;
 import com.baidu.navisdk.adapter.BaiduNaviManager;
-import com.baidu.navisdk.adapter.base.BaiduNaviSDKLoader;
 import com.baidu.navisdk.adapter.impl.RouteGuider;
-import com.baidu.vi.VDeviceAPI;
+import com.lingju.common.log.Log;
 import com.lingju.lbsmodule.entity.RouteModel;
 import com.lingju.lbsmodule.proxy.BNMapControllerProxy;
 import com.lingju.lbsmodule.proxy.BNRoutePlanObserverProxy;
 import com.lingju.lbsmodule.proxy.BNRoutePlanerProxy;
+import com.lingju.lbsmodule.proxy.BNSysLocationManagerProxy;
 import com.lingju.lbsmodule.proxy.BNavigatorProxy;
 import com.lingju.lbsmodule.proxy.MapParams;
 import com.lingju.lbsmodule.proxy.MapStatusProxy;
 import com.lingju.lbsmodule.proxy.RoutePlanModelProxy;
 import com.lingju.lbsmodule.proxy.ZeroZeroProxy;
-import com.lingju.common.log.Log;
 import com.lingju.util.ScreenUtil;
 
 import java.io.File;
@@ -79,18 +78,19 @@ public class BaiduNaviSuperManager {
         if (defaultPlayerCallback == null) {
             defaultPlayerCallback = new BaiduTTSPlayerCallBack(context.getApplicationContext());
         }
-        if (!BaiduNaviManager.getInstance().isNaviInited()) {
+        if (!BaiduNaviManager.isNaviInited()) {
+            Log.i("LingJu", "BaiduNaviSuperManager BaiduNaviSuperManager() ");
             BaiduNaviManager.getInstance().init(context, mSDCardPath, APP_FOLDER_NAME,
                     naviInitListener, defaultPlayerCallback, null, null);
         } else {
-            //            BaiduNaviManager.getInstance().resetActivity(activity, defaultPlayerCallback);
+            init();
             if (this.handler != null)
                 this.handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         naviInitListener.initSuccess();
                     }
-                }, 10);
+                }, 20);
             Log.i(TAG, "already inited .........................");
         }
 
@@ -101,7 +101,7 @@ public class BaiduNaviSuperManager {
     }
 
     public static boolean isNaviInited() {
-        return BaiduNaviManager.getInstance().isNaviInited();
+        return BaiduNaviManager.isNaviInited();
     }
 
 
@@ -123,19 +123,26 @@ public class BaiduNaviSuperManager {
         selectLineState = state;
     }
 
-    public void destory() {
+    private void init() {
+        boolean init = BNSysLocationManagerProxy.getInstance().init(context.getApplicationContext());
+        Log.i("LingJu", "BNSysLocationManager init()>> " + init);
+    }
+
+    public static void destory() {
         /** uninit():调用该方法会导致下次进入导航页面时黑屏 **/
         //        BaiduNaviManager.getInstance().uninit();
         try {
-            if (BaiduNaviManager.isNaviInited())
-                BaiduNaviSDKLoader.getSDKClassLoader()
-                        .loadClass("com.baidu.navisdk.BNaviModuleManager").getMethod("destory").invoke(null);
-            VDeviceAPI.unsetNetworkChangedCallback();
+            if (BaiduNaviManager.isNaviInited()) {
+                Log.i("LingJu", "BaiduNaviSuperManager destory() ");
+                BNSysLocationManagerProxy.getInstance().destory();
+
+                // BaiduNaviSDKLoader.getSDKClassLoader()
+                //         .loadClass("com.baidu.navisdk.BNaviModuleManager").getMethod("destory").invoke(null);
+                // VDeviceAPI.unsetNetworkChangedCallback();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        /*BNMapControllerProxy.destory();
-        RouteGuider.get().destory();*/
         BNavigatorProxy.destory();
     }
 

@@ -6,6 +6,8 @@ import android.media.AudioManager;
 import com.lingju.assistant.IPresenter;
 import com.lingju.assistant.IView;
 import com.lingju.assistant.entity.Lyric;
+import com.lingju.assistant.entity.action.PlayerEntity;
+import com.lingju.context.entity.NewAudioEntity;
 import com.lingju.model.PlayMusic;
 
 import java.util.List;
@@ -225,6 +227,11 @@ public interface IBatchPlayer {
         public PlayMusic currentPlayMusic();
 
         /**
+         * 设置当前播放器对象
+         **/
+        void setPlayerEntity(PlayerEntity<NewAudioEntity> entity);
+
+        /**
          * 设置播放模式
          *
          * @param playMode
@@ -305,6 +312,8 @@ public interface IBatchPlayer {
         int REQUEST = 1;
         int FAVORITE = 2;
         int LOCAL = 3;
+
+
     }
 
     public interface PlayStateListener {

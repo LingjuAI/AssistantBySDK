@@ -10,6 +10,9 @@ import com.lingju.assistant.R;
 import com.lingju.assistant.activity.event.TrackPlayEvent;
 import com.lingju.assistant.entity.KaoLaAlbum;
 import com.lingju.assistant.entity.KaoLaAudioList;
+import com.lingju.assistant.entity.RobotConstant;
+import com.lingju.assistant.entity.action.PlayerEntity;
+import com.lingju.assistant.player.audio.IBatchPlayer;
 import com.lingju.assistant.player.audio.LingjuAudioPlayer;
 import com.lingju.assistant.service.VoiceMediator;
 import com.lingju.assistant.social.weibo.Constants;
@@ -50,10 +53,14 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Predicate;
 import io.reactivex.schedulers.Schedulers;
 
 /**
@@ -72,6 +79,8 @@ public class XmlyManager {
     private int i;
     private int totalPage;
     private int totalCount;
+    private PlayerEntity<NewAudioEntity> playerEntity;
+    private Disposable mUploadDisposable;
 
     private XmlyManager(Context context) {
         this.mContext = context.getApplicationContext();
@@ -472,7 +481,9 @@ public class XmlyManager {
             isPlaying = true;
             VoiceMediator.get().setAudioPlayType(VoiceMediator.XIMALAYA_TYPE);
             // Toast.makeText(mContext, "onPlayStart", Toast.LENGTH_SHORT).show();
-            EventBus.getDefault().post(new TrackPlayEvent(true, mPlayerManager.getCurrSound()));
+            PlayableModel currSound = mPlayerManager.getCurrSound();
+            EventBus.getDefault().post(new TrackPlayEvent(true, currSound));
+            updatePlayerState(IBatchPlayer.PlayState.Start, (Track) currSound);
         }
 
         //暂停
@@ -484,6 +495,7 @@ public class XmlyManager {
             EventBus.getDefault().post(new TrackPlayEvent(false, currSound));
             //保存播放记录
             TingAlbumDao.getInstance().insertHistory(currSound, mPlayerManager.getHistoryPos(currSound.getDataId()));
+            updatePlayerState(IBatchPlayer.PlayState.Pause, (Track) currSound);
         }
 
         //停止
@@ -551,12 +563,69 @@ public class XmlyManager {
         }
     };
 
-    /*private void setMusicPlayState() {
-        if (LingjuAudioPlayer.get().isPlaying()) {
-            LingjuAudioPlayer.get().pause();
-            isMusicPlayBefore = true;
-        } else {
-            isMusicPlayBefore = false;
+    public void setPlayerEntity(PlayerEntity<NewAudioEntity> entity) {
+        this.playerEntity = entity;
+    }
+
+    /**
+     * 更新播放器状态并上传服务器
+     **/
+    private void updatePlayerState(IBatchPlayer.PlayState state, Track track) {
+        switch (state) {
+            case Start:
+                playerEntity.setControl("PLAY");
+                if (mUploadDisposable != null && !mUploadDisposable.isDisposed()) {
+                    mUploadDisposable.dispose();
+                    mUploadDisposable = null;
+                }
+                keepPlayer();
+                break;
+            case Pause:
+                playerEntity.setControl("PAUSE");
+                break;
         }
-    }*/
+        setAudioEntity(track);
+        uploadPlayer();
+    }
+
+    private void uploadPlayer() {
+        Log.i("LingJu", "LingjuAudioPlayer uploadPlayer()>> " + playerEntity);
+        List<PlayerEntity<NewAudioEntity>> list = new ArrayList<>();
+        list.add(playerEntity);
+        AndroidChatRobotBuilder.get().robot().actionTargetAccessor().uploadContextObject(RobotConstant.ACTION_PLAYER, list);
+    }
+
+    private void setAudioEntity(Track track) {
+        List<NewAudioEntity> result = new ArrayList<>();
+        if (track != null) {
+            NewAudioEntity audioEntity = new NewAudioEntity();
+            audioEntity.setMusicId(String.valueOf(track.getDataId()));
+            audioEntity.setUrl(track.getPlayUrl24M4a());
+            audioEntity.setName(track.getTrackTitle());
+            audioEntity.setAlbum(String.valueOf(track.getAlbum().getAlbumId()));
+            audioEntity.setEpisode(track.getOrderNum() == 0 ? 0 : track.getOrderNum() + 1);
+            audioEntity.setDuration(track.getDuration() * 1000);
+            audioEntity.setAudioPic(track.getCoverUrlMiddle());
+            audioEntity.setCreated(track.getCreatedAt());
+            result.add(audioEntity);
+        }
+        playerEntity.setObject(result);
+    }
+
+    private void keepPlayer() {
+        mUploadDisposable = Observable.interval(2, 2, TimeUnit.MINUTES)
+                .takeUntil(new Predicate<Long>() {
+                    @Override
+                    public boolean test(Long aLong) throws Exception {
+                        return !isPlaying();
+                    }
+                })
+                .subscribeOn(Schedulers.io())
+                .subscribe(new Consumer<Long>() {
+                    @Override
+                    public void accept(Long aLong) throws Exception {
+                        uploadPlayer();
+                    }
+                });
+    }
 }

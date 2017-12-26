@@ -62,7 +62,7 @@ public class MusicUtils {
 				"    \"update_files\": [\n" +
 				"    ]\n" +
 				"}";*//*
-	}*/
+    }*/
 
     /**
      * @param versionName
@@ -77,8 +77,8 @@ public class MusicUtils {
             message.put("command", "CheckVersion");
             message.put("version", "v" + versionName);
             message.put("appid", "3");
-			/*{"command":"102","version":"v0.9.11","appid":"2"}
-			QMessage message = new QMessage();
+            /*{"command":"102","version":"v0.9.11","appid":"2"}
+            QMessage message = new QMessage();
 			message.setCommand(1020);
 			message.setItem("8");
 			message.setUserid(""); //账户，也即表中userid
@@ -91,6 +91,7 @@ public class MusicUtils {
             if (QClient.getInstance().isSessionInvalid() && sendLoginLog() != 0) {
                 return null;
             }
+
             String temp = QClient.getInstance().sendMessage(message.toString());
             Log.i("checkUpdateVersion", "result:" + temp);
             //QClient.STATUS.remove();
@@ -207,7 +208,7 @@ public class MusicUtils {
         String temp = QClient.getInstance().sendMessage(message.toString());
         //QClient.STATUS.remove();
 	*//*	String[] res = (String[]) QUtils.changeStringToObject(temp);
-		if(res!=null&&res.length>0){
+        if(res!=null&&res.length>0){
 			return res[0];
 		}*//*
         return temp != null && temp.length() > 1 ? temp.replaceAll("<br>", "\n") : null;*/

@@ -27,6 +27,7 @@ import com.iflytek.cloud.SpeechRecognizer;
 import com.lingju.assistant.R;
 import com.lingju.assistant.activity.index.view.ChatListFragment;
 import com.lingju.assistant.service.AssistantService;
+import com.lingju.assistant.service.VoiceMediator;
 import com.lingju.audio.PcmRecorder;
 import com.lingju.audio.engine.base.SynthesizerBase;
 import com.lingju.common.log.Log;
@@ -239,7 +240,7 @@ public class VoiceInputComponent extends LinearLayout {
     private void stopRecognize() {
         Log.i("LingJu", "VoiceInputComponent stopRecognize() start");
         if (recognizer.isListening()) {
-            mRecorder.stop(false);
+            mRecorder.stop(VoiceMediator.get().isWakeUpMode());
             recognizer.cancel();
             Log.i("LingJu", "VoiceInputComponent stopRecognize() end");
         }
@@ -373,7 +374,7 @@ public class VoiceInputComponent extends LinearLayout {
                 if (listener != null) {
                     listener.onError(e.getErrorCode(), e.getErrorDescription());
                 }
-                mRecorder.stop(false);
+                mRecorder.stop(VoiceMediator.get().isWakeUpMode());
                 setVoiceButton(0);
                 temp.setLength(0);
             }

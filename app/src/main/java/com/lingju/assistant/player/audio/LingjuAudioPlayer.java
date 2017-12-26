@@ -19,6 +19,8 @@ import com.lingju.assistant.R;
 import com.lingju.assistant.activity.event.ChatMsgEvent;
 import com.lingju.assistant.activity.event.SynthesizeEvent;
 import com.lingju.assistant.entity.Lyric;
+import com.lingju.assistant.entity.RobotConstant;
+import com.lingju.assistant.entity.action.PlayerEntity;
 import com.lingju.assistant.player.audio.IBatchPlayer.BluetoothChannelController;
 import com.lingju.assistant.player.audio.IBatchPlayer.BodyView;
 import com.lingju.assistant.player.audio.IBatchPlayer.HeaderView;
@@ -35,10 +37,12 @@ import com.lingju.assistant.service.VoiceMediator;
 import com.lingju.audio.engine.base.SpeechMsg;
 import com.lingju.audio.engine.base.SpeechMsgBuilder;
 import com.lingju.audio.engine.base.SynthesizerBase;
+import com.lingju.common.log.Log;
 import com.lingju.config.Setting;
+import com.lingju.context.entity.NewAudioEntity;
 import com.lingju.model.PlayMusic;
 import com.lingju.model.temp.speech.ResponseMsg;
-import com.lingju.common.log.Log;
+import com.lingju.robot.AndroidChatRobotBuilder;
 import com.lingju.util.MusicUtils;
 import com.lingju.util.NetUtil;
 import com.lingju.util.PlayList;
@@ -47,6 +51,7 @@ import com.ximalaya.ting.android.opensdk.player.XmPlayerManager;
 import org.greenrobot.eventbus.EventBus;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -101,6 +106,8 @@ public class LingjuAudioPlayer implements IBatchPlayer.Presenter {
     private static LingjuAudioPlayer instance;
     private AudioManager mAudioManager;
     private NotificationManager notificationManager;
+    private PlayerEntity<NewAudioEntity> playerEntity = new PlayerEntity<>();
+    private Disposable mUploadDisposable;
 
     private LingjuAudioPlayer(Context context) {
         this.mContext = context;
@@ -561,6 +568,7 @@ public class LingjuAudioPlayer implements IBatchPlayer.Presenter {
                         body.showCurrentMusic(m);
                     }
                 }
+                updatePlayerState(state);
                 break;
             case Playing:
                 if (header != null) {
@@ -586,6 +594,7 @@ public class LingjuAudioPlayer implements IBatchPlayer.Presenter {
                     header.setPlayState(false);
                     header.noitfiy(null, null, false);
                 }
+                updatePlayerState(state);
                 break;
         }
     }
@@ -699,6 +708,86 @@ public class LingjuAudioPlayer implements IBatchPlayer.Presenter {
     public PlayMusic currentPlayMusic() {
         //Log.i(TAG,"playlistType>>"+playlistType+">>"+repository.findByListType(playlistType).getCurrent().getMusicid());
         return repository.findByListType(playlistType).getCurrent();
+    }
+
+    @Override
+    public void setPlayerEntity(PlayerEntity<NewAudioEntity> entity) {
+        this.playerEntity = entity;
+    }
+
+    /**
+     * 更新播放器状态并上传服务器
+     **/
+    private void updatePlayerState(IBatchPlayer.PlayState state) {
+        switch (state) {
+            case Start:
+                String type = null;
+                switch (getPlayListType()) {
+                    case IBatchPlayer.PlayListType.FAVORITE:
+                        type = "COLLECT";
+                        break;
+                    case IBatchPlayer.PlayListType.LOCAL:
+                        type = "LOCAL";
+                        break;
+                    case IBatchPlayer.PlayListType.REQUEST:
+                        type = "AUTO";
+                        break;
+                }
+                playerEntity.setType(type);
+                playerEntity.setControl("PLAY");
+                if (mUploadDisposable != null && !mUploadDisposable.isDisposed()) {
+                    mUploadDisposable.dispose();
+                    mUploadDisposable = null;
+                }
+                setAudioEntity();
+                keepPlayer();
+                break;
+            case Pause:
+                playerEntity.setControl("PAUSE");
+                break;
+        }
+        uploadPlayer();
+    }
+
+    private void uploadPlayer() {
+        Log.i("LingJu", "LingjuAudioPlayer uploadPlayer()>> " + playerEntity);
+        List<PlayerEntity<NewAudioEntity>> list = new ArrayList<>();
+        list.add(playerEntity);
+        AndroidChatRobotBuilder.get().robot().actionTargetAccessor().uploadContextObject(RobotConstant.ACTION_PLAYER, list);
+    }
+
+    private void setAudioEntity() {
+        List<NewAudioEntity> result = new ArrayList<>();
+        PlayMusic playMusic = currentPlayMusic();
+        if (playMusic != null) {
+            NewAudioEntity audioEntity = new NewAudioEntity();
+            audioEntity.setMusicId(playMusic.getMusicid());
+            audioEntity.setUrl(playMusic.getUri());
+            audioEntity.setName(playMusic.getTitle());
+            audioEntity.setAlbum(playMusic.getAlbum());
+            String[] singer = playMusic.getSinger().split("，");
+            audioEntity.setSinger(singer);
+            audioEntity.setType("歌曲");
+            result.add(audioEntity);
+        }
+        playerEntity.setObject(result);
+    }
+
+    private void keepPlayer() {
+        mUploadDisposable = Observable.interval(2, 2, TimeUnit.MINUTES)
+                .takeUntil(new Predicate<Long>() {
+                    @Override
+                    public boolean test(Long aLong) throws Exception {
+                        return !isPlaying();
+                    }
+                })
+                .subscribeOn(Schedulers.io())
+                .subscribe(new Consumer<Long>() {
+                    @Override
+                    public void accept(Long aLong) throws Exception {
+                        uploadPlayer();
+                    }
+                });
     }
 
     @Override

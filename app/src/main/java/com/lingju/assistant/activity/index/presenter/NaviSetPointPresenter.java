@@ -65,6 +65,7 @@ public class NaviSetPointPresenter implements INaviSetPoint.IPresenter {
     private RecordDao mRecordDao;
     private CommonAlertDialog cDialog;
     private int calculateType = -1;     //计算类型 0为家，1为单位
+    private boolean isCalculated;
 
 
     /**
@@ -88,8 +89,6 @@ public class NaviSetPointPresenter implements INaviSetPoint.IPresenter {
 
     @Override
     public void setLocation() {
-        /* 获取当前所定位的地址 */
-        address = mAppConfig.address;
         /* 重新定位 */
         BaiduLocateManager.get().addObserver(locateListener);
         BaiduLocateManager.get().start();
@@ -98,6 +97,8 @@ public class NaviSetPointPresenter implements INaviSetPoint.IPresenter {
 
     @Override
     public void initData() {
+        /* 获取当前所定位的地址 */
+        address = mAppConfig.address;
         mNaviDao = BaiduNaviDao.getInstance();
         mRecordDao = RecordDao.getInstance();
         preference = AppConfig.dPreferences.getInt(NaviSetLineActivity.CALCULATE_MODE, BaiduNaviManager.RoutePlanPreference.ROUTE_PLAN_MOD_RECOMMEND);
@@ -165,6 +166,11 @@ public class NaviSetPointPresenter implements INaviSetPoint.IPresenter {
         });
         geoCoder.reverseGeoCode(new ReverseGeoCodeOption().
                 location(new LatLng(location.getLatitude(), location.getLongitude())));
+    }
+
+    @Override
+    public void setCalculated(boolean isCalculated) {
+        this.isCalculated = isCalculated;
     }
 
     /**
@@ -345,10 +351,10 @@ public class NaviSetPointPresenter implements INaviSetPoint.IPresenter {
 
     @Override
     public void initBaiduNaiv(Activity activity, Handler handler) {
-        if (!BaiduNaviSuperManager.isNaviInited()) {
-            this.mHandler = handler;
-            mNaviSuperManager = new BaiduNaviSuperManager(activity, naviInitListener, handler, false);
-        }
+        //        if (!BaiduNaviSuperManager.isNaviInited()) {
+        //            this.mHandler = handler;
+        mNaviSuperManager = new BaiduNaviSuperManager(activity, naviInitListener, handler, false);
+        //        }
 
     }
 
@@ -518,14 +524,7 @@ public class NaviSetPointPresenter implements INaviSetPoint.IPresenter {
 
 
     @Override
-    public void destoryNaviManager() {
-        if (mNaviSuperManager != null)
-            mNaviSuperManager.destory();
-    }
-
-    @Override
     public void destoryListener() {
-
     }
 
     /**
@@ -569,10 +568,14 @@ public class NaviSetPointPresenter implements INaviSetPoint.IPresenter {
 
         public void initSuccess() {
             Log.e(TAG, "百度导航引擎初始化成功");
-            if (goHomeNodes.size() > 0) {
-                setGoHomeCalculate();
-            } else if (goCompanyNodes.size() > 0) {
-                setGoCompanyCalculate();
+            mSetPointView.refresh();
+            if (!isCalculated) {
+                isCalculated = true;
+                if (goHomeNodes.size() > 0) {
+                    setGoHomeCalculate();
+                } else if (goCompanyNodes.size() > 0) {
+                    setGoCompanyCalculate();
+                }
             }
             //测试,下载百度离线导航资源包
             //BNOfflineDataManager.getInstance().startDownloadRequest(19);
@@ -594,7 +597,8 @@ public class NaviSetPointPresenter implements INaviSetPoint.IPresenter {
     };
 
     public void setGoCompanyAndGoHomeCalculate() {
-        if (BaiduNaviSuperManager.isNaviInited()) {
+        if (BaiduNaviSuperManager.isNaviInited() && !isCalculated) {
+            isCalculated = true;
             if (goHomeNodes.size() > 0) {
                 setGoHomeCalculate();
             } else if (goCompanyNodes.size() > 0) {
@@ -710,12 +714,12 @@ public class NaviSetPointPresenter implements INaviSetPoint.IPresenter {
     @Override
     public void destroy() {
         Log.i(TAG, "estroy");
-        if (mNaviSuperManager != null)
-            mNaviSuperManager.destory();
+        BaiduNaviSuperManager.destory();
         if (BNRoutePlanerProxy.getInstance().isCalculatingRoute()) {
             Log.i(TAG, "isCalculatingRoute");
             BNRoutePlanerProxy.getInstance().cancleCalcRouteRequest();
         }
+        BaiduLocateManager.get().stop();
         BaiduLocateManager.get().deleteObserver(locateListener);
         mContext = null;
     }

@@ -25,6 +25,7 @@ import com.lingju.model.SmsProxyDao;
 import com.lingju.model.Zipcode;
 import com.lingju.model.ZipcodeDao;
 import com.lingju.robot.AndroidChatRobotBuilder;
+import com.lingju.util.PhoneContactUtils;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -148,9 +149,9 @@ public class CallAndSmsDao {
     /**
      * 新增短信记录代理信息
      **/
-    public void insertSmsLog() {
+    private void insertSmsLog() {
         Cursor cursor = mContext.getContentResolver().query(
-                Uri.parse("content://sms"), new String[]{Telephony.Sms._ID, "read"}, null, null, "date DESC");
+                Uri.parse(PhoneContactUtils.SMS_URI_ALL), new String[]{Telephony.Sms._ID, "read"}, null, null, "date DESC");
         if (cursor == null || cursor.getCount() <= 0)
             return;
         while (cursor.moveToNext()) {
@@ -254,7 +255,7 @@ public class CallAndSmsDao {
             ContentResolver resolver = mContext.getContentResolver();
             Uri uri = ContactsContract.Data.CONTENT_URI;
             for (ContactsProxy proxy : contactList) {
-                if (syncList.size() == 500)
+                if (syncList.size() == 500)       //本地限制一次只能上传500条数据
                     break;
                 Contacts contact = new Contacts();
                 contact.setLid(Integer.valueOf(proxy.getRawContactId()));
@@ -540,7 +541,7 @@ public class CallAndSmsDao {
             insertSmsLog();
             List<SmsProxy> smsList = findAllSms();
             ContentResolver resolver = mContext.getContentResolver();
-            Uri uri = Uri.parse("content://sms");
+            Uri uri = Uri.parse(PhoneContactUtils.SMS_URI_ALL);
             for (SmsProxy sms : smsList) {
                 if (syncList.size() == 500)
                     break;
@@ -551,6 +552,7 @@ public class CallAndSmsDao {
                 message.setSid(sms.getSid());
                 Cursor cursor = resolver.query(uri, null, Telephony.Sms._ID + "=?", new String[]{String.valueOf(sms.getId())}, null);
                 if (cursor == null || cursor.getCount() <= 0) {
+                    Log.i("LingJu", "MessageDao convertEntity()>>> 没有 " + sms.getId() + " 这条短信");
                     message.setRecyle(1);
                     message.setSynced(false);
                     syncList.add(message);

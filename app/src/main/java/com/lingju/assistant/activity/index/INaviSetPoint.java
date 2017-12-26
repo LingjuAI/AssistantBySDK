@@ -41,6 +41,8 @@ public interface INaviSetPoint {
         TextView getGoCompanyTextView();
 
         void showSnackBar(String s);
+        /** 刷新导航记录 **/
+        void refresh();
 
     }
 
@@ -54,6 +56,8 @@ public interface INaviSetPoint {
          * 初始化初始位置
          **/
         void initStartAddress();
+
+        void setCalculated(boolean isCalculated);
 
         /**
          * 初始化页面数据
@@ -120,9 +124,6 @@ public interface INaviSetPoint {
          * 进入去公司导航
          **/
         void toCompanyNavi();
-
-        /** 销毁导航引擎 **/
-        void destoryNaviManager();
 
         /** 销毁相关监听器 **/
         void destoryListener();

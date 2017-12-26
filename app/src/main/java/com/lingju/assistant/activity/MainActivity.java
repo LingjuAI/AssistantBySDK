@@ -96,7 +96,6 @@ public class MainActivity extends BaseActivity implements IAdditionAssist.Assist
     public final static String RESULT_CODE = "resultcode";
     public static final int FOR_INTRODUCE = 80;
     public final static int FOR_RING = 81;
-
     @BindView(R.id.index_text_editext)
     EditText editText;
     @BindView(R.id.index_bottom_box)
@@ -355,7 +354,7 @@ public class MainActivity extends BaseActivity implements IAdditionAssist.Assist
                 public void run() {
                     addPlayerHeader(LingjuAudioPlayer.get().currentPlayMusic());
                 }
-            }, 200);
+            }, 300);
         }
     }
 
@@ -587,6 +586,8 @@ public class MainActivity extends BaseActivity implements IAdditionAssist.Assist
         super.onBackPressed();
     }
 
+    private int exit;
+
     /**
      * 清空数据库中设置回收标记的记录
      **/
@@ -603,8 +604,6 @@ public class MainActivity extends BaseActivity implements IAdditionAssist.Assist
                 })
                 .subscribe();
     }
-
-    private int exit;
 
     /**
      * 退出应用任务
@@ -757,6 +756,8 @@ public class MainActivity extends BaseActivity implements IAdditionAssist.Assist
                 @Override
                 public void initSuccess() {
                     Log.i(TAG, "initSuccess");
+                    BaiduNaviSuperManager.destory();
+                    naviSuperManager = null;
                 }
 
                 @Override

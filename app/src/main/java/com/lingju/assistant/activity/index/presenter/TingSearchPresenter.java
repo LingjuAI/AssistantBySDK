@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by Ken on 2017/6/27.
+ * Created by Ken on 2017/6/27.<br />
  */
 public class TingSearchPresenter implements ITingSearch.IPresenter {
 

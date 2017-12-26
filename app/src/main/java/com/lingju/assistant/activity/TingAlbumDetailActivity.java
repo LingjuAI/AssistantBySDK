@@ -13,8 +13,11 @@ import com.lingju.assistant.R;
 import com.lingju.assistant.activity.base.GoBackActivity;
 import com.lingju.assistant.activity.event.TrackPlayEvent;
 import com.lingju.assistant.activity.index.model.TingAlbumDetailAdapter;
+import com.lingju.assistant.entity.action.PlayerEntity;
 import com.lingju.assistant.view.TingPlayerComponent;
+import com.lingju.context.entity.NewAudioEntity;
 import com.lingju.util.ScreenUtil;
+import com.lingju.util.XmlyManager;
 import com.lsjwzh.widget.materialloadingprogressbar.CircleProgressBar;
 import com.ximalaya.ting.android.opensdk.model.track.Track;
 
@@ -64,10 +67,11 @@ public class TingAlbumDetailActivity extends GoBackActivity implements LingjuSwi
 
     private void initView() {
         long albumId = 0;
-        int type=0;
-        if (getIntent() != null){
+        int type = 0;
+        if (getIntent() != null) {
             albumId = getIntent().getLongExtra(ALBUM_ID, 0);
             type = getIntent().getIntExtra(ALBUM_TYPE, XIMALAYA);
+            setPlayerEntity(type);
         }
         mDetailAdapter = new TingAlbumDetailAdapter(this, albumId, type);
         mRvTrack.setHasFixedSize(true);
@@ -87,7 +91,9 @@ public class TingAlbumDetailActivity extends GoBackActivity implements LingjuSwi
         mCpbLoading.setVisibility(View.GONE);
     }
 
-    public void setLastTrack(Track track){mTingPlayerBox.setLastTrack(track);}
+    public void setLastTrack(Track track) {
+        mTingPlayerBox.setLastTrack(track);
+    }
 
     @OnClick(R.id.tv_back)
     public void onClick() {
@@ -110,11 +116,18 @@ public class TingAlbumDetailActivity extends GoBackActivity implements LingjuSwi
         }
     }
 
+    private void setPlayerEntity(int type) {
+        PlayerEntity<NewAudioEntity> playerEntity = new PlayerEntity<>();
+        playerEntity.setType(type == XIMALAYA ? "XIMALAYA" : "KAOLA");
+        XmlyManager.get().setPlayerEntity(playerEntity);
+    }
+
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         long albumId = intent.getLongExtra(ALBUM_ID, 0);
         int type = intent.getIntExtra(ALBUM_TYPE, XIMALAYA);
+        setPlayerEntity(type);
         mDetailAdapter.setAlbumId(albumId);
         mDetailAdapter.setAlbumType(type);
         mDetailAdapter.getAlbumInfo();

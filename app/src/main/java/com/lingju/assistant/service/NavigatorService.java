@@ -1006,11 +1006,11 @@ public class NavigatorService/* extends NavigationDao*/ {
                                     }
                                 }
                                 if (d1 == 0 && d2 != 0) {
-                                    sb.append("目前").append(point).append("拥堵").append(RouteModel.formatDistance(d2)).append("，通往").append(point).append("的途中暂无拥堵").append("10秒继续导航");
+                                    sb.append("目前").append(point).append("拥堵").append(RouteModel.formatDistance(d2)).append("，通往").append(point).append("的途中暂无拥堵").append("，继续导航");
                                 } else if (d1 != 0 && d2 == 0) {
-                                    sb.append("目前前往").append(point).append("的途中有少量拥堵，其中").append(point).append("无拥堵").append("10秒继续导航");
+                                    sb.append("目前前往").append(point).append("的途中有少量拥堵，其中").append(point).append("无拥堵").append("，继续导航");
                                 } else if (d1 != 0 && d2 != 0) {
-                                    sb.append("目前前往").append(point).append("的途中有少量拥堵，其中").append(point).append("拥堵").append(RouteModel.formatDistance(d2)).append("10秒继续导航");
+                                    sb.append("目前前往").append(point).append("的途中有少量拥堵，其中").append(point).append("拥堵").append(RouteModel.formatDistance(d2)).append("，继续导航");
                                 }
                             }
                         } else {

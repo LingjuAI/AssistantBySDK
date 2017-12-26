@@ -290,7 +290,7 @@ public class TingSearchActivity extends GoBackActivity implements ITingSearch.IT
         return true;
     }
 
-    class MyTagAdapter extends TagAdapter<String> {
+    private class MyTagAdapter extends TagAdapter<String> {
 
         public MyTagAdapter(List<String> datas) {
             super(datas);

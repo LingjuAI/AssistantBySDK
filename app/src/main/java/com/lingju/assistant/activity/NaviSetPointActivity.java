@@ -98,7 +98,6 @@ public class NaviSetPointActivity extends GoBackActivity implements INaviSetPoin
         homeAddress = mNaviDao.getHomeOrCompanyAddress("家");
         companyAddress = mNaviDao.getHomeOrCompanyAddress("单位");
         mPresenter.initData();
-        mPresenter.initBaiduNaiv(this, new Handler());
         // mPresenter.setGoCompanyAndGoHomeCalculate();
         preference = AppConfig.dPreferences.getInt(NaviSetLineActivity.CALCULATE_MODE, BaiduNaviManager.RoutePlanPreference.ROUTE_PLAN_MOD_RECOMMEND);
         mAdapter = new RecordAdapter();
@@ -108,6 +107,7 @@ public class NaviSetPointActivity extends GoBackActivity implements INaviSetPoin
         //recylerView滑动至第一条
         mLinearLayoutManager.scrollToPosition(0);
         mNaviRecordRecycler.setAdapter(mAdapter);
+        mPresenter.initBaiduNaiv(this, new Handler());
     }
 
     @Override
@@ -124,8 +124,14 @@ public class NaviSetPointActivity extends GoBackActivity implements INaviSetPoin
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
     protected void onStop() {
-        mPresenter.destoryNaviManager();
+        mPresenter.destoryListener();
+        mPresenter.setCalculated(false);
         if (mPresenter.isUpdateHistory()) {
             mPresenter.updateHistoryList();
             mPresenter.setUpdateHistory(false);
@@ -140,7 +146,6 @@ public class NaviSetPointActivity extends GoBackActivity implements INaviSetPoin
         mAppConfig.endAddress = null;
         mNaviDao.removeHomeOrCompany("出发地");
         mNaviDao.removeHomeOrCompany("目的地");
-        mPresenter.destoryListener();
         mPresenter.destroy();
         super.onDestroy();
     }
@@ -223,7 +228,13 @@ public class NaviSetPointActivity extends GoBackActivity implements INaviSetPoin
 
     @Override
     public void showSnackBar(String s) {
-        Snackbar.make(mNaviRecordRecycler,s, Snackbar.LENGTH_SHORT).show();
+        Snackbar.make(mNaviRecordRecycler, s, Snackbar.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void refresh() {
+        if (mAdapter != null)
+            mAdapter.notifyDataSetChanged();
     }
 
 
@@ -238,7 +249,7 @@ public class NaviSetPointActivity extends GoBackActivity implements INaviSetPoin
         mAdapter.notifyDataSetChanged();
         if (!moreRecord) {
             showSnackBar("没有更多记录");
-           // Toast.makeText(this,"没有更多记录",Toast.LENGTH_SHORT).show();
+            // Toast.makeText(this,"没有更多记录",Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -397,9 +408,9 @@ public class NaviSetPointActivity extends GoBackActivity implements INaviSetPoin
                         if (mNaviToCompanyStartAddr.getText().equals("点此设置")) {
                             mPresenter.toSetCompanyAddr();
                         } else {
-                            if(NetUtil.getInstance(NaviSetPointActivity.this).getCurrentNetType().equals(NetUtil.NetType.NETWORK_TYPE_NONE)){
+                            if (NetUtil.getInstance(NaviSetPointActivity.this).getCurrentNetType().equals(NetUtil.NetType.NETWORK_TYPE_NONE)) {
                                 showSnackBar(mAppConfig.getResources().getString(R.string.no_network));
-                               // Toast.makeText(NaviSetPointActivity.this, mAppConfig.getResources().getString(R.string.no_network), Toast.LENGTH_SHORT).show();
+                                // Toast.makeText(NaviSetPointActivity.this, mAppConfig.getResources().getString(R.string.no_network), Toast.LENGTH_SHORT).show();
                                 return;
                             }
                             mPresenter.setLocation();
@@ -410,7 +421,7 @@ public class NaviSetPointActivity extends GoBackActivity implements INaviSetPoin
                         if (mNaviToHomeStartAddr.getText().equals("点此设置")) {
                             mPresenter.toSetHomeAddr();
                         } else {
-                            if(NetUtil.getInstance(NaviSetPointActivity.this).getCurrentNetType().equals(NetUtil.NetType.NETWORK_TYPE_NONE)){
+                            if (NetUtil.getInstance(NaviSetPointActivity.this).getCurrentNetType().equals(NetUtil.NetType.NETWORK_TYPE_NONE)) {
                                 Snackbar.make(mNaviRecordRecycler, mAppConfig.getResources().getString(R.string.no_network), Snackbar.LENGTH_SHORT).show();
                                 return;
                             }
@@ -452,10 +463,10 @@ public class NaviSetPointActivity extends GoBackActivity implements INaviSetPoin
 
             @OnClick(R.id.record_item)
             public void onItemClick() {
-                if(NetUtil.getInstance(NaviSetPointActivity.this).getCurrentNetType().equals(NetUtil.NetType.NETWORK_TYPE_NONE)){
-                   // Toast.makeText(NaviSetPointActivity.this, mAppConfig.getResources().getString(R.string.no_network), Toast.LENGTH_SHORT).show();
-                   // showSnackBar(mAppConfig.getResources().getString(R.string.no_network));
-                    final CommonDialog commonDialog =  new CommonDialog(NaviSetPointActivity.this,"网络错误","网络状态不佳，请检查网络设置","确定");
+                if (NetUtil.getInstance(NaviSetPointActivity.this).getCurrentNetType().equals(NetUtil.NetType.NETWORK_TYPE_NONE)) {
+                    // Toast.makeText(NaviSetPointActivity.this, mAppConfig.getResources().getString(R.string.no_network), Toast.LENGTH_SHORT).show();
+                    // showSnackBar(mAppConfig.getResources().getString(R.string.no_network));
+                    final CommonDialog commonDialog = new CommonDialog(NaviSetPointActivity.this, "网络错误", "网络状态不佳，请检查网络设置", "确定");
                     commonDialog.setOnConfirmListener(new CommonDialog.OnConfirmListener() {
                         @Override
                         public void onConfirm() {

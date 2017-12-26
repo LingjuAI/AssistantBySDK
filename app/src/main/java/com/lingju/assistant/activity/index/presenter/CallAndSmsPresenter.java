@@ -509,7 +509,7 @@ public class CallAndSmsPresenter {
             /* 停止识别、合成 */
             Intent intent = new Intent(mContext, AssistantService.class);
             intent.putExtra(AssistantService.CMD, AssistantService.ServiceCmd.SEND_TO_ROBOT_FOR_END_TASK);
-            intent.putExtra(AssistantService.END_TASK, true);
+            intent.putExtra(AssistantService.TRY_TO_WAKEUP, false);
             mContext.startService(intent);
             if (EventBus.getDefault().hasSubscriberForEvent(CallTaskEvent.class)) {
                 EventBus.getDefault().post(new CallTaskEvent(CallTaskEvent.STATE_END));

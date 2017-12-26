@@ -159,6 +159,7 @@ public class IflyRecognizer extends RecognizerBase {
                 } else {
                     tingBeforRecognize = false;
                 }
+                mediator.stopWaitPlay();
                 mediator.stopSynthesize();
                 mediator.stopWakenup();
                 mediator.openBlueHeadSet4Recognition();
@@ -193,14 +194,14 @@ public class IflyRecognizer extends RecognizerBase {
                             if (rLock.tryLock()) {
                                 try {
                                     recognizing = true;
-                                    if (long_time_record /*|| mediator.isWakeUpMode()*/) {  //录音识别模式或唤醒模式下使用“-1”
+                                    if (long_time_record || (mediator.isWakeUpMode())) {  //录音识别模式或唤醒模式下使用“-1”
                                         recognizer.setParameter(SpeechConstant.AUDIO_SOURCE, "-1");
                                         mRecorder.start();
                                     } else {
                                         recognizer.setParameter(SpeechConstant.AUDIO_SOURCE, null);
                                     }
                                     recognize_start_moments = System.currentTimeMillis();
-                                    Log.i(TAG, "长时间录音标记: " + long_time_record + " 识别模式：" + recognizer.getParameter(SpeechConstant.AUDIO_SOURCE));
+                                    Log.i(TAG, "长时间录音标记: " + long_time_record + " " + long_record_mode + " 识别模式：" + recognizer.getParameter(SpeechConstant.AUDIO_SOURCE));
                                     recognizer.startListening(RecognizerListener);
 
                                 } finally {
@@ -269,7 +270,7 @@ public class IflyRecognizer extends RecognizerBase {
                 //}
                 Log.e(TAG, "stopRecognize recognizer.cancel()");
                 if (mRecorder.isRecord())
-                    mRecorder.stop(false);
+                    mRecorder.stop(mediator.isWakeUpMode());
                 /*if (long_time_record)
                     recognizer.stopListening();
                 else*/
@@ -400,9 +401,10 @@ public class IflyRecognizer extends RecognizerBase {
     private PcmRecorder.RecordListener recordListener = new PcmRecorder.RecordListener() {
         @Override
         public void onStart() {
-            Log.i("LingJu", "PcmRecorder onStart()");
-            if (mRecorder.isRecord() && !isListening())
+            if (mRecorder.isRecord() && !isListening()) {
+                Log.i("LingJu", "PcmRecorder onStart()222");
                 recognizer.startListening(RecognizerListener);
+            }
         }
 
         @Override
@@ -413,6 +415,7 @@ public class IflyRecognizer extends RecognizerBase {
         @Override
         public void onVadEnd() {
             recognizer.stopListening();
+            Log.i("LingJu", "IflyRecognizer onVadEnd()");
         }
 
         @Override
@@ -601,9 +604,9 @@ public class IflyRecognizer extends RecognizerBase {
                 return;
             Log.i(TAG, "onEndOfSpeech" + ",cancel=" + Boolean.toString(cancel));
             recognize_end_moments = System.currentTimeMillis();
-            if (recognizer.getParameter(SpeechConstant.LANGUAGE).equals("en_us")) {
+            /*if (recognizer.getParameter(SpeechConstant.LANGUAGE).equals("en_us")) {
                 recognizer.setParameter(SpeechConstant.LANGUAGE, "zh_cn");
-            }
+            }*/
             if (!cancel &&/*!cacelCallback&&*/!mediator.preToCall())
                 mPlayer.playAssetsFile(mContext.getResources().getString(R.string.audio_wait), true, null);
             //if(cacelCallback)cacelCallback=false;
@@ -627,7 +630,7 @@ public class IflyRecognizer extends RecognizerBase {
             }*/
             recognizing = false;
             //识别出错时，要及时关闭本地录音器
-            mRecorder.stop(false);
+            mRecorder.stop(mediator.isWakeUpMode());
             if (!cancel && !mediator.preToCall()) {
                 mPlayer.playAssetsFile(mContext.getResources().getString(R.string.audio_error), false, null);
             }
@@ -678,10 +681,13 @@ public class IflyRecognizer extends RecognizerBase {
                 tapeText += content;
             } else if (long_record_mode == DEFAULT_TAPE) {     //正常识别，保存录音模式
                 //停止录音
-                mRecorder.stop(false);
+                mRecorder.stop(mediator.isWakeUpMode());
                 mediator.onTapeResult(content);
             } else if (!long_time_record) {      //讯飞默认识别模式
-                mRecorder.stop(false);
+                if (recognizer.getParameter(SpeechConstant.LANGUAGE).equals("en_us")) {
+                    recognizer.setParameter(SpeechConstant.LANGUAGE, "zh_cn");
+                }
+                mRecorder.stop(mediator.isWakeUpMode());
                 mPlayer.playAssetsFile(mContext.getResources().getString(R.string.audio_result), false, null);
                 IflyRecognizer.this.onResult(content);
             }

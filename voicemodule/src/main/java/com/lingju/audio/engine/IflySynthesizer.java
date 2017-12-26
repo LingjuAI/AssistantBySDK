@@ -128,7 +128,7 @@ public class IflySynthesizer extends SynthesizerBase {
             return synthesize_(msg);//synthesize(msg.text(),msg.sections());
         } else {
             requestAudioFocus();
-            //if(VoiceConfig.getVolName().equals(synthesizer.getParameter(SpeechConstant.VOICE_NAME))){
+            //if(!mVoiceConfig.getVolName().equals(synthesizer.getParameter(SpeechConstant.VOICE_NAME))){
             synthesizer.setParameter(SpeechConstant.SPEED, Integer.toString(mVoiceConfig.getVolSpeed()));
             synthesizer.setParameter(SpeechConstant.VOLUME, Integer.toString(mVoiceConfig.getVolume()));
             synthesizer.setParameter(SpeechConstant.ENGINE_TYPE, SpeechConstant.TYPE_CLOUD);
@@ -399,11 +399,11 @@ public class IflySynthesizer extends SynthesizerBase {
 
 
     public void onError(int code, String description, int errorCount) {
-        Log.e(TAG, "onCompleted 合成出错：" + description + ",errorCount=" + errorCount);
+        Log.e(TAG, "onCompleted 合成出错：" + description + ",errorCode=" + code);
         if (errorCount <= 2) {
-            if (description.indexOf("本地引擎错误") != -1) {
+            if (description.contains("本地引擎错误")) {
                 startSpeakAbsolute(currentMessage);
-            } else if (description.indexOf("网络") != -1) {
+            } else if (description.contains("网络")) {
                 if (!isLocalEngine())
                     resetParam(NetType.NETWORK_TYPE_2G);
                 SpeechMsg sp = currentMessage;
@@ -466,7 +466,7 @@ public class IflySynthesizer extends SynthesizerBase {
             Log.i(TAG + ".synthesizerListener", "onSpeakBegin");
             checkValid(emitter, msg, SpeechMsg.State.OnBegin);
             /*if(currentMessage!=null)
-			mediator.onSynthersizeSpeakBegin();*/
+            mediator.onSynthersizeSpeakBegin();*/
         }
 
         @Override
@@ -500,7 +500,7 @@ public class IflySynthesizer extends SynthesizerBase {
         }
 
         public void onInterrupted() {
-            Log.i(TAG + ".synthesizerListener", "onInterrupted "+msg.invalid());
+            Log.i(TAG + ".synthesizerListener", "onInterrupted " + msg.invalid());
             emitter.onNext(msg.setState(SpeechMsg.State.OnInterrupted));
             if (msg.invalid())
                 return;

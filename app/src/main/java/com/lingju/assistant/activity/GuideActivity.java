@@ -1,9 +1,7 @@
 package com.lingju.assistant.activity;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.graphics.drawable.LevelListDrawable;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
@@ -132,6 +130,7 @@ public class GuideActivity extends Activity {
                 .setOnConfirmListener(new CommonDialog.OnConfirmListener() {
                     @Override
                     public void onConfirm() {
+                        AppConfig.dPreferences.edit().putBoolean("NewInstallFirstOpen", false).commit();
                         into();
                     }
                 })

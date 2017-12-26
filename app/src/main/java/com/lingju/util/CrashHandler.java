@@ -135,7 +135,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
         for (Map.Entry<String, String> entry : entries) {
             sb.append(entry.getKey()).append("：").append(entry.getValue()).append("\r\n");
         }
-        File errorLogFile = new File(ERROR_DIR, "crash-" + TimeUtils.getDateString(new Date()) + ".log");
+        File errorLogFile = new File(ERROR_DIR, "crash-" + TimeUtils.getDateString(new Date()) + ".txt");
         PrintWriter pw = new PrintWriter(new FileOutputStream(errorLogFile, true));
         BufferedWriter bw = new BufferedWriter(pw);
         pw.append(sb.toString());

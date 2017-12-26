@@ -80,13 +80,14 @@ public class MusicPlayProcessor extends BaseProcessor {
             JSONArray actions = new JSONArray(cmd.getActions());
             JSONObject action = actions.getJSONObject(actions.length() - 1);
             JSONObject target = action.getJSONObject("target");
-            PlayerEntity playerEntity = JsonUtils.getObj(target.toString(), PlayerEntity.class);
+            PlayerEntity<NewAudioEntity> playerEntity = JsonUtils.getPlayerEntity(target.toString(), NewAudioEntity.class);
             if (!TextUtils.isEmpty(playerEntity.getControl())) {
                 Integer control = RobotConstant.PlayerMap.get(playerEntity.getControl());
                 switch (control) {
                     case RobotConstant.CONTROL_PLAY:    //播放列表歌曲
                         List<PlayMusic> musicList = convert(playerEntity.getObject());
                         voiceMediator.setAudioPlayType(VoiceMediator.AUTO_TYPE);
+                        aPlayer.setPlayerEntity(playerEntity);
                         if (musicList.size() > 0) {
                             EventBus.getDefault().post(new DialogEvent(DialogEvent.CANCEL_TOGGLE_TYPE));
                             AudioRepository.get().resetRquestList(musicList);
@@ -106,8 +107,8 @@ public class MusicPlayProcessor extends BaseProcessor {
                                     long dayTime = AppConfig.dPreferences.getLong(AppConfig.PLAY_NO_WIFI, 0);
                                     long todayTime = TimeUtils.getTodayDate().getTime();
                                     if (todayTime != dayTime) {
-                                        text += "。当前正在使用3g/4g网络播放歌曲，请注意流量哦！";
-                                        AppConfig.dPreferences.edit().putLong(AppConfig.PLAY_NO_WIFI, todayTime).commit();
+                                        text += "。当前正在使用3G/4G网络播放歌曲，请注意流量哦！";
+                                       AppConfig.dPreferences.edit().putLong(AppConfig.PLAY_NO_WIFI, todayTime).commit();
                                     }
                                 }
                             } else {
@@ -169,7 +170,7 @@ public class MusicPlayProcessor extends BaseProcessor {
                         if (voiceMediator.getAudioPlayType() == VoiceMediator.AUTO_TYPE) {
                             if (aPlayer.currentPlayMusic() != null) {
                                 if (aPlayer.prepared()) {
-                                    voiceMediator.stopWakenup();
+                                    // voiceMediator.stopWakenup();
                                     //发送当前播放歌曲事件，通知音乐播放栏显示
                                     EventBus.getDefault().post(aPlayer.currentPlayMusic());
                                     Single.just(0)
@@ -247,7 +248,7 @@ public class MusicPlayProcessor extends BaseProcessor {
                         aPlayer.setPlayMode(PlayList.PlayMode.SINGLE);
                         break;
                 }
-            } else if (playerEntity.getVolume() != null && !TextUtils.isEmpty(playerEntity.getVolume().getProgress())) {
+            } else if (playerEntity.getVolume() != null) {
                 switch (playerEntity.getVolume().getType()) {
                     case 0:     //按百分比调整音量
                         String volume = playerEntity.getVolume().getProgress();
@@ -367,7 +368,7 @@ public class MusicPlayProcessor extends BaseProcessor {
                         .doOnNext(new Consumer<PlayMusic>() {
                             @Override
                             public void accept(PlayMusic music) throws Exception {
-                                voiceMediator.stopWakenup();
+                                // voiceMediator.stopWakenup();
                                 aPlayer.play();
                             }
                         })
@@ -381,7 +382,7 @@ public class MusicPlayProcessor extends BaseProcessor {
                         })*/.subscribe();
             }
         } else if (playObserable != null) {     //不用预加载，直接播放(当前策略不会走该方法)。适用于play(PlayMusic music)、playPre()、playNext()
-            voiceMediator.stopWakenup();
+            // voiceMediator.stopWakenup();
             /* 发送当前播放歌曲事件，通知音乐播放栏显示 */
             EventBus.getDefault().post(aPlayer.currentPlayMusic());
             playObserable.observeOn(AndroidSchedulers.mainThread())

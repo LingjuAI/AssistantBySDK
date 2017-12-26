@@ -1,38 +1,53 @@
 package com.lingju.assistant.service;
 
-import android.app.Application;
+import android.util.Log;
 
-import com.lingju.assistant.AppConfig;
+import com.baidu.location.BDLocation;
+import com.baidu.location.LocationClient;
 import com.lingju.common.adapter.LocationAdapter;
+import com.lingju.lbsmodule.location.Address;
 
 /**
- * Created by Ken on 2017/5/9.
+ * Created by Ken on 2017/5/9.<br/>
  */
 public class LocationAccessAdapter extends LocationAdapter {
 
-    private AppConfig appConfig;
+    private Address mAddress;
 
-    public LocationAccessAdapter(Application app) {
-        this.appConfig = (AppConfig) app;
+    public LocationAccessAdapter(Address address) {
+        setAddress(address);
+    }
+
+    public void setAddress(Address address) {
+        if (address != null) {
+            mAddress = address.clone();
+            BDLocation bdLocation = new BDLocation();
+            bdLocation.setLatitude(mAddress.getLatitude());
+            bdLocation.setLongitude(mAddress.getLongitude());
+            bdLocation = LocationClient.getBDLocationInCoorType(bdLocation, BDLocation.BDLOCATION_BD09LL_TO_GCJ02);
+            mAddress.setLatitude(bdLocation.getLatitude());
+            mAddress.setLongitude(bdLocation.getLongitude());
+        }
+        Log.i("LingJu", "LocationAccessAdapter setAddress() 最终位置：>> " + mAddress);
     }
 
     @Override
     public double getCurLng() {
-        return appConfig.address==null? 113.37302:appConfig.address.getLongitude();
+        return mAddress == null ? 113.365471 : mAddress.getLongitude();
     }
 
     @Override
     public double getCurLat() {
-        return appConfig.address==null? 23.10376:appConfig.address.getLatitude();
+        return mAddress == null ? 23.095618 : mAddress.getLatitude();
     }
 
     @Override
     public String getCurCity() {
-        return appConfig.address==null?"广州市":appConfig.address.getCity();
+        return mAddress == null ? "广州市" : mAddress.getCity();
     }
 
     @Override
     public String getCurAddressDetail() {
-        return appConfig.address==null?"广州市海珠区新港东路1000号":appConfig.address.getAddressDetail();
+        return mAddress == null ? "中国广东省广州市海珠区凤浦中路" : mAddress.getAddressDetail();
     }
 }

@@ -8,18 +8,13 @@ import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.design.widget.Snackbar;
 import android.text.TextUtils;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Toast;
 
 import com.baidu.location.BDLocation;
 import com.baidu.location.LocationClient;
-import com.baidu.mapapi.search.core.RouteNode;
 import com.baidu.navisdk.adapter.BNRoutePlanNode;
-import com.baidu.navisdk.adapter.BNaviSettingManager;
 import com.baidu.navisdk.adapter.BaiduNaviManager;
 import com.baidu.navisdk.adapter.impl.RouteGuider;
 import com.lingju.assistant.AppConfig;
@@ -28,18 +23,16 @@ import com.lingju.assistant.activity.NaviSetLineActivity;
 import com.lingju.assistant.activity.event.MapCmdEvent;
 import com.lingju.assistant.activity.event.NaviRouteCalculateEvent;
 import com.lingju.assistant.activity.event.NaviSwitchRouteLineEvent;
-import com.lingju.assistant.activity.event.RecordUpdateEvent;
 import com.lingju.assistant.activity.index.INaviSetLine;
 import com.lingju.assistant.baidunavi.adapter.BaiduNaviSuperManager;
 import com.lingju.assistant.entity.RobotConstant;
-import com.lingju.assistant.player.audio.LingjuAudioPlayer;
 import com.lingju.assistant.service.AssistantService;
 import com.lingju.assistant.service.NavigatorService;
 import com.lingju.assistant.service.VoiceMediator;
 import com.lingju.audio.engine.base.SpeechMsg;
 import com.lingju.audio.engine.base.SpeechMsgBuilder;
 import com.lingju.audio.engine.base.SynthesizerBase;
-import com.lingju.common.adapter.AdminRemarkDao;
+import com.lingju.common.log.Log;
 import com.lingju.context.entity.Navigation;
 import com.lingju.context.entity.Route;
 import com.lingju.context.entity.Routenode;
@@ -65,12 +58,7 @@ import com.lingju.lbsmodule.proxy.RGMapModeViewControllerProxy;
 import com.lingju.lbsmodule.proxy.RoutePlanModelProxy;
 import com.lingju.lbsmodule.proxy.RoutePlanResultItemProxy;
 import com.lingju.model.BaiduAddress;
-import com.lingju.common.log.Log;
-import com.lingju.model.SimpleDate;
 import com.lingju.robot.AndroidChatRobotBuilder;
-import com.lingju.util.NetUtil;
-
-import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,13 +70,10 @@ import java.util.Vector;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
-import io.reactivex.ObservableEmitter;
-import io.reactivex.ObservableOnSubscribe;
-import io.reactivex.Single;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
-import okhttp3.internal.http.RouteException;
 
 /**
  * Created by Ken on 2016/12/23.
@@ -133,7 +118,7 @@ public class NaviSetLinePresenter implements INaviSetLine.IPresenter {
     private View mNaviView;
     private boolean showTraffic = false;
     private Navigation mNavigation = new Navigation();         //导航引擎对象
-    private boolean isInit = true;
+    private Disposable mDisposable;
 
     public NaviSetLinePresenter(INaviSetLine.INaviSetLineView view) {
         this.mSetLineView = view;
@@ -337,19 +322,24 @@ public class NaviSetLinePresenter implements INaviSetLine.IPresenter {
      * 由于服务端2分钟无交互则清空上下文对象，每2分钟上传一次导航引擎，保证导航状态正常
      **/
     private void keepNavigation() {
-        if (isInit) {
-            isInit = false;
-            Observable.interval(2, 2, TimeUnit.MINUTES)
-                    .observeOn(Schedulers.io())
-                    .subscribe(new Consumer<Long>() {
-                        @Override
-                        public void accept(Long aLong) throws Exception {
-                            uploadNavigation();
-                            if (mNavigation == null) {
-                                throw new RuntimeException("导航结束了。。。");
-                            }
+        cancelDisposable();
+        mDisposable = Observable.interval(2, 2, TimeUnit.MINUTES)
+                .observeOn(Schedulers.io())
+                .subscribe(new Consumer<Long>() {
+                    @Override
+                    public void accept(Long aLong) throws Exception {
+                        uploadNavigation();
+                        if (mNavigation == null) {
+                            throw new RuntimeException("导航结束了。。。");
                         }
-                    });
+                    }
+                });
+    }
+
+    private void cancelDisposable() {
+        if (mDisposable != null && !mDisposable.isDisposed()) {
+            mDisposable.dispose();
+            mDisposable = null;
         }
     }
 
@@ -451,7 +441,7 @@ public class NaviSetLinePresenter implements INaviSetLine.IPresenter {
                         bl.setLatitude(eLat);
                         bl.setLongitude(eLng);
                         bl.setAddrStr(eName);
-                        // bl = LocationClient.getBDLocationInCoorType(bl, BDLocation.BDLOCATION_BD09LL_TO_GCJ02);
+                         bl = LocationClient.getBDLocationInCoorType(bl, BDLocation.BDLOCATION_BD09LL_TO_GCJ02);
                         /* 当前定位为起点 */
                         BNRoutePlanNode start = new BNRoutePlanNode(startBl.getLongitude(), startBl.getLatitude(), startBl.getAddrStr(), "");
                         /* 从intent接收到终点 */
@@ -1378,9 +1368,8 @@ public class NaviSetLinePresenter implements INaviSetLine.IPresenter {
         //更新导航引擎状态
         mNavigation = null;
         uploadNavigation();
-
-        BNavigatorProxy.destory();
-        naviManager.destory();
+        cancelDisposable();
+        BaiduNaviSuperManager.destory();
     }
 
     /**

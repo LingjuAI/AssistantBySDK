@@ -77,7 +77,7 @@ public class AssistPresenter implements IAdditionAssist.Presenter {
     private boolean is_alarm_edit;     //新建闹钟是否展开编辑中标记
     private boolean is_remind_edit;    //新建提醒是否展开编辑中标记
     private boolean is_account_edit;   //新建记账是否展开编辑中标记
-    private AsyncTask mCheckVersionTask;
+    private AsyncTask<Void, Void, Version> mCheckVersionTask;
 
     public AssistPresenter(IAdditionAssist.AssistView assistView) {
         this.assistView = (MainActivity) assistView;
@@ -243,6 +243,7 @@ public class AssistPresenter implements IAdditionAssist.Presenter {
                             if (!TextUtils.isEmpty(clockEntity.getSid())) {
                                 is_alarm_edit = false;
                                 alarm.setSid(clockEntity.getSid());
+
                                 alarm.setTimestamp(clockEntity.getTimestamp());
                                 alarm.setCreated(clockEntity.getCreated());
                                 List<Scheduler> schedulers = clockEntity.getScheduler();

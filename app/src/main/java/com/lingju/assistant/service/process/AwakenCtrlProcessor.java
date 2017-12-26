@@ -9,6 +9,7 @@ import com.lingju.assistant.service.process.base.BaseProcessor;
 import com.lingju.audio.SystemVoiceMediator;
 import com.lingju.audio.engine.base.SpeechMsg;
 import com.lingju.audio.engine.base.SpeechMsgBuilder;
+import com.lingju.audio.engine.base.SynthesizerBase;
 import com.lingju.context.entity.Command;
 import com.lingju.model.temp.speech.ResponseMsg;
 
@@ -58,7 +59,7 @@ public class AwakenCtrlProcessor extends BaseProcessor {
         /* 将回复文本发送到聊天视图 */
         EventBus.getDefault().post(new ChatMsgEvent(new ResponseMsg(text), null, null, null));
         /* 合成回复文本声音 */
-        mSynthesizer.startSpeakAbsolute(builder.setText(text).build())
+        SynthesizerBase.get().startSpeakAbsolute(builder.setText(text).build())
                 .doOnNext(new Consumer<SpeechMsg>() {
                     @Override
                     public void accept(SpeechMsg speechMsg) throws Exception {

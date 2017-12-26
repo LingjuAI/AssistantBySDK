@@ -62,6 +62,7 @@ import com.lingju.assistant.service.process.TingPlayProcessor;
 import com.lingju.assistant.service.process.base.BaseProcessor;
 import com.lingju.assistant.service.process.base.IProcessor;
 import com.lingju.assistant.social.weibo.Constants;
+import com.lingju.assistant.view.wheel.widget.adapters.NumericWheelAdapter;
 import com.lingju.audio.SystemVoiceMediator;
 import com.lingju.audio.engine.IflyRecognizer;
 import com.lingju.audio.engine.IflySynthesizer;
@@ -151,17 +152,17 @@ public class AssistantService extends Service implements SystemVoiceMediator.Cha
         voiceMediator.setChatStateListener(this);
         //创建数据库相关的表及dao
         DaoManager.create(this);
-        // 初始化百度地图SDK组件
-        SDKInitializer.initialize(getApplicationContext());
         mAudioPlayer = LingjuAudioPlayer.create(this);
         mAudioPlayer.setPlayStateListener(this);
         mAudioPlayer.setBluetoothChannelController(bluetoothController);
+        chatRobotInited();
+        // 初始化百度地图SDK组件
+        SDKInitializer.initialize(getApplicationContext());
         BaiduLocateManager.createInstance(getApplicationContext());
         NavigatorService.createInstance(BaiduNaviDao.getInstance(), calculateRouteListener, this);
         //初始化喜马拉雅SDK
         XmlyManager.create(this);
         initProcessor();
-        chatRobotInited();
         registerReveicer();
         isBlueToothHeadsetConnected();
         if (AppConfig.NewInstallFirstOpen)
@@ -220,9 +221,7 @@ public class AssistantService extends Service implements SystemVoiceMediator.Cha
                 case ServiceCmd.PAUSE_PLAY:
                     if (mAudioPlayer.isPlaying()) {
                         mAudioPlayer.pause();
-                        if (voiceMediator.isWakeUpMode()) {
-                            voiceMediator.setWakeUpMode(true);
-                        }
+                        voiceMediator.tryToWakeup();
                     }
                     break;
                 case ServiceCmd.PLAY_IN_BACKGROUND:
@@ -232,18 +231,16 @@ public class AssistantService extends Service implements SystemVoiceMediator.Cha
                 case ServiceCmd.TOGGLE_PLAY:
                     if (mAudioPlayer.isPlaying()) {
                         mAudioPlayer.pause();
-                        if (voiceMediator.isWakeUpMode()) {
-                            voiceMediator.setWakeUpMode(true);
-                        }
+                        voiceMediator.tryToWakeup();
                     } else {
-                        voiceMediator.stopWakenup();
+                        // voiceMediator.stopWakenup();
                         if (mAudioPlayer.currentPlayMusic() != null)
                             EventBus.getDefault().post(mAudioPlayer.currentPlayMusic());
                         mAudioPlayer.play();
                     }
                     break;
                 case ServiceCmd.NEXT_MUSIC:
-                    voiceMediator.stopWakenup();
+                    // voiceMediator.stopWakenup();
                     mAudioPlayer.playNext().subscribe();
                     if (mAudioPlayer.currentPlayMusic() != null)
                         EventBus.getDefault().post(mAudioPlayer.currentPlayMusic());
@@ -568,7 +565,7 @@ public class AssistantService extends Service implements SystemVoiceMediator.Cha
                 final long start = System.currentTimeMillis();
                 AndroidChatRobotBuilder.create(getApplicationContext(), Constants.LINGJU_APPKEY)
                         .setMusicContext(new AudioAccessAdapter(mAudioPlayer))
-                        .setLocationAdapter(new LocationAccessAdapter(mAppConfig))
+                        .setLocationAdapter(new LocationAccessAdapter(mAppConfig.address))
                         .setNetworkAdapter(new NetWorkAccessAdapter(getApplicationContext()))
                         .build(new ChatRobotBuilder.RobotInitListener() {
                             @Override
@@ -875,8 +872,7 @@ public class AssistantService extends Service implements SystemVoiceMediator.Cha
                 if (last != AppConfig.Network || AppConfig.Network.isMobileNetwork() && BaiduLocateManager.get() != null) {
                     BaiduLocateManager.get().start();
                 }
-                //保证网络变化时，robot的初始化正常
-                if (!AndroidChatRobotBuilder.get().isRobotCreated()) {
+                if (AndroidChatRobotBuilder.get() != null && !AndroidChatRobotBuilder.get().isRobotCreated()) {
                     chatRobotInited();
                 }
                 //TODO 设置AI引擎离线工作

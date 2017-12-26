@@ -4,10 +4,12 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.lingju.assistant.entity.action.PlayerEntity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +28,14 @@ public class JsonUtils {
                 .create();
         T t = gson.fromJson(json, clazz);
         return t;
+    }
+
+    public static <T> PlayerEntity<T> getPlayerEntity(String json, Class<T> clazz) {
+        Gson gson = new GsonBuilder()
+                .setDateFormat(DATE_FROMAT)
+                .create();
+        Type type = new ParameterizedTypeImpl(PlayerEntity.class, new Type[]{clazz});
+        return gson.fromJson(json, type);
     }
 
     /**

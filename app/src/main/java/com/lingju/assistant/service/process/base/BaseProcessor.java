@@ -4,8 +4,6 @@ import android.content.Context;
 
 import com.lingju.assistant.service.AssistantService;
 import com.lingju.audio.SystemVoiceMediator;
-import com.lingju.audio.engine.IflySynthesizer;
-import com.lingju.audio.engine.base.SynthesizerBase;
 import com.lingju.context.entity.Command;
 import com.lingju.context.entity.base.IChatResult;
 import com.lingju.model.SmsInfo;
@@ -19,7 +17,6 @@ public abstract class BaseProcessor implements IProcessor {
 
     protected SystemVoiceMediator voiceMediator;
     protected Context mContext;
-    protected SynthesizerBase mSynthesizer;
     public static final int CMD_DEFAULT = 0;
     public static final int CMD_PLAY = 1;
     public static final int CMD_OPTIONS = 2;
@@ -32,7 +29,6 @@ public abstract class BaseProcessor implements IProcessor {
     public BaseProcessor(Context mContext, SystemVoiceMediator mediator) {
         this.voiceMediator = mediator;
         this.mContext = mContext;
-        this.mSynthesizer = IflySynthesizer.getInstance();
     }
 
     /**

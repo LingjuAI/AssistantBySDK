@@ -7,6 +7,7 @@ import android.database.ContentObserver;
 import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Handler;
+import android.provider.ContactsContract;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 
@@ -40,6 +41,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
+import io.reactivex.Single;
 import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
@@ -95,9 +97,12 @@ public class MobileCommProcessor extends BaseProcessor {
         mAppConfig = (AppConfig) ((Service) mContext).getApplication();
         tPools = new ThreadPoolExecutor(10, 20, 10, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>());
         phoneCallListener();
-        /* 注册内容观察者 */
+        // 注册收件箱内容观察者
         mContext.getContentResolver().registerContentObserver(Uri.parse(PhoneContactUtils.SMS_URI_INBOX),
                 true, new SmsObserver(handler));
+        // 注册联系人内容观察者
+        mContext.getContentResolver().registerContentObserver(ContactsContract.Contacts.CONTENT_URI,
+                true, new ContactObserver(handler));
     }
 
     @Override
@@ -200,7 +205,7 @@ public class MobileCommProcessor extends BaseProcessor {
     @Override
     public void smsMsgHandle() {
         Contact c = mAppConfig.lastSms.getContact();
-        if (mAppConfig.notInDND(c)&& mAppConfig.inmsg_tips) {
+        if (mAppConfig.notInDND(c) && mAppConfig.inmsg_tips) {
             AudioManager mAudioManager = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
             mAudioManager.setStreamMute(AudioManager.STREAM_NOTIFICATION, true);
             tPools.execute(new NumberMsg(mAppConfig.lastSms.getName(), false));
@@ -247,7 +252,16 @@ public class MobileCommProcessor extends BaseProcessor {
                 inMsgTipsFlow = 0;
             }
         }
-        CallAndSmsDao.getInstance(mContext).sync(CallAndSmsDao.getInstance(mContext).getSyncDao(CallAndSmsDao.MessageDao.class));
+        Single.just(0)
+                .delay(1, TimeUnit.SECONDS)
+                .doOnSuccess(new Consumer<Integer>() {
+                    @Override
+                    public void accept(Integer integer) throws Exception {
+                        CallAndSmsDao.getInstance(mContext).sync(CallAndSmsDao.getInstance(mContext).getSyncDao(CallAndSmsDao.MessageDao.class));
+                    }
+                })
+                .subscribeOn(Schedulers.io())
+                .subscribe();
     }
 
     /**
@@ -262,11 +276,11 @@ public class MobileCommProcessor extends BaseProcessor {
         @Override
         public void onChange(boolean selfChange) {
             Log.e(TAG, "SmsObserver>>>>onChange>>" + Boolean.toString(selfChange));
-            CallAndSmsDao.getInstance(mContext).sync(CallAndSmsDao.getInstance(mContext).getSyncDao(CallAndSmsDao.MessageDao.class));
             if (isSmsReceiverValid) {     //若已被短信广播接收者拦截则不需要再处理
                 isSmsReceiverValid = false;
                 return;
             }
+            CallAndSmsDao.getInstance(mContext).sync(CallAndSmsDao.getInstance(mContext).getSyncDao(CallAndSmsDao.MessageDao.class));
             super.onChange(selfChange);
             if (!selfChange) {
                 long t = mAppConfig.lastSms.getTime();
@@ -288,6 +302,21 @@ public class MobileCommProcessor extends BaseProcessor {
                     mHandler.sendEmptyMessage(1);
                 }
             }
+        }
+    }
+
+    private class ContactObserver extends ContentObserver {
+
+        public ContactObserver(Handler handler) {
+            super(handler);
+        }
+
+        @Override
+        public void onChange(boolean selfChange) {
+            super.onChange(selfChange);
+            Log.i("LingJu", "ContactObserver onChange()>> " + selfChange);
+            if (!selfChange)
+                CallAndSmsDao.getInstance(mContext).sync(CallAndSmsDao.getInstance(mContext).getSyncDao(CallAndSmsDao.ContactsDao.class));
         }
     }
 
@@ -319,7 +348,7 @@ public class MobileCommProcessor extends BaseProcessor {
                 return;
             switch (mobileState) {
                 case TelephonyManager.CALL_STATE_IDLE:  //无任何状态时
-                    Log.e("MobliePhoneStateListener", "电话空闲的时候");
+                    Log.e("MobliePhoneStateListener", "电话空闲的时候>> " + preCall);
                     voiceMediator.setMobileRing(false);
                     voiceMediator.setCalling(false);
                     if (!preCall) {
@@ -342,7 +371,7 @@ public class MobileCommProcessor extends BaseProcessor {
                     if (playing) {
                         playing = false;
                         LingjuAudioPlayer.get().play();
-                    } else if (mSynthesizer != null) {
+                    } else if (SynthesizerBase.get() != null) {
                         Intent intent = new Intent(mContext, AssistantService.class);
                         intent.putExtra(AssistantService.CMD, AssistantService.ServiceCmd.SEND_TO_ROBOT_FOR_END_TASK);
                         intent.putExtra(AssistantService.END_TASK, false);
@@ -517,13 +546,13 @@ public class MobileCommProcessor extends BaseProcessor {
             //                mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, current_volume, 0);
             //            }
             msgBuilder.setText(text);
-            Observable<SpeechMsg> msgObservable = mSynthesizer.addMessageWaitSpeak(msgBuilder.build());
+            Observable<SpeechMsg> msgObservable = SynthesizerBase.get().addMessageWaitSpeak(msgBuilder.build());
             if (msgObservable != null) {
                 msgObservable.doOnComplete(new Action() {
                     @Override
                     public void run() throws Exception {
-//                        if (!voiceMediator.isHeadset())
-//                            mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, current_volume, 0);
+                        //                        if (!voiceMediator.isHeadset())
+                        //                            mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, current_volume, 0);
                     }
                 })
                         .subscribeOn(Schedulers.io())

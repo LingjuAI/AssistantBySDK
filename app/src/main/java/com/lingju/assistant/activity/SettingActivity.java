@@ -363,7 +363,7 @@ public class SettingActivity extends GoBackActivity implements SwitchButton.OnCh
     /**
      * 应用版本检测任务
      **/
-    class CheckVersionTask extends AsyncTask<Void, Void, Version> {
+    private class CheckVersionTask extends AsyncTask<Void, Void, Version> {
         boolean showLoading = true;
 
         public CheckVersionTask(boolean showLoading) {

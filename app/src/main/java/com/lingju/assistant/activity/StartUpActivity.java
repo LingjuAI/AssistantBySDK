@@ -35,7 +35,6 @@ import java.util.concurrent.TimeUnit;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 import permissions.dispatcher.NeedsPermission;
@@ -104,7 +103,6 @@ public class StartUpActivity extends Activity implements ActivityCompat.OnReques
             getPackageManager().getInstalledPackages(0);
         }
     }
-
 
 
     /**
@@ -259,46 +257,48 @@ public class StartUpActivity extends Activity implements ActivityCompat.OnReques
      * 首次打开应用时，初始化账单项目数据
      **/
     private void initAccountProject() {
-        Observable.create(new ObservableOnSubscribe<Object>() {
+        Observable.create(new ObservableOnSubscribe<Integer>() {
             @Override
-            public void subscribe(ObservableEmitter<Object> e) throws Exception {
-                 /* 插入账单子类item */
-                String[] subItems = getResources().getStringArray(R.array.sub_items);
-                for (int i = 0; i < subItems.length; i++) {
-                    SubItem subItem = new SubItem();
-                    String[] subArr = subItems[i].split("\\|");
-                    subItem.setItemid(Long.valueOf(subArr[0]));
-                    subItem.setName(subArr[1]);
-                    AccountItemDao.getInstance().insertSubItem(subItem);
+            public void subscribe(ObservableEmitter<Integer> emitter) throws Exception {
+                 /* 插入账单item */
+                String[] expenses = getResources().getStringArray(R.array.expense_items);
+                String[] incomes = getResources().getStringArray(R.array.income_items);
+                        /* 支出类 */
+                for (String expense : expenses) {
+                    Item item = new Item();
+                    item.setItem(expense);
+                    item.setExpense(ITEM_EXPENSE);
+                    AccountItemDao.getInstance().inserItem(item);
                 }
+                        /* 收入类 */
+                for (String income : incomes) {
+                    Item item = new Item();
+                    item.setItem(income);
+                    item.setExpense(ITEM_INCOME);
+                    AccountItemDao.getInstance().inserItem(item);
+                }
+                Log.i("LingJu", "loaded item...");
+                emitter.onNext(0);
             }
         })
                 .delay(1500, TimeUnit.MILLISECONDS)
-                .doOnSubscribe(new Consumer<Disposable>() {
-                    @Override
-                    public void accept(Disposable disposable) throws Exception {
-                         /* 插入账单item */
-                        String[] expenses = getResources().getStringArray(R.array.expense_items);
-                        String[] incomes = getResources().getStringArray(R.array.income_items);
-                        /* 支出类 */
-                        for (int i = 0; i < expenses.length; i++) {
-                            Item item = new Item();
-                            item.setItem(expenses[i]);
-                            item.setExpense(ITEM_EXPENSE);
-                            AccountItemDao.getInstance().inserItem(item);
-                        }
-                        /* 收入类 */
-                        for (int i = 0; i < incomes.length; i++) {
-                            Item item = new Item();
-                            item.setItem(incomes[i]);
-                            item.setExpense(ITEM_INCOME);
-                            AccountItemDao.getInstance().inserItem(item);
-                        }
-                    }
-                })
                 .observeOn(Schedulers.io())
                 .subscribeOn(Schedulers.io())
-                .subscribe();
+                .subscribe(new Consumer<Integer>() {
+                    @Override
+                    public void accept(Integer integer) throws Exception {
+                         /* 插入账单子类item */
+                        String[] subItems = getResources().getStringArray(R.array.sub_items);
+                        for (String subItem1 : subItems) {
+                            SubItem subItem = new SubItem();
+                            String[] subArr = subItem1.split("\\|");
+                            subItem.setItemid(Long.valueOf(subArr[0]));
+                            subItem.setName(subArr[1]);
+                            AccountItemDao.getInstance().insertSubItem(subItem);
+                        }
+                        Log.i("LingJu", "loaded subItem...");
+                    }
+                });
 
     }
 /*
@@ -408,6 +408,7 @@ public class StartUpActivity extends Activity implements ActivityCompat.OnReques
             try {
                 Thread.sleep(3000);
             } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
                 //打断睡眠中的线程
                 Thread.currentThread().interrupt();
             }
@@ -422,5 +423,4 @@ public class StartUpActivity extends Activity implements ActivityCompat.OnReques
         }
 
     }
-
 }

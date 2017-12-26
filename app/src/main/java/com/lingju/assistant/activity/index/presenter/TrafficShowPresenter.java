@@ -1387,8 +1387,6 @@ public class TrafficShowPresenter implements ITrafficShow.IPresenter, OnGetPoiSe
     public void destroy() {
         Log.i(TAG, "onDestroy");
         mapView.onDestroy();
-        if (naviSuperManager != null)
-            naviSuperManager.destory();
         if (BNRoutePlanerProxy.getInstance().isCalculatingRoute()) {
             Log.i(TAG, "isCalculatingRoute");
             BNRoutePlanerProxy.getInstance().cancleCalcRouteRequest();

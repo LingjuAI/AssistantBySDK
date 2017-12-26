@@ -1,7 +1,5 @@
 package com.lingju.model.dao;
 
-import android.util.Log;
-
 import com.google.gson.JsonArray;
 import com.lingju.assistant.entity.RobotConstant;
 import com.lingju.common.repository.SyncDao;

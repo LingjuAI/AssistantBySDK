@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.preference.PreferenceManager;
 import android.support.multidex.MultiDexApplication;
 
+import com.lingju.assistant.service.LocationAccessAdapter;
 import com.lingju.common.log.Log;
 import com.lingju.config.Setting;
 import com.lingju.context.entity.ContactNum;
@@ -20,6 +21,7 @@ import com.lingju.model.User;
 import com.lingju.model.Version;
 import com.lingju.model.dao.DaoManager;
 import com.lingju.model.dao.UserManagerDao;
+import com.lingju.robot.AndroidChatRobotBuilder;
 import com.lingju.util.CrashHandler;
 import com.lingju.util.DeviceUtils;
 import com.lingju.util.NetUtil;
@@ -148,7 +150,7 @@ public class AppConfig extends MultiDexApplication {
     @Override
     public void onTerminate() {
         super.onTerminate();
-        BaiduLocateManager.get().deleteObserver(locateListener);
+        BaiduLocateManager.get().onDestroy();
     }
 
     /**
@@ -190,7 +192,7 @@ public class AppConfig extends MultiDexApplication {
      * 初始化额外参数
      **/
     private void initExtra() {
-        DeviceUtils.init(this);
+        DeviceUtils.init(getApplicationContext());
         mContactUtils = PhoneContactUtils.getInstance(this);
         inmsg_tips = dPreferences.getBoolean(IN_MSG_TIPS, false);
         incoming_tips = dPreferences.getBoolean(INCOMING_TIPS, false);
@@ -275,15 +277,10 @@ public class AppConfig extends MultiDexApplication {
             AppConfig.this.address = address;
             /* 刷新定位 */
             Setting.setAddress(address);
-            /*if (AndroidChatRobotBuilder.get() != null) {
-                SimpleAddress sa = AndroidChatRobotBuilder.get().address();
-                Address tmp = address.clone().setBD09LL();
-                sa.city = address.getCity();
-                sa.lat = Double.toString(tmp.getLatitude());
-                sa.lng = Double.toString(tmp.getLongitude());
-                sa.position = address.getAddressDetail();
-                AndroidChatRobotBuilder.get().updateAddress();
-            }*/
+            //刷新Robot定位适配器的地址
+            if (AndroidChatRobotBuilder.get() != null && AndroidChatRobotBuilder.get().getLocationAdapter() != null)
+                ((LocationAccessAdapter) AndroidChatRobotBuilder.get().getLocationAdapter()).setAddress(address);
+
         }
 
     };
@@ -299,11 +296,11 @@ public class AppConfig extends MultiDexApplication {
     }
 
     public boolean checkNewInstallFirstOpen() {
-        boolean result = dPreferences.getBoolean("NewInstallFirstOpen", true);
+       /* boolean result = dPreferences.getBoolean("NewInstallFirstOpen", true);
         if (result) {
             dPreferences.edit().putBoolean("NewInstallFirstOpen", false).commit();
-        }
-        return result;
+        }*/
+        return dPreferences.getBoolean("NewInstallFirstOpen", true);
     }
 
     //获取当前版本号

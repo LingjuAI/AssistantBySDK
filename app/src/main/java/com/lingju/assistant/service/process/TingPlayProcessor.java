@@ -20,6 +20,7 @@ import com.lingju.assistant.service.process.base.BaseProcessor;
 import com.lingju.audio.SystemVoiceMediator;
 import com.lingju.audio.engine.base.SpeechMsg;
 import com.lingju.audio.engine.base.SpeechMsgBuilder;
+import com.lingju.audio.engine.base.SynthesizerBase;
 import com.lingju.common.adapter.ChatRobotBuilder;
 import com.lingju.context.entity.AlbumEntity;
 import com.lingju.context.entity.Command;
@@ -30,6 +31,7 @@ import com.lingju.model.TrackAlbum;
 import com.lingju.model.dao.TingAlbumDao;
 import com.lingju.model.temp.speech.ResponseMsg;
 import com.lingju.robot.AndroidChatRobotBuilder;
+import com.lingju.util.JsonUtils;
 import com.lingju.util.XmlyManager;
 import com.ximalaya.ting.android.opensdk.constants.DTransferConstants;
 import com.ximalaya.ting.android.opensdk.datatrasfer.CommonRequest;
@@ -99,6 +101,7 @@ public class TingPlayProcessor extends BaseProcessor {
         mEpisode = 0;
         mAlbumEntities.clear();
         try {
+            voiceMediator.setAudioPlayType(VoiceMediator.XIMALAYA_TYPE);
             if (cmd.getOutc() == DefaultProcessor.OUTC_ASK)
                 msgBuilder.setContextMode(SpeechMsg.CONTEXT_KEEP_RECOGNIZE);
             if (EventBus.getDefault().hasSubscriberForEvent(RobotTipsEvent.class))
@@ -125,7 +128,8 @@ public class TingPlayProcessor extends BaseProcessor {
                     case RobotConstant.CONTROL_PLAY:    //播放有声音频（需要先查找）
                         if ("KAOLA".equals(lastTarget.getString("origin"))) {       // 来源：考拉
                             msgBuilder.setContextMode(SpeechMsg.CONTEXT_AUTO);
-                            PlayerEntity player = SyncSegment.fromJson(lastTarget.toString(), PlayerEntity.class);
+                            PlayerEntity<NewAudioEntity> player = JsonUtils.getPlayerEntity(lastTarget.toString(), NewAudioEntity.class);
+                            XmlyManager.get().setPlayerEntity(player);
                             List<NewAudioEntity> audios = player.getObject();
                             NewAudioEntity playAudio = audios.get(0);
                             //先判断是否有播放记录，优先播放历史记录
@@ -147,7 +151,7 @@ public class TingPlayProcessor extends BaseProcessor {
                             EventBus.getDefault().post(new ChatMsgEvent(ChatMsgEvent.REMOVE_TING_TRACK_STATE));
                             //显示新的播放专辑
                             EventBus.getDefault().post(new ChatMsgEvent(new TingAlbumMsg(playAlbum, playTrack)));
-                            mSynthesizer.startSpeakAbsolute(msgBuilder.build())
+                            SynthesizerBase.get().startSpeakAbsolute(msgBuilder.build())
                                     .doOnNext(new Consumer<SpeechMsg>() {
                                         @Override
                                         public void accept(SpeechMsg speechMsg) throws Exception {
@@ -173,7 +177,6 @@ public class TingPlayProcessor extends BaseProcessor {
                         } else {        //来源：喜马拉雅
                             cancelPlayTimer();
                             isResponse = false;
-                            voiceMediator.setAudioPlayType(VoiceMediator.XIMALAYA_TYPE);
                             if (actions.length() > 1) {     //根据查询条件使用喜马拉雅SDK查找专辑
                                 isDelay = true;
                                 // msgBuilder.setText("");
@@ -226,6 +229,8 @@ public class TingPlayProcessor extends BaseProcessor {
                                 } else {
                                     searchObservable = getAlbumByCate(cateId, calc_dimension);
                                 }
+                                PlayerEntity<NewAudioEntity> playerEntity = JsonUtils.getPlayerEntity(lastTarget.toString(), NewAudioEntity.class);
+                                XmlyManager.get().setPlayerEntity(playerEntity);
                             } else {        //播放选中的专辑
                                 isDelay = false;
                                 msgBuilder.setContextMode(SpeechMsg.CONTEXT_AUTO);
@@ -256,7 +261,7 @@ public class TingPlayProcessor extends BaseProcessor {
         // 发送回复文本到聊天视图
         if (isResponse)
             EventBus.getDefault().post(new ChatMsgEvent(new ResponseMsg(msgBuilder.getText()), null, null, null));
-        final Observable<SpeechMsg> msgObservable = mSynthesizer.startSpeakAbsolute(msgBuilder.build())
+        final Observable<SpeechMsg> msgObservable = SynthesizerBase.get().startSpeakAbsolute(msgBuilder.build())
                 .doOnNext(new Consumer<SpeechMsg>() {
                     @Override
                     public void accept(SpeechMsg speechMsg) throws Exception {
@@ -518,7 +523,7 @@ public class TingPlayProcessor extends BaseProcessor {
      **/
     private void synthesizeAndShowResp(final List<Track> tracks, String content, final int finalPlayIndex) {
         EventBus.getDefault().post(new ChatMsgEvent(new ResponseMsg(content), null, null, null));
-        mSynthesizer.startSpeakAbsolute(content)
+        SynthesizerBase.get().startSpeakAbsolute(content)
                 .doOnNext(new Consumer<SpeechMsg>() {
                     @Override
                     public void accept(SpeechMsg speechMsg) throws Exception {

@@ -1,18 +1,18 @@
 package com.lingju.assistant.entity.action;
 
-import com.lingju.context.entity.NewAudioEntity;
 import com.lingju.context.entity.Progress;
+import com.lingju.context.entity.SyncSegment;
 
 import java.util.List;
 
 /**
  * Created by Ken on 2017/5/16.
  */
-public class PlayerEntity {
+public class PlayerEntity<T> extends SyncSegment {
 
     private int id = 300;
     private String origin;
-    private List<NewAudioEntity> object;      //播放信息，根据type而定(APP只提供音乐播放)
+    private List<T> object;      //播放信息，根据type而定(APP只提供音乐播放)
     private String mode;        //播放模式（顺序、随机等）
     private Progress progress;  //进度控制
     private Progress volume;    //音量控制
@@ -45,11 +45,11 @@ public class PlayerEntity {
         this.mode = mode;
     }
 
-    public List<NewAudioEntity> getObject() {
+    public List<T> getObject() {
         return object;
     }
 
-    public void setObject(List<NewAudioEntity> object) {
+    public void setObject(List<T> object) {
         this.object = object;
     }
 
