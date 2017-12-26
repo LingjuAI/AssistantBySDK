@@ -57,7 +57,7 @@ android {
     <th>appkey申请地址</th>
   </tr>
   <tr>
-    <td>灵聚SDK</td>
+    <td>灵聚SDK（软件版）</td>
     <td>http://dev.lingju.ai/</td>
   </tr>
     <tr>
