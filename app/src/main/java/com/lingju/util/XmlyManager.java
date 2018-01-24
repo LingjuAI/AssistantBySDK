@@ -84,6 +84,8 @@ public class XmlyManager {
 
     private XmlyManager(Context context) {
         this.mContext = context.getApplicationContext();
+        playerEntity = new PlayerEntity<>();
+        playerEntity.setType("AUDIO");
         //初始化喜马拉雅SDK
         CommonRequest.getInstanse().init(mContext, Constants.XIMALAYA_APPSECRET);
         CommonRequest.getInstanse().setDefaultPagesize(BASE_COUNT);

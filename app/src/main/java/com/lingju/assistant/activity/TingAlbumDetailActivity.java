@@ -118,7 +118,8 @@ public class TingAlbumDetailActivity extends GoBackActivity implements LingjuSwi
 
     private void setPlayerEntity(int type) {
         PlayerEntity<NewAudioEntity> playerEntity = new PlayerEntity<>();
-        playerEntity.setType(type == XIMALAYA ? "XIMALAYA" : "KAOLA");
+        playerEntity.setType("AUDIO");
+        playerEntity.setOrigin(type == XIMALAYA ? "XIMALAYA" : "KAOLA");
         XmlyManager.get().setPlayerEntity(playerEntity);
     }
 

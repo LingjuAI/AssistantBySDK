@@ -721,19 +721,19 @@ public class LingjuAudioPlayer implements IBatchPlayer.Presenter {
     private void updatePlayerState(IBatchPlayer.PlayState state) {
         switch (state) {
             case Start:
-                String type = null;
+                String origin = null;
                 switch (getPlayListType()) {
                     case IBatchPlayer.PlayListType.FAVORITE:
-                        type = "COLLECT";
+                        origin = "COLLECT";
                         break;
                     case IBatchPlayer.PlayListType.LOCAL:
-                        type = "LOCAL";
+                        origin = "LOCAL";
                         break;
                     case IBatchPlayer.PlayListType.REQUEST:
-                        type = "AUTO";
+                        origin = "AUTO";
                         break;
                 }
-                playerEntity.setType(type);
+                playerEntity.setOrigin(origin);
                 playerEntity.setControl("PLAY");
                 if (mUploadDisposable != null && !mUploadDisposable.isDisposed()) {
                     mUploadDisposable.dispose();
