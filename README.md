@@ -152,7 +152,7 @@ android {
 
 ## 相关文档链接
 1. [APP开源说明文档](https://www.kancloud.cn/ljsdk/lingju_app/351356)（必读）
-2. [灵聚SDK指令文档](http://doc.lingju.ai/order)
+2. [灵聚SDK指令文档](http://doc.lingju.ai/android_sdk)
 
 ## License [![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 ~~~
