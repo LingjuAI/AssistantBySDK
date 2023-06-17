@@ -151,8 +151,8 @@ android {
     ![](images/image_authCode.jpg)
 
 ## 相关文档链接
-1. [APP开源说明文档](https://www.kancloud.cn/ljsdk/lingju_app/351356)（必读）
-2. [灵聚SDK指令文档](http://doc.lingju.ai/android_sdk)
+1. [APP开源说明文档](https://api.docs.lingju.ai/doc/43609919/wMpYycjg/eRPc8CVn)（必读）
+2. [灵聚Android SDK接入指南](https://api.docs.lingju.ai/doc/43609919/wMpYycjg/LaBTkv3M)
 
 ## License [![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 ~~~
